@@ -1,6 +1,6 @@
 <h1>Log into Snap<em>!</em></h1>
 
-<form class="pure-form pure-form-aligned" method="GET" action="/api/users/login">
+<form id="login" class="pure-form pure-form-aligned">
     <fieldset>
         <div class="pure-control-group">
             <label for="username">Username</label>
@@ -21,3 +21,31 @@
         </div>
     </fieldset>
 </form>
+
+<script>
+document.querySelector('form#login').addEventListener("submit", function (event) {
+    var username = this.elements["username"].value,
+        password = this.elements["password"].value;
+
+    event.preventDefault();
+
+    SnapAPI.setUser(username, password)
+        .then(function (value) { 
+            if (SnapAPI.currentUser() === username) {
+                localStorage["username"] = username;
+                localStorage["password"] = password;
+                window.location.href = 'index.html';
+                username = null;
+                password = null;
+            }
+        })
+        .catch(function (value) {
+            alert(
+                '<p>Could not login. The server reported:</p><p>' + value.ResultMessage + '</p>',
+                { title: 'Error logging in' }
+            );
+            username = null;
+            password = null;
+        });
+});
+</script>

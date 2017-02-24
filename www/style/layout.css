@@ -1,6 +1,7 @@
 /* GENERAL ELEMENTS */
 
 body {
+    color: #101040;
     background: #e3dedb;
 }
 
@@ -21,6 +22,10 @@ em {
     color: #e3dedb;
 }
 
+#top-bar a {
+    color: #e3dedb;
+}
+
 #top-bar .logo {
     position: absolute;
     left: 1em;
@@ -33,6 +38,10 @@ em {
     right: 1em;
     top: 50%;
     transform: translateY(-50%);
+}
+
+#top-bar .settings:hover {
+    color: white;
 }
 
 #top-bar .pure-menu-item {
@@ -49,7 +58,6 @@ em {
 }
 
 #top-bar .pure-menu-link {
-    color: #e3dedb;
     padding: 0;
     text-align: center;
 }
@@ -101,4 +109,36 @@ em {
 #wrapper {
     width: 1080px;
     margin: 0 auto;
+}
+
+/* CUSTOM ALERT */
+
+.customalert_header {
+    font-size: 1em;
+    background: #2c3e50;
+    color: #e3dedb;
+    padding-bottom: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.customalert_body, 
+.customalert_footer {
+    background: #e3dedb;
+    text-align: center;
+    padding: 0.5em;
+    line-height: 1.5em;
+    font-size: 1.1em;
+}
+
+.customalert_body {
+    border-radius: 5px 5px 0 0;
+}
+
+.customalert_footer {
+    border-radius: 0 0 5px 5px;
+}
+
+div#customAlert {
+    background: #2c3e50;
 }

@@ -89,3 +89,4 @@ Running `./build.sh` will generate the file:
 * **[Font Awesome](fontawesome.io)** by [Dave Gandy](https://github.com/davegandy)
 * **[reset.css](http://meyerweb.com/eric/tools/css/reset/)** by [Eric Meyer](http://meyerweb.com/)
 * **[pure.css](http://purecss.io)** by [Yahoo!](http://yahoo.com)
+* **[custom-alert](https://github.com/PhilippeAssis/custom-alert)** by [Philippe Assis](https://github.com/PhilippeAssis)
