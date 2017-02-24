@@ -15,6 +15,12 @@ This site is built by a home-brewed page descriptor system designed to be super 
 * The generated pages are stored in the `www` folder.
 * Only `.html` files with the same name as the descriptor files are going to be overwritten. You can place any other files into `www`, such as Javascript files, images or stylesheets.
 
+## Usage
+
+    ./build [--watch]
+
+`--watch` will keep an eye at all files in your project tree and rebuild it if it detects any changes. This makes for a live-reload experience.
+
 ## Example
 
 Given the following files:
