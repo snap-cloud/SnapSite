@@ -6,11 +6,11 @@ The social website for the Snap! programming language/environment
 
 This site is built by a home-brewed page descriptor system designed to be super simple and save you from copy-pasting any HTML around. Here's how it works:
 
-* The `build.sh` script reads all `.snp` page descriptor files and builds each HTML page accordingly, giving it the same name as the descriptor file.
+* The `build.sh` script reads all `.snp` page descriptor files from the `/pages` directory and builds each HTML page accordingly, giving it the same name as the descriptor file.
 * Page descriptors define a page by enumerating what templates (chunks of HTML) should compose the page.
 * Multiple templates can be concatenated together by placing them in the same line, separated by semicolons.
 * Template names in the descriptor file are matched against files under the `/templates` directory.
-* Templates are plain HTML files that may or may not define a `@content` placeholder.
+* Templates are plain HTML files with a `.tmp` extension that may or may not define a `@content` placeholder.
 * If said placeholder exists, the templates found in the next line of the descriptor file are going to be rendered into it.
 * The generated pages are stored in the `www` folder.
 * Only `.html` files with the same name as the descriptor files are going to be overwritten. You can place any other files into `www`, such as Javascript files, images or stylesheets.
@@ -27,13 +27,13 @@ This site is built by a home-brewed page descriptor system designed to be super 
 
 Given the following files:
 
-**test.snp**
+**pages/test.snp**
 
     base
     welcome+examples
     example1+example2+example3
 
-**templates/base.html**
+**templates/base.tmp**
 
     <html>
         <head><title>An example page</title></head>
@@ -42,27 +42,27 @@ Given the following files:
         </body>
     </html>
 
-**templates/welcome.html**
+**templates/welcome.tmp**
 
     <h1>Welcome to this test site!</h1>
     <p>This is just an example site to show you how the page descriptor system works.</p>
 
-**templates/examples.html**
+**templates/examples.tmp**
 
     <div>
         <h2>Here's a couple of embedded templates:</h2>
         @content
     </div>
 
-**templates/example1.html**
+**templates/example1.tmp**
 
     <span>First One</span>
 
-**templates/example2.html**
+**templates/example2.tmp**
 
     <span>Second One</span>
 
-**templates/example3.html**
+**templates/example3.tmp**
 
     <span>Third One</span>
 

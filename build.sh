@@ -31,11 +31,12 @@ while echo $1 | grep ^- > /dev/null; do eval $( echo $1 | sed 's/-//g' | sed 's/
 
 # iterate over all .snp page descriptor files
 function build() {
-    for page in `ls *.snp`; do
+    for page in `ls pages/*.snp`; do
         echo "Building $page..."
 
         # create an html file with the same name as the descriptor file
-        html=www/"${page%.*}".html
+        filename="${page#pages/}"
+        html=www/"${filename%.*}".html
         rm -f $html
         touch $html
 
@@ -47,7 +48,7 @@ function build() {
             declare -a template_names="(${descriptor//;/ })";
             rm -f tmp.html
             for template in ${template_names[*]}; do
-                cat templates/$template.html >> tmp.html
+                cat templates/$template.tmp >> tmp.html
             done
 
             if grep -q @content $html; then
@@ -65,7 +66,7 @@ function build() {
 
 build
 
-if test -n $serve; then
+if test -n "$serve"; then
     function runserver() {
         (cd www; exec -a httpserver $@ &)
     }
@@ -91,7 +92,7 @@ fi
 
 # Watch and build on any file change
 
-if test -n $watch; then
+if test -n "$watch"; then
     declare -A lasttimes
     while sleep 1; do
         # ignores hidden files and dirs (./.*)
