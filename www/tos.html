@@ -36,7 +36,7 @@
                     <i class="pure-u-1-6"></i>
                     <li hidden="true" class="join pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signup.html">Join</a></li>
                     <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signin.html">Sign In</a></li>
-                    <li hidden="true" class="user pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="#"></a></li>
+                    <li hidden="true" class="user pure-menu-item pure-u-1-12"><a class="pure-menu-link visitor" href="#"></a></li>
                     <li hidden="true" class="logout pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
                 </ul>
             </div>
@@ -106,15 +106,15 @@
         function () {
             document.querySelector('li.join').hidden = true;
             document.querySelector('li.sign-in').hidden = true;
-            document.querySelector('li.user a').innerHTML = SnapAPI.currentUser();
             document.querySelector('li.user').hidden = false;
             document.querySelector('li.logout').hidden = false;
+            fillVisitorFields();
+            fillUsernameFields();
         })
     .catch(
         function () {
             document.querySelector('li.join').hidden = false;
             document.querySelector('li.sign-in').hidden = false;
-            document.querySelector('li.user a').innerHTML = '';
             document.querySelector('li.user').hidden = true;
             document.querySelector('li.logout').hidden = true;
         });

@@ -43,7 +43,22 @@
             <a href="#"><i class="settings fa fa-bars" aria-hidden="true"></i></a>
         </div>
         <div id="wrapper">
-<h1>Hi, <span class="visitor"></span>, welcome to Snap<em>!</em></h1>
+<h1><span class="username"></span>'s public page</h1>
+<link rel="stylesheet" href="style/project.css">
+<script src="js/project.js"></script>
+<div class="projects pure-g"></div>
+<script>
+    var projectsDiv = document.querySelector('.projects');
+    SnapAPI.getPublicProjectList(pageUser())
+        .then(function (result) {
+            result.PublicProjectList.forEach(function (project) {
+                projectsDiv.append(projectDiv(project, { size: 'small', gridSize: 5 }));
+            });
+        })
+        .catch(function (error) {
+            genericError(error);
+        });
+</script>
         </div>
     </body>
     <script>

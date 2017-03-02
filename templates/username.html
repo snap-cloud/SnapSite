@@ -1,0 +1,8 @@
+<script>
+    var user = SnapAPI.currentUser();
+    if (user) {
+        document.querySelectorAll('.username').forEach(function (each) {
+            each.innerHTML = user;        
+        });
+    }
+</script>
