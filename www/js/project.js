@@ -1,5 +1,6 @@
 function projectDiv (project, options) {
-    var thumbnail = decodeURIComponent(String.fromCharCode.apply(String, project.thumbnail)),
+    var zeroIndex = project.thumbnail.findIndex(function(e) { return e === 0} ), // Remove trailing zeroes. To be fixed in the backend.
+        thumbnail = (zeroIndex > -1 ? project.thumbnail.slice(0, zeroIndex) : project.thumbnail).toString(), 
         div = document.createElement('div');
 
     div.classList.add('project', options['size']);

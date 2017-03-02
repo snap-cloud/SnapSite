@@ -4,6 +4,8 @@
 }
 
 .project img {
+    width: 160px;
+    height: 120px;
     border: 2px solid #2c3e50;
     border-radius: 5px;
     margin-bottom: .5em;
