@@ -12,8 +12,9 @@
         <link rel="stylesheet" href="libs/font-awesome.min.css">
         <link rel="stylesheet" href="libs/custom-alert.css">
         <script type="text/javascript" src="libs/SnapCloudAPI.js"></script>
-        <script type="text/javascript" src="libs/t.min.js"></script>
 
+        <link rel="stylesheet" href="style/elements.css">
+        <link rel="stylesheet" href="style/classes.css">
         <link rel="stylesheet" href="style/layout.css">
         <script type="text/javascript" src="js/base.js"></script>
         <script type="text/javascript" src="js/cloud.js"></script>
@@ -33,7 +34,7 @@
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </div>
                     <i class="pure-u-1-6"></i>
-                    <li hidden="true" class="join pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="join.html">Join</a></li>
+                    <li hidden="true" class="join pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signup.html">Join</a></li>
                     <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signin.html">Sign In</a></li>
                     <li hidden="true" class="user pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="#"></a></li>
                     <li hidden="true" class="logout pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
@@ -42,55 +43,55 @@
             <a href="#"><i class="settings fa fa-bars" aria-hidden="true"></i></a>
         </div>
         <div id="wrapper">
-<h1>Log into Snap<em>!</em></h1>
-
-<form id="login" class="pure-form pure-form-aligned">
+<h1>Create a Snap<i>!</i> account</h1>
+<form id="signup" class="pure-form pure-form-aligned">
     <fieldset>
         <div class="pure-control-group">
             <label for="username">Username</label>
-            <input id="username" name="username" type="text" placeholder="Username">
+            <input id="username" name="username" type="text" placeholder="Username" required>
         </div>
 
         <div class="pure-control-group">
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" placeholder="Password">
+            <label for="email">Email adress</label>
+            <input id="email" name="email" type="email" placeholder="Email address" required>
         </div>
 
         <div class="pure-controls">
-            <label for="cb" class="pure-checkbox">
-                <input id="cb" name="staylogged" type="checkbox"> keep me logged in
+            <label for="tos" class="pure-checkbox">
+                <input id="tos" name="tos" type="checkbox" required> I have read and agree to the <a target="_blank" href="tos.html">Terms of Service</a> and the <a target="_blank" href="privacy.html">Privacy Agreement</a>.
             </label>
 
-            <button type="submit" class="pure-button">Sign in</button>
+            <button type="submit" class="pure-button red-button">Sign up</button>
         </div>
     </fieldset>
 </form>
 
 <script>
-document.querySelector('form#login').addEventListener("submit", function (event) {
+document.querySelector('form#signup').addEventListener("submit", function (event) {
     var username = this.elements["username"].value,
-        password = this.elements["password"].value;
+        email = this.elements["email"].value,
+        agreed = this.elements["tos"].value;
 
     event.preventDefault();
 
-    SnapAPI.setUser(username, password)
+    SnapAPI.signUp(username, email)
         .then(function (value) { 
-            if (SnapAPI.currentUser() === username) {
-                localStorage["username"] = username;
-                localStorage["password"] = password;
-                window.location.href = 'index.html';
-                username = null;
-                password = null;
-            }
+            console.log(value);
+            alert(
+                '<p>User created.</p><p>Please check your email to confirm your account and sign in.</p>',
+                function() {
+                    window.location.href = 'signin.html';
+                }
+            );
         })
         .catch(function (value) {
             alert(
-                '<p>Could not login. The server reported:</p><p>' + value.ResultMessage + '</p>',
-                { title: 'Error logging in' }
+                '<p>Could not create account. The server reported:</p><p>'
+                    + value.ResultMessage + '</p>',
+                { title: 'Sign up failed'}
             );
-            username = null;
-            password = null;
-        });
+        }
+    );
 });
 </script>
         </div>

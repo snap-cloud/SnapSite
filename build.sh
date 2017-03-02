@@ -65,7 +65,13 @@ function build() {
 
 build
 
+if test -n $serve; then
+    killall -q http-server
+    (cd www; http-server &)
+fi
+
 # Watch and build on any file change
+
 if test -n $watch; then
     declare -A lasttimes
     while sleep 1; do

@@ -1,16 +1,8 @@
-/* GENERAL ELEMENTS */
+/* WRAPPER */
 
-body {
-    color: #101040;
-    background: #e3dedb;
-}
-
-a {
-    text-decoration: none;
-}
-
-em {
-    font-style: italic;
+#wrapper {
+    width: 1080px;
+    margin: 0 auto;
 }
 
 /* TOP BAR */
@@ -104,11 +96,6 @@ em {
     -webkit-box-sizing: border-box;
     padding: 0.1em 0.5em 0.1em 1.5em;
     font-weight: bold;
-}
-
-#wrapper {
-    width: 1080px;
-    margin: 0 auto;
 }
 
 /* CUSTOM ALERT */

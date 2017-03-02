@@ -85,7 +85,6 @@ Running `./build.sh` will generate the file:
 # Third Party Packages
 
 * **SnapCloudAPI.js** by [MioSoft](https://www.miosoft.com/)
-* **[t.js](https://github.com/jasonmoo/t.js)** by [Jason Mooberry](https://github.com/jasonmoo)
 * **[Font Awesome](fontawesome.io)** by [Dave Gandy](https://github.com/davegandy)
 * **[reset.css](http://meyerweb.com/eric/tools/css/reset/)** by [Eric Meyer](http://meyerweb.com/)
 * **[pure.css](http://purecss.io)** by [Yahoo!](http://yahoo.com)

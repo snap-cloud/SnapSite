@@ -1,0 +1,51 @@
+<h1>Create a Snap<i>!</i> account</h1>
+<form id="signup" class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" placeholder="Username" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="email">Email adress</label>
+            <input id="email" name="email" type="email" placeholder="Email address" required>
+        </div>
+
+        <div class="pure-controls">
+            <label for="tos" class="pure-checkbox">
+                <input id="tos" name="tos" type="checkbox" required> I have read and agree to the <a target="_blank" href="tos.html">Terms of Service</a> and the <a target="_blank" href="privacy.html">Privacy Agreement</a>.
+            </label>
+
+            <button type="submit" class="pure-button red-button">Sign up</button>
+        </div>
+    </fieldset>
+</form>
+
+<script>
+document.querySelector('form#signup').addEventListener("submit", function (event) {
+    var username = this.elements["username"].value,
+        email = this.elements["email"].value,
+        agreed = this.elements["tos"].value;
+
+    event.preventDefault();
+
+    SnapAPI.signUp(username, email)
+        .then(function (value) { 
+            console.log(value);
+            alert(
+                '<p>User created.</p><p>Please check your email to confirm your account and sign in.</p>',
+                function() {
+                    window.location.href = 'signin.html';
+                }
+            );
+        })
+        .catch(function (value) {
+            alert(
+                '<p>Could not create account. The server reported:</p><p>'
+                    + value.ResultMessage + '</p>',
+                { title: 'Sign up failed'}
+            );
+        }
+    );
+});
+</script>

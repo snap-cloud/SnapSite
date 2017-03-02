@@ -41,11 +41,13 @@ document.querySelector('form#login').addEventListener("submit", function (event)
         })
         .catch(function (value) {
             alert(
-                '<p>Could not login. The server reported:</p><p>' + value.ResultMessage + '</p>',
-                { title: 'Error logging in' }
+                '<p>Could not login. The server reported:</p><p>'
+                    + value.ResultMessage + '</p>',
+                { title: 'Login failed' }
             );
             username = null;
             password = null;
-        });
+        }
+    );
 });
 </script>
