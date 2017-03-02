@@ -66,8 +66,27 @@ function build() {
 build
 
 if test -n $serve; then
-    killall -q http-server
-    (cd www; http-server &)
+    function runserver() {
+        (cd www; exec -a httpserver $@ &)
+    }
+
+    pkill -f httpserver
+    if test -n `which http-server`; then
+        runserver http-server 
+    elif test -n `which python`; then
+        runserver python -m SimpleHTTPServer 8080
+    elif test -n `which ruby`; then
+        runserver ruby -run -ehttpd . -p8080
+    elif test -n `which php`; then
+        runserver php -S 127.0.0.1:8080
+    else
+        echo "Could not find a way to serve static files. Please install one of the following:"
+        echo 
+        echo "Ruby"
+        echo "Python"
+        echo "NodeJS http-server module"
+        echo "PHP"
+    fi
 fi
 
 # Watch and build on any file change

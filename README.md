@@ -17,9 +17,11 @@ This site is built by a home-brewed page descriptor system designed to be super 
 
 ## Usage
 
-    ./build [--watch]
+    ./build [--watch] [--serve]
 
 `--watch` will keep an eye at all files in your project tree and rebuild it if it detects any changes. This makes for a live-reload experience.
+
+`--serve` will attempt to start a webserver on your `www` folder, making your built project accessible at `http://localhost:8080`. For this feature to work you'll need a working installation of either Ruby, Python (2+), PHP or the NodeJS `http-server` module.
 
 ## Example
 
