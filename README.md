@@ -91,3 +91,4 @@ Running `./build.sh` will generate the file:
 * **[reset.css](http://meyerweb.com/eric/tools/css/reset/)** by [Eric Meyer](http://meyerweb.com/)
 * **[pure.css](http://purecss.io)** by [Yahoo!](http://yahoo.com)
 * **[custom-alert](https://github.com/PhilippeAssis/custom-alert)** by [Philippe Assis](https://github.com/PhilippeAssis)
+* **[FileSaver.js](https://github.com/eligrey/FileSaver.js)** by [Eli Grey](https://github.com/eligrey)

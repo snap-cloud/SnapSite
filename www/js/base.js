@@ -1,3 +1,5 @@
+snapURL = 'http://snap.berkeley.edu/snapsource/snap.html';
+
 function getUrlParameter (param) {
     var regex = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)'),
         results = regex.exec(window.location.href);
@@ -8,6 +10,10 @@ function getUrlParameter (param) {
 
 function pageUser () {
     return getUrlParameter('user');
+};
+
+function pageProject () {
+    return getUrlParameter('project');
 };
 
 function fillVisitorFields () {
@@ -28,6 +34,28 @@ function fillUsernameFields () {
     }
 };
 
+// Element creation
+
+function newAuthorSpan (author) {
+    var span = document.createElement('span');
+    span.classList.add('author');
+    span.innerHTML = 'by <a href="user.html?user=' + author + '"><strong>' + author + '</strong></a>';
+    return span;
+};
+
+function projectURL (author, project) {
+    return snapURL + '#present:Username=' + author + '&ProjectName=' + project;
+};
+
+// Data conversion
+
+function formatDate (aDate) {
+    return aDate.toLocaleString(
+        navigator.language || 'en-us',
+        { month: 'long', day: '2-digit', year: 'numeric' }
+    );
+};
+
 // Error handling
 
 function genericError (errorString) {
@@ -38,5 +66,4 @@ function genericError (errorString) {
            resolve
            );
     });
-    
 };

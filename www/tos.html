@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="libs/font-awesome.min.css">
         <link rel="stylesheet" href="libs/custom-alert.css">
         <script type="text/javascript" src="libs/SnapCloudAPI.js"></script>
+        <script type="text/javascript" src="libs/FileSaver.min.js"></script>
 
         <link rel="stylesheet" href="style/elements.css">
         <link rel="stylesheet" href="style/classes.css">
@@ -25,9 +26,9 @@
             <a href="index.html"><img src="img/topbar-logo.png" class="logo"/></a>
             <div class="pure-menu-horizontal pure-menu">
                 <ul class="pure-g pure-menu-list">
-                    <li class="pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="run">Run Snap<em>!</em></a></li>
+                    <li class="pure-menu-item pure-u-1-12"><a class="pure-menu-link run" target="_blank">Run Snap<em>!</em></a></li>
                     <li class="pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="explore.html">Explore</a></li>
-                    <li class="pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="forum">Forum</a></li>
+                    <li class="pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="https://snapforum.cs10.org/">Forum</a></li>
                     <i class="pure-u-1-4"></i>
                     <div class="search pure-u-1-6">
                         <input type="text" name="search">
@@ -99,6 +100,8 @@
         </div>
     </body>
     <script>
+    document.querySelector('#top-bar .run').href = snapURL;
+
     // Just so that I can keep developing. Not production code!
     // This needs to go once we have a way to keep sessions
     SnapAPI.relogin()

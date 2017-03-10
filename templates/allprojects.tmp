@@ -1,15 +1,15 @@
-<link rel="stylesheet" href="style/project.css">
 <script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
 <div class="projects pure-g"></div>
 <script>
     var projectsDiv = document.querySelector('.projects');
     SnapAPI.getPublicProjectList(pageUser())
         .then(function (result) {
             result.PublicProjectList.forEach(function (project) {
-                projectsDiv.append(projectDiv(project, { size: 'small', gridSize: 5 }));
+                projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
             });
         })
         .catch(function (error) {
-            genericError(error);
+            genericError(error.ResultMessage);
         });
 </script>
