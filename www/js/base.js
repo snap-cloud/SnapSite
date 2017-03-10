@@ -1,4 +1,4 @@
-snapURL = 'http://snap.berkeley.edu/snapsource/snap.html';
+snapURL = 'https://snap.berkeley.edu/snapsource/snap.html';
 
 function getUrlParameter (param) {
     var regex = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)'),
