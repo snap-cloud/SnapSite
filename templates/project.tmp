@@ -1,7 +1,7 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 
-<div class="project big" hidden>
+<div class="project big">
     <div class="pure-g">
         <div class="title pure-u-1-2">
             <h1></h1>
@@ -25,9 +25,11 @@
 </div>
 
 <script>
+    beganLoading();
     SnapAPI.getPublicProject(pageUser(), pageProject())
         .then(function (result) {
             var project = result.PublicProject;
+            setTitle(pageProject() + ' by ' + pageUser() + ' - Snap! Build Your Own Blocks');
             document.querySelector('.title h1').innerHTML = project.projectName;
             document.querySelector('.title').append(newAuthorSpan(project.loginName));
             document.querySelector('.project iframe').src = projectURL(project.loginName, project.projectName) + '&hideControls';
@@ -37,8 +39,7 @@
             document.querySelector('.shared').append(formatDate(project.shared));
             document.querySelector('.buttons .open').href = projectURL(project.loginName, project.projectName) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
-            document.querySelector('.project').hidden = false;
-            console.log(project);
+            doneLoading();
         })
         .catch(function (error) {
             genericError(error.ResultMessage);

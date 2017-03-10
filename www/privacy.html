@@ -22,6 +22,7 @@
     </head>
     <body>
         <script type="text/javascript" src="libs/custom-alert.min.js"></script>
+        <div id="loading" hidden><i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i></div>
         <div id="top-bar">
             <a href="index.html"><img src="img/topbar-logo.png" class="logo"/></a>
             <div class="pure-menu-horizontal pure-menu">
@@ -36,7 +37,7 @@
                     </div>
                     <i class="pure-u-1-6"></i>
                     <li hidden="true" class="join pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signup.html">Join</a></li>
-                    <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signin.html">Sign In</a></li>
+                    <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="login.html">Log In</a></li>
                     <li hidden="true" class="user pure-menu-item pure-u-1-12"><a class="pure-menu-link visitor" href="#"></a></li>
                     <li hidden="true" class="logout pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
                 </ul>
@@ -95,7 +96,7 @@ you a password-reset email.</li>
 
 <p>Like many other web sites, we use Google Analytics to collect statistical information about how our site is used. We get only general statistical information from Google Analytics, not personally identifiable information. <i>However, if you have ever used other Google services, then Google knows who you are.</i> We have no control over their use of information; see <a href="https://www.google.com/intl/en/policies/privacy/">Google's privacy policy</a> for more information.</p>
 
-<p>We recommend that you use <a href="http://adblockplus.org/">AdBlock Plus</a>, <a href="http://ghostery.com/">Ghostery</a>, <a href="http://noscript.org/">NoScript</a>, and/or <a href="http://privoxy.org/">Privoxy</a> to protect your browsing privacy. The first two are really easy to install and use; the last two take a bit more effort to whitelist sites you trust. (You might also consider the tracking-free <a href="http://duckduckgo.com/">DuckDuckGo</a> search engine). We have no connection with any of those services.</p>
+<p>We recommend that you use <a href="http://adblockplus.org/">AdBlock Plus</a>, <a href="http://ghostery.com/">Ghostery</a>, <a href="http://noscript.net/">NoScript</a>, and/or <a href="http://privoxy.org/">Privoxy</a> to protect your browsing privacy. The first two are really easy to install and use; the last two take a bit more effort to whitelist sites you trust. (You might also consider the tracking-free <a href="http://duckduckgo.com/">DuckDuckGo</a> search engine). We have no connection with any of those services.</p>
 
 <h2>How to remove your information</h2>
 
@@ -121,6 +122,14 @@ you a password-reset email.</li>
     <p>Madison, WI 53703</p>
     <p>608 467-0417</p>
 </div>
+
+<script>
+    setTitle('Contact Us - Snap! Build Your Own Blocks');
+</script>
+
+<script>
+    setTitle('Privacy Policy - Snap! Build Your Own Blocks');
+</script>
         </div>
     </body>
     <script>

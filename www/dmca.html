@@ -22,6 +22,7 @@
     </head>
     <body>
         <script type="text/javascript" src="libs/custom-alert.min.js"></script>
+        <div id="loading" hidden><i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i></div>
         <div id="top-bar">
             <a href="index.html"><img src="img/topbar-logo.png" class="logo"/></a>
             <div class="pure-menu-horizontal pure-menu">
@@ -36,7 +37,7 @@
                     </div>
                     <i class="pure-u-1-6"></i>
                     <li hidden="true" class="join pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signup.html">Join</a></li>
-                    <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signin.html">Sign In</a></li>
+                    <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="login.html">Log In</a></li>
                     <li hidden="true" class="user pure-menu-item pure-u-1-12"><a class="pure-menu-link visitor" href="#"></a></li>
                     <li hidden="true" class="logout pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
                 </ul>
@@ -66,6 +67,10 @@
 <p>If you choose to make a copyright infringement complaint, please note that we may post your notification, with personally identifiable information redacted, to a clearinghouse such as <a href="http://chillingeffects.org">chillingeffects.org</a>. Please also note that you may be liable for damages (including costs and attorneys' fees) if you materially misrepresent that an activity is infringing your copyright.</p>
 
 <small><em>(Text stolen from scratch.mit.edu).</em></small>
+
+<script>
+    setTitle('DMCA Policy - Snap! Build Your Own Blocks');
+</script>
         </div>
     </body>
     <script>

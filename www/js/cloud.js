@@ -15,5 +15,5 @@ SnapAPI.logout = function () {
     this.clearUser()
     localStorage["username"] = null;
     localStorage["password"] = null;
-    window.location.href = "index.html";
+    location.href = "index.html";
 };

@@ -22,6 +22,7 @@
     </head>
     <body>
         <script type="text/javascript" src="libs/custom-alert.min.js"></script>
+        <div id="loading" hidden><i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i></div>
         <div id="top-bar">
             <a href="index.html"><img src="img/topbar-logo.png" class="logo"/></a>
             <div class="pure-menu-horizontal pure-menu">
@@ -36,7 +37,7 @@
                     </div>
                     <i class="pure-u-1-6"></i>
                     <li hidden="true" class="join pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signup.html">Join</a></li>
-                    <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="signin.html">Sign In</a></li>
+                    <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="login.html">Log In</a></li>
                     <li hidden="true" class="user pure-menu-item pure-u-1-12"><a class="pure-menu-link visitor" href="#"></a></li>
                     <li hidden="true" class="logout pure-menu-item pure-u-1-12"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
                 </ul>
@@ -68,32 +69,34 @@
 </form>
 
 <script>
-document.querySelector('form#signup').addEventListener("submit", function (event) {
-    var username = this.elements["username"].value,
-        email = this.elements["email"].value,
-        agreed = this.elements["tos"].value;
+    setTitle('Sign Up - Snap! Build Your Own Blocks');
 
-    event.preventDefault();
+    document.querySelector('form#signup').addEventListener("submit", function (event) {
+        var username = this.elements["username"].value,
+            email = this.elements["email"].value,
+            agreed = this.elements["tos"].value;
 
-    SnapAPI.signUp(username, email)
-        .then(function (value) { 
-            console.log(value);
-            alert(
-                '<p>User created.</p><p>Please check your email to confirm your account and sign in.</p>',
-                function() {
-                    window.location.href = 'signin.html';
-                }
-            );
-        })
-        .catch(function (value) {
-            alert(
-                '<p>Could not create account. The server reported:</p><p>'
-                    + value.ResultMessage + '</p>',
-                { title: 'Sign up failed'}
-            );
-        }
-    );
-});
+        event.preventDefault();
+
+        SnapAPI.signUp(username, email)
+            .then(function (value) { 
+                console.log(value);
+                alert(
+                    '<p>User created.</p><p>Please check your email to confirm your account and sign in.</p>',
+                    function() {
+                        window.location.href = 'signin.html';
+                    }
+                );
+            })
+            .catch(function (value) {
+                alert(
+                    '<p>Could not create account. The server reported:</p><p>'
+                        + value.ResultMessage + '</p>',
+                    { title: 'Sign up failed'}
+                );
+            }
+        );
+    });
 </script>
         </div>
     </body>

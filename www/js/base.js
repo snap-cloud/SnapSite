@@ -1,8 +1,8 @@
-snapURL = 'https://snap.berkeley.edu/snapsource/snap.html';
+snapURL = location.protocol + '//snap.berkeley.edu/snapsource/snap.html';
 
 function getUrlParameter (param) {
     var regex = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(window.location.href);
+        results = regex.exec(location.href);
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
@@ -15,6 +15,8 @@ function pageUser () {
 function pageProject () {
     return getUrlParameter('project');
 };
+
+// Data insertion
 
 function fillVisitorFields () {
     var visitor = SnapAPI.currentUser();
@@ -32,6 +34,10 @@ function fillUsernameFields () {
             each.innerHTML = username;
         });
     }
+};
+
+function setTitle (newTitle) {
+    document.title = newTitle;
 };
 
 // Element creation
@@ -59,6 +65,7 @@ function formatDate (aDate) {
 // Error handling
 
 function genericError (errorString) {
+    doneLoading();
     return new Promise(function (resolve, reject) {
         alert(
            errorString,
@@ -66,4 +73,14 @@ function genericError (errorString) {
            resolve
            );
     });
+};
+
+// Graphic goodies
+
+function beganLoading () {
+    document.querySelector('#loading').hidden = false;
+};
+
+function doneLoading () {
+    document.querySelector('#loading').hidden = true;
 };

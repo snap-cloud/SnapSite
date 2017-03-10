@@ -4,8 +4,9 @@ function newProjectDiv (project, options) {
 
     div.innerHTML = 
         '<a href="project.html?user=' + project.loginName + '&project=' + 
-        project.projectName + '"><img src=' + thumbnail + '><span class="project-name">' +
-        project.projectName + '</span></a>';
+        project.projectName + '"><img alt="' + project.projectName + 
+        '" title="' + project.projectDescription + '" src=' + thumbnail +
+        '><span class="project-name">' + project.projectName + '</span></a>';
 
     div.appendChild(newAuthorSpan(project.loginName));
 

@@ -14,3 +14,7 @@
     <p>Madison, WI 53703</p>
     <p>608 467-0417</p>
 </div>
+
+<script>
+    setTitle('Contact Us - Snap! Build Your Own Blocks');
+</script>
