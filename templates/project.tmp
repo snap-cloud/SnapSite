@@ -32,7 +32,7 @@
             setTitle(pageProject() + ' by ' + pageUser() + ' - Snap! Build Your Own Blocks');
             document.querySelector('.title h1').innerHTML = project.projectName;
             document.querySelector('.title').append(newAuthorSpan(project.loginName));
-            document.querySelector('.project iframe').src = projectURL(project.loginName, project.projectName) + '&hideControls';
+            document.querySelector('.project iframe').src = projectURL(project.loginName, project.projectName) + '&embedMode';
             document.querySelector('.notes').innerHTML = project.projectDescription || '<small>This project has no notes</small>';
             document.querySelector('.created').append(formatDate(project.created));
             document.querySelector('.updated').append(formatDate(project.updated));

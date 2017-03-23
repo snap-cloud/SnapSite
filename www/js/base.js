@@ -1,4 +1,4 @@
-snapURL = location.protocol + '//snap.berkeley.edu/snapsource/snap.html';
+snapURL = location.protocol + '//bromagosa.github.io/Snap/snap.html';
 
 function getUrlParameter (param) {
     var regex = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)'),
