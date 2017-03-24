@@ -65,7 +65,7 @@
             document.querySelector('li.join').hidden = true;
             document.querySelector('li.sign-in').hidden = true;
             document.querySelector('li.user-menu').hidden = false;
-            document.querySelector('a.my-projects').href = '/user.html?user=' + SnapAPI.currentUser();
+            document.querySelector('a.my-projects').href = 'user.html?user=' + SnapAPI.currentUser();
             fillVisitorFields();
         })
     .catch(
