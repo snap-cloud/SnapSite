@@ -26,7 +26,18 @@ function binaryToXML (binary) {
 };
 
 function downloadProject (project) {
-    // Some projects are missing the pentrails and costumes. Weird...
-    var blob = new Blob([project.sourceCode], {type: 'application/octet-binary'});
+    var xml, blob;
+    
+    if (project.media.sourceCode.length > 0) {
+        xml = '<snapdata>' + 
+            project.sourceCode.toString() +
+            project.media.sourceCode.toString() +
+            '</snapdata>'
+    } else {
+        xml = project.sourceCode.toString();
+    }
+
+    blob = new Blob([xml], {type: 'text/xml'});
+
     saveAs(blob, project.projectName + '.xml');
 };
