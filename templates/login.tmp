@@ -41,8 +41,8 @@ document.querySelector('form#login').addEventListener("submit", function (event)
         })
         .catch(function (value) {
             alert(
-                '<p>Could not login. The server reported:</p><p>'
-                    + value.ResultMessage + '</p>',
+                'Could not login. The server reported:<br/>'
+                    + value.ResultMessage,
                 { title: 'Login failed' }
             );
             username = null;

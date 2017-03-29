@@ -43,6 +43,7 @@
                         <ul class="pure-menu-children pure-u-3-24">
                             <li class="pure-menu-item"><a class="pure-menu-link my-projects" href="">My Projects</a></li>
                             <li class="pure-menu-item"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
+                            <li class="pure-menu-item"><a class="pure-menu-link" href="#" onclick="SnapAPI.confirmResetPassword();">Reset Password</a></li>
                         </ul>
                     </li>
                     <a class="pure-u-1-24" href="#"><i class="settings fa fa-bars" aria-hidden="true"></i></a>
@@ -93,8 +94,8 @@ document.querySelector('form#login').addEventListener("submit", function (event)
         })
         .catch(function (value) {
             alert(
-                '<p>Could not login. The server reported:</p><p>'
-                    + value.ResultMessage + '</p>',
+                'Could not login. The server reported:<br/>'
+                    + value.ResultMessage,
                 { title: 'Login failed' }
             );
             username = null;
@@ -125,7 +126,6 @@ document.querySelector('form#login').addEventListener("submit", function (event)
             document.querySelector('li.sign-in').hidden = false;
             document.querySelector('li.user-menu').hidden = true;
         });
-
     fillUsernameFields();
     </script>
 </html>

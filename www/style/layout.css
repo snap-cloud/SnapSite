@@ -101,13 +101,19 @@
 
 /* CUSTOM ALERT */
 
+.customalert {
+    padding: 5px;
+    background: #2c3e50;
+}
+
 .customalert_header {
     font-size: 1em;
     background: #2c3e50;
     color: #e3dedb;
-    padding-bottom: 8px;
+    padding: 5px 0 8px 0;
     font-weight: bold;
     text-align: center;
+    border-radius: 5px 5px 0 0;
 }
 
 .customalert_body, 
@@ -119,16 +125,17 @@
     font-size: 1.1em;
 }
 
-.customalert_body {
-    border-radius: 5px 5px 0 0;
-}
-
 .customalert_footer {
     border-radius: 0 0 5px 5px;
 }
 
 #customAlert {
     background: #2c3e50;
+}
+
+.customalert_footer .btn {
+    padding: 0 1em;
+    margin: 0 0.5em;
 }
 
 /* LOADING */

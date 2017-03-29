@@ -24,10 +24,10 @@
 <script>
     setTitle('Sign Up - Snap! Build Your Own Blocks');
 
-    document.querySelector('form#signup').addEventListener("submit", function (event) {
-        var username = this.elements["username"].value,
-            email = this.elements["email"].value,
-            agreed = this.elements["tos"].value;
+    document.querySelector('form#signup').addEventListener('submit', function (event) {
+        var username = this.elements['username'].value,
+            email = this.elements['email'].value,
+            agreed = this.elements['tos'].value;
 
         event.preventDefault();
 
@@ -35,17 +35,18 @@
             .then(function (value) { 
                 console.log(value);
                 alert(
-                    '<p>User created.</p><p>Please check your email to confirm your account and sign in.</p>',
+                    'User created.<br/>Please check your email to confirm your account and sign in.',
                     function() {
                         window.location.href = 'signin.html';
-                    }
+                    },
+                    { title: 'Account Created'}
                 );
             })
             .catch(function (value) {
                 alert(
-                    '<p>Could not create account. The server reported:</p><p>'
-                        + value.ResultMessage + '</p>',
-                    { title: 'Sign up failed'}
+                    'Could not create account. The server reported:<br/>'
+                        + value.ResultMessage,
+                    { title: 'Sign Up Failed'}
                 );
             }
         );
