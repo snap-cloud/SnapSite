@@ -33,20 +33,19 @@
 
         SnapAPI.signUp(username, email)
             .then(function (value) { 
-                console.log(value);
                 alert(
                     'User created.<br/>Please check your email to confirm your account and sign in.',
                     function() {
-                        window.location.href = 'signin.html';
+                        window.location.href = 'login.html';
                     },
                     { title: 'Account Created'}
                 );
             })
             .catch(function (value) {
-                alert(
+                genericError(
                     'Could not create account. The server reported:<br/>'
                         + value.ResultMessage,
-                    { title: 'Sign Up Failed'}
+                    'Sign Up Failed'
                 );
             }
         );

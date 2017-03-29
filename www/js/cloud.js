@@ -4,7 +4,7 @@ SnapAPI.relogin = function () {
         if (localStorage['username']) {
             myself.setUser(localStorage['username'], localStorage['password'])
                 .then(resolve)
-                .catch(reject)
+                .catch(reject);
         } else {
             reject();
         }
@@ -12,7 +12,7 @@ SnapAPI.relogin = function () {
 };
 
 SnapAPI.logout = function () {
-    this.clearUser()
+    this.clearUser();
     localStorage['username'] = null;
     localStorage['password'] = null;
     location.href = 'index.html';
@@ -28,7 +28,7 @@ SnapAPI.confirmResetPassword = function () {
                         'An email with a password reset link has been sent to you.<br/>Please check your inbox.',
                         { title: 'Password Reset'}
                     )
-                })
+                });
         },
         { title: 'Reset Password'}
     );

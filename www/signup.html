@@ -44,6 +44,7 @@
                             <li class="pure-menu-item"><a class="pure-menu-link my-projects" href="">My Projects</a></li>
                             <li class="pure-menu-item"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
                             <li class="pure-menu-item"><a class="pure-menu-link" href="#" onclick="SnapAPI.confirmResetPassword();">Reset Password</a></li>
+                            <li class="pure-menu-item"><a class="pure-menu-link" href="changePassword.html">Change Password</a></li>
                         </ul>
                     </li>
                     <a class="pure-u-1-24" href="#"><i class="settings fa fa-bars" aria-hidden="true"></i></a>
@@ -86,20 +87,19 @@
 
         SnapAPI.signUp(username, email)
             .then(function (value) { 
-                console.log(value);
                 alert(
                     'User created.<br/>Please check your email to confirm your account and sign in.',
                     function() {
-                        window.location.href = 'signin.html';
+                        window.location.href = 'login.html';
                     },
                     { title: 'Account Created'}
                 );
             })
             .catch(function (value) {
-                alert(
+                genericError(
                     'Could not create account. The server reported:<br/>'
                         + value.ResultMessage,
-                    { title: 'Sign Up Failed'}
+                    'Sign Up Failed'
                 );
             }
         );

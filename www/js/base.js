@@ -64,12 +64,12 @@ function formatDate (aDate) {
 
 // Error handling
 
-function genericError (errorString) {
+function genericError (errorString, title) {
     doneLoading();
     return new Promise(function (resolve, reject) {
         alert(
            errorString,
-           { title: 'Error'},
+           { title: title || 'Error'},
            resolve
            );
     });

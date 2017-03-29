@@ -44,6 +44,7 @@
                             <li class="pure-menu-item"><a class="pure-menu-link my-projects" href="">My Projects</a></li>
                             <li class="pure-menu-item"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
                             <li class="pure-menu-item"><a class="pure-menu-link" href="#" onclick="SnapAPI.confirmResetPassword();">Reset Password</a></li>
+                            <li class="pure-menu-item"><a class="pure-menu-link" href="changePassword.html">Change Password</a></li>
                         </ul>
                     </li>
                     <a class="pure-u-1-24" href="#"><i class="settings fa fa-bars" aria-hidden="true"></i></a>
@@ -76,27 +77,27 @@
 </form>
 
 <script>
-document.querySelector('form#login').addEventListener("submit", function (event) {
-    var username = this.elements["username"].value,
-        password = this.elements["password"].value;
+document.querySelector('form#login').addEventListener('submit', function (event) {
+    var username = this.elements['username'].value,
+        password = this.elements['password'].value;
 
     event.preventDefault();
 
     SnapAPI.setUser(username, password)
         .then(function (value) { 
             if (SnapAPI.currentUser() === username) {
-                localStorage["username"] = username;
-                localStorage["password"] = password;
+                localStorage['username'] = username;
+                localStorage['password'] = password;
                 window.location.href = 'index.html';
                 username = null;
                 password = null;
             }
         })
         .catch(function (value) {
-            alert(
+            genericError(
                 'Could not login. The server reported:<br/>'
                     + value.ResultMessage,
-                { title: 'Login failed' }
+                'Login failed'
             );
             username = null;
             password = null;
