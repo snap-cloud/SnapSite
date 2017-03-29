@@ -70,6 +70,9 @@
     width: 100%;
     box-sizing: border-box;
     position: absolute;
+    font-family: FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 .project.big .buttons {
