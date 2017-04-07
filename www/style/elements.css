@@ -29,3 +29,10 @@ h3 {
     font-size: 1.3em;
     margin: 1em 0 .5em 0;
 }
+
+hr {
+    margin: 0;
+    border: 0;
+    height: 1px;
+    background: #e3dedb;
+}

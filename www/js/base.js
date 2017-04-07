@@ -42,24 +42,23 @@ function setTitle (newTitle) {
 
 // Element creation
 
-function newAuthorSpan (author) {
+function authorSpan (author) {
     var span = document.createElement('span');
     span.classList.add('author');
     span.innerHTML = 'by <a href="user.html?user=' + author + '"><strong>' + author + '</strong></a>';
     return span;
 };
 
-function projectURL (author, project) {
-    return snapURL + '#present:Username=' + author + '&ProjectName=' + project;
+function isPublicSpan (isPublic) {
+    var span = document.createElement('span'),
+        state = isPublic ? 'public' : 'private';
+    span.classList.add(state);
+    span.innerHTML = '<small>(' + state + ')</small>';
+    return span;
 };
 
-// Data conversion
-
-function formatDate (aDate) {
-    return aDate.toLocaleString(
-        navigator.language || 'en-us',
-        { month: 'long', day: '2-digit', year: 'numeric' }
-    );
+function projectURL (author, project) {
+    return snapURL + '#present:Username=' + author + '&ProjectName=' + project;
 };
 
 // Error handling
@@ -83,4 +82,13 @@ function beganLoading () {
 
 function doneLoading () {
     document.querySelector('#loading').hidden = true;
+};
+
+// Other goodies
+
+function formatDate (aDate) {
+    return aDate.toLocaleString(
+        navigator.language || 'en-us',
+        { month: 'long', day: '2-digit', year: 'numeric' }
+    );
 };

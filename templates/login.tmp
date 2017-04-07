@@ -19,6 +19,9 @@
 
             <button type="submit" class="pure-button">Log in</button>
         </div>
+        <div class="pure-controls">
+            <em><a href="#" onclick="SnapAPI.confirmResetPassword(document.querySelector('#username').value);">* I forgot my password</a></em>
+        </div>
     </fieldset>
 </form>
 

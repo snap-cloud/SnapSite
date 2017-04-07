@@ -18,16 +18,19 @@ SnapAPI.logout = function () {
     location.href = 'index.html';
 };
 
-SnapAPI.confirmResetPassword = function () {
+SnapAPI.confirmResetPassword = function (username) {
     confirm(
         'Are you sure you want to reset your password?',
         function (result) {
-            SnapAPI.resetPassword(SnapAPI.currentUser())
+            SnapAPI.resetPassword(username || SnapAPI.currentUser())
                 .then(function () {
                     alert(
                         'An email with a password reset link has been sent to you.<br/>Please check your inbox.',
                         { title: 'Password Reset'}
-                    )
+                    );
+                })
+                .catch(function (err) {
+                    genericError(err.ResultMessage, 'Could not reset password');
                 });
         },
         { title: 'Reset Password'}

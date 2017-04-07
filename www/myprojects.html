@@ -41,77 +41,58 @@
                     <li hidden="true" class="pure-menu-item pure-u-1-6 pure-menu-has-children pure-menu-allow-hover user-menu">
                         <a href="#" id="menuLink1" class="pure-menu-link visitor"></a>
                         <ul class="pure-menu-children pure-u-3-24">
-                            <li class="pure-menu-item"><a class="pure-menu-link my-projects" href="">My Projects</a></li>
-                            <li class="pure-menu-item"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
-                            <li class="pure-menu-item"><a class="pure-menu-link" href="#" onclick="SnapAPI.confirmResetPassword();">Reset Password</a></li>
+                            <li class="pure-menu-item"><a class="pure-menu-link my-projects" href="myprojects.html">My Projects</a></li>
+                            <li class="pure-menu-item"><a class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
+                            <hr>
                             <li class="pure-menu-item"><a class="pure-menu-link" href="changePassword.html">Change Password</a></li>
+                            <li class="pure-menu-item"><a class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
                         </ul>
                     </li>
-                    <a class="pure-u-1-24" href="#"><i class="settings fa fa-bars" aria-hidden="true"></i></a>
+                    <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover settings">
+                        <a class="pure-menu-link" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                        <ul class="pure-menu-children pure-u-3-24">
+                            <!--
+                            <li class="pure-menu-item"><a class="pure-menu-link" href="">Language</a></li>
+                            <li class="pure-menu-item"><a class="pure-menu-link" href="">About Snap<i>!</i></a></li>
+                            -->
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
         <div id="wrapper">
-<h1>Change Your Password</h1>
-<form id="change-password" class="pure-form pure-form-aligned">
-    <fieldset>
-        <div class="pure-control-group">
-            <label for="current-password">Current Password</label>
-            <input id="current-password" name="current-password" type="password" required>
-        </div>
-
-        <div class="pure-control-group">
-            <label for="new-password">New Password</label>
-            <input id="new-password" name="new-password" type="password" required>
-        </div>
-
-        <div class="pure-control-group">
-            <label for="new-password-again">Repeat New Password</label>
-            <input id="new-password-again" name="new-password-again" type="password" required>
-        </div>
-
-        <div class="pure-controls">
-            <button type="submit" class="pure-button red-button">Change My Password</button>
-        </div>
-    </fieldset>
-</form>
-
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+<h1>My Projects</h1>
+<div class="projects pure-g"></div>
 <script>
-    setTitle('Change Your Password - Snap! Build Your Own Blocks');
-
-    document.querySelector('form#change-password').addEventListener('submit', function (event) {
-        var username = SnapAPI.currentUser(),
-            current = this.elements['current-password'].value,
-            newPassword = this.elements['new-password'].value,
-            repeatedPassword = this.elements['new-password-again'].value;
-
-        event.preventDefault();
-
-        SnapAPI.setUser(username, current)
-            .then(function (value) {
-                if (newPassword === repeatedPassword) {
-                    SnapAPI.resetPassword(username)
-                        .then(function () {
-                            localStorage['password'] = newPassword;
-                            SnapAPI.relogin();
-                            alert('Password changed successfully.');
-                        })
-                        .catch(function (value) {
-                            genericError(
-                                'Failed to change password. The server reported<br/>'
-                                    + value.ResultMessage,
-                                'Password Change Failed');
-                        });
-                } else {
-                    genericError('Passwords do not match.');
-                }
-            })
-            .catch(function () {
-                genericError('Current password is wrong.');
-            });
-    });
+    var projectsDiv = document.querySelector('.projects');
+    beganLoading();
+    SnapAPI.relogin()
+        .then(function () {
+            SnapAPI.getMyProjectList(pageUser())
+                .then(function (result) {
+                    setTitle('My projects - Snap! Build Your Own Blocks');
+                    result.MyProjectList.forEach(function (project) {
+                        projectsDiv.append(
+                            newProjectDiv(
+                                project, 
+                                { 
+                                    size: 'small', 
+                                    gridSize: 5, 
+                                    extraFields: { isPublic: 'public' }
+                                }
+                            )
+                        );
+                    });
+                })
+                .then(doneLoading)
+                .catch(function (error) {
+                    throw(error);
+                    genericError(error.ResultMessage);
+                })
+        });
 </script>
-
         </div>
     </body>
     <script>
@@ -125,7 +106,7 @@
             document.querySelector('li.join').hidden = true;
             document.querySelector('li.sign-in').hidden = true;
             document.querySelector('li.user-menu').hidden = false;
-            document.querySelector('a.my-projects').href = 'user.html?user=' + SnapAPI.currentUser();
+            document.querySelector('a.my-public-projects').href = 'user.html?user=' + SnapAPI.currentUser();
             fillVisitorFields();
         })
     .catch(

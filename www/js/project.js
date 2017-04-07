@@ -1,5 +1,6 @@
 function newProjectDiv (project, options) {
     var thumbnail = project.thumbnail.toString(),
+        extraFields = options['extraFields'],
         div = document.createElement('div');
 
     div.innerHTML = 
@@ -8,7 +9,12 @@ function newProjectDiv (project, options) {
         '" title="' + project.projectDescription + '" src=' + thumbnail +
         '><span class="project-name">' + project.projectName + '</span></a>';
 
-    div.appendChild(newAuthorSpan(project.loginName));
+    if (extraFields) {
+        Object.keys(extraFields).forEach(function (fieldName) {
+            var attribute = extraFields[fieldName];
+            div.appendChild(window[fieldName + 'Span'](project[attribute]));
+        });
+    }
 
     div.classList.add('project', options['size']);
 

@@ -8,16 +8,7 @@
         .then(function (result) {
             setTitle(pageUser() + '\'s public projects - Snap! Build Your Own Blocks');
             result.PublicProjectList.forEach(function (project) {
-                projectsDiv.append(
-                    newProjectDiv(
-                        project, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5, 
-                            extraFields: [{ author: 'loginName' }]
-                        }
-                    )
-                );
+                projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
             });
         })
         .then(doneLoading)

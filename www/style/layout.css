@@ -25,11 +25,12 @@
     transform: translateY(-50%);
 }
 
-#top-bar .settings {
-    position: absolute;
-    right: 1em;
-    top: 50%;
-    transform: translateY(-50%);
+#top-bar .logo:hover {
+    filter: brightness(1.2);
+}
+
+#top-bar .settings a::after {
+    content: '';
 }
 
 #top-bar .settings:hover {
@@ -65,6 +66,14 @@
 #top-bar .pure-menu-horizontal .pure-menu-children {
     width: 100%;
     background: #2c3e50;
+}
+
+#top-bar .settings .pure-menu-children {
+    width: auto;
+}
+
+#top-bar .settings .pure-menu-children a {
+    padding: 0 2em;
 }
 
 #top-bar div.search {
