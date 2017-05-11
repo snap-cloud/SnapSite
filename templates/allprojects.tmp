@@ -7,7 +7,7 @@
     SnapAPI.getPublicProjectList(pageUser())
         .then(function (result) {
             setTitle(pageUser() + '\'s public projects - Snap! Build Your Own Blocks');
-            result.PublicProjectList.forEach(function (project) {
+            result.PublicProjectList.sortBy('updated').forEach(function (project) {
                 projectsDiv.append(
                     newProjectDiv(
                         project, 

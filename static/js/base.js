@@ -92,3 +92,18 @@ function formatDate (aDate) {
         { month: 'long', day: '2-digit', year: 'numeric' }
     );
 };
+
+// JS additions
+
+var pepe;
+Array.prototype.sortBy = function (parameter, reverse) {
+    return this.sort(
+        function (a, b) {
+            if (reverse) {
+                return (a[parameter] > b[parameter]) ? 1 : -1;
+            } else {
+                return (a[parameter] > b[parameter]) ? -1 : 1;
+            }
+        }
+    );
+};

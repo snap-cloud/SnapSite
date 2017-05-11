@@ -107,7 +107,7 @@
                 document.querySelector('.notes').innerHTML = project.projectDescription || '<small>This project has no notes</small>';
                 document.querySelector('.created').append(formatDate(project.created));
                 document.querySelector('.updated').append(formatDate(project.updated));
-                document.querySelector('.shared').append(isMyProject ? '-' : formatDate(project.shared));
+                document.querySelector('.shared').append(project.shared ? formatDate(project.shared) : '-');
                 document.querySelector('.buttons .open').href = projectURL(project.loginName, project.projectName) + '&editMode&noRun';
                 document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
                 doneLoading();

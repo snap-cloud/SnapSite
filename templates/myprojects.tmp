@@ -10,7 +10,7 @@
             SnapAPI.getMyProjectList(pageUser())
                 .then(function (result) {
                     setTitle('My projects - Snap! Build Your Own Blocks');
-                    result.MyProjectList.forEach(function (project) {
+                    result.MyProjectList.sortBy('updated').forEach(function (project) {
                         projectsDiv.append(
                             newProjectDiv(
                                 project, 
