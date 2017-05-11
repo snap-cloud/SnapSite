@@ -13,7 +13,7 @@ This site is built by a home-brewed page descriptor system designed to be super 
 * Templates are plain HTML files with a `.tmp` extension that may or may not define a `@content` placeholder.
 * If said placeholder exists, the templates found in the next line of the descriptor file are going to be rendered into it.
 * The generated pages are stored in the `www` folder.
-* Only `.html` files with the same name as the descriptor files are going to be overwritten. You can place any other files into `www`, such as Javascript files, images or stylesheets.
+* You should place any other files into `static`, such as Javascript files, images or stylesheets. These will be copied over into the resulting `www` folder.
 
 ## Usage
 
@@ -46,6 +46,7 @@ Given the following files:
 
     <h1>Welcome to this test site!</h1>
     <p>This is just an example site to show you how the page descriptor system works.</p>
+    <img src="img/example.png>
 
 **templates/examples.tmp**
 
@@ -65,6 +66,9 @@ Given the following files:
 **templates/example3.tmp**
 
     <span>Third One</span>
+
+**static/img/example.png**
+![example image](https://raw.githubusercontent.com/bromagosa/SnapSite/master/static/img/small-logo.png)
 
 Running `./build.sh` will generate the file:
 

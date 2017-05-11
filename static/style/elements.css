@@ -1,0 +1,38 @@
+body {
+    color: #101040;
+    background: #e3dedb;
+}
+
+a {
+    color: #505080;
+    text-decoration: none;
+}
+
+em {
+    font-style: italic;
+}
+
+p, li {
+    margin: 1em 0;
+}
+
+ul, ol {
+    padding: .5em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 1em 0 .5em 0;
+}
+
+h3 {
+    font-size: 1.3em;
+    margin: 1em 0 .5em 0;
+}
+
+hr {
+    margin: 0;
+    border: 0;
+    height: 1px;
+    background: #e3dedb;
+}

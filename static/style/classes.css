@@ -1,0 +1,12 @@
+.indent {
+    padding-left: 1.5em;
+}
+
+.bullets {
+    list-style-type: disc;
+}
+
+.v-spaced {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}

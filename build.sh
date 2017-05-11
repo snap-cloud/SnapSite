@@ -61,6 +61,8 @@ function build() {
         done < "$page"
     done
 
+    cp -R static/* www
+
     rm -f tmp.html
     echo "Done."
 }
