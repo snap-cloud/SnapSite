@@ -25,24 +25,33 @@
 </div>
 
 <script>
+    var isMyProject;
+
     beganLoading();
-    SnapAPI.getPublicProject(pageUser(), pageProject())
-        .then(function (result) {
-            var project = result.PublicProject;
-            setTitle(pageProject() + ' by ' + pageUser() + ' - Snap! Build Your Own Blocks');
-            document.querySelector('.title h1').innerHTML = project.projectName;
-            document.querySelector('.title').append(newAuthorSpan(project.loginName));
-            document.querySelector('.project iframe').src = projectURL(project.loginName, project.projectName) + '&embedMode&noExitWarning&noRun';
-            document.querySelector('.notes').innerHTML = project.projectDescription || '<small>This project has no notes</small>';
-            document.querySelector('.created').append(formatDate(project.created));
-            document.querySelector('.updated').append(formatDate(project.updated));
-            document.querySelector('.shared').append(formatDate(project.shared));
-            document.querySelector('.buttons .open').href = projectURL(project.loginName, project.projectName) + '&editMode&noRun';
-            document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
-            doneLoading();
-        })
+
+    SnapAPI.relogin()
+    .then(function () {
+        isMyProject = pageUser() === SnapAPI.currentUser();
+    })
+    .then(function () {
+        SnapAPI['get' + (isMyProject ? 'My' : 'Public') + 'Project'](isMyProject ? pageProject() : pageUser(), pageProject())
+            .then(function (result) {
+                var project = result[isMyProject ? 'MyProject' : 'PublicProject'];
+                setTitle(pageProject() + ' by ' + pageUser() + ' - Snap! Build Your Own Blocks');
+                document.querySelector('.title h1').innerHTML = project.projectName;
+                document.querySelector('.title').append(authorSpan(project.loginName));
+                document.querySelector('.project iframe').src = projectURL(project.loginName, project.projectName) + '&embedMode&noExitWarning&noRun';
+                document.querySelector('.notes').innerHTML = project.projectDescription || '<small>This project has no notes</small>';
+                document.querySelector('.created').append(formatDate(project.created));
+                document.querySelector('.updated').append(formatDate(project.updated));
+                document.querySelector('.shared').append(isMyProject ? '-' : formatDate(project.shared));
+                document.querySelector('.buttons .open').href = projectURL(project.loginName, project.projectName) + '&editMode&noRun';
+                document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
+                doneLoading();
+            })
         .catch(function (error) {
             genericError(error.ResultMessage);
             throw(error);
         });
+    });
 </script>
