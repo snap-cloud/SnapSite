@@ -68,6 +68,7 @@ Given the following files:
     <span>Third One</span>
 
 **static/img/example.png**
+
 ![example image](https://raw.githubusercontent.com/bromagosa/SnapSite/master/static/img/small-logo.png)
 
 Running `./build.sh` will generate the file:
@@ -79,6 +80,7 @@ Running `./build.sh` will generate the file:
         <body>
             <h1>Welcome to this test site!</h1>
             <p>This is just an example site to show you how the page descriptor system works.</p>
+            <img src="img/example.png">
             <div>
                 <h2>Here's a couple of embedded templates:</h2>
                 <span>First One</span>
