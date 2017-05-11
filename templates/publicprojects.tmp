@@ -3,7 +3,7 @@
 <div class="projects pure-g"></div>
 <script>
     var projectsDiv = document.querySelector('.projects');
-    beganLoading();
+    beganLoading('.projects');
     SnapAPI.getPublicProjectList(pageUser())
         .then(function (result) {
             setTitle(pageUser() + '\'s public projects - Snap! Build Your Own Blocks');
@@ -11,7 +11,9 @@
                 projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
             });
         })
-        .then(doneLoading)
+        .then(function () { 
+            doneLoading('.projects');
+        })
         .catch(function (error) {
             genericError(error.ResultMessage);
         });

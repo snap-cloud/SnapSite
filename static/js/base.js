@@ -45,7 +45,7 @@ function setTitle (newTitle) {
 function authorSpan (author) {
     var span = document.createElement('span');
     span.classList.add('author');
-    span.innerHTML = 'by <a href="user.html?user=' + author + '"><strong>' + author + '</strong></a>';
+    span.innerHTML = localizer.localize(' by ') + '<a href="user.html?user=' + author + '"><strong>' + author + '</strong></a>';
     return span;
 };
 
@@ -53,7 +53,7 @@ function isPublicSpan (isPublic) {
     var span = document.createElement('span'),
         state = isPublic ? 'public' : 'private';
     span.classList.add(state);
-    span.innerHTML = '<small>(' + state + ')</small>';
+    span.innerHTML = '<small>(' + localizer.localize(state) + ')</small>';
     return span;
 };
 
@@ -74,14 +74,20 @@ function genericError (errorString, title) {
     });
 };
 
-// Graphic goodies
+// Page loading
 
-function beganLoading () {
-    document.querySelector('#loading').hidden = false;
+function beganLoading (selector) {
+    var loader;
+    if (selector) {
+        loader = document.createElement('div');
+        loader.className = 'loader';
+        loader.innerHTML = '<i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>';
+        document.querySelector(selector).append(loader);
+    }
 };
 
-function doneLoading () {
-    document.querySelector('#loading').hidden = true;
+function doneLoading (selector) {
+    document.querySelector(selector ? (selector + ' .loader') : '#loading').hidden = true;
 };
 
 // Other goodies
@@ -95,7 +101,6 @@ function formatDate (aDate) {
 
 // JS additions
 
-var pepe;
 Array.prototype.sortBy = function (parameter, reverse) {
     return this.sort(
         function (a, b) {

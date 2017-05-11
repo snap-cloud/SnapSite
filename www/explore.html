@@ -62,27 +62,7 @@
             </div>
         </div>
         <div id="wrapper">
-<h1><span class="username"></span>'s public page</h1>
-<script src="js/project.js"></script>
-<link rel="stylesheet" href="style/project.css">
-<div class="projects pure-g"></div>
-<script>
-    var projectsDiv = document.querySelector('.projects');
-    beganLoading('.projects');
-    SnapAPI.getPublicProjectList(pageUser())
-        .then(function (result) {
-            setTitle(pageUser() + '\'s public projects - Snap! Build Your Own Blocks');
-            result.PublicProjectList.forEach(function (project) {
-                projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
-            });
-        })
-        .then(function () { 
-            doneLoading('.projects');
-        })
-        .catch(function (error) {
-            genericError(error.ResultMessage);
-        });
-</script>
+<h1 localizable>Explore</h1>
         </div>
     </body>
     <script>

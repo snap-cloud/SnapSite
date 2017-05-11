@@ -10,3 +10,8 @@
     margin-top: 2em;
     margin-bottom: 2em;
 }
+
+.loader {
+    width: 100%;
+    text-align: center;
+}

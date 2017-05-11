@@ -1,10 +1,10 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
-<h1>My Projects</h1>
+<h1 localizable>My Projects</h1>
 <div class="projects pure-g"></div>
 <script>
     var projectsDiv = document.querySelector('.projects');
-    beganLoading();
+    beganLoading('.projects');
     SnapAPI.relogin()
         .then(function () {
             SnapAPI.getMyProjectList(pageUser())
@@ -23,7 +23,9 @@
                         );
                     });
                 })
-                .then(doneLoading)
+                .then(function () { 
+                    doneLoading('.projects');
+                })
                 .catch(function (error) {
                     throw(error);
                     genericError(error.ResultMessage);

@@ -14,12 +14,12 @@
         <div class="details pure-u-11-24">
             <pre class="notes"></pre>
             <div class="buttons">
-                <a class="pure-button open" target="_blank">Open in Project Editor</a>
-                <a class="pure-button download" target="_blank">Download</a>
+                <a localizable class="pure-button open" target="_blank">Open in Project Editor</a>
+                <a localizable class="pure-button download" target="_blank">Download</a>
             </div>
         </div>
         <span class="dates pure-u-1-2">
-            <span class="created">Created on </span>, <span class="updated">last updated on </span>, <span class="shared">shared on </span>.
+            <span localizable class="created">Created on </span>, <span localizable class="updated">last updated on </span>, <span localizable class="shared">shared on </span>.
         </span>
     </div>
 </div>
@@ -37,11 +37,11 @@
         SnapAPI['get' + (isMyProject ? 'My' : 'Public') + 'Project'](isMyProject ? pageProject() : pageUser(), pageProject())
             .then(function (result) {
                 var project = result[isMyProject ? 'MyProject' : 'PublicProject'];
-                setTitle(pageProject() + ' by ' + pageUser() + ' - Snap! Build Your Own Blocks');
+                setTitle(pageProject() + localizer.localize(' by ') + pageUser() + ' - Snap! Build Your Own Blocks');
                 document.querySelector('.title h1').innerHTML = project.projectName;
                 document.querySelector('.title').append(authorSpan(project.loginName));
                 document.querySelector('.project iframe').src = projectURL(project.loginName, project.projectName) + '&embedMode&noExitWarning&noRun';
-                document.querySelector('.notes').innerHTML = project.projectDescription || '<small>This project has no notes</small>';
+                document.querySelector('.notes').innerHTML = project.projectDescription || '<small>' + localizer.localize('This project has no notes') + '</small>';
                 document.querySelector('.created').append(formatDate(project.created));
                 document.querySelector('.updated').append(formatDate(project.updated));
                 document.querySelector('.shared').append(project.shared ? formatDate(project.shared) : '-');
