@@ -58,9 +58,12 @@ function build() {
             else
                 cat tmp.html >> $html
             fi
+            # fix char encoding in case sed has messed it up
+            iconv -f `file -i $html | cut -f2 -d=` -t utf-8 $html -o $html
         done < "$page"
     done
 
+    # copy over all static files
     cp -R static/* www
 
     rm -f tmp.html

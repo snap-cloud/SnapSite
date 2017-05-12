@@ -108,6 +108,10 @@
     font-weight: bold;
 }
 
+#top-bar .languages {
+    margin-left: 30px;
+}
+
 /* CUSTOM ALERT */
 
 .customalert {

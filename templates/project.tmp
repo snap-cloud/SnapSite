@@ -1,7 +1,7 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 
-<div class="project big">
+<div hidden class="project big">
     <div class="pure-g">
         <div class="title pure-u-1-2">
             <h1></h1>
@@ -27,7 +27,7 @@
 <script>
     var isMyProject;
 
-    beganLoading();
+    beganLoading('#wrapper');
 
     SnapAPI.relogin()
     .then(function () {
@@ -47,7 +47,8 @@
                 document.querySelector('.shared').append(project.shared ? formatDate(project.shared) : '-');
                 document.querySelector('.buttons .open').href = projectURL(project.loginName, project.projectName) + '&editMode&noRun';
                 document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
-                doneLoading();
+                doneLoading('#wrapper');
+                document.querySelector('.project').hidden = false;
             })
         .catch(function (error) {
             genericError(error.ResultMessage);
