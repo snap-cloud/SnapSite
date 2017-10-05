@@ -7,7 +7,17 @@
         </div>
 
         <div class="pure-control-group">
-            <label for="email">Email adress</label>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="password-repeat">Repeat Password</label>
+            <input id="password-repeat" name="password-repeat" type="password" placeholder="Password" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="email">Email address</label>
             <input id="email" name="email" type="email" placeholder="Email address" required>
         </div>
 
@@ -26,25 +36,30 @@
 
     document.querySelector('form#signup').addEventListener('submit', function (event) {
         var username = this.elements['username'].value,
+            password = this.elements['password'].value,
+            passwordRepeat = this.elements['password-repeat'].value,
             email = this.elements['email'].value,
-            agreed = this.elements['tos'].value;
+            agreed = this.elements['tos'].checked;
 
         event.preventDefault();
 
-        SnapAPI.signUp(username, email)
-            .then(function (value) { 
+        SnapCloud.signup(
+            username,
+            password,
+            passwordRepeat,
+            email,
+            function (value) { 
                 alert(
-                    'User created.<br/>Please check your email to confirm your account and sign in.',
+                    'User created.<br/>You can now log in.',
                     function() {
                         window.location.href = 'login.html';
                     },
                     { title: 'Account Created'}
                 );
-            })
-            .catch(function (value) {
+            },
+            function (response) {
                 genericError(
-                    'Could not create account. The server reported:<br/>'
-                        + value.ResultMessage,
+                    'Could not create account: ' + response,
                     'Sign Up Failed'
                 );
             }

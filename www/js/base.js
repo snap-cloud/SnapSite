@@ -1,4 +1,6 @@
 snapURL = location.protocol + '//bromagosa.github.io/Snap/snap.html';
+modules = []; // compatibility with cloud.js
+nop = function () {};
 
 function getUrlParameter (param) {
     var regex = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)'),
@@ -19,10 +21,9 @@ function pageProject () {
 // Data insertion
 
 function fillVisitorFields () {
-    var visitor = SnapAPI.currentUser();
-    if (visitor) {
+    if (SnapCloud.username) {
         document.querySelectorAll('.visitor').forEach(function (each) {
-            each.innerHTML = visitor;
+            each.innerHTML = SnapCloud.username;
         });
     }
 };
@@ -51,9 +52,26 @@ function authorSpan (author) {
 
 function isPublicSpan (isPublic) {
     var span = document.createElement('span'),
-        state = isPublic ? 'public' : 'private';
-    span.classList.add(state);
-    span.innerHTML = '<small>(' + localizer.localize(state) + ')</small>';
+        tooltip = isPublic ?
+            'This project can be shared via URL' :
+            'This project is private',
+        faClass = isPublic ? 'fa-unlock' : 'fa-lock';
+    span.classList.add('is-public');
+    span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
+    span.title = tooltip;
+    return span;
+};
+
+function isPublishedSpan (isPublished) {
+    var span = document.createElement('span'),
+        tooltip = isPublished ?
+            'This project is publicly listed' :
+            'This project is unlisted, but its URL is publicly shareable',
+        faClass = isPublished ? 'fa-eye' : 'fa-user-secret';
+
+    span.classList.add('is-published');
+    span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
+    span.title = tooltip;
     return span;
 };
 
@@ -65,13 +83,10 @@ function projectURL (author, project) {
 
 function genericError (errorString, title) {
     doneLoading();
-    return new Promise(function (resolve, reject) {
-        alert(
-           errorString,
-           { title: title || 'Error'},
-           resolve
-           );
-    });
+    alert(
+        errorString,
+        { title: title || 'Error'}
+    );
 };
 
 // Page loading

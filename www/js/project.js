@@ -1,13 +1,22 @@
 function newProjectDiv (project, options) {
-    var thumbnail = project.thumbnail.toString(),
-        extraFields = options['extraFields'],
+    var extraFields = options['extraFields'],
         div = document.createElement('div');
 
     div.innerHTML = 
-        '<a href="project.html?user=' + project.loginName + '&project=' + 
-        project.projectName + '"><img alt="' + project.projectName + 
-        '" title="' + project.projectDescription + '" src=' + thumbnail +
-        '><span class="project-name">' + project.projectName + '</span></a>';
+        '<a href="project.html?user=' + project.username + '&project=' + 
+        project.projectname + '"><img alt="' + project.projectname + 
+        '" title="' + project.projectDescription + '"><span class="project-name">' +
+        project.projectname + '</span></a>';
+
+    SnapCloud.getThumbnail(
+        project.projectname,
+        function (thumbnail) {
+            div.querySelector('img').src = thumbnail;
+        },
+        function (thumbnail) {
+            div.querySelector('img').classList.add('no-image');
+        }
+    );
 
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {
@@ -23,12 +32,6 @@ function newProjectDiv (project, options) {
     };
 
     return div;
-};
-
-function binaryToXML (binary) {
-    var parser = new DOMParser(),
-        xml = parser.parseFromString(binary.toString(), 'text/xml');
-    return xml;
 };
 
 function downloadProject (project) {

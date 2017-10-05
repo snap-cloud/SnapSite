@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="libs/pure-min.css">
         <link rel="stylesheet" href="libs/font-awesome.min.css">
         <link rel="stylesheet" href="libs/custom-alert.css">
-        <script type="text/javascript" src="libs/SnapCloudAPI.js"></script>
         <script type="text/javascript" src="libs/FileSaver.min.js"></script>
 
         <link rel="stylesheet" href="style/elements.css">
@@ -46,7 +45,7 @@
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
                             <hr>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link" href="changePassword.html">Change Password</a></li>
-                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
+                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { location.reload(); });">Log Out</a></li>
                         </ul>
                     </li>
                     <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover settings">
@@ -65,35 +64,31 @@
                 </ul>
             </div>
         </div>
+        <script>
+            var localizer = new Localizer();
+        </script>
         <div id="wrapper">
 <h1 localizable>Welcome to Snap<em>!</em></h1>
         </div>
     </body>
     <script>
-    var localizer;
     document.querySelector('#top-bar .run').href = snapURL;
-
-    // Just so that I can keep developing. Not production code!
-    // This needs to go once we have a way to keep sessions
-    SnapAPI.relogin()
-    .then(
-        function () {
-            document.querySelector('li.join').hidden = true;
-            document.querySelector('li.sign-in').hidden = true;
-            document.querySelector('li.user-menu').hidden = false;
-            document.querySelector('a.my-public-projects').href = 'user.html?user=' + SnapAPI.currentUser();
-            fillVisitorFields();
-            localizer = new Localizer();
-            doneLoading();
-        })
-    .catch(
-        function () {
-            document.querySelector('li.join').hidden = false;
-            document.querySelector('li.sign-in').hidden = false;
-            document.querySelector('li.user-menu').hidden = true;
-            localizer = new Localizer();
-            doneLoading();
-        });
-    fillUsernameFields();
+    SnapCloud.initSession(
+        function (username) {
+            if (username) {
+                document.querySelector('li.join').hidden = true;
+                document.querySelector('li.sign-in').hidden = true;
+                document.querySelector('li.user-menu').hidden = false;
+                document.querySelector('a.my-public-projects').href = 'user.html?user=' + username;
+                fillVisitorFields();
+            } else {
+                document.querySelector('li.join').hidden = false;
+                document.querySelector('li.sign-in').hidden = false;
+                document.querySelector('li.user-menu').hidden = true;
+            }
+            fillUsernameFields();
+            doneLoading(); 
+        }
+    );
     </script>
 </html>

@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="libs/pure-min.css">
         <link rel="stylesheet" href="libs/font-awesome.min.css">
         <link rel="stylesheet" href="libs/custom-alert.css">
-        <script type="text/javascript" src="libs/SnapCloudAPI.js"></script>
         <script type="text/javascript" src="libs/FileSaver.min.js"></script>
 
         <link rel="stylesheet" href="style/elements.css">
@@ -46,7 +45,7 @@
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
                             <hr>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link" href="changePassword.html">Change Password</a></li>
-                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
+                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { location.reload(); });">Log Out</a></li>
                         </ul>
                     </li>
                     <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover settings">
@@ -65,6 +64,9 @@
                 </ul>
             </div>
         </div>
+        <script>
+            var localizer = new Localizer();
+        </script>
         <div id="wrapper">
 <h1>Create a Snap<i>!</i> account</h1>
 <form id="signup" class="pure-form pure-form-aligned">
@@ -75,7 +77,17 @@
         </div>
 
         <div class="pure-control-group">
-            <label for="email">Email adress</label>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="password-repeat">Repeat Password</label>
+            <input id="password-repeat" name="password-repeat" type="password" placeholder="Password" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="email">Email address</label>
             <input id="email" name="email" type="email" placeholder="Email address" required>
         </div>
 
@@ -94,25 +106,30 @@
 
     document.querySelector('form#signup').addEventListener('submit', function (event) {
         var username = this.elements['username'].value,
+            password = this.elements['password'].value,
+            passwordRepeat = this.elements['password-repeat'].value,
             email = this.elements['email'].value,
-            agreed = this.elements['tos'].value;
+            agreed = this.elements['tos'].checked;
 
         event.preventDefault();
 
-        SnapAPI.signUp(username, email)
-            .then(function (value) { 
+        SnapCloud.signup(
+            username,
+            password,
+            passwordRepeat,
+            email,
+            function (value) { 
                 alert(
-                    'User created.<br/>Please check your email to confirm your account and sign in.',
+                    'User created.<br/>You can now log in.',
                     function() {
                         window.location.href = 'login.html';
                     },
                     { title: 'Account Created'}
                 );
-            })
-            .catch(function (value) {
+            },
+            function (response) {
                 genericError(
-                    'Could not create account. The server reported:<br/>'
-                        + value.ResultMessage,
+                    'Could not create account: ' + response,
                     'Sign Up Failed'
                 );
             }
@@ -122,30 +139,23 @@
         </div>
     </body>
     <script>
-    var localizer;
     document.querySelector('#top-bar .run').href = snapURL;
-
-    // Just so that I can keep developing. Not production code!
-    // This needs to go once we have a way to keep sessions
-    SnapAPI.relogin()
-    .then(
-        function () {
-            document.querySelector('li.join').hidden = true;
-            document.querySelector('li.sign-in').hidden = true;
-            document.querySelector('li.user-menu').hidden = false;
-            document.querySelector('a.my-public-projects').href = 'user.html?user=' + SnapAPI.currentUser();
-            fillVisitorFields();
-            localizer = new Localizer();
-            doneLoading();
-        })
-    .catch(
-        function () {
-            document.querySelector('li.join').hidden = false;
-            document.querySelector('li.sign-in').hidden = false;
-            document.querySelector('li.user-menu').hidden = true;
-            localizer = new Localizer();
-            doneLoading();
-        });
-    fillUsernameFields();
+    SnapCloud.initSession(
+        function (username) {
+            if (username) {
+                document.querySelector('li.join').hidden = true;
+                document.querySelector('li.sign-in').hidden = true;
+                document.querySelector('li.user-menu').hidden = false;
+                document.querySelector('a.my-public-projects').href = 'user.html?user=' + username;
+                fillVisitorFields();
+            } else {
+                document.querySelector('li.join').hidden = false;
+                document.querySelector('li.sign-in').hidden = false;
+                document.querySelector('li.user-menu').hidden = true;
+            }
+            fillUsernameFields();
+            doneLoading(); 
+        }
+    );
     </script>
 </html>

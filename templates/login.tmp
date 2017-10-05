@@ -14,13 +14,13 @@
 
         <div class="pure-controls">
             <label for="cb" class="pure-checkbox">
-                <input id="cb" name="staylogged" type="checkbox"> keep me logged in
+                <input id="cb" name="persist" type="checkbox"> keep me logged in
             </label>
 
             <button type="submit" class="pure-button">Log in</button>
         </div>
         <div class="pure-controls">
-            <em><a href="#" onclick="SnapAPI.confirmResetPassword(document.querySelector('#username').value);">* I forgot my password</a></em>
+            <em><a href="#" onclick="">* I forgot my password</a></em>
         </div>
     </fieldset>
 </form>
@@ -28,28 +28,24 @@
 <script>
 document.querySelector('form#login').addEventListener('submit', function (event) {
     var username = this.elements['username'].value,
-        password = this.elements['password'].value;
+        password = this.elements['password'].value,
+        persist = this.elements['persist'].checked;
+
+    // Persistent login can never really work like that here,
+    // as we're jumping pages unlike in the Snap! editor...
 
     event.preventDefault();
 
-    SnapAPI.setUser(username, password)
-        .then(function (value) { 
-            if (SnapAPI.currentUser() === username) {
-                localStorage['username'] = username;
-                localStorage['password'] = password;
-                window.location.href = 'index.html';
-                username = null;
-                password = null;
-            }
-        })
-        .catch(function (value) {
+    SnapCloud.login(
+        username,
+        password,
+        persist,
+        function () { window.location.href = 'index.html'; },
+        function (response) {
             genericError(
-                'Could not login. The server reported:<br/>'
-                    + value.ResultMessage,
+                'Could not login: ' + response,
                 'Login failed'
             );
-            username = null;
-            password = null;
         }
     );
 });

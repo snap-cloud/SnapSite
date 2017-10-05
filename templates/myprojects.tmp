@@ -5,30 +5,29 @@
 <script>
     var projectsDiv = document.querySelector('.projects');
     beganLoading('.projects');
-    SnapAPI.relogin()
-        .then(function () {
-            SnapAPI.getMyProjectList(pageUser())
-                .then(function (result) {
-                    setTitle('My projects - Snap! Build Your Own Blocks');
-                    result.MyProjectList.sortBy('updated').forEach(function (project) {
-                        projectsDiv.append(
-                            newProjectDiv(
-                                project, 
-                                { 
-                                    size: 'small', 
-                                    gridSize: 5, 
-                                    extraFields: { isPublic: 'public' }
-                                }
-                            )
-                        );
-                    });
-                })
-                .then(function () { 
-                    doneLoading('.projects');
-                })
-                .catch(function (error) {
-                    throw(error);
-                    genericError(error.ResultMessage);
-                })
-        });
+    SnapCloud.getProjectList(
+        function (projects) {
+            setTitle('My projects - Snap! Build Your Own Blocks');
+            projects.sortBy('lastupdated').forEach(function (project) {
+                projectsDiv.append(
+                    newProjectDiv(
+                        project, 
+                        { 
+                            size: 'small', 
+                            gridSize: 5, 
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished'
+                            }
+                        }
+                    )
+                );
+            });
+            doneLoading('.projects');
+        },
+        function (error) {
+            throw(error);
+            genericError(error);
+        }
+    );
 </script>

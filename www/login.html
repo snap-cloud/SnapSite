@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="libs/pure-min.css">
         <link rel="stylesheet" href="libs/font-awesome.min.css">
         <link rel="stylesheet" href="libs/custom-alert.css">
-        <script type="text/javascript" src="libs/SnapCloudAPI.js"></script>
         <script type="text/javascript" src="libs/FileSaver.min.js"></script>
 
         <link rel="stylesheet" href="style/elements.css">
@@ -46,7 +45,7 @@
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
                             <hr>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link" href="changePassword.html">Change Password</a></li>
-                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapAPI.logout();">Log Out</a></li>
+                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { location.reload(); });">Log Out</a></li>
                         </ul>
                     </li>
                     <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover settings">
@@ -65,6 +64,9 @@
                 </ul>
             </div>
         </div>
+        <script>
+            var localizer = new Localizer();
+        </script>
         <div id="wrapper">
 <h1>Log into Snap<em>!</em></h1>
 
@@ -82,13 +84,13 @@
 
         <div class="pure-controls">
             <label for="cb" class="pure-checkbox">
-                <input id="cb" name="staylogged" type="checkbox"> keep me logged in
+                <input id="cb" name="persist" type="checkbox"> keep me logged in
             </label>
 
             <button type="submit" class="pure-button">Log in</button>
         </div>
         <div class="pure-controls">
-            <em><a href="#" onclick="SnapAPI.confirmResetPassword(document.querySelector('#username').value);">* I forgot my password</a></em>
+            <em><a href="#" onclick="">* I forgot my password</a></em>
         </div>
     </fieldset>
 </form>
@@ -96,28 +98,24 @@
 <script>
 document.querySelector('form#login').addEventListener('submit', function (event) {
     var username = this.elements['username'].value,
-        password = this.elements['password'].value;
+        password = this.elements['password'].value,
+        persist = this.elements['persist'].checked;
+
+    // Persistent login can never really work like that here,
+    // as we're jumping pages unlike in the Snap! editor...
 
     event.preventDefault();
 
-    SnapAPI.setUser(username, password)
-        .then(function (value) { 
-            if (SnapAPI.currentUser() === username) {
-                localStorage['username'] = username;
-                localStorage['password'] = password;
-                window.location.href = 'index.html';
-                username = null;
-                password = null;
-            }
-        })
-        .catch(function (value) {
+    SnapCloud.login(
+        username,
+        password,
+        persist,
+        function () { window.location.href = 'index.html'; },
+        function (response) {
             genericError(
-                'Could not login. The server reported:<br/>'
-                    + value.ResultMessage,
+                'Could not login: ' + response,
                 'Login failed'
             );
-            username = null;
-            password = null;
         }
     );
 });
@@ -125,30 +123,23 @@ document.querySelector('form#login').addEventListener('submit', function (event)
         </div>
     </body>
     <script>
-    var localizer;
     document.querySelector('#top-bar .run').href = snapURL;
-
-    // Just so that I can keep developing. Not production code!
-    // This needs to go once we have a way to keep sessions
-    SnapAPI.relogin()
-    .then(
-        function () {
-            document.querySelector('li.join').hidden = true;
-            document.querySelector('li.sign-in').hidden = true;
-            document.querySelector('li.user-menu').hidden = false;
-            document.querySelector('a.my-public-projects').href = 'user.html?user=' + SnapAPI.currentUser();
-            fillVisitorFields();
-            localizer = new Localizer();
-            doneLoading();
-        })
-    .catch(
-        function () {
-            document.querySelector('li.join').hidden = false;
-            document.querySelector('li.sign-in').hidden = false;
-            document.querySelector('li.user-menu').hidden = true;
-            localizer = new Localizer();
-            doneLoading();
-        });
-    fillUsernameFields();
+    SnapCloud.initSession(
+        function (username) {
+            if (username) {
+                document.querySelector('li.join').hidden = true;
+                document.querySelector('li.sign-in').hidden = true;
+                document.querySelector('li.user-menu').hidden = false;
+                document.querySelector('a.my-public-projects').href = 'user.html?user=' + username;
+                fillVisitorFields();
+            } else {
+                document.querySelector('li.join').hidden = false;
+                document.querySelector('li.sign-in').hidden = false;
+                document.querySelector('li.user-menu').hidden = true;
+            }
+            fillUsernameFields();
+            doneLoading(); 
+        }
+    );
     </script>
 </html>

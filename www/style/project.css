@@ -18,13 +18,25 @@
     box-sizing: border-box;
 }
 
+.project.small img {
+    margin-bottom: 0;
+}
+
 .project img:hover {
     filter: brightness(120%);
     border-color: #4c5e70;
 }
 
-.project.small span {
+.project.small {
+    line-height: 1.5em;
+}
+
+.project.small span.project-name {
     display: block;
+}
+
+.project.small span.is-public {
+    margin-right: 0.5em;
 }
 
 .project .author {
