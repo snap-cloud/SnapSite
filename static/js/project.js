@@ -35,18 +35,14 @@ function newProjectDiv (project, options) {
 };
 
 function downloadProject (project) {
-    var xml, blob;
-    
-    if (project.media.sourceCode.length > 0) {
-        xml = '<snapdata>' + 
-            project.sourceCode.toString() +
-            project.media.sourceCode.toString() +
-            '</snapdata>'
-    } else {
-        xml = project.sourceCode.toString();
-    }
-
-    blob = new Blob([xml], {type: 'text/xml'});
-
-    saveAs(blob, project.projectName + '.xml');
+    SnapCloud.getPublicProject(
+        project.projectname,
+        project.username,
+        function (contents) {
+            var blob = new Blob([contents], {type: 'text/xml'});
+            saveAs(blob, project.projectname + '.xml');
+        },
+        function (response) {
+            genericError(response.errors[0], 'Could not fetch project');
+        });
 };
