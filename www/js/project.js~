@@ -5,7 +5,7 @@ function newProjectDiv (project, options) {
     div.innerHTML = 
         '<a href="project.html?user=' + project.username + '&project=' + 
         project.projectname + '"><img alt="' + project.projectname + 
-        '" title="' + project.notes + '"><span class="project-name">' +
+        '" title="' + project.projectDescription + '"><span class="project-name">' +
         project.projectname + '</span></a>';
 
     SnapCloud.getThumbnail(
@@ -40,7 +40,7 @@ function downloadProject (project) {
         project.username,
         function (contents) {
             var blob = new Blob([contents], {type: 'text/xml'});
-            saveAs(blob, project.projectname + '.xml');
+            saveAs(blob, project.projectName + '.xml');
         },
         function (response) {
             genericError(response.errors[0], 'Could not fetch project');

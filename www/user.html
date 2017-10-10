@@ -77,19 +77,19 @@
 <script>
     var projectsDiv = document.querySelector('.projects');
     beganLoading('.projects');
-    SnapAPI.getPublicProjectList(pageUser())
-        .then(function (result) {
+    SnapCloud.getPublishedProjectList(
+        pageUser(),
+        function (projects) {
             setTitle(pageUser() + '\'s public projects - Snap! Build Your Own Blocks');
-            result.PublicProjectList.forEach(function (project) {
+            projects.forEach(function (project) {
                 projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
             });
-        })
-        .then(function () { 
             doneLoading('.projects');
-        })
-        .catch(function (error) {
-            genericError(error.ResultMessage);
-        });
+        },
+        function (response) {
+            genericError(response.errors[0]);
+        }
+    );
 </script>
         </div>
     </body>

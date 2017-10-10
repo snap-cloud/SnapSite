@@ -109,14 +109,13 @@
             document.querySelector('.project iframe').src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
             document.querySelector('.notes').innerHTML = project.notes || '<small>' + localizer.localize('This project has no notes') + '</small>';
             document.querySelector('.updated').append(formatDate(project.lastupdated));
-            if (project.shared) {
+            if (project.ispublic) {
                 document.querySelector('.shared').append(formatDate(project.lastshared));
+                document.querySelector('.is-published').append(project.ispublished ? ' and listed' : ' but unlisted');
+                document.querySelector('.is-public').append('public');
             } else {
                 document.querySelector('.shared').hidden = true;
-            }
-            document.querySelector('.is-public').append(project.ispublic ? 'public' : 'private');
-            if (project.ispublic) {
-                document.querySelector('.is-published').append(project.ispublished ? ' and listed' : ' but unlisted');
+                document.querySelector('.is-public').append('private');
             }
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };

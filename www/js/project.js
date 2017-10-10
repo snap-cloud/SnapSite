@@ -5,7 +5,7 @@ function newProjectDiv (project, options) {
     div.innerHTML = 
         '<a href="project.html?user=' + project.username + '&project=' + 
         project.projectname + '"><img alt="' + project.projectname + 
-        '" title="' + project.projectDescription + '"><span class="project-name">' +
+        '" title="' + project.notes + '"><span class="project-name">' +
         project.projectname + '</span></a>';
 
     SnapCloud.getThumbnail(
