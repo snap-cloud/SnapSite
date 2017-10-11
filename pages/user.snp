@@ -1,3 +1,5 @@
 base
 user
-publicprojects
+@param user="pageUser()"
+@param title="'s public projects - Snap! Build Your Own Blocks'
+projectgrid

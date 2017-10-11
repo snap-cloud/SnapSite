@@ -71,6 +71,26 @@
         </script>
         <div id="wrapper">
 <h1 localizable>Explore</h1>
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+<div class="projects pure-g"></div>
+<script>
+    var projectsDiv = document.querySelector('.projects');
+    beganLoading('.projects');
+    SnapCloud.getPublishedProjectList(
+        null,
+        function (projects) {
+            setTitle(pageUser() + "'s public projects - Snap! Build Your Own Blocks");
+            projects.forEach(function (project) {
+                projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
+            });
+            doneLoading('.projects');
+        },
+        function (error) {
+            genericError(error);
+        }
+    );
+</script>
         </div>
     </body>
     <script>

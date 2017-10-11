@@ -80,14 +80,14 @@
     SnapCloud.getPublishedProjectList(
         pageUser(),
         function (projects) {
-            setTitle(pageUser() + '\'s public projects - Snap! Build Your Own Blocks');
+            setTitle(pageUser() + "'s public projects - Snap! Build Your Own Blocks");
             projects.forEach(function (project) {
                 projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
             });
             doneLoading('.projects');
         },
-        function (response) {
-            genericError(response.errors[0]);
+        function (error) {
+            genericError(error);
         }
     );
 </script>

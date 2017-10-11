@@ -5,16 +5,16 @@
     var projectsDiv = document.querySelector('.projects');
     beganLoading('.projects');
     SnapCloud.getPublishedProjectList(
-        pageUser(),
+        $user,
         function (projects) {
-            setTitle(pageUser() + '\'s public projects - Snap! Build Your Own Blocks');
+            setTitle(pageUser() + "$title");
             projects.forEach(function (project) {
                 projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
             });
             doneLoading('.projects');
         },
-        function (response) {
-            genericError(response.errors[0]);
+        function (error) {
+            genericError(error);
         }
     );
 </script>

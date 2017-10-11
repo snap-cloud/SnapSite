@@ -7,7 +7,7 @@
 #   Site builder
 #
 #   written by Bernat Romagosa
-#   bernat@arduino.org
+#   bernat@snap4arduino.rocks
 #
 #   Copyright (C) 2017 by Bernat Romagosa
 #
@@ -36,6 +36,7 @@ function build() {
         echo "Building $page..."
 
         # create an html file with the same name as the descriptor file
+        # see https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
         filename="${page#pages/}"
         html=www/"${filename%.*}".html
         rm -f $html
@@ -44,12 +45,22 @@ function build() {
         # process all descriptors in the descriptor file
         while read -r descriptor
         do
+            # check whether the current line defines parameter values
+            if [[ $descriptor == @param* ]]; then
+                # we remove everything after "@params " and execute it,
+                # then we jump to the next line
+                eval "export ${descriptor#@param }"
+                continue
+            fi
+
             # find the template(s) matching the descriptor, possibly more
             # than one per line, separated by semicolons
             declare -a template_names="(${descriptor//;/ })";
             rm -f tmp.html
             for template in ${template_names[*]}; do
-                cat templates/$template.tmp >> tmp.html
+                # append to the temporary HTML file, evaluating any possible params
+                envsubst < templates/$template.tmp >> tmp.html
+                # cat templates/$template.tmp >> tmp.html
             done
 
             if grep -q @content $html; then

@@ -12,6 +12,8 @@ This site is built by a home-brewed page descriptor system designed to be super 
 * Template names in the descriptor file are matched against files under the `/templates` directory.
 * Templates are plain HTML files with a `.tmp` extension that may or may not define a `@content` placeholder.
 * If said placeholder exists, the templates found in the next line of the descriptor file are going to be rendered into it.
+* Parameters in a page descriptor file are defined one per line by following the pattern `@param myparameter=myvalue`. Multi-word values should be enclosed by double quotes.
+* Access these parameters in `.tmp` files by prefixing them with a dollar sign and, optionally, enclosing them between curly brackets, as in `$myparameter` or `${myparameter}`.
 * The generated pages are stored in the `www` folder.
 * You should place any other files into `static`, such as Javascript files, images or stylesheets. These will be copied over into the resulting `www` folder.
 
@@ -30,8 +32,9 @@ Given the following files:
 **pages/test.snp**
 
     base
-    welcome+examples
-    example1+example2+example3
+    @param name="Example Person"
+    welcome;examples
+    example1;example2;example3
 
 **templates/base.tmp**
 
@@ -44,7 +47,7 @@ Given the following files:
 
 **templates/welcome.tmp**
 
-    <h1>Welcome to this test site!</h1>
+    <h1>Welcome to this test site, ${name}!</h1>
     <p>This is just an example site to show you how the page descriptor system works.</p>
     <img src="img/example.png>
 
@@ -78,7 +81,7 @@ Running `./build.sh` will generate the file:
     <html>
         <head><title>An example page</title></head>
         <body>
-            <h1>Welcome to this test site!</h1>
+            <h1>Welcome to this test site, Example Person!</h1>
             <p>This is just an example site to show you how the page descriptor system works.</p>
             <img src="img/example.png">
             <div>
@@ -92,7 +95,7 @@ Running `./build.sh` will generate the file:
 
 # Third Party Packages
 
-* **SnapCloudAPI.js** by [MioSoft](https://www.miosoft.com/)
+* **[SnapCloud](https://github.com/bromagosa/SnapCloud)** by [Bernat Romagosa](https://bromagosa.github.io)
 * **[Font Awesome](fontawesome.io)** by [Dave Gandy](https://github.com/davegandy)
 * **[reset.css](http://meyerweb.com/eric/tools/css/reset/)** by [Eric Meyer](http://meyerweb.com/)
 * **[pure.css](http://purecss.io)** by [Yahoo!](http://yahoo.com)
