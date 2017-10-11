@@ -7,7 +7,7 @@
     SnapCloud.getPublishedProjectList(
         $user,
         function (projects) {
-            setTitle(pageUser() + "$title");
+            setTitle($title);
             projects.forEach(function (project) {
                 projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
             });
