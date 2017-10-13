@@ -34,8 +34,10 @@
                     <li class="pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="https://snapforum.cs10.org/">Forum</a></li>
                     <i class="pure-u-1-6"></i>
                     <div class="search pure-u-1-6">
-                        <input type="text" name="search">
-                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <form action="search.html">
+                            <input type="text" name="term">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </form>
                     </div>
                     <i class="pure-u-3-24"></i>
                     <li hidden="true" class="join pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="signup.html">Join</a></li>
@@ -73,24 +75,59 @@
 <h1 localizable>Explore</h1>
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
+<nav class="paginator">
+    <a href="#" onclick="toPage(1);">⇤</a>
+    <a href="#" onclick="toPage(page - 1 > 0 ? page - 1 : page);">🡐</a>
+    <span class="page"></span> / <span class="total-pages"></span>
+    <a href="#" onclick="toPage(page + 1 < totalPages ? page + 1 : totalPages);">🡒</a>
+    <a href="#" onclick="toPage(totalPages);">⇥</a>
+</nav>
 <div class="projects pure-g"></div>
 <script>
-    var projectsDiv = document.querySelector('.projects');
-    beganLoading('.projects');
-    SnapCloud.getPublishedProjectList(
-        null,
-        function (projects) {
-            setTitle("Explore - Snap! Build Your Own Blocks");
-            projects.forEach(function (project) {
-                projectsDiv.append(newProjectDiv(project, { size: 'small', gridSize: 5 }));
-            });
-            doneLoading('.projects');
-        },
-        function (error) {
-            genericError(error);
-        }
-    );
-</script>
+    var projectsDiv = document.querySelector('.projects'),
+        pageSpan = document.querySelector('.paginator .page'),
+        totalPagesSpan = document.querySelector('.paginator .total-pages'),
+        page = 1,
+        totalPages = 1;
+
+    toPage(1);
+
+    function toPage (pageNumber) {
+        projectsDiv.innerHTML = '';
+        beganLoading('.projects');
+        SnapCloud.getPublishedProjectList(
+            null,
+            pageNumber, // page
+            15, // page size
+            term || null,
+            function (response) {
+                setTitle("Explore - Snap! Build Your Own Blocks");
+                totalPages = response.pages;
+                totalPagesSpan.textContent = totalPages;
+                if (response.projects[0]) {
+                    response.projects.forEach(function (project) {
+                        projectsDiv.append(
+                                newProjectDiv(
+                                project,
+                                {
+                                    size: 'small',
+                                    gridSize: 5,
+                                    extraFields: {
+                                        author: 'username'
+                                    }
+                                }));
+                    });
+                }
+                doneLoading('.projects');
+            },
+            function (error) {
+                genericError(error);
+            }
+        );
+        page = pageNumber;
+        pageSpan.textContent = pageNumber;
+    };
+   </script>
         </div>
     </body>
     <script>

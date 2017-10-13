@@ -72,7 +72,66 @@
             var localizer = new Localizer();
         </script>
         <div id="wrapper">
-<h1 localizable>Welcome to Snap<em>!</em></h1>
+<h1>Search Results: <span class="term"></span></h1>
+<script>
+var term = getUrlParameter('term');
+document.querySelector('.term').append(term);
+</script>
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+<nav class="paginator">
+    <a href="#" onclick="toPage(1);">⇤</a>
+    <a href="#" onclick="toPage(page - 1 > 0 ? page - 1 : page);">🡐</a>
+    <span class="page"></span> / <span class="total-pages"></span>
+    <a href="#" onclick="toPage(page + 1 < totalPages ? page + 1 : totalPages);">🡒</a>
+    <a href="#" onclick="toPage(totalPages);">⇥</a>
+</nav>
+<div class="projects pure-g"></div>
+<script>
+    var projectsDiv = document.querySelector('.projects'),
+        pageSpan = document.querySelector('.paginator .page'),
+        totalPagesSpan = document.querySelector('.paginator .total-pages'),
+        page = 1,
+        totalPages = 1;
+
+    toPage(1);
+
+    function toPage (pageNumber) {
+        projectsDiv.innerHTML = '';
+        beganLoading('.projects');
+        SnapCloud.getPublishedProjectList(
+            null,
+            pageNumber, // page
+            15, // page size
+            term || null,
+            function (response) {
+                setTitle("Projects for" + term + "- Snap! Build Your Own Blocks");
+                totalPages = response.pages;
+                totalPagesSpan.textContent = totalPages;
+                if (response.projects[0]) {
+                    response.projects.forEach(function (project) {
+                        projectsDiv.append(
+                                newProjectDiv(
+                                project,
+                                {
+                                    size: 'small',
+                                    gridSize: 5,
+                                    extraFields: {
+                                        author: 'username'
+                                    }
+                                }));
+                    });
+                }
+                doneLoading('.projects');
+            },
+            function (error) {
+                genericError(error);
+            }
+        );
+        page = pageNumber;
+        pageSpan.textContent = pageNumber;
+    };
+   </script>
         </div>
     </body>
     <script>

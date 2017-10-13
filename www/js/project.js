@@ -9,6 +9,7 @@ function newProjectDiv (project, options) {
         project.projectname + '</span></a>';
 
     SnapCloud.getThumbnail(
+        project.username,
         project.projectname,
         function (thumbnail) {
             div.querySelector('img').src = thumbnail;

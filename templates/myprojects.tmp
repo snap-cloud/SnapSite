@@ -8,21 +8,23 @@
     SnapCloud.getProjectList(
         function (projects) {
             setTitle('My Projects - Snap! Build Your Own Blocks');
-            projects.sortBy('lastupdated').forEach(function (project) {
-                projectsDiv.append(
-                    newProjectDiv(
-                        project, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5, 
-                            extraFields: {
-                                isPublic: 'ispublic',
-                                isPublished: 'ispublished'
+            if (projects[0]) {
+                projects.sortBy('lastupdated').forEach(function (project) {
+                    projectsDiv.append(
+                        newProjectDiv(
+                            project, 
+                            { 
+                                size: 'small', 
+                                gridSize: 5, 
+                                extraFields: {
+                                    isPublic: 'ispublic',
+                                    isPublished: 'ispublished'
+                                }
                             }
-                        }
-                    )
-                );
-            });
+                        )
+                    );
+                });
+            }
             doneLoading('.projects');
         },
         function (error) {

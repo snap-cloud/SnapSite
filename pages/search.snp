@@ -1,0 +1,5 @@
+base
+search
+@param user=null
+@param title='"Projects for" + term + "- Snap! Build Your Own Blocks"'
+projectgrid
