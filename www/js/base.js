@@ -22,9 +22,9 @@ function pageProject () {
 // Data insertion
 
 function fillVisitorFields () {
-    if (SnapCloud.username) {
+    if (sessionStorage.username) {
         document.querySelectorAll('.visitor').forEach(function (each) {
-            each.innerHTML = SnapCloud.username;
+            each.innerHTML = sessionStorage.username;
         });
     }
 };
@@ -59,7 +59,7 @@ function isPublicSpan (isPublic) {
         faClass = isPublic ? 'fa-unlock' : 'fa-lock';
     span.classList.add('is-public');
     span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
-    span.title = tooltip;
+    span.title = localizer.localize(tooltip);
     return span;
 };
 
@@ -72,7 +72,7 @@ function isPublishedSpan (isPublished) {
 
     span.classList.add('is-published');
     span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
-    span.title = tooltip;
+    span.title = localizer.localize(tooltip);
     return span;
 };
 
@@ -103,6 +103,7 @@ function beganLoading (selector) {
 };
 
 function doneLoading (selector) {
+    localizer.localizePage();
     document.querySelector(selector ? (selector + ' .loader') : '#loading').hidden = true;
 };
 

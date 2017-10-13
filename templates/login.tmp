@@ -26,27 +26,27 @@
 </form>
 
 <script>
-document.querySelector('form#login').addEventListener('submit', function (event) {
-    var username = this.elements['username'].value,
-        password = this.elements['password'].value,
-        persist = this.elements['persist'].checked;
+    document.querySelector('form#login').addEventListener('submit', function (event) {
+        var username = this.elements['username'].value,
+            password = this.elements['password'].value,
+            persist = this.elements['persist'].checked;
 
-    // Persistent login can never really work like that here,
-    // as we're jumping pages unlike in the Snap! editor...
+        event.preventDefault();
 
-    event.preventDefault();
-
-    SnapCloud.login(
-        username,
-        password,
-        persist,
-        function () { window.location.href = 'index.html'; },
-        function (response) {
-            genericError(
-                'Could not login: ' + response,
-                'Login failed'
-            );
-        }
-    );
-});
+        SnapCloud.login(
+            username,
+            password,
+            persist,
+            function () {
+                sessionStorage.username = username;
+                window.location.href = 'index.html';
+            },
+            function (response) {
+                genericError(
+                    'Could not login: ' + response,
+                    'Login failed'
+                );
+            }
+        );
+    });
 </script>

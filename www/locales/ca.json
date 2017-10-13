@@ -18,6 +18,14 @@
     "This project has no notes": "Aquest projecte no té notes",
     " by ": " per ",
     "public": "públic",
-    "private": "privat"
-
+    "private": "privat",
+    "'s public page": ": pàgina pública",
+    "Last updated on ": "Actualizat per darrer cop el ",
+    ", shared on ": ", compartit el ",
+    "This project is public": "Aquest projecte és públic",
+    " and listed": " i està publicat",
+    "This project can be shared via URL": "Aquest projecte es pot compartir via URL",
+    "This project is private": "Aquest projecte és privat",
+    "This project is publicly listed": "Aquest projecte està publicat",
+    "This project is unlisted, but its URL is publicly shareable": "Aquest projecte no està publicat, però es pot compartir via URL"
 }

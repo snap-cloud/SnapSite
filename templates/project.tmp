@@ -39,8 +39,8 @@
             document.querySelector('.updated').append(formatDate(project.lastupdated));
             if (project.ispublic) {
                 document.querySelector('.shared').append(formatDate(project.lastshared));
-                document.querySelector('.is-published').append(project.ispublished ? ' and listed' : ' but unlisted');
-                document.querySelector('.is-public').append('public');
+                document.querySelector('.is-published').innerHTML += (project.ispublished ? ' and listed' : ' but unlisted');
+                document.querySelector('.is-public').innerHTML += ('public');
             } else {
                 document.querySelector('.shared').hidden = true;
                 document.querySelector('.is-public').append('private');

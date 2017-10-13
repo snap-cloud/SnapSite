@@ -7,7 +7,7 @@
     beganLoading('.projects');
     SnapCloud.getProjectList(
         function (projects) {
-            setTitle('My Projects - Snap! Build Your Own Blocks');
+            setTitle(localizer.localize('My Projects') + ' - Snap! Build Your Own Blocks');
             if (projects[0]) {
                 projects.sortBy('lastupdated').forEach(function (project) {
                     projectsDiv.append(

@@ -1,2 +1,2 @@
-<h1><span class="username"></span>'s public page</h1>
+<h1><span class="username"></span><span localizable>'s public page</span></h1>
 @content

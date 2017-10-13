@@ -1,5 +1,6 @@
 base
 search
 @param user=null
-@param title='"Projects for" + term + "- Snap! Build Your Own Blocks"'
+@param title='term + " projects - Snap! Build Your Own Blocks"'
+@param pageSize=15
 projectgrid

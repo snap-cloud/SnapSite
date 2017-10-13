@@ -30,7 +30,6 @@ Localizer.prototype.init = function () {
 
 Localizer.prototype.loadTranslations = function (fileContents) {
     this.translations = JSON.parse(fileContents);
-    this.localizePage();
 };
 
 Localizer.prototype.localizePage = function () {

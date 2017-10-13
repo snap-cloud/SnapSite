@@ -13,7 +13,8 @@
         pageSpan = document.querySelector('.paginator .page'),
         totalPagesSpan = document.querySelector('.paginator .total-pages'),
         page = 1,
-        totalPages = 1;
+        totalPages = 1,
+        pageSize = ${pageSize} || 15;
 
     toPage(1);
 
@@ -22,9 +23,9 @@
         beganLoading('.projects');
         SnapCloud.getPublishedProjectList(
             $user,
-            pageNumber, // page
-            15, // page size
-            term || null,
+            pageNumber,
+            pageSize,
+            getUrlParameter('term') || null,
             function (response) {
                 setTitle($title);
                 totalPages = response.pages;

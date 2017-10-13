@@ -1,1 +1,3 @@
 <h1 localizable>Welcome to Snap<em>!</em></h1>
+<h2>Latest projects</h2>
+@content
