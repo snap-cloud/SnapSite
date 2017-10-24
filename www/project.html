@@ -141,10 +141,10 @@
                                 project.projectname,
                                 function () {
                                     alert(
-                                        localizer.localize('You can now access this project at:<br>') +
-                                        '<a href="' + projectURL(project.username, project.projectname) + '">' +
+                                        localizer.localize('You can now access this project at:') +
+                                        '<br><a href="' + projectURL(project.username, project.projectname) + '">' +
                                         projectURL(project.username, project.projectname) + '</a>',
-                                        { title: 'Project shared' },
+                                        { title: localizer.localize('Project shared') },
                                         function () { location.reload() }
                                     );
                                 },
@@ -165,7 +165,7 @@
                                 function () {
                                     alert(
                                         localizer.localize('This project is now private.'),
-                                        { title: 'Project unshared' },
+                                        { title: localizer.localize('Project unshared') },
                                         function () { location.reload() }
                                     );
                                 },
@@ -187,7 +187,7 @@
                                 function () {
                                     alert(
                                         localizer.localize('This project is now listed in the Snap<em>!</em> site.'),
-                                        { title: 'Project published' },
+                                        { title: localizer.localize('Project published') },
                                         function () { location.reload() }
                                     );
                                 },
@@ -209,7 +209,7 @@
                                 function () {
                                     alert(
                                         localizer.localize('This project is not listed in the Snap<em>!</em> site anymore.'),
-                                        { title: 'Project unpublished' },
+                                        { title: localizer.localize('Project unpublished') },
                                         function () { location.reload() }
                                     );
                                 },

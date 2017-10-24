@@ -69,7 +69,7 @@ function isPublishedSpan (isPublished) {
     var span = document.createElement('span'),
         tooltip = isPublished ?
             'This project is publicly listed' :
-            'This project is unlisted, but its URL is publicly shareable',
+            'This project is unlisted',
         faClass = isPublished ? 'fa-eye' : 'fa-user-secret';
 
     span.classList.add('is-published');
