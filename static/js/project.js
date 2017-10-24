@@ -5,9 +5,13 @@ function newProjectDiv (project, options) {
     div.innerHTML = 
         '<a href="project.html?user=' + project.username + '&project=' + 
         project.projectname + '"><img alt="' + project.projectname + 
-        '" title="' + project.notes + '"><span class="project-name">' +
-        project.projectname + '</span></a>';
+        '" title="' + project.notes + '" src="' + project.thumbnail +
+        '"><span class="project-name">' + project.projectname + '</span></a>';
 
+    if (!project.thumbnail) {
+        div.querySelector('img').classList.add('no-image');
+    }
+    /*
     SnapCloud.getThumbnail(
         project.username,
         project.projectname,
@@ -18,6 +22,7 @@ function newProjectDiv (project, options) {
             div.querySelector('img').classList.add('no-image');
         }
     );
+    */
 
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {

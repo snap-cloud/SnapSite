@@ -69,7 +69,7 @@
             </div>
         </div>
         <div id="wrapper">
-<h1>Search Results: <span class="term"></span></h1>
+<h1><span localizable>Search Results:</span> <span class="term"></span></h1>
 <script>
     var term = getUrlParameter('term');
     document.querySelector('.term').append(term);
@@ -124,7 +124,8 @@
             },
             function (error) {
                 genericError(error);
-            }
+            },
+            true // withThumbnail
         );
         page = pageNumber;
         pageSpan.textContent = pageNumber;

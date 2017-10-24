@@ -90,6 +90,7 @@
             </div>
         </div>
         <span class="dates pure-u-1-2">
+            <span localizable class="created">Created on </span>.
             <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span>.
             <span localizable class="is-public">This project is </span><span localizable class="is-published"></span>.
         </span>
@@ -107,6 +108,7 @@
             document.querySelector('.title').append(authorSpan(project.username));
             document.querySelector('.project iframe').src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
             document.querySelector('.notes').innerHTML = project.notes || '<small>' + localizer.localize('This project has no notes') + '</small>';
+            document.querySelector('.created').append(formatDate(project.created));
             document.querySelector('.updated').append(formatDate(project.lastupdated));
             if (project.ispublic) {
                 document.querySelector('.shared').append(formatDate(project.lastshared));

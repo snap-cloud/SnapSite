@@ -70,7 +70,7 @@
         </div>
         <div id="wrapper">
 <h1 localizable>Welcome to Snap<em>!</em></h1>
-<h2>Latest projects</h2>
+<h2 localizable>Latest projects</h2>
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <nav class="paginator">
@@ -100,7 +100,7 @@
             pageSize,
             getUrlParameter('term') || null,
             function (response) {
-                setTitle("Explore - Snap! Build Your Own Blocks");
+                setTitle("Snap! Build Your Own Blocks");
                 totalPages = response.pages;
                 totalPagesSpan.textContent = totalPages;
                 if (response.projects[0]) {
@@ -121,7 +121,8 @@
             },
             function (error) {
                 genericError(error);
-            }
+            },
+            true // withThumbnail
         );
         page = pageNumber;
         pageSpan.textContent = pageNumber;

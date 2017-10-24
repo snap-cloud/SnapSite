@@ -83,7 +83,7 @@ function build() {
 
 build
 
-if test -n "$serve"; then
+if test -n "$serve" -o -n "$s"; then
     function runserver() {
         (cd www; exec -a httpserver $@ &)
     }
@@ -109,7 +109,7 @@ fi
 
 # Watch and build on any file change
 
-if test -n "$watch"; then
+if test -n "$watch" -o -n "$w"; then
     declare -A lasttimes
     while sleep 1; do
         # ignores hidden files and dirs (./.*) and the www folder

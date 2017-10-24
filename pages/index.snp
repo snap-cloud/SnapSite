@@ -1,6 +1,6 @@
 base
 welcome
 @param user=null
-@param title="Snap! Build Your Own Blocks"'
+@param title='"Snap! Build Your Own Blocks"'
 @param pageSize=5
 projectgrid

@@ -77,10 +77,10 @@
     var projectsDiv = document.querySelector('.projects');
     beganLoading('.projects');
     SnapCloud.getProjectList(
-        function (projects) {
+        function (response) {
             setTitle(localizer.localize('My Projects') + ' - Snap! Build Your Own Blocks');
-            if (projects[0]) {
-                projects.sortBy('lastupdated').forEach(function (project) {
+            if (response.projects[0]) {
+                response.projects.sortBy('lastupdated').forEach(function (project) {
                     projectsDiv.append(
                         newProjectDiv(
                             project, 
@@ -101,7 +101,8 @@
         function (error) {
             throw(error);
             genericError(error);
-        }
+        },
+        true // withThumbnail
     );
 </script>
         </div>

@@ -120,7 +120,8 @@
             },
             function (error) {
                 genericError(error);
-            }
+            },
+            true // withThumbnail
         );
         page = pageNumber;
         pageSpan.textContent = pageNumber;
