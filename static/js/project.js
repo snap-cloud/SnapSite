@@ -11,18 +11,6 @@ function newProjectDiv (project, options) {
     if (!project.thumbnail) {
         div.querySelector('img').classList.add('no-image');
     }
-    /*
-    SnapCloud.getThumbnail(
-        project.username,
-        project.projectname,
-        function (thumbnail) {
-            div.querySelector('img').src = thumbnail;
-        },
-        function (thumbnail) {
-            div.querySelector('img').classList.add('no-image');
-        }
-    );
-    */
 
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {

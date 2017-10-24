@@ -3,6 +3,8 @@ snapURL = 'http://localhost:8082/snap.html';
 modules = []; // compatibility with cloud.js
 nop = function () {};
 
+buttonDefaults = { done: { text: 'Ok', default: true }, cancel: { text: 'Cancel' } };
+
 function getUrlParameter (param) {
     var regex = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)'),
         results = regex.exec(location.href);
@@ -85,8 +87,8 @@ function projectURL (author, project) {
 function genericError (errorString, title) {
     doneLoading();
     alert(
-        errorString,
-        { title: title || 'Error'}
+        localizer.localize(errorString),
+        { title: localizer.localize(title || 'Error')}
     );
 };
 
@@ -129,3 +131,16 @@ Array.prototype.sortBy = function (parameter, reverse) {
         }
     );
 };
+
+// CustomAlert helpers
+
+function confirmTitle (title) {
+    // there's a bug in customalert.js preventing us from
+    // using a custom title unless we also specify text for
+    // the ok and cancel buttons
+    return {
+        title: localizer.localize(title),
+        done: localizer.localize('Ok'),
+        cancel: localizer.localize('Cancel')
+    };
+}

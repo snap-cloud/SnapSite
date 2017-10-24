@@ -117,9 +117,11 @@
 .customalert {
     padding: 5px;
     background: #2c3e50;
+    width: auto;
+    min-width: 500px;
 }
 
-.customalert_header {
+.customalert .header {
     font-size: 1em;
     background: #2c3e50;
     color: #e3dedb;
@@ -129,8 +131,8 @@
     border-radius: 5px 5px 0 0;
 }
 
-.customalert_body, 
-.customalert_footer {
+.customalert .body, 
+.customalert .footer {
     background: #e3dedb;
     text-align: center;
     padding: 0.5em;
@@ -138,17 +140,12 @@
     font-size: 1.1em;
 }
 
-.customalert_footer {
+.customalert .footer {
     border-radius: 0 0 5px 5px;
 }
 
 #customAlert {
     background: #2c3e50;
-}
-
-.customalert_footer .btn {
-    padding: 0 1em;
-    margin: 0 0.5em;
 }
 
 /* LOADING */

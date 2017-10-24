@@ -24,6 +24,7 @@
     </head>
     <body>
         <script type="text/javascript" src="libs/custom-alert.min.js"></script>
+        <script>new customAlert();</script>
         <div id="loading"><i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i></div>
         <div id="top-bar">
             <div class="pure-menu-horizontal pure-menu">
@@ -85,8 +86,12 @@
         <div class="details pure-u-11-24">
             <pre class="notes"></pre>
             <div class="buttons">
-                <a localizable class="pure-button open" target="_blank">Open in Project Editor</a>
+                <a localizable class="pure-button open" target="_blank">Edit</a>
                 <a localizable class="pure-button download" target="_blank">Download</a>
+                <a localizable class="pure-button share" target="_blank">Share</a>
+                <a localizable class="pure-button unshare" target="_blank">Unshare</a>
+                <a localizable class="pure-button publish" target="_blank">Publish</a>
+                <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
             </div>
         </div>
         <span class="dates pure-u-1-2">
@@ -110,6 +115,7 @@
             document.querySelector('.notes').innerHTML = project.notes || '<small>' + localizer.localize('This project has no notes') + '</small>';
             document.querySelector('.created').append(formatDate(project.created));
             document.querySelector('.updated').append(formatDate(project.lastupdated));
+
             if (project.ispublic) {
                 document.querySelector('.shared').append(formatDate(project.lastshared));
                 document.querySelector('.is-published').innerHTML += (project.ispublished ? ' and listed' : ' but unlisted');
@@ -118,8 +124,103 @@
                 document.querySelector('.shared').hidden = true;
                 document.querySelector('.is-public').append('private');
             }
+
+            document.querySelector('.buttons .share').hidden = project.ispublic;
+            document.querySelector('.buttons .unshare').hidden = !project.ispublic;
+            document.querySelector('.buttons .publish').hidden = !project.ispublic || project.ispublished;
+            document.querySelector('.buttons .unpublish').hidden = !project.ispublic || !project.ispublished;
+
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
+            document.querySelector('.buttons .share').onclick = function () {
+                confirm(
+                    localizer.localize('Are you sure you want to share this project?'),
+                    function (ok) {
+                        if (ok) {
+                            SnapCloud.shareProject(
+                                project.projectname,
+                                function () {
+                                    alert(
+                                        localizer.localize('You can now access this project at:<br>') +
+                                        '<a href="' + projectURL(project.username, project.projectname) + '">' +
+                                        projectURL(project.username, project.projectname) + '</a>',
+                                        { title: 'Project shared' },
+                                        function () { location.reload() }
+                                    );
+                                },
+                                function () { genericError('Could not share project'); }
+                            );
+                        }
+                    },
+                    confirmTitle('Share project')
+                );
+            };
+            document.querySelector('.buttons .unshare').onclick = function () {
+                confirm(
+                    localizer.localize('Are you sure you want to stop sharing this project?'),
+                    function (ok) {
+                        if (ok) {
+                            SnapCloud.unshareProject(
+                                project.projectname,
+                                function () {
+                                    alert(
+                                        localizer.localize('This project is now private.'),
+                                        { title: 'Project unshared' },
+                                        function () { location.reload() }
+                                    );
+                                },
+                                function () { genericError('Could not unshare project'); }
+                            );
+                        }
+                    },
+                    confirmTitle('Unshare project')
+                );
+            };
+            document.querySelector('.buttons .publish').onclick = function () {
+                confirm(
+                    localizer.localize('Are you sure you want to publish this project<br>' + 
+                        'and make it visible in the Snap<em>!</em> website?'),
+                    function (ok) {
+                        if (ok) {
+                            SnapCloud.publishProject(
+                                project.projectname,
+                                function () {
+                                    alert(
+                                        localizer.localize('This project is now listed in the Snap<em>!</em> site.'),
+                                        { title: 'Project published' },
+                                        function () { location.reload() }
+                                    );
+                                },
+                                function () { genericError('Could not publish project'); }
+                            );
+                        }
+                    },
+                    confirmTitle('Publish project')
+                );
+            };
+            document.querySelector('.buttons .unpublish').onclick = function () {
+                confirm(
+                    localizer.localize('Are you sure you want to unpublish this project<br>' + 
+                        'and hide it from the Snap<em>!</em> website?'),
+                    function (ok) {
+                        if (ok) {
+                            SnapCloud.unpublishProject(
+                                project.projectname,
+                                function () {
+                                    alert(
+                                        localizer.localize('This project is not listed in the Snap<em>!</em> site anymore.'),
+                                        { title: 'Project unpublished' },
+                                        function () { location.reload() }
+                                    );
+                                },
+                                function () { genericError('Could not unpublish project'); }
+                            );
+                        }
+                    },
+                    confirmTitle('Unpublish project')
+                );
+            };
+
             doneLoading('#wrapper');
             document.querySelector('.project').hidden = false;
         },
