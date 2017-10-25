@@ -113,3 +113,8 @@
 .paginator a:hover {
     filter: brightness(1.5);
 }
+
+.project iframe {
+    width: 540px;
+    height: 406px;
+}

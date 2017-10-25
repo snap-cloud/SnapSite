@@ -80,11 +80,23 @@
         </div>
     </div>
     <div class="pure-g">
+        <!-- Project viewer -->
         <iframe class="pure-u-1-2" height="406" src=""> </iframe>
 
         <i class="pure-u-1-24"></i>
         <div class="details pure-u-11-24">
-            <pre class="notes"></pre>
+
+            <!-- Notes -->
+            <div style="width: 0; height: 0; overflow: hidden;"><input id="fake-input" style="opacity:0; filter:alpha(opacity=0);"></input></div>
+            <pre
+                class="notes in-place"
+                contenteditable="true"
+                onblur="updateNotes(this);"
+                onfocus="startEditingNotes(this);"
+                onkeypress="checkKey(event, this);">
+            </pre>
+
+            <!-- Project Action Buttons -->
             <div class="buttons">
                 <a localizable class="pure-button open" target="_blank">Edit</a>
                 <a localizable class="pure-button download" target="_blank">Download</a>
@@ -94,6 +106,8 @@
                 <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
             </div>
         </div>
+
+        <!-- Dates and project meta -->
         <span class="dates pure-u-1-2">
             <span localizable class="created">Created on </span>.
             <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span>.
@@ -109,6 +123,8 @@
         pageUser(),
         function (project) {
             setTitle(pageProject() + localizer.localize(' by ') + pageUser() + ' - Snap! Build Your Own Blocks');
+
+            // Fill up all fields
             document.querySelector('.title h1').innerHTML = project.projectname;
             document.querySelector('.title').append(authorSpan(project.username));
             document.querySelector('.project iframe').src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
@@ -125,6 +141,7 @@
                 document.querySelector('.is-public').append('private');
             }
 
+            // Set up all buttons
             document.querySelector('.buttons .share').hidden = project.ispublic;
             document.querySelector('.buttons .unshare').hidden = !project.ispublic;
             document.querySelector('.buttons .publish').hidden = !project.ispublic || project.ispublished;
@@ -132,108 +149,51 @@
 
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
-            document.querySelector('.buttons .share').onclick = function () {
-                confirm(
-                    localizer.localize('Are you sure you want to share this project?'),
-                    function (ok) {
-                        if (ok) {
-                            SnapCloud.shareProject(
-                                project.projectname,
-                                function () {
-                                    alert(
-                                        localizer.localize('You can now access this project at:') +
-                                        '<br><a href="' + projectURL(project.username, project.projectname) + '">' +
-                                        projectURL(project.username, project.projectname) + '</a>',
-                                        { title: localizer.localize('Project shared') },
-                                        function () { location.reload() }
-                                    );
-                                },
-                                function () { genericError('Could not share project'); }
-                            );
-                        }
-                    },
-                    confirmTitle('Share project')
-                );
-            };
-            document.querySelector('.buttons .unshare').onclick = function () {
-                confirm(
-                    localizer.localize('Are you sure you want to stop sharing this project?'),
-                    function (ok) {
-                        if (ok) {
-                            SnapCloud.unshareProject(
-                                project.projectname,
-                                function () {
-                                    alert(
-                                        localizer.localize('This project is now private.'),
-                                        { title: localizer.localize('Project unshared') },
-                                        function () { location.reload() }
-                                    );
-                                },
-                                function () { genericError('Could not unshare project'); }
-                            );
-                        }
-                    },
-                    confirmTitle('Unshare project')
-                );
-            };
-            document.querySelector('.buttons .publish').onclick = function () {
-                confirm(
-                    localizer.localize('Are you sure you want to publish this project<br>' + 
-                        'and make it visible in the Snap<em>!</em> website?'),
-                    function (ok) {
-                        if (ok) {
-                            SnapCloud.publishProject(
-                                project.projectname,
-                                function () {
-                                    alert(
-                                        localizer.localize('This project is now listed in the Snap<em>!</em> site.'),
-                                        { title: localizer.localize('Project published') },
-                                        function () { location.reload() }
-                                    );
-                                },
-                                function () { genericError('Could not publish project'); }
-                            );
-                        }
-                    },
-                    confirmTitle('Publish project')
-                );
-            };
-            document.querySelector('.buttons .unpublish').onclick = function () {
-                confirm(
-                    localizer.localize('Are you sure you want to unpublish this project<br>' + 
-                        'and hide it from the Snap<em>!</em> website?'),
-                    function (ok) {
-                        if (ok) {
-                            SnapCloud.unpublishProject(
-                                project.projectname,
-                                function () {
-                                    alert(
-                                        localizer.localize('This project is not listed in the Snap<em>!</em> site anymore.'),
-                                        { title: localizer.localize('Project unpublished') },
-                                        function () { location.reload() }
-                                    );
-                                },
-                                function () { genericError('Could not unpublish project'); }
-                            );
-                        }
-                    },
-                    confirmTitle('Unpublish project')
-                );
-            };
+            document.querySelector('.buttons .share').onclick = function () { confirmShareProject(project); };
+            document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareProject(project); };
+            document.querySelector('.buttons .publish').onclick = function () { confirmPublish(project); };
+            document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublish(project); }
 
             doneLoading('#wrapper');
             document.querySelector('.project').hidden = false;
         },
-        function (error) {
-            genericError(error);
-            throw(error);
-        }
+        genericError
     );
+
+    // In-place notes editor
+    function checkKey (event, element) {
+        var code = (event.keyCode ? event.keyCode : event.which);
+        if (code == 13 && !event.shiftKey) {
+            document.getElementById('fake-input').focus();
+        }
+    };
+
+    function startEditingNotes (element) {
+        element.classList.remove('flash');
+        if (element.textContent == localizer.localize('This project has no notes')) {
+            element.textContent = '';
+        }
+    };
+
+    function updateNotes (element) {
+        SnapCloud.updateNotes(
+            pageProject(),
+            element.textContent,
+            function () {
+                element.classList.add('flash');
+                if (element.textContent == '') {
+                    element.innerHTML = '<small>' + localizer.localize('This project has no notes') + '</small>';
+                }
+            }, 
+            genericError
+        );
+    };
 </script>
         </div>
     </body>
     <script>
     var localizer = new Localizer();
+    SnapCloud.genericError = genericError;
     document.querySelector('#top-bar .run').href = snapURL;
     if (!sessionStorage.username) {
         SnapCloud.initSession(

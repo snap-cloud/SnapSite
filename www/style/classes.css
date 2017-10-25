@@ -16,3 +16,30 @@
     width: 100%;
     text-align: center;
 }
+
+.in-place:hover {
+    padding: 0 2px;
+    border: 2px dashed #2c3e50;
+}
+
+pre.proto-in-place,
+pre.in-place {
+    font-family: sans-serif;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.flash {
+    animation: flasher 1s linear;
+}
+
+@keyframes flasher {  
+    0% { background: #2c3e50; }
+    50% { opacity: 0.0; }
+    100% {
+        background: auto;
+        opacity: 1;
+    }
+}
+

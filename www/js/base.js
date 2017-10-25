@@ -87,7 +87,7 @@ function projectURL (author, project) {
 function genericError (errorString, title) {
     doneLoading();
     alert(
-        localizer.localize(errorString),
+        localizer.localize(errorString || 'Unknown error'),
         { title: localizer.localize(title || 'Error')}
     );
 };

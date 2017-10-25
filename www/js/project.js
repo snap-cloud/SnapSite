@@ -38,5 +38,100 @@ function downloadProject (project) {
         },
         function (response) {
             genericError(response.errors[0], 'Could not fetch project');
-        });
+    });
 };
+
+// Could probably refactor these. Not sure it's worth the hassle though.
+
+function confirmShareProject (project) {
+    confirm(
+        localizer.localize('Are you sure you want to share this project?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.shareProject(
+                    project.projectname,
+                    function () {
+                        alert(
+                            localizer.localize('You can now access this project at:') +
+                            '<br><a href="' + projectURL(project.username, project.projectname) + '">' +
+                            projectURL(project.username, project.projectname) + '</a>',
+                            { title: localizer.localize('Project shared') },
+                            function () { location.reload() }
+                        );
+                    },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Share project')
+    );
+};
+
+function confirmUnshareProject (project) {
+    confirm(
+        localizer.localize('Are you sure you want to stop sharing this project?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.unshareProject(
+                    project.projectname,
+                    function () {
+                        alert(
+                            localizer.localize('This project is now private.'),
+                            { title: localizer.localize('Project unshared') },
+                            function () { location.reload() }
+                        );
+                    },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Unshare project')
+    );
+};
+
+function confirmPublish (project) {
+    confirm(
+        localizer.localize('Are you sure you want to publish this project<br>' + 
+            'and make it visible in the Snap<em>!</em> website?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.publishProject(
+                    project.projectname,
+                    function () {
+                        alert(
+                            localizer.localize('This project is now listed in the Snap<em>!</em> site.'),
+                            { title: localizer.localize('Project published') },
+                            function () { location.reload() }
+                        );
+                    },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Publish project')
+    );
+};
+
+function confirmUnpublish (project) {
+    confirm(
+        localizer.localize('Are you sure you want to unpublish this project<br>' + 
+            'and hide it from the Snap<em>!</em> website?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.unpublishProject(
+                    project.projectname,
+                    function () {
+                        alert(
+                            localizer.localize('This project is not listed in the Snap<em>!</em> site anymore.'),
+                            { title: localizer.localize('Project unpublished') },
+                            function () { location.reload() }
+                        );
+                    },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Unpublish project')
+    );
+};
+

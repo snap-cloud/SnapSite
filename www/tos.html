@@ -131,6 +131,7 @@
     </body>
     <script>
     var localizer = new Localizer();
+    SnapCloud.genericError = genericError;
     document.querySelector('#top-bar .run').href = snapURL;
     if (!sessionStorage.username) {
         SnapCloud.initSession(
