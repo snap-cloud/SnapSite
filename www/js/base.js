@@ -111,9 +111,9 @@ function doneLoading (selector) {
 
 // Other goodies
 
-function formatDate (aDate) {
-    return aDate.toLocaleString(
-        navigator.language || 'en-us',
+function formatDate (dateString) {
+    return (new Date(dateString)).toLocaleString(
+        localizer.locale || 'en-us',
         { month: 'long', day: '2-digit', year: 'numeric' }
     );
 };
