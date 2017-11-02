@@ -142,10 +142,10 @@
             }
 
             // Set up all buttons
-            document.querySelector('.buttons .share').hidden = project.ispublic;
-            document.querySelector('.buttons .unshare').hidden = !project.ispublic;
-            document.querySelector('.buttons .publish').hidden = !project.ispublic || project.ispublished;
-            document.querySelector('.buttons .unpublish').hidden = !project.ispublic || !project.ispublished;
+            document.querySelector('.buttons .share').hidden = project.ispublic || sessionStorage.username !== project.username;
+            document.querySelector('.buttons .unshare').hidden = !project.ispublic || sessionStorage.username !== project.username;
+            document.querySelector('.buttons .publish').hidden = !project.ispublic || project.ispublished || sessionStorage.username !== project.username;
+            document.querySelector('.buttons .unpublish').hidden = !project.ispublic || !project.ispublished || sessionStorage.username !== project.username;
 
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
