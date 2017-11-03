@@ -50,6 +50,7 @@ function confirmShareProject (project) {
             if (ok) {
                 SnapCloud.shareProject(
                     project.projectname,
+                    project.username,
                     function () {
                         alert(
                             localizer.localize('You can now access this project at:') +
@@ -74,6 +75,7 @@ function confirmUnshareProject (project) {
             if (ok) {
                 SnapCloud.unshareProject(
                     project.projectname,
+                    project.username,
                     function () {
                         alert(
                             localizer.localize('This project is now private.'),
@@ -97,6 +99,7 @@ function confirmPublish (project) {
             if (ok) {
                 SnapCloud.publishProject(
                     project.projectname,
+                    project.username,
                     function () {
                         alert(
                             localizer.localize('This project is now listed in the Snap<em>!</em> site.'),
@@ -120,6 +123,7 @@ function confirmUnpublish (project) {
             if (ok) {
                 SnapCloud.unpublishProject(
                     project.projectname,
+                    project.username,
                     function () {
                         alert(
                             localizer.localize('This project is not listed in the Snap<em>!</em> site anymore.'),
@@ -135,3 +139,8 @@ function confirmUnpublish (project) {
     );
 };
 
+function ownsProject (project) {
+    // Not to worry. Actual secure permission check is performed in the backend.
+    // sessionStorage stringifies everything, so we need to check against the 'true' string.
+    return (sessionStorage.username == project.username) || sessionStorage.isadmin === 'true';
+};

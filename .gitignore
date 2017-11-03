@@ -1,3 +1,4 @@
 *.swp
 *.swo
+*.pem
 static/libs/cloud.js

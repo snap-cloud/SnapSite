@@ -90,7 +90,7 @@ if test -n "$serve" -o -n "$s"; then
 
     pkill -f httpserver
     if test -n `which http-server`; then
-        runserver http-server 
+        runserver http-server
     elif test -n `which python`; then
         runserver python -m SimpleHTTPServer 8080
     elif test -n `which ruby`; then
@@ -105,6 +105,8 @@ if test -n "$serve" -o -n "$s"; then
         echo "NodeJS http-server module"
         echo "PHP"
     fi
+elif test -n "$S"; then # https is only supported by http-server
+    (cd www; exec -a httpserver http-server -S &)
 fi
 
 # Watch and build on any file change

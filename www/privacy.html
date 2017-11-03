@@ -163,8 +163,9 @@ you a password-reset email.</li>
     document.querySelector('#top-bar .run').href = snapURL;
     if (!sessionStorage.username) {
         SnapCloud.initSession(
-            function (username) {
+            function (username, isadmin) {
                 sessionStorage.username = username;
+                sessionStorage.isadmin = isadmin;
                 initForUsername(username); 
             }
         );

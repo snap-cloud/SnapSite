@@ -142,10 +142,10 @@
             }
 
             // Set up all buttons
-            document.querySelector('.buttons .share').hidden = project.ispublic || sessionStorage.username !== project.username;
-            document.querySelector('.buttons .unshare').hidden = !project.ispublic || sessionStorage.username !== project.username;
-            document.querySelector('.buttons .publish').hidden = !project.ispublic || project.ispublished || sessionStorage.username !== project.username;
-            document.querySelector('.buttons .unpublish').hidden = !project.ispublic || !project.ispublished || sessionStorage.username !== project.username;
+            document.querySelector('.buttons .share').hidden = project.ispublic || !ownsProject(project);
+            document.querySelector('.buttons .unshare').hidden = !project.ispublic || !ownsProject(project);
+            document.querySelector('.buttons .publish').hidden = (!project.ispublic || project.ispublished) || !ownsProject(project);
+            document.querySelector('.buttons .unpublish').hidden = (!project.ispublic || !project.ispublished) || !ownsProject(project);
 
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
@@ -197,8 +197,9 @@
     document.querySelector('#top-bar .run').href = snapURL;
     if (!sessionStorage.username) {
         SnapCloud.initSession(
-            function (username) {
+            function (username, isadmin) {
                 sessionStorage.username = username;
+                sessionStorage.isadmin = isadmin;
                 initForUsername(username); 
             }
         );

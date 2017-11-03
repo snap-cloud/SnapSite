@@ -109,8 +109,9 @@
             username,
             password,
             persist,
-            function () {
+            function (username, isadmin) {
                 sessionStorage.username = username;
+                sessionStorage.isadmin = isadmin;
                 window.location.href = 'index.html';
             },
             function (response) {
@@ -130,8 +131,9 @@
     document.querySelector('#top-bar .run').href = snapURL;
     if (!sessionStorage.username) {
         SnapCloud.initSession(
-            function (username) {
+            function (username, isadmin) {
                 sessionStorage.username = username;
+                sessionStorage.isadmin = isadmin;
                 initForUsername(username); 
             }
         );
