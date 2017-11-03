@@ -54,4 +54,4 @@
         page = pageNumber;
         pageSpan.textContent = pageNumber;
     };
-   </script>
+</script>

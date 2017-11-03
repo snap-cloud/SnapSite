@@ -48,8 +48,8 @@
                         <ul class="pure-menu-children pure-u-3-24">
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-projects" href="myprojects.html">My Projects</a></li>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
+                            <li class="pure-menu-item"><a localizable class="pure-menu-link my-profile" href="profile.html">My Profile</a></li>
                             <hr>
-                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="changePassword.html">Change Password</a></li>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { sessionStorage.clear(); location.reload(); });">Log Out</a></li>
                         </ul>
                     </li>
@@ -131,11 +131,10 @@
         page = pageNumber;
         pageSpan.textContent = pageNumber;
     };
-   </script>
+</script>
         </div>
     </body>
     <script>
-    var localizer = new Localizer();
     SnapCloud.genericError = genericError;
     document.querySelector('#top-bar .run').href = snapURL;
     if (!sessionStorage.username) {
@@ -163,6 +162,7 @@
             document.querySelector('li.user-menu').hidden = true;
         }
         fillUsernameFields();
+        fillVisitorFields();
         doneLoading();
     }
     </script>

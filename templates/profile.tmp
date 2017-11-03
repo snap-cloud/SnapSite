@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="style/profile.css">
+<h1><span class="visitor"></span></h1>
+<div class="pure-g profile">
+    <div class="pure-u-1-2 fields">
+        <span class="pure-u-1-1"><strong localizable>Joined in </strong><span class="joined"></span></span>
+        <span class="pure-u-1-1"><strong localizable>Email: </strong><span class="email"></span></span>
+        <span class="pure-u-1-1"><strong localizable>Location: </strong><span class="location"></span></span>
+        <span class="pure-u-1-2"><strong localizable>About you:</strong></span>
+        <span class="pure-u-1-2 about"></span>
+    </div> 
+    <div class="pure-u-1-2 buttons">
+        <a localizable class="pure-button" href="changePassword.html">Change Password</a>
+    </div>
+</div>
+<script>
+    var fieldsDiv = document.querySelector('.profile .fields');
+    SnapCloud.getUser(
+        sessionStorage.username,
+        function (user) {
+            fieldsDiv.querySelector('.joined').innerHTML = formatDate(user.joined);
+            fieldsDiv.querySelector('.email').innerHTML = '<a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a>';
+            fieldsDiv.querySelector('.location').innerHTML = user.location || '';
+            fieldsDiv.querySelector('.about').innerHTML = user.about || '';
+            if (user.isadmin) {
+                document.querySelector('h1 .visitor').append(' (' + localizer.localize('administrator') + ')');
+            }
+        },
+        genericError
+    );
+</script>

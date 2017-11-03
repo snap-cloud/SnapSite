@@ -70,25 +70,35 @@
             </div>
         </div>
         <div id="wrapper">
-<p>The <a href="http://snap.berkeley.edu/">snap.berkeley.edu</a> site is maintained by</p>
-
-<div class="indent v-spaced">
-    <p>Bernat Romagosa</p>
-    <p>bernat@arduino.org</p>
+<link rel="stylesheet" href="style/profile.css">
+<h1><span class="visitor"></span></h1>
+<div class="pure-g profile">
+    <div class="pure-u-1-2 fields">
+        <span class="pure-u-1-1"><strong localizable>Joined in </strong><span class="joined"></span></span>
+        <span class="pure-u-1-1"><strong localizable>Email: </strong><span class="email"></span></span>
+        <span class="pure-u-1-1"><strong localizable>Location: </strong><span class="location"></span></span>
+        <span class="pure-u-1-2"><strong localizable>About you:</strong></span>
+        <span class="pure-u-1-2 about"></span>
+    </div> 
+    <div class="pure-u-1-2 buttons">
+        <a localizable class="pure-button" href="changePassword.html">Change Password</a>
+    </div>
 </div>
-
-<p>Our cloud storage server is maintained for us by the <a href="http://miosoft.com/index.php?id=45">MioSoft Corporation</a>:</ph>
-
-<div class="indent v-spaced">
-    <p>MioSoft Corporation</p>
-    <p>U.S. Corporate Headquarters</p>
-    <p>33 East Main Street</p>
-    <p>Madison, WI 53703</p>
-    <p>608 467-0417</p>
-</div>
-
 <script>
-    setTitle('Contact Us - Snap! Build Your Own Blocks');
+    var fieldsDiv = document.querySelector('.profile .fields');
+    SnapCloud.getUser(
+        sessionStorage.username,
+        function (user) {
+            fieldsDiv.querySelector('.joined').innerHTML = formatDate(user.joined);
+            fieldsDiv.querySelector('.email').innerHTML = '<a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a>';
+            fieldsDiv.querySelector('.location').innerHTML = user.location || '';
+            fieldsDiv.querySelector('.about').innerHTML = user.about || '';
+            if (user.isadmin) {
+                document.querySelector('h1 .visitor').append(' (' + localizer.localize('administrator') + ')');
+            }
+        },
+        genericError
+    );
 </script>
         </div>
     </body>

@@ -1,9 +1,8 @@
-snapURL = 'http://localhost:8082/snap.html';
-//snapURL = location.protocol + '//bromagosa.github.io/Snap/snap.html';
-modules = []; // compatibility with cloud.js
-nop = function () {};
-
-buttonDefaults = { done: { text: 'Ok', default: true }, cancel: { text: 'Cancel' } };
+var snapURL = 'http://localhost:8082/snap.html', // location.protocol + '//bromagosa.github.io/Snap/snap.html';
+    modules = [], // compatibility with cloud.js
+    nop = function () {},
+    localizer = new Localizer(),
+    buttonDefaults = { done: { text: 'Ok', default: true }, cancel: { text: 'Cancel' } };
 
 function getUrlParameter (param) {
     var regex = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)'),
