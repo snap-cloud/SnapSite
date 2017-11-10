@@ -18,9 +18,9 @@ Localizer.prototype.init = function () {
     request.open('GET', 'locales/' + this.locale + '.json?random=' + Math.random(1000), false);
     request.setRequestHeader('Content-type', 'application/json; charset=UTF-8')    
     request.onreadystatechange = function () {
-        if (request.readyState === 4) {
-            if (request.status === 200 || request.status === 0) {
-                myself.loadTranslations(request.responseText);
+        if (this.readyState === 4) {
+            if (this.status === 200 || this.status === 0) {
+                myself.loadTranslations(this.responseText);
             }
         }
     };
