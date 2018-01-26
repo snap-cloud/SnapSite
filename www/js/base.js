@@ -1,4 +1,4 @@
-var snapURL = 'http://localhost:8082/snap.html', // location.protocol + '//bromagosa.github.io/Snap/snap.html';
+var snapURL = 'https://localhost:8082/snap.html', // location.protocol + '//bromagosa.github.io/Snap/snap.html';
     modules = [], // compatibility with cloud.js
     nop = function () {},
     localizer = new Localizer(),
