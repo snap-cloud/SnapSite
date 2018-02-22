@@ -74,11 +74,13 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <nav class="paginator">
-    <a href="#" onclick="toPage(1);">⇤</a>
-    <a href="#" onclick="toPage(page - 1 > 0 ? page - 1 : page);">🡐</a>
+    <a href="#" onclick="toPage(1);"><i class="fa fa-fast-backward"></i></a>
+    <a href="#" onclick="toPage(page - 5 > 0 ? page - 5 : 1);"><i class="fa fa-backward"></i></a>
+    <a href="#" onclick="toPage(page - 1 > 0 ? page - 1 : page);"><i class="fa fa-play fa-rotate-180"></i></a>
     <span class="page"></span> / <span class="total-pages"></span>
-    <a href="#" onclick="toPage(page + 1 < totalPages ? page + 1 : totalPages);">🡒</a>
-    <a href="#" onclick="toPage(totalPages);">⇥</a>
+    <a href="#" onclick="toPage(page + 1 < totalPages ? page + 1 : totalPages);"><i class="fa fa-play"></i></a>
+    <a href="#" onclick="toPage(page + 5 < totalPages ? page + 5 : totalPages);"><i class="fa fa-forward"></i></a>
+    <a href="#" onclick="toPage(totalPages);"><i class="fa fa-fast-forward"></i></a>
 </nav>
 <div class="projects pure-g"></div>
 <script>
