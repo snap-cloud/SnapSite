@@ -64,5 +64,22 @@
     "This project is publicly listed": "Este proyecto está publicado",
     "This project is unlisted": "Este proyecto no está publicado",
     "Latest projects": "Últimos proyectos",
-    "Search Results:": "Resultados de la búsqueda:"
+    "Search Results:": "Resultados de la búsqueda:",
+    "Reset Your Password": "Restablecer la contraseña",
+    "Reset My Password": "Restablece mi contraseña",
+    "A link to reset your password has been\nsent to your email account.": "Se ha enviado un correo a tu cuenta con un\nenlace para restablecer tu contraseña.",
+    "Create a Snap<em>!</em> account": "Regístrate en Snap<em>!</em>",
+    "Username": "Nombre de usuario",
+    "Password": "Contraseña",
+    "Repeat Password": "Repite la contraseña",
+    "Email address": "Correo electrónico",
+    "I have read and agree to the " : "He leído y acepto las ",
+    "Terms of Service" : "condiciones del servicio",
+    " and the ": " y el ",
+    "Privacy Agreement": "acuerdo de privacidad",
+    "Sign up": "Regístrame",
+    "Log into Snap<em>!</em>": "Entra en Snap<em>!</em>",
+    "keep me logged in": " Mantenme conectado",
+    "Log in": "Entra",
+    "* I forgot my password": "* He olvidado mi contraseña"
 }

@@ -70,41 +70,41 @@
             </div>
         </div>
         <div id="wrapper">
-<h1>Create a Snap<i>!</i> account</h1>
+<h1 localizable>Create a Snap<em>!</em> account</h1>
 <form id="signup" class="pure-form pure-form-aligned">
     <fieldset>
         <div class="pure-control-group">
-            <label for="username">Username</label>
+            <label localizable for="username">Username</label>
             <input id="username" name="username" type="text" placeholder="Username" required>
         </div>
 
         <div class="pure-control-group">
-            <label for="password">Password</label>
+            <label localizable for="password">Password</label>
             <input id="password" name="password" type="password" placeholder="Password" required>
         </div>
 
         <div class="pure-control-group">
-            <label for="password-repeat">Repeat Password</label>
+            <label localizable for="password-repeat">Repeat Password</label>
             <input id="password-repeat" name="password-repeat" type="password" placeholder="Password" required>
         </div>
 
         <div class="pure-control-group">
-            <label for="email">Email address</label>
+            <label localizable for="email">Email address</label>
             <input id="email" name="email" type="email" placeholder="Email address" required>
         </div>
 
         <div class="pure-controls">
             <label for="tos" class="pure-checkbox">
-                <input id="tos" name="tos" type="checkbox" required> I have read and agree to the <a target="_blank" href="tos.html">Terms of Service</a> and the <a target="_blank" href="privacy.html">Privacy Agreement</a>.
+                <input id="tos" name="tos" type="checkbox" required> <span localizable>I have read and agree to the </span><a localizable target="_blank" href="tos.html">Terms of Service</a><span localizable> and the </span><a localizable target="_blank" href="privacy.html">Privacy Agreement</a>.
             </label>
 
-            <button type="submit" class="pure-button red-button">Sign up</button>
+            <button localizable type="submit" class="pure-button red-button">Sign up</button>
         </div>
     </fieldset>
 </form>
 
 <script>
-    setTitle('Sign Up - Snap! Build Your Own Blocks');
+    setTitle(localizer.localize('Sign Up') + ' - Snap! Build Your Own Blocks');
 
     document.querySelector('form#signup').addEventListener('submit', function (event) {
         var username = this.elements['username'].value,

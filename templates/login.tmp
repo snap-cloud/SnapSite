@@ -1,31 +1,33 @@
-<h1>Log into Snap<em>!</em></h1>
+<h1 localizable>Log into Snap<em>!</em></h1>
 
 <form id="login" class="pure-form pure-form-aligned">
     <fieldset>
         <div class="pure-control-group">
-            <label for="username">Username</label>
+            <label localizable for="username">Username</label>
             <input id="username" name="username" type="text" placeholder="Username">
         </div>
 
         <div class="pure-control-group">
-            <label for="password">Password</label>
+            <label localizable for="password">Password</label>
             <input id="password" name="password" type="password" placeholder="Password">
         </div>
 
         <div class="pure-controls">
-            <label for="cb" class="pure-checkbox">
-                <input id="cb" name="persist" type="checkbox"> keep me logged in
+            <label for="cb" class="pure-checkbox"><input id="cb" name="persist" type="checkbox">
+                <span localizable>keep me logged in</span>
             </label>
 
-            <button type="submit" class="pure-button">Log in</button>
+            <button localizable type="submit" class="pure-button">Log in</button>
         </div>
         <div class="pure-controls">
-            <em><a href="#" onclick="">* I forgot my password</a></em>
+            <em><a localizable href="forgotPassword.html" onclick="">* I forgot my password</a></em>
         </div>
     </fieldset>
 </form>
 
 <script>
+    setTitle(localizer.localize('Log In') + ' - Snap! Build Your Own Blocks');
+
     document.querySelector('form#login').addEventListener('submit', function (event) {
         var username = this.elements['username'].value,
             password = this.elements['password'].value,
