@@ -43,3 +43,23 @@ pre.in-place {
     }
 }
 
+.bubble {
+    position: relative;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2em;
+    padding: 1em 1.5em;
+}
+.bubble:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 0;
+    height: 0;
+    border: 44px solid transparent;
+    border-right-color: rgba(255,255,255,0.3);
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -22px;
+    margin-left: -44px;
+}
