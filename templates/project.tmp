@@ -38,7 +38,7 @@
         <!-- Dates and project meta -->
         <span class="dates pure-u-1-2">
             <span localizable class="created">Created on </span>.
-            <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span>.
+            <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
             <span localizable class="is-public">This project is </span><span localizable class="is-published"></span>.
         </span>
     </div>
@@ -63,6 +63,9 @@
             if (project.ispublic) {
                 document.querySelector('.shared').append(formatDate(project.lastshared));
                 document.querySelector('.is-published').innerHTML += (project.ispublished ? ' and listed' : ' but unlisted');
+                if (project.ispublished) {
+                    document.querySelector('.published').innerHTML = ', published on ' + formatDate(project.firstpublished);
+                }
                 document.querySelector('.is-public').innerHTML += ('public');
             } else {
                 document.querySelector('.shared').hidden = true;
