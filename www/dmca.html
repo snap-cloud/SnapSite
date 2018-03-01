@@ -57,13 +57,17 @@
                         <a class="pure-menu-link" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
                         <ul class="pure-menu-children pure-u-3-24">
                             <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                                <a localizable="" class="pure-menu-link" href="">Language</a>
+                                <a localizable class="pure-menu-link" href="">Language</a>
                                 <ul class="pure-menu-children languages">
                                     <a class="pure-menu-link" href="" onclick="localizer.setLanguage('en');">English</a>
                                     <a class="pure-menu-link" href="" onclick="localizer.setLanguage('ca');">Català</a>
                                     <a class="pure-menu-link" href="" onclick="localizer.setLanguage('es');">Castellano</a>
                                 </ul>
                             </li>
+                            <hr>
+                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="dmca.html">DMCA</a></li>
+                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="privacy.html">Privacy</a></li>
+                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="contact.html">Contact Us</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -94,7 +98,7 @@
 <small><em>(Text stolen from scratch.mit.edu).</em></small>
 
 <script>
-    setTitle('DMCA Policy - Snap! Build Your Own Blocks');
+    setTitle(localizer.localize('DMCA') + ' - Snap! Build Your Own Blocks');
 </script>
         </div>
     </body>
