@@ -139,6 +139,32 @@ function confirmUnpublish (project) {
     );
 };
 
+function confirmDelete (project) {
+    confirm(
+        localizer.localize('Are you sure you want to delete this project?') + '<br>' + 
+            '<i class="warning fa fa-exclamation-triangle"></i> ' +
+            localizer.localize('WARNING! This action cannot be undone!') +
+            ' <i class="warning fa fa-exclamation-triangle"></i>',
+        function (ok) {
+            if (ok) {
+                SnapCloud.deleteProject(
+                    project.projectname,
+                    project.username,
+                    function () {
+                        alert(
+                            localizer.localize('This project has been deleted.'),
+                            { title: localizer.localize('Project deleted') },
+                            function () { location.href = '/myprojects.html'; }
+                        );
+                    },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Delete project')
+    );
+};
+
 function ownsProject (project) {
     // Not to worry. Actual secure permission check is performed in the backend.
     // sessionStorage stringifies everything, so we need to check against the 'true' string.

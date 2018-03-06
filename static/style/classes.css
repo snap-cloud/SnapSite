@@ -63,3 +63,11 @@ pre.in-place {
     margin-top: -22px;
     margin-left: -44px;
 }
+
+.pure-button-warning {
+    background-color: Tomato;
+}
+
+.warning {
+    color: Tomato;
+}
