@@ -21,6 +21,9 @@
             document.querySelector('li.sign-in').hidden = true;
             document.querySelector('li.user-menu').hidden = false;
             document.querySelector('a.my-public-projects').href = 'user.html?user=' + username;
+            if (sessionStorage.isadmin == 'true') {
+                document.querySelector('.admin').hidden = false;
+            }
             fillVisitorFields();
         } else {
             document.querySelector('li.join').hidden = false;

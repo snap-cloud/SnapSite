@@ -49,6 +49,7 @@
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-projects" href="myprojects.html">My Projects</a></li>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-profile" href="profile.html">My Profile</a></li>
+                            <li hidden="true" class="pure-menu-item admin"><a localizable class="pure-menu-link" href="admin.html">Administration</a></li>
                             <hr>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { sessionStorage.clear(); location.reload(); });">Log Out</a></li>
                         </ul>
@@ -162,6 +163,9 @@
             document.querySelector('li.sign-in').hidden = true;
             document.querySelector('li.user-menu').hidden = false;
             document.querySelector('a.my-public-projects').href = 'user.html?user=' + username;
+            if (sessionStorage.isadmin == 'true') {
+                document.querySelector('.admin').hidden = false;
+            }
             fillVisitorFields();
         } else {
             document.querySelector('li.join').hidden = false;

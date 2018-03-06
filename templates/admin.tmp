@@ -1,0 +1,8 @@
+<script>
+SnapCloud.getCurrentUser(function (user) {
+    if (!user.isadmin) {
+        location.href = '/';
+    }
+});
+</script>
+<h1 localizable>Administration</h1>
