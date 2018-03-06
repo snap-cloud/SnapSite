@@ -3,4 +3,10 @@ welcome
 @param user=null
 @param title='"Snap! Build Your Own Blocks"'
 @param pageSize=5
+@param className=latest
+@param header='Latest Projects'
 projectgrid
+@param className=liked
+@param header='Popular Projects'
+projectgrid
+base-bottom

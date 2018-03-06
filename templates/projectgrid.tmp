@@ -1,40 +1,41 @@
+<h2 localizable>$header</h2>
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
-<nav class="paginator">
-    <a href="#" onclick="toPage(1);"><i class="fa fa-fast-backward"></i></a>
-    <a href="#" onclick="toPage(page - 5 > 0 ? page - 5 : 1);"><i class="fa fa-backward"></i></a>
-    <a href="#" onclick="toPage(page - 1 > 0 ? page - 1 : page);"><i class="fa fa-play fa-rotate-180"></i></a>
+<nav class="${className}_paginator">
+    <a href="#" onclick="${className}_toPage(1);"><i class="fa fa-fast-backward"></i></a>
+    <a href="#" onclick="${className}_toPage(${className}_page - 5 > 0 ? ${className}_page - 5 : 1);"><i class="fa fa-backward"></i></a>
+    <a href="#" onclick="${className}_toPage(${className}_page - 1 > 0 ? ${className}_page - 1 : ${className}_page);"><i class="fa fa-play fa-rotate-180"></i></a>
     <span class="page"></span> / <span class="total-pages"></span>
-    <a href="#" onclick="toPage(page + 1 < totalPages ? page + 1 : totalPages);"><i class="fa fa-play"></i></a>
-    <a href="#" onclick="toPage(page + 5 < totalPages ? page + 5 : totalPages);"><i class="fa fa-forward"></i></a>
-    <a href="#" onclick="toPage(totalPages);"><i class="fa fa-fast-forward"></i></a>
+    <a href="#" onclick="${className}_toPage(${className}_page + 1 < ${className}_totalPages ? ${className}_page + 1 : ${className}_totalPages);"><i class="fa fa-play"></i></a>
+    <a href="#" onclick="${className}_toPage(${className}_page + 5 < ${className}_totalPages ? ${className}_page + 5 : ${className}_totalPages);"><i class="fa fa-forward"></i></a>
+    <a href="#" onclick="${className}_toPage(${className}_totalPages);"><i class="fa fa-fast-forward"></i></a>
 </nav>
-<div class="projects pure-g"></div>
+<div class="${className}_projects pure-g"></div>
 <script>
-    var projectsDiv = document.querySelector('.projects'),
-        pageSpan = document.querySelector('.paginator .page'),
-        totalPagesSpan = document.querySelector('.paginator .total-pages'),
-        page = 1,
-        totalPages = 1,
-        pageSize = ${pageSize} || 15;
+    var ${className}_projectsDiv = document.querySelector('.${className}_projects'),
+        ${className}_pageSpan = document.querySelector('.${className}_paginator .page'),
+        ${className}_totalPagesSpan = document.querySelector('.${className}_paginator .total-pages'),
+        ${className}_page = 1,
+        ${className}_totalPages = 1,
+        ${className}_pageSize = ${pageSize} || 15;
 
-    toPage(1);
+    ${className}_toPage(1);
 
-    function toPage (pageNumber) {
-        projectsDiv.innerHTML = '';
-        beganLoading('.projects');
+    function ${className}_toPage (pageNumber) {
+        ${className}_projectsDiv.innerHTML = '';
+        beganLoading('.${className}_projects');
         SnapCloud.getPublishedProjectList(
             $user,
             pageNumber,
-            pageSize,
+            ${className}_pageSize,
             getUrlParameter('term') || null,
             function (response) {
                 setTitle($title);
-                totalPages = response.pages;
-                totalPagesSpan.textContent = totalPages;
+                ${className}_totalPages = response.pages;
+                ${className}_totalPagesSpan.textContent = ${className}_totalPages;
                 if (response.projects[0]) {
                     response.projects.forEach(function (project) {
-                        projectsDiv.append(
+                        ${className}_projectsDiv.append(
                                 newProjectDiv(
                                 project,
                                 {
@@ -46,14 +47,14 @@
                                 }));
                     });
                 }
-                doneLoading('.projects');
+                doneLoading('.${className}_projects');
             },
             function (error) {
                 genericError(error);
             },
             true // withThumbnail
         );
-        page = pageNumber;
-        pageSpan.textContent = pageNumber;
+        ${className}_page = pageNumber;
+        ${className}_pageSpan.textContent = pageNumber;
     };
 </script>
