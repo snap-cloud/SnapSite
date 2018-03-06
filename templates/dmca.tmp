@@ -22,5 +22,5 @@
 <small><em>(Text stolen from scratch.mit.edu).</em></small>
 
 <script>
-    setTitle('DMCA Policy - Snap! Build Your Own Blocks');
+    setTitle(localizer.localize('DMCA') + ' - Snap! Build Your Own Blocks');
 </script>

@@ -1,20 +1,19 @@
-<p>The <a href="http://snap.berkeley.edu/">snap.berkeley.edu</a> site is maintained by</p>
+<p>You can contact the development team at:</p>
 
 <div class="indent v-spaced">
-    <p>Bernat Romagosa</p>
-    <p>bernat@arduino.org</p>
+   <p><a href="mailto:snap-support@bjc.berkeley.edu">snap-support@bjc.berkeley.edu</a></p>
 </div>
 
-<p>Our cloud storage server is maintained for us by the <a href="http://miosoft.com/index.php?id=45">MioSoft Corporation</a>:</ph>
+<p>For bugs and suggestions related to this site, please refer to our GitHub issue tracker:</p>
 
 <div class="indent v-spaced">
-    <p>MioSoft Corporation</p>
-    <p>U.S. Corporate Headquarters</p>
-    <p>33 East Main Street</p>
-    <p>Madison, WI 53703</p>
-    <p>608 467-0417</p>
+   <p><a target="_blank" href="https://github.com/bromagosa/SnapSite/issues">https://github.com/bromagosa/SnapSite/issues</a></p>
 </div>
+
+<p>The Snap<em>!</em> social site is free software released under the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPLv3</a> license.</p>
+<p>&copy; <span class="today"></span> by <a href="http://romagosa.work" target="_blank">Bernat Romagosa</a>, with contributions by <a href="http://michaelball.co/" target="_blank">Michael Ball</a>.</p>
 
 <script>
-    setTitle('Contact Us - Snap! Build Your Own Blocks');
+    setTitle(localizer.localize('Contact Us') + ' - Snap! Build Your Own Blocks');
+    document.querySelector('.today').innerText = (new Date()).getFullYear();
 </script>

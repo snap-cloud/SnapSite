@@ -15,10 +15,9 @@
 <p>If you wish to save the projects you create on our cloud server, then you must create an account on this site so that your storage is separate from other people's storage. When you create an account, we collect your email address or, if you are under 13, your parent's or guardian's email address. We use your address for three purposes:
 
 <ul class="indent bullets">
-  <li>When you sign up for an account, we immediately send you
-a confirming email with your account's initial password.</li>
-  <li>If you forget your password, we use your address to send
-you a password-reset email.</li>
+  <li>When you sign up for an account, we immediately send you a confirming email with a verification link.</li>
+  <li>If you ask for a new verification link, we will also send it to your email account.</li>
+  <li>If you forget your password, we use your address to send you a password-reset email.</li>
   <li>If your account is suspended for violation of our <a href="tos.html">Terms of Service</a>, we will notify you by email.</li>
 </ul>
 
@@ -62,5 +61,5 @@ you a password-reset email.</li>
 @content
 
 <script>
-    setTitle('Privacy Policy - Snap! Build Your Own Blocks');
+    setTitle(localizer.localize('Privacy') + ' - Snap! Build Your Own Blocks');
 </script>
