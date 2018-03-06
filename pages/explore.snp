@@ -2,7 +2,6 @@ base
 explore
 @param user="null"
 @param title='"Explore - Snap! Build Your Own Blocks"'
-@param header=null
 @param pageSize=15
 projectgrid
 base-bottom

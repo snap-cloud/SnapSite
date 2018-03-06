@@ -10,3 +10,4 @@ projectgrid
 @param header='Popular Projects'
 projectgrid
 base-bottom
+@param header=''
