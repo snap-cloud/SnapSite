@@ -79,7 +79,7 @@
 <h2 localizable></h2>
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
-<nav class="liked_paginator">
+<nav class="liked paginator">
     <a href="#" onclick="liked_toPage(1);"><i class="fa fa-fast-backward"></i></a>
     <a href="#" onclick="liked_toPage(liked_page - 5 > 0 ? liked_page - 5 : 1);"><i class="fa fa-backward"></i></a>
     <a href="#" onclick="liked_toPage(liked_page - 1 > 0 ? liked_page - 1 : liked_page);"><i class="fa fa-play fa-rotate-180"></i></a>
@@ -88,11 +88,11 @@
     <a href="#" onclick="liked_toPage(liked_page + 5 < liked_totalPages ? liked_page + 5 : liked_totalPages);"><i class="fa fa-forward"></i></a>
     <a href="#" onclick="liked_toPage(liked_totalPages);"><i class="fa fa-fast-forward"></i></a>
 </nav>
-<div class="liked_projects pure-g"></div>
+<div class="liked projects pure-g"></div>
 <script>
-    var liked_projectsDiv = document.querySelector('.liked_projects'),
-        liked_pageSpan = document.querySelector('.liked_paginator .page'),
-        liked_totalPagesSpan = document.querySelector('.liked_paginator .total-pages'),
+    var liked_projectsDiv = document.querySelector('.liked.projects'),
+        liked_pageSpan = document.querySelector('.liked.paginator .page'),
+        liked_totalPagesSpan = document.querySelector('.liked.paginator .total-pages'),
         liked_page = 1,
         liked_totalPages = 1,
         liked_pageSize = 15 || 15;
@@ -101,7 +101,7 @@
 
     function liked_toPage (pageNumber) {
         liked_projectsDiv.innerHTML = '';
-        beganLoading('.liked_projects');
+        beganLoading('.liked.projects');
         SnapCloud.getPublishedProjectList(
             pageUser(),
             pageNumber,
@@ -125,7 +125,7 @@
                                 }));
                     });
                 }
-                doneLoading('.liked_projects');
+                doneLoading('.liked.projects');
             },
             function (error) {
                 genericError(error);
