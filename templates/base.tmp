@@ -32,7 +32,6 @@
                     <a class="pure-u-1-12" href="index.html"><img src="img/topbar-logo.png" class="logo"/></a>
                     <li class="pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link run" target="_blank">Run Snap<em>!</em></a></li>
                     <li class="pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="explore.html">Explore</a></li>
-                    <li class="pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="https://snapforum.cs10.org/">Forum</a></li>
                     <i class="pure-u-1-6"></i>
                     <div class="search pure-u-1-6">
                         <form action="search.html">
@@ -65,10 +64,6 @@
                                     <a class="pure-menu-link" href="" onclick="localizer.setLanguage('es');">Castellano</a>
                                 </ul>
                             </li>
-                            <hr>
-                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="dmca.html">DMCA</a></li>
-                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="privacy.html">Privacy</a></li>
-                            <li class="pure-menu-item"><a localizable class="pure-menu-link" href="contact.html">Contact Us</a></li>
                         </ul>
                     </li>
                 </ul>

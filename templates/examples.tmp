@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="style/project.css">
+<h1>Examples</h1>
+<div class="projects pure-g">
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=tree%20animation">
+            <img src="https://snap.berkeley.edu/snap-web/animated-tree.gif"><span class="project-name">Animated tree</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=PathFinder">
+            <img src="https://snap.berkeley.edu/snap-web/pathfinder.png"><span class="project-name">Path Finder</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=Space%20Invaders">
+            <img src="https://snap.berkeley.edu/snap-web/invaders.png"><span class="project-name">Space Invaders</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=Snake">
+            <img src="https://snap.berkeley.edu/snap-web/snake.png"><span class="project-name">Snake</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=Menuet">
+            <img src="https://snap.berkeley.edu/snap-web/menuet.png"><span class="project-name">Menuet</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=bh&amp;ProjectName=Tree">
+            <img src="https://snap.berkeley.edu/snap-web/tree.gif"><span class="project-name">Interactive tree</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=swimmer">
+            <img src="https://snap.berkeley.edu/snap-web/swim.gif"><span class="project-name">Swimmer</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=bh&amp;ProjectName=count%20change">
+            <img src="https://snap.berkeley.edu/snap-web/count-change.png"><span class="project-name">Count change</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=y%20combinator">
+            <img src="https://snap.berkeley.edu/snap-web/Y.png"><span class="project-name">Y combinator</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=bh&amp;ProjectName=animal%20game">
+            <img src="https://snap.berkeley.edu/snap-web/animal.png"><span class="project-name">Animal game</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=joke_self">
+            <img src="https://snap.berkeley.edu/snap-web/knock-knock.png"><span class="project-name">Joke</span></a></div>
+
+    <div class="project small pure-u-1-5">
+        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=Roman">
+            <img src="https://snap.berkeley.edu/snap-web/roman.png"><span class="project-name">Roman numerals</span></a></div>
+</div>

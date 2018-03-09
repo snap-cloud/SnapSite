@@ -70,77 +70,51 @@
             </div>
         </div>
         <div id="wrapper">
-<div class="bubble-wrap pure-g" style="margin-bottom: 2em">
-    <div class="pure-u-1-5" style="text-align: center"><img src="img/alonzo.svg"/></div>
-    <div class="bubble pure-u-3-5">
-        <p>This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.</p>
-        <p>Enjoy the preview, and thank you for your understanding!</p>
-    </div>
-</div>
-<h1>Welcome to Snap<em>!</em></h1>
-<div class="indent bigger">Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.</div>
-<div class="indent bigger less-v-spaced">Take a look at some <a href="examples.html">examples</a> or check out the <a href="manual.html">reference manual</a> to learn more about it, or head straight into the <a href="https://snap.berkeley.edu/run">editor</a> and start programming right away!</div>
-<br class="v-spaced">
-<h2 localizable>Latest Projects</h2>
-<script src="js/project.js"></script>
-<link rel="stylesheet" href="style/project.css">
-<nav class="latest paginator">
-    <a href="#" onclick="latest_toPage(1);"><i class="fa fa-fast-backward"></i></a>
-    <a href="#" onclick="latest_toPage(latest_page - 5 > 0 ? latest_page - 5 : 1);"><i class="fa fa-backward"></i></a>
-    <a href="#" onclick="latest_toPage(latest_page - 1 > 0 ? latest_page - 1 : latest_page);"><i class="fa fa-play fa-rotate-180"></i></a>
-    <span class="page"></span> / <span class="total-pages"></span>
-    <a href="#" onclick="latest_toPage(latest_page + 1 < latest_totalPages ? latest_page + 1 : latest_totalPages);"><i class="fa fa-play"></i></a>
-    <a href="#" onclick="latest_toPage(latest_page + 5 < latest_totalPages ? latest_page + 5 : latest_totalPages);"><i class="fa fa-forward"></i></a>
-    <a href="#" onclick="latest_toPage(latest_totalPages);"><i class="fa fa-fast-forward"></i></a>
-</nav>
-<div class="latest projects pure-g"></div>
-<script>
-    var latest_projectsDiv = document.querySelector('.latest.projects'),
-        latest_pageSpan = document.querySelector('.latest.paginator .page'),
-        latest_totalPagesSpan = document.querySelector('.latest.paginator .total-pages'),
-        latest_page = 1,
-        latest_totalPages = 1,
-        latest_pageSize = 5 || 15;
+<h1>About Snap<em>!</em></h1>
+<p>Snap<em>!</em> (formerly BYOB) is a visual, drag-and-drop programming language. It is an extended reimplementation of <a href="https://scratch.mit.edu/">Scratch</a> (a project of the <a href="https://llk.media.mit.edu/">Lifelong Kindergarten Group</a> at the <a href="https://media.mit.edu/">MIT Media Lab</a>) that allows you to Build Your Own Blocks. It also features first class<sup><a href="#firstclass">[1]</a></sup> lists, first class procedures, and continuations<sup><a href="#continuations">[2]</a></sup>. These added capabilities make it suitable for a serious introduction to computer science for high school or college students.</p>
 
-    latest_toPage(1);
+<p>In the example below, a Snap<em>!</em> user can create new control structures, such as a <code>for</code> loop (which isn’t built into the language), by writing a script as shown at the left. Once the <code>for</code> block is created, it can be used even to make nested loops, as shown in the center. A sprite carries out that script at the right.</p> </section>
 
-    function latest_toPage (pageNumber) {
-        latest_projectsDiv.innerHTML = '';
-        beganLoading('.latest.projects');
-        SnapCloud.getPublishedProjectList(
-            null,
-            pageNumber,
-            latest_pageSize,
-            getUrlParameter('term') || null,
-            function (response) {
-                setTitle("Snap! Build Your Own Blocks");
-                latest_totalPages = response.pages;
-                latest_totalPagesSpan.textContent = latest_totalPages;
-                if (response.projects[0]) {
-                    response.projects.forEach(function (project) {
-                        latest_projectsDiv.append(
-                                newProjectDiv(
-                                project,
-                                {
-                                    size: 'small',
-                                    gridSize: 5,
-                                    extraFields: {
-                                        author: 'username'
-                                    }
-                                }));
-                    });
-                }
-                doneLoading('.latest.projects');
-            },
-            function (error) {
-                genericError(error);
-            },
-            true // withThumbnail
-        );
-        latest_page = pageNumber;
-        latest_pageSpan.textContent = pageNumber;
-    };
-</script>
+<p><img src="https://snap.berkeley.edu/comp09/forbanner.png"/></p>
+
+<p>Snap<em>!</em> runs in your browser. It is implemented using Javascript, which is designed to limit the ability of browser-based software to affect your computer, so it’s safe to run even other people’s projects, even if you don’t trust our competence or good intentions.</p> <p>Snap<em>!</em> is presented by the University of California at Berkeley. It was developed by Jens Mönig at MioSoft Corporation (now at SAP), with design input and documentation by Brian Harvey at Berkeley, and contributions by students at Berkeley and elsewhere.</p>
+
+
+<h2>First Class Data Types</h2>
+
+<p>A data type is considered <em>first class</em> in a programming language if instances of that type can be</p>
+
+<ul class="indent bullets not-v-spaced">
+    <li>the value of a variable</li>
+    <li>a member of an aggregate (array, list, etc.)</li>
+    <li>an argument (input) to a procedure</li>
+    <li>the value returned by a procedure</li>
+    <li>used without having a name (being the value of a variable)</li>
+</ul>
+
+<br/>
+<p>For example, numbers are first class in every language. Text strings are first class in many languages, but not in C, in which the relevant first class type is “pointer to a character.”</p>
+
+<p>One of the limitations of Scratch as a language for computer science education is that its lists are not first class, so you can’t have a list of lists. Making lists first class is enough of an extension to Scratch to allow the creation of any other <strong>data structures</strong> (trees, heaps, hash tables, dictionaries, and so on) in user-defined Snap<em>!</em> code,
+implemented as lists of lists.</p>
+
+<p>A less obvious limitation, because it is shared by many “adult” programming languages, is that procedures (blocks) are not first class. Making blocks first class in Snap<em>!</em> allows us to create <strong>control structures</strong>, such as the <code>for</code> block above, as user-defined Snap<em>!</em> code.  In particular, users can write the higher order list functions that are essential in the functional programming style.</p>
+
+<p>Without<a name="continuations">&nbsp;</a>being doctrinaire about it, we believe that in general, anything that’s in a language at all should be first class in that language. The Snap<em>!</em> object system, coming in version 4.1, introduces first class sprites, first class costumes, first class sounds, and first class colors.</p>
+
+
+<h2>Continuations</h2>
+
+<p>One example of a data type that exists behind the scenes in pretty much every programming language is the stack frame, the data structure that keeps track of active procedure calls and their local variables. Following Scheme, we make these data available to the programmer in the form of a first class data type called a <em>continuation</em>, which represents “the work still to be done after this point” as a callable procedure. Using continuations, the Snap<em>!</em> programmer can implement nonlocal control mechanisms such as catch/throw and threads.</p>
+
+
+<h2>Visual Representation for Advanced Ideas</h2>
+
+<img style="float:right; margin-left:10pt" src="https://snap.berkeley.edu/veelist.png">
+
+<p>Part of the genius of Scratch is the way it uses pictures to represent ideas such as loops, Booleans, and threads. The three different block shapes, for example, aren’t just a way to prevent syntax errors; they’re a way to <em>teach</em> the idea that some procedures return values and others don’t.</p>
+
+<p>In Snap<em>!</em> we extend this visual teaching to ideas that have previously been considered too hard for young learners. For example, the screenshot on our <a href="http://snap.berkeley.edu">home page</a> includes this picture of a <em>list of blocks</em>. Experienced Scratch programmers will never have seen anything quite like this before, but they recognize the pictorial representation of a list in Scratch, and they know what blocks look like, and so it’s immediately obvious to them what they’re seeing. They realize without explicit teaching that blocks, which they’ve until then used only as program control elements, can also be used as data.</p>
         </div>
         <div id="footer">
             <div class="links pure-g">

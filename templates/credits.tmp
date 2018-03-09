@@ -1,0 +1,16 @@
+<h1>Credits</h1>
+<h2>Snap<em>!</em> - Build Your Own Blocks</h2>
+<p>Snap<em>!</em> is inspired by <a href="https://scratch.mit.edu" target="_blank">Scratch</a> and written by Jens Mönig and Brian Harvey.</p>
+<p>© <span class="year"></span> by Jens Mönig and Brian Harvey.</p>
+
+<h2>Snap<em>!</em> Cloud</h2>
+<p>The Snap<em>!</em> <a href="https://cloud.snap.berkeley.edu/static/index.html" target="_blank">cloud</a> is written by Bernat Romagosa, with contributions by Michael Ball.</p>
+<p>© <span class="year"></span> by Bernat Romagosa.</p>
+
+<h2>Snap<em>!</em> Social Website</h2>
+<p>The Snap<em>!</em> <a href="/">website</a> is written by Bernat Romagosa.</p>
+<p>© <span class="year"></span> by Bernat Romagosa.</p>
+
+<script>
+    document.querySelectorAll('.year').forEach(function (each) { each.innerText = (new Date()).getFullYear(); })
+</script>

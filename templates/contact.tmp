@@ -10,10 +10,6 @@
    <p><a target="_blank" href="https://github.com/bromagosa/SnapSite/issues">https://github.com/bromagosa/SnapSite/issues</a></p>
 </div>
 
-<p>The Snap<em>!</em> social site is free software released under the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPLv3</a> license.</p>
-<p>&copy; <span class="today"></span> by <a href="http://romagosa.work" target="_blank">Bernat Romagosa</a>, with contributions by <a href="http://michaelball.co/" target="_blank">Michael Ball</a>.</p>
-
 <script>
     setTitle(localizer.localize('Contact Us') + ' - Snap! Build Your Own Blocks');
-    document.querySelector('.today').innerText = (new Date()).getFullYear();
 </script>

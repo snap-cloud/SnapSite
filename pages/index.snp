@@ -6,8 +6,5 @@ welcome
 @param className=latest
 @param header='Latest Projects'
 projectgrid
-@param className=liked
-@param header='Popular Projects'
-projectgrid
 base-bottom
 @param header=''

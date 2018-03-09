@@ -4,6 +4,7 @@
     padding-top: 2em;
     width: 1080px;
     margin: 0 auto;
+    flex: 1 0 auto;
 }
 
 /* TOP BAR */
@@ -115,6 +116,32 @@
 
 #top-bar .languages {
     margin-left: 30px;
+}
+
+/* FOOTER */
+
+#footer {
+    background: #2c3e50;
+    padding: 1em;
+    color: #e3dedb;
+    margin-top: 3em;
+    flex-shrink: 0;
+    font-size: 0.75em;
+}
+
+#footer .links {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+#footer .links div {
+    padding: 0 1em;
+    box-sizing: border-box;
+}
+
+#footer a {
+    color: #e3dedb;
+    text-decoration: underline;
 }
 
 /* CUSTOM ALERT */

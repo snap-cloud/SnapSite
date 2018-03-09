@@ -1,3 +1,8 @@
+.bigger {
+    font-size: 1.2em;
+    line-height: 1.2em;
+}
+
 .indent {
     padding-left: 1.5em;
 }
@@ -6,9 +11,21 @@
     list-style-type: disc;
 }
 
+.not-v-spaced {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .v-spaced {
     margin-top: 2em;
     margin-bottom: 2em;
+}
+
+.less-v-spaced {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .loader {
