@@ -15,10 +15,10 @@
 <p>If you wish to save the projects you create on our cloud server, then you must create an account on this site so that your storage is separate from other people's storage. When you create an account, we collect your email address or, if you are under 13, your parent's or guardian's email address. We use your address for three purposes:
 
 <ul class="indent bullets">
-  <li>When you sign up for an account, we immediately send you a confirming email with a verification link.</li>
-  <li>If you ask for a new verification link, we will also send it to your email account.</li>
-  <li>If you forget your password, we use your address to send you a password-reset email.</li>
-  <li>If your account is suspended for violation of our <a href="tos.html">Terms of Service</a>, we will notify you by email.</li>
+ <li>When you sign up for an account, we immediately send you a confirming email with a verification link.</li>
+ <li>If you ask for a new verification link, we will also send it to your email account.</li>
+ <li>If you forget your password, we use your address to send you a password-reset email.</li>
+ <li>If your account is suspended for violation of our <a href="tos.html">Terms of Service</a>, we will notify you by email.</li>
 </ul>
 
 <p>We do not use your address for any other purpose. You will never receive marketing emails of any kind through this site, neither from us nor from third parties.</p>
@@ -27,7 +27,7 @@
 
 <h3>Information in your projects</h3>
 
-<p>You can save projects on our server for your personal use, or you can explicitly choose to share a project with the other users of this site.</p>  
+<p>You can save projects on our server for your personal use, or you can explicitly choose to share a project with the other users of this site.</p> 
 <p>We will never examine projects that you save privately on our site without your explicit permission (for example, if you report a bug that affects one of your projects). Again, the only exception is that we might be compelled to provide information to government agencies.</p>
 <p>Projects that you choose to share are available for anyone to examine. We may examine shared projects for research purposes. <i>We urge you strongly not to include personally identifying information in your shared projects!</i> For example, if you post a project that says "today is my birthday" you are telling the entire world your date of birth, which is a very important piece of personally identifying information.</p>
 <p>If we are notified by a third party that your shared project includes their copyrighted content (such as a musical performance), we are required by law to investigate, and may revoke the shared status of that project.</p>
@@ -38,11 +38,11 @@
 
 <h3>Server logging</h3>
 
-<p>This site is hosted at the University of California, Berkeley, Electrical Engineering and Computer Sciences Department.  This web server collects the following information: Internet Protocol (IP) address of computer being used; web pages requested; referring web page; browser used; date and time; and statistics identifying particular IP addresses from which our websites are accessed. We do not associate this data to individual user identities.</p>
+<p>This site is hosted at the University of California, Berkeley, Electrical Engineering and Computer Sciences Department. This web server collects the following information: Internet Protocol (IP) address of computer being used; web pages requested; referring web page; browser used; date and time; and statistics identifying particular IP addresses from which our websites are accessed. We do not associate this data to individual user identities.</p>
 
 <p>This information is used to improve the technical quality of the site, and may be used for investigation of deliberate attempts to deny the use of our site to others. We do not log personally identifiable information, except that your IP address may indicate your Internet service provider and your general geographic area.</p>
 
-<p>The server for cloud storage of user accounts is maintained for us by the <a href="http://miosoft.com/">MioSoft</a> Corporation, which has agreed to follow this privacy policy.</p>
+<p>The server for cloud storage of user accounts is maintained by us and follows the same privacy guidelines.</p>
 
 <h3>Google Analytics</h3>
 
