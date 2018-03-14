@@ -38,7 +38,21 @@ function downloadProject (project) {
         },
         function (response) {
             genericError(response.errors[0], 'Could not fetch project');
-    });
+        }
+    );
+};
+
+function remixProject (project) {
+    SnapCloud.remixProject(
+        project.projectname,
+        project.username,
+        function () {
+            location.href = projectURL(sessionStorage.username, project.projectname) + '&editMode&noRun';
+        },
+        function (response) {
+            genericError(response.errors[0], 'Could not remix project');
+        }
+    );
 };
 
 // Could probably refactor these. Not sure it's worth the hassle though.
