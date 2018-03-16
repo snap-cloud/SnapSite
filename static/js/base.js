@@ -1,4 +1,4 @@
-var snapURL = location.protocol + '//romagosa.work/Snap/snap.html';
+var snapURL = '/snap/snap.html';
     modules = [], // compatibility with cloud.js
     nop = function () {},
     localizer = new Localizer(),
