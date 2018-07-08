@@ -75,41 +75,41 @@
 <h2 localizable></h2>
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
-<nav class="latest paginator">
-    <a href="#" onclick="latest_toPage(1);"><i class="fa fa-fast-backward"></i></a>
-    <a href="#" onclick="latest_toPage(latest_page - 5 > 0 ? latest_page - 5 : 1);"><i class="fa fa-backward"></i></a>
-    <a href="#" onclick="latest_toPage(latest_page - 1 > 0 ? latest_page - 1 : latest_page);"><i class="fa fa-play fa-rotate-180"></i></a>
+<nav class=" paginator">
+    <a href="#" onclick="_toPage(1);"><i class="fa fa-fast-backward"></i></a>
+    <a href="#" onclick="_toPage(_page - 5 > 0 ? _page - 5 : 1);"><i class="fa fa-backward"></i></a>
+    <a href="#" onclick="_toPage(_page - 1 > 0 ? _page - 1 : _page);"><i class="fa fa-play fa-rotate-180"></i></a>
     <span class="page"></span> / <span class="total-pages"></span>
-    <a href="#" onclick="latest_toPage(latest_page + 1 < latest_totalPages ? latest_page + 1 : latest_totalPages);"><i class="fa fa-play"></i></a>
-    <a href="#" onclick="latest_toPage(latest_page + 5 < latest_totalPages ? latest_page + 5 : latest_totalPages);"><i class="fa fa-forward"></i></a>
-    <a href="#" onclick="latest_toPage(latest_totalPages);"><i class="fa fa-fast-forward"></i></a>
+    <a href="#" onclick="_toPage(_page + 1 < _totalPages ? _page + 1 : _totalPages);"><i class="fa fa-play"></i></a>
+    <a href="#" onclick="_toPage(_page + 5 < _totalPages ? _page + 5 : _totalPages);"><i class="fa fa-forward"></i></a>
+    <a href="#" onclick="_toPage(_totalPages);"><i class="fa fa-fast-forward"></i></a>
 </nav>
-<div class="latest projects pure-g"></div>
+<div class=" projects pure-g"></div>
 <script>
-    var latest_projectsDiv = document.querySelector('.latest.projects'),
-        latest_pageSpan = document.querySelector('.latest.paginator .page'),
-        latest_totalPagesSpan = document.querySelector('.latest.paginator .total-pages'),
-        latest_page = 1,
-        latest_totalPages = 1,
-        latest_pageSize = 15 || 15;
+    var _projectsDiv = document.querySelector('..projects'),
+        _pageSpan = document.querySelector('..paginator .page'),
+        _totalPagesSpan = document.querySelector('..paginator .total-pages'),
+        _page = 1,
+        _totalPages = 1,
+        _pageSize = 15 || 15;
 
-    latest_toPage(1);
+    _toPage(1);
 
-    function latest_toPage (pageNumber) {
-        latest_projectsDiv.innerHTML = '';
-        beganLoading('.latest.projects');
+    function _toPage (pageNumber) {
+        _projectsDiv.innerHTML = '';
+        beganLoading('..projects');
         SnapCloud.getPublishedProjectList(
             null,
             pageNumber,
-            latest_pageSize,
+            _pageSize,
             getUrlParameter('term') || null,
             function (response) {
                 setTitle("Explore - Snap! Build Your Own Blocks");
-                latest_totalPages = response.pages;
-                latest_totalPagesSpan.textContent = latest_totalPages;
+                _totalPages = response.pages;
+                _totalPagesSpan.textContent = _totalPages;
                 if (response.projects[0]) {
                     response.projects.forEach(function (project) {
-                        latest_projectsDiv.append(
+                        _projectsDiv.append(
                                 newProjectDiv(
                                 project,
                                 {
@@ -121,15 +121,15 @@
                                 }));
                     });
                 }
-                doneLoading('.latest.projects');
+                doneLoading('..projects');
             },
             function (error) {
                 genericError(error);
             },
             true // withThumbnail
         );
-        latest_page = pageNumber;
-        latest_pageSpan.textContent = pageNumber;
+        _page = pageNumber;
+        _pageSpan.textContent = pageNumber;
     };
 </script>
         </div>
