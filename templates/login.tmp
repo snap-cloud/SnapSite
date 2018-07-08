@@ -46,6 +46,7 @@
             password,
             persist,
             function (username, isadmin) {
+                // TODO: this should handle verification.
                 sessionStorage.username = username;
                 sessionStorage.isadmin = isadmin;
                 window.location.href = redirectPath();
