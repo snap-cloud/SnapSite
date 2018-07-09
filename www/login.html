@@ -101,6 +101,12 @@
 <script>
     setTitle(localizer.localize('Log In') + ' - Snap! Build Your Own Blocks');
 
+    function redirectPath() {
+        var defaultPath = 'index.html';
+        var redirect_to = getUrlParameter('redirect_to');
+        return redirect_to || defaultPath;
+    }
+
     document.querySelector('form#login').addEventListener('submit', function (event) {
         var username = this.elements['username'].value,
             password = this.elements['password'].value,
@@ -115,7 +121,7 @@
             function (username, isadmin) {
                 sessionStorage.username = username;
                 sessionStorage.isadmin = isadmin;
-                window.location.href = 'index.html';
+                window.location.href = redirectPath();
             },
             function (response) {
                 genericError(
