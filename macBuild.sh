@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #   ========
 #   Snippets
@@ -79,6 +79,7 @@ function build() {
     cp -R static/* www
 
     rm -f tmp.html
+    rm -f iconv.out
     echo "Done."
 }
 
@@ -116,8 +117,8 @@ if test -n "$watch" -o -n "$w"; then
     declare -A lasttimes
     while sleep 1; do
         # ignores hidden files and dirs (./.*) and the www folder
-        for file in `find -type f | grep -v "^\./\." | grep -v "./www/.*"`; do
-            time=`stat -c %Z "$file"`
+        for file in `find . -type f | grep -v "^\./\." | grep -v "./www/.*"`; do
+            time=`stat -f %Z "$file"`
 
             if [ -z ${lasttimes[$file]} ]; then
                 lasttimes["$file"]=$time
