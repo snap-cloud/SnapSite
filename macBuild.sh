@@ -30,6 +30,13 @@
 # parse parameters
 while echo $1 | grep ^- > /dev/null; do eval $( echo $1 | sed 's/-//g' | sed 's/=.*//g' | tr -d '\012')=$( echo $1 | sed 's/.*=//g' | tr -d '\012'); shift; done
 
+# Platform specific argument tweaks.
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    stat_find='-c'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    stat_find='-f'
+fi
+
 # iterate over all .snp page descriptor files
 function build() {
     for page in `ls pages/*.snp`; do
@@ -118,7 +125,7 @@ if test -n "$watch" -o -n "$w"; then
     while sleep 1; do
         # ignores hidden files and dirs (./.*) and the www folder
         for file in `find . -type f | grep -v "^\./\." | grep -v "./www/.*"`; do
-            time=`stat -f %Z "$file"`
+            time=`stat $stat_find %Z "$file"`
 
             if [ -z ${lasttimes[$file]} ]; then
                 lasttimes["$file"]=$time
