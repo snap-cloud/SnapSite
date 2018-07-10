@@ -1,17 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#   =====================
-#   Snap! Social Platform
-#   =====================
+#   ========
+#   Snippets
+#   ========
+#
+#   Snippets is Not (In Principle) a Perfect, Exhaustive Template System
 #
 #   Site builder
 #
 #   written by Bernat Romagosa
-#   bernat@snap4arduino.rocks
+#   bernat@romagosa.work
 #
-#   Copyright (C) 2017 by Bernat Romagosa
-#
-#   This file is part of the Snap! Social Platform.
+#   Copyright (C) 2018 by Bernat Romagosa
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -29,6 +29,13 @@
 
 # parse parameters
 while echo $1 | grep ^- > /dev/null; do eval $( echo $1 | sed 's/-//g' | sed 's/=.*//g' | tr -d '\012')=$( echo $1 | sed 's/.*=//g' | tr -d '\012'); shift; done
+
+# Platform specific argument tweaks.
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    stat_find='-c'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    stat_find='-f'
+fi
 
 # iterate over all .snp page descriptor files
 function build() {
@@ -65,12 +72,13 @@ function build() {
 
             if grep -q @content $html; then
                 # replace the @content string for the contents of the template file
-                sed -e '/@content/ {' -e 'r tmp.html' -e 'd' -e '}' -i $html
+                sed -e '/@content/ {' -e 'r tmp.html' -e 'd' -e '}' -i "" $html
             else
                 cat tmp.html >> $html
             fi
             # fix char encoding in case sed has messed it up
-            iconv -f `file -i $html | cut -f2 -d=` -t utf-8 $html -o $html
+            iconv -f `file -I $html | cut -f2 -d=` -t UTF-8 $html > iconv.out
+            mv -f iconv.out $html
         done < "$page"
     done
 
@@ -78,6 +86,7 @@ function build() {
     cp -R static/* www
 
     rm -f tmp.html
+    rm -f iconv.out
     echo "Done."
 }
 
@@ -99,7 +108,7 @@ if test -n "$serve" -o -n "$s"; then
         runserver php -S 127.0.0.1:8080
     else
         echo "Could not find a way to serve static files. Please install one of the following:"
-        echo 
+        echo
         echo "Ruby"
         echo "Python"
         echo "NodeJS http-server module"
@@ -115,8 +124,8 @@ if test -n "$watch" -o -n "$w"; then
     declare -A lasttimes
     while sleep 1; do
         # ignores hidden files and dirs (./.*) and the www folder
-        for file in `find -type f | grep -v "^\./\." | grep -v "./www/.*"`; do
-            time=`stat -c %Z "$file"`
+        for file in `find . -type f | grep -v "^\./\." | grep -v "./www/.*"`; do
+            time=`stat $stat_find %Z "$file"`
 
             if [ -z ${lasttimes[$file]} ]; then
                 lasttimes["$file"]=$time
