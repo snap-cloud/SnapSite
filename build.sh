@@ -37,68 +37,64 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     stat_find='-f'
 fi
 
-function build_page() {
-    # page=$0;
-    # create an html file with the same name as the descriptor file
-    # see https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
-    filename="${page#pages/}"
-    html=www/"${filename%.*}".html
-    rm -f $html
-    touch $html
-
-    # process all descriptors in the descriptor file
-    while read -r descriptor
-    do
-        # check whether the current line defines parameter values
-        if [[ $descriptor == @param* ]]; then
-            # we remove everything after "@params " and execute it,
-            # then we jump to the next line
-            eval "export ${descriptor#@param }"
-            continue
-        fi
-
-        # find the template(s) matching the descriptor, possibly more
-        # than one per line, separated by semicolons
-        declare -a template_names="(${descriptor//;/ })";
-        rm -f tmp.html
-        for template in ${template_names[*]}; do
-            # Replace @include inside a template
-            include_pattern='(.*)@include=(.*)'
-            rm -f template.html
-            while IFS= read line; do
-                if [[ $line =~ $include_pattern ]]; then
-                    # Preserve indents; prefix each line with spacing.
-                    sed -e "s/^/${BASH_REMATCH[1]}/" templates/${BASH_REMATCH[2]}.tmp >> template.html
-                else
-                    echo "$line" >> template.html
-                fi
-            done < "templates/$template.tmp"
-
-            # append to the temporary HTML file, evaluating any possible params
-            envsubst < template.html >> tmp.html
-            rm -f template.html
-        done
-
-        if grep -q @content $html; then
-            # replace the @content string for the contents of the template file
-            sed -e '/@content/ {' -e 'r tmp.html' -e 'd' -e '}' -i "" $html
-        else
-            cat tmp.html >> $html
-        fi
-        # fix char encoding in case sed has messed it up
-        iconv -f `file -I $html | cut -f2 -d=` -t UTF-8 $html > iconv.out
-        mv -f iconv.out $html
-    done < "$page"
-
-    rm -f tmp.html
-    rm -f iconv.out
-}
-
 # iterate over all .snp page descriptor files
 function build() {
-    for page in `ls pages/ad*.snp`; do
+    for page in `ls pages/*.snp`; do
         echo "Building $page..."
-        build_page $page
+
+        # create an html file with the same name as the descriptor file
+        # see https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
+        filename="${page#pages/}"
+        html=www/"${filename%.*}".html
+        rm -f $html
+        touch $html
+
+        # process all descriptors in the descriptor file
+        while read -r descriptor
+        do
+            # check whether the current line defines parameter values
+            if [[ $descriptor == @param* ]]; then
+                # we remove everything after "@params " and execute it,
+                # then we jump to the next line
+                eval "export ${descriptor#@param }"
+                continue
+            fi
+
+            # find the template(s) matching the descriptor, possibly more
+            # than one per line, separated by semicolons
+            declare -a template_names="(${descriptor//;/ })";
+            rm -f tmp.html
+            for template in ${template_names[*]}; do
+                # Replace @include inside a template
+                include_pattern='(.*)@include=(.*)'
+                rm -f template.html
+                while IFS= read line; do
+                    if [[ $line =~ $include_pattern ]]; then
+                        # Preserve indents; prefix each line with spacing.
+                        sed -e "s/^/${BASH_REMATCH[1]}/" templates/${BASH_REMATCH[2]}.tmp >> template.html
+                    else
+                        echo "$line" >> template.html
+                    fi
+                done < "templates/$template.tmp"
+
+                # append to the temporary HTML file, evaluating any possible params
+                envsubst < template.html >> tmp.html
+                rm -f template.html
+            done
+
+            if grep -q @content $html; then
+                # replace the @content string for the contents of the template file
+                sed -e '/@content/ {' -e 'r tmp.html' -e 'd' -e '}' -i "" $html
+            else
+                cat tmp.html >> $html
+            fi
+            # fix char encoding in case sed has messed it up
+            iconv -f `file -I $html | cut -f2 -d=` -t UTF-8 $html > iconv.out
+            mv -f iconv.out $html
+        done < "$page"
+
+        rm -f tmp.html
+        rm -f iconv.out
     done
 
     # copy over all static files
