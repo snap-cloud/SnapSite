@@ -62,9 +62,23 @@ function build_page() {
         declare -a template_names="(${descriptor//;/ })";
         rm -f tmp.html
         for template in ${template_names[*]}; do
+            template_path="templates/$template.tmp"
+
+            # Replace @include with templates
+            include_name='(.*)@include=(.*)'
+            rm -f template.html
+            while IFS= read line; do
+                if [[ $line =~ $include_name ]]; then
+                    echo "MATCHED ${BASH_REMATCH[1]}"
+                    sed -e "s/^/${BASH_REMATCH[1]}/" templates/${BASH_REMATCH[2]}.tmp >> template.html
+                else
+                    echo "$line" >> template.html
+                fi
+            done < "$template_path"
+
             # append to the temporary HTML file, evaluating any possible params
-            envsubst < templates/$template.tmp >> tmp.html
-            # cat templates/$template.tmp >> tmp.html
+            envsubst < template.html >> tmp.html
+            rm -f template.html
         done
 
         if grep -q @content $html; then
@@ -77,6 +91,9 @@ function build_page() {
         iconv -f `file -I $html | cut -f2 -d=` -t UTF-8 $html > iconv.out
         mv -f iconv.out $html
     done < "$page"
+
+    rm -f tmp.html
+    rm -f iconv.out
 }
 
 # iterate over all .snp page descriptor files
@@ -88,9 +105,6 @@ function build() {
 
     # copy over all static files
     cp -R static/* www
-
-    rm -f tmp.html
-    rm -f iconv.out
     echo "Done."
 }
 
