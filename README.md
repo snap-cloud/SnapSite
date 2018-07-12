@@ -6,6 +6,18 @@ The social website for the Snap! programming language/environment
 
 This site is powered by a super simple home-brewed page descriptor system I named **Snippets**. Check it out at [https://github.com/bromagosa/Snippets](https://github.com/bromagosa/Snippets).
 
+To build the site, do:
+
+```
+$ Snippets/build.sh
+```
+
+You can also start a webserver with `-s`, and watch changes for a live-reload experience with `-w`:
+
+```
+$ Snippets/build.sh -w -s
+```
+
 ## Third Party Packages
 
 * **[SnapCloud](https://github.com/bromagosa/SnapCloud)** by [Bernat Romagosa](https://bromagosa.github.io)
