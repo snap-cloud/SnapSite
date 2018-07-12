@@ -1,6 +1,6 @@
 <html>
     <head>
-        <meta charset="UTF-8">
+        @include=head
         <title>Snap! Build Your Own Blocks</title>
         <meta name="description" content="The Snap! social platform">
         <meta name="author" content="Bernat Romagosa">
