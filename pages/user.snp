@@ -4,4 +4,4 @@ user
 @param title="pageUser() + \"'s public projects - Snap! Build Your Own Blocks\""
 @param pageSize=15
 projectgrid
-base-bottom
+

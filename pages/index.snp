@@ -6,5 +6,5 @@ welcome
 @param className=latest
 @param header='Latest Projects'
 projectgrid
-base-bottom
+
 @param header=''
