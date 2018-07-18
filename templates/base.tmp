@@ -25,7 +25,7 @@
     </head>
     <body>
         <script type="text/javascript" src="libs/custom-alert.min.js"></script>
-            <script>new customAlert();</script>
+        <script>new customAlert();</script>
         <div id="loading"><i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i></div>
         @include=navigation_bar
         <div id="wrapper">
