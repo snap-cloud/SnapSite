@@ -6,5 +6,4 @@ welcome
 @param className=latest
 @param header='Latest Projects'
 projectgrid
-
 @param header=''
