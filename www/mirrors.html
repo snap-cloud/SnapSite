@@ -4,6 +4,7 @@
         <title>Snap! Build Your Own Blocks</title>
         <meta name="description" content="The Snap! social platform">
         <meta name="author" content="Bernat Romagosa">
+        <meta name="snap-cloud-domain" location="https://cloud.snap.berkeley.edu">
         <link rel="icon" href="favicon.png">
 
         <!-- External libs, both stylesheets and JS -->
@@ -69,8 +70,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
-        <div id="wrapper">
+        </div>        <div id="wrapper">
 <h1>Mirrors</h1>
 <p>If <a>snap.berkeley.edu</a> is ever unavailable, you can run Snap<em>!</em> at any of these mirror sites:</p>
 <p class="indent"><a href="http://bjc.edc.org/snapsource/snap.html">http://bjc.edc.org/snapsource/snap.html</a></p>
@@ -113,8 +113,7 @@
                     <p><a localizable href="tos.html">Terms of Service</a></p>
                 </div>
             </div>
-        </div>
-    </body>
+        </div>    </body>
     <script>
     SnapCloud.genericError = genericError;
     document.querySelector('#top-bar .run').href = snapURL;
@@ -123,7 +122,7 @@
             function (username, isadmin) {
                 sessionStorage.username = username;
                 sessionStorage.isadmin = isadmin;
-                initForUsername(username); 
+                initForUsername(username);
             }
         );
     } else {

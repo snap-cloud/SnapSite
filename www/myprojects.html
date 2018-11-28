@@ -4,6 +4,7 @@
         <title>Snap! Build Your Own Blocks</title>
         <meta name="description" content="The Snap! social platform">
         <meta name="author" content="Bernat Romagosa">
+        <meta name="snap-cloud-domain" location="https://cloud.snap.berkeley.edu">
         <link rel="icon" href="favicon.png">
 
         <!-- External libs, both stylesheets and JS -->
@@ -69,8 +70,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
-        <div id="wrapper">
+        </div>        <div id="wrapper">
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Projects</h1>
@@ -143,8 +143,7 @@
                     <p><a localizable href="tos.html">Terms of Service</a></p>
                 </div>
             </div>
-        </div>
-    </body>
+        </div>    </body>
     <script>
     SnapCloud.genericError = genericError;
     document.querySelector('#top-bar .run').href = snapURL;
@@ -153,7 +152,7 @@
             function (username, isadmin) {
                 sessionStorage.username = username;
                 sessionStorage.isadmin = isadmin;
-                initForUsername(username); 
+                initForUsername(username);
             }
         );
     } else {

@@ -4,6 +4,7 @@
         <title>Snap! Build Your Own Blocks</title>
         <meta name="description" content="The Snap! social platform">
         <meta name="author" content="Bernat Romagosa">
+        <meta name="snap-cloud-domain" location="https://cloud.snap.berkeley.edu">
         <link rel="icon" href="favicon.png">
 
         <!-- External libs, both stylesheets and JS -->
