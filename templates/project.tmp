@@ -7,9 +7,10 @@
             <h1></h1>
         </div>
     </div>
-    <div class="pure-g">
+    <div class="viewer pure-g">
         <!-- Project viewer -->
         <iframe class="pure-u-1-2" height="406" src=""> </iframe>
+        <i class="present-button fas fa-expand clickable" onclick="toggleFullScreen();"></i>
 
         <i class="pure-u-1-24"></i>
         <div class="details pure-u-11-24">
@@ -121,5 +122,28 @@
             }, 
             genericError
         );
+    };
+
+    function toggleFullScreen() {
+        var iframe = document.querySelector('iframe');
+        var button = document.querySelector('.project .viewer .present-button');
+        if (iframe.fullScreen) {
+            iframe.fullScreen = false;
+            iframe.style = iframe.oldStyle;
+            button.style = button.oldStyle;
+        } else {
+            iframe.fullScreen = true;
+            iframe.oldStyle = iframe.style;
+            iframe.style.position = 'fixed';
+            iframe.style.left = 0;
+            iframe.style.top = 0;
+            iframe.style.width = '100%';
+            iframe.style.height = '100vh';
+            button.oldStyle = button.style;
+            button.style.position = 'fixed';
+            button.style.left = '5px';
+            button.style.top = '5px';
+        }
+        iframe.focus();
     };
 </script>

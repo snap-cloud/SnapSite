@@ -88,3 +88,7 @@ pre.in-place {
 .warning {
     color: Tomato;
 }
+
+.clickable {
+    cursor: pointer;
+}

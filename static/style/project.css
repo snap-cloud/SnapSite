@@ -62,6 +62,29 @@
     bottom: .4em;
 }
 
+.project.big .viewer {
+    position: relative;
+}
+
+.project.big .viewer .present-button {
+    z-index: 200;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    background: #2c3e50;
+    color: #e3dedb;
+    border-radius: 3px;
+    width: 1.2em;
+    padding-left: 0.4em;
+    padding-right: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+.project.big .viewer .present-button:hover {
+    filter: brightness(1.5);
+}
+
 .project.big .dates span {
     font-size: 0.8em;
 }
@@ -115,6 +138,7 @@
 }
 
 .project iframe {
+    z-index: 100;
     width: 540px;
     height: 406px;
 }

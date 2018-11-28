@@ -10,7 +10,7 @@
         <!-- External libs, both stylesheets and JS -->
         <link rel="stylesheet" href="libs/reset.css">
         <link rel="stylesheet" href="libs/pure-min.css">
-        <link rel="stylesheet" href="libs/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <link rel="stylesheet" href="libs/custom-alert.css">
         <script type="text/javascript" src="libs/FileSaver.min.js"></script>
 
@@ -27,7 +27,7 @@
     <body>
         <script type="text/javascript" src="libs/custom-alert.min.js"></script>
         <script>new customAlert();</script>
-        <div id="loading"><i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i></div>
+        <div id="loading"><i class="fas fa-spinner fa-spin fa-3x" aria-hidden="true"></i></div>
         <div id="top-bar">
             <div class="pure-menu-horizontal pure-menu">
                 <ul class="pure-g pure-menu-list">
@@ -38,7 +38,7 @@
                     <div class="search pure-u-1-6">
                         <form action="search.html">
                             <input type="text" name="term">
-                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <i class="fas fa-search"></i>
                         </form>
                     </div>
                     <i class="pure-u-3-24"></i>
@@ -56,7 +56,7 @@
                         </ul>
                     </li>
                     <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover settings">
-                        <a class="pure-menu-link" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                        <a class="pure-menu-link" href="#"><i class="fas fa-bars"></i></a>
                         <ul class="pure-menu-children pure-u-3-24">
                             <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                                 <a localizable class="pure-menu-link" href="">Language</a>
@@ -70,7 +70,8 @@
                     </li>
                 </ul>
             </div>
-        </div>        <div id="wrapper">
+        </div>
+        <div id="wrapper">
 <h1>Privacy Policy</h1>
 
 <p>Your privacy and safety online are very important to us. To protect your privacy, we limit what we collect and what we publish on the website. Although, as a nonprofit educational institution, we are technically exempt from the Children's Online Privacy Protection Act (COPPA), we are voluntarily following its rules about data collection from children under 13.</p>
@@ -204,6 +205,7 @@
 
     function initForUsername (username) {
         if (username) {
+            SnapCloud.username = username;
             document.querySelector('li.join').hidden = true;
             document.querySelector('li.sign-in').hidden = true;
             document.querySelector('li.user-menu').hidden = false;

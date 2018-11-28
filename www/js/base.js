@@ -1,4 +1,4 @@
-var snapURL = '/snap/snap.html';
+var snapURL = 'https://snap.berkeley.edu/snapsource/dev/snap.html';
     modules = [], // compatibility with cloud.js
     nop = function () {},
     localizer = new Localizer(),
