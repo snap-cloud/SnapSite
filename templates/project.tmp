@@ -66,7 +66,7 @@
                 document.querySelector('.shared').append(formatDate(project.lastshared));
                 document.querySelector('.is-published').innerHTML += (project.ispublished ? ' and listed' : ' but unlisted');
                 if (project.ispublished) {
-                    document.querySelector('.published').innerHTML = ', published on ' + formatDate(project.firstpublished);
+                    document.querySelector('.published').innerHTML = localizer.localize(', published on ') + formatDate(project.firstpublished);
                 }
                 document.querySelector('.is-public').innerHTML += ('public');
             } else {

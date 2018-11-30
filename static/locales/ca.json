@@ -129,6 +129,8 @@
         "Actualizat per darrer cop el ",
     ", shared on ":
         ", compartit el ",
+    ", published on ":
+        ", publicat el ",
     "This project is public":
         "Aquest projecte és públic",
     " and listed":
@@ -192,5 +194,41 @@
     "Welcome to Snap":
         "Benvinguts a Snap",
     "Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.":
-        "Snap<em>!</em> és un llenguatge àmpliament acollidor tant per a nens i nenes com per a adults, així com una plataforma per a un estudi rigorós de les ciències de la computació."
+        "Snap<em>!</em> és un llenguatge àmpliament acollidor tant per a nens i nenes com per a adults, així com una plataforma per a un estudi rigorós de les ciències de la computació.",
+    "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Fes una ullada als <a href=\"examples.html\">exemples</a> o consulta el <a href=\"manual.html\">manual de referència</a> per iniciar-t'hi, o accedeix directament a l'<a href=\"https://snap.berkeley.edu/run\">editor</a> i posa't a programar!",
+    "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
+        "Això és una versió preliminar del web social d'Snap<em>!</em>. Tingues en compte que aquesta pàgina es troba actualment en construcció i anirà canviant durant aquests propers mesos. La majoria de funcionalitats encara es troben en desenvolupament.",
+    "Enjoy the preview, and thank you for your understanding!":
+        "Gaudeix de la visita, i gràcies per la teva comprensió!",
+    "About":
+        "Informació",
+    "About Snap<em>!</em>":
+        "Sobre Snap<em>!</em>",
+    "Credits":
+        "Crèdits",
+    "Technical Requirements":
+        "Requeriments tècnics",
+    "Partners":
+        "Col·laboradors",
+    "Source Code":
+        "Codi font",
+    "Learning":
+        "Aprenentatge",
+    "Examples":
+        "Exemples",
+    "Reference Manual":
+        "Manual de referència",
+    "Tools":
+        "Eines",
+    "Extensions":
+        "Extensions",
+    "Support":
+        "Suport",
+    "Mirrors":
+        "Rèpliques",
+    "Legal":
+        "Legal",
+    "Latest Projects":
+        "Últims projectes"
 }
