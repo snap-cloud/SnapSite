@@ -17,13 +17,7 @@
 
             <!-- Notes -->
             <div style="width: 0; height: 0; overflow: hidden;"><input id="fake-input" style="opacity:0; filter:alpha(opacity=0);"></input></div>
-            <pre
-                class="notes in-place"
-                contenteditable="true"
-                onblur="updateNotes(this);"
-                onfocus="startEditingNotes(this);"
-                onkeypress="checkKey(event, this);">
-            </pre>
+            <pre class="notes"> </pre>
 
             <!-- Project Action Buttons -->
             <div class="buttons">
@@ -91,11 +85,22 @@
 
             doneLoading('#wrapper');
             document.querySelector('.project').hidden = false;
+
+            // In-place notes editor
+            var notes = document.querySelector('.notes');
+            if (ownsProject(project)) {
+                notes.classList.add('in-place');
+                notes.contentEditable = true;
+                notes.onblur = function () { updateNotes(notes); };
+                notes.onfocus = function () { startEditingNotes(notes); } ;
+                notes.onkeypress = function (event) { checkKey(event, notes); };
+            }
+
         },
         genericError
     );
 
-    // In-place notes editor
+    
     function checkKey (event, element) {
         var code = (event.keyCode ? event.keyCode : event.which);
         if (code == 13 && !event.shiftKey) {

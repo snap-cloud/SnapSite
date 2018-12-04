@@ -91,7 +91,8 @@
 
 .project.big .details {
     height: 406px; /* same height as project iframe */
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .project.big .notes {
@@ -99,20 +100,22 @@
     background: #f3eeeb;
     border-radius: 5px;
     overflow: auto;
-    display: block;
-    top: 0;
-    bottom: 42px;
-    width: 100%;
     box-sizing: border-box;
-    position: absolute;
     font-family: FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;
     word-wrap: break-word;
     white-space: pre-wrap;
+    height: 100%;
 }
 
 .project.big .buttons {
-    position: absolute;
-    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.project.big .buttons a {
+    margin-top: 5px;
+    flex-grow: 0.2; /* 20% max growth */
 }
 
 .project.big .notes small {
