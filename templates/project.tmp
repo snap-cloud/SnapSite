@@ -1,4 +1,5 @@
 <script src="js/project.js"></script>
+<script src="js/inplace.js"></script>
 <link rel="stylesheet" href="style/project.css">
 
 <div hidden class="project big">
@@ -16,7 +17,6 @@
         <div class="details pure-u-11-24">
 
             <!-- Notes -->
-            <div style="width: 0; height: 0; overflow: hidden;"><input id="fake-input" style="opacity:0; filter:alpha(opacity=0);"></input></div>
             <pre class="notes"> </pre>
 
             <!-- Project Action Buttons -->
@@ -49,7 +49,20 @@
             setTitle(pageProject() + localizer.localize(' by ') + pageUser() + ' - Snap! Build Your Own Blocks');
 
             // Fill up all fields
-            document.querySelector('.title h1').innerHTML = project.projectname;
+            var title = document.querySelector('.title h1');
+            title.innerHTML = project.projectname;
+            if (ownsProject(project)) {
+                new InPlaceEditor(
+                    title,
+                    function () {
+                        SnapCloud.updateProjectName(
+                            pageProject(),
+                            title.textContent,
+                            function () { location.href = 'project.html?user=' + pageUser() + '&project=' + title.textContent; },
+                            genericError
+                        );
+                    })
+            }
             document.querySelector('.title').append(authorSpan(project.username));
             document.querySelector('.project iframe').src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
             document.querySelector('.notes').innerHTML = project.notes || '<small>' + localizer.localize('This project has no notes') + '</small>';
@@ -89,45 +102,25 @@
             // In-place notes editor
             var notes = document.querySelector('.notes');
             if (ownsProject(project)) {
-                notes.classList.add('in-place');
-                notes.contentEditable = true;
-                notes.onblur = function () { updateNotes(notes); };
-                notes.onfocus = function () { startEditingNotes(notes); } ;
-                notes.onkeypress = function (event) { checkKey(event, notes); };
-            }
-
+                new InPlaceEditor(
+                    notes,
+                    function () {
+                        SnapCloud.updateNotes(
+                            pageProject(),
+                            notes.textContent,
+                            function () {
+                                if (notes.textContent == '') {
+                                    notes.innerHTML = '<small>' + localizer.localize('This project has no notes') + '</small>';
+                                }
+                            }, 
+                            genericError
+                        );
+                    }
+                );
+            } 
         },
         genericError
     );
-
-    
-    function checkKey (event, element) {
-        var code = (event.keyCode ? event.keyCode : event.which);
-        if (code == 13 && !event.shiftKey) {
-            document.getElementById('fake-input').focus();
-        }
-    };
-
-    function startEditingNotes (element) {
-        element.classList.remove('flash');
-        if (element.textContent == localizer.localize('This project has no notes')) {
-            element.textContent = '';
-        }
-    };
-
-    function updateNotes (element) {
-        SnapCloud.updateNotes(
-            pageProject(),
-            element.textContent,
-            function () {
-                element.classList.add('flash');
-                if (element.textContent == '') {
-                    element.innerHTML = '<small>' + localizer.localize('This project has no notes') + '</small>';
-                }
-            }, 
-            genericError
-        );
-    };
 
     function toggleFullScreen() {
         var iframe = document.querySelector('iframe');
