@@ -75,6 +75,7 @@
 
 #top-bar .pure-menu-horizontal .pure-menu-children {
     width: auto;
+    min-width: 100%;
     background: #2c3e50;
 }
 
