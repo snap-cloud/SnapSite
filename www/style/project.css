@@ -23,7 +23,7 @@
 }
 
 .project img:hover {
-    filter: brightness(120%);
+    filter: brightness(1.2);
     border-color: #4c5e70;
 }
 
@@ -137,8 +137,8 @@
     filter: contrast(0);
 }
 
-.paginator a:hover {
-    filter: brightness(1.5);
+.paginator a {
+    color: #505080;
 }
 
 .project iframe {
