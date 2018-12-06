@@ -129,8 +129,6 @@
         "Passwort bestätigen",
     "Email address":
         "E-Mail-Adresse",
-    " and the ":
-        " ",
     "Privacy Agreement":
         "Datenschutzerklärung",
     "Sign up":
@@ -161,8 +159,6 @@
         "Dieses Projekt ist jetzt auf der Snap<em>!</em>-Webseite gelistet",
     "WARNING! This action cannot be undone!":
         "WARNUNG! Diese Aktion kann nicht rückgängig gemacht werden!",
-    "I have read and agree to the ":
-        "",
     "Terms of Service":
         "Nutzungsbedingungen",
     "Welcome to Snap":
@@ -223,8 +219,6 @@
         "Quellcode",
     "Support":
         "Support",
-    "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a>":
-        "Schaue dir einige <a href=\"examples.html\">Beispiele</a> and oder wirf einen Blick in das <a href=\"manual.html\">Reference Manual</a>, um mehr über Snap<em>!</em> zu lernen, oder lege direkt los im <a href=\"https://snap.berkeley.edu/run\">Editor</a>",
     "Technical Requirements":
         "Technische Voraussetzungen",
     "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
@@ -236,6 +230,9 @@
     "Could not login: No user with this username exists":
         "Anmeldung fehlgeschlagen: dieser Benutzername existiert nicht",
     "Could not login: wrong password":
-        "Anmeldung fehlgeschlagen: falsches Passwort"
-    
+        "Anmeldung fehlgeschlagen: falsches Passwort",
+    "I have read and agree to the <a target=\"_blank\" href=\"tos.html\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy.html\">Privacy Agreement</a>":
+        "",
+    "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        ""
 }

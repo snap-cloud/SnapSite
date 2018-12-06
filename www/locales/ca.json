@@ -165,14 +165,8 @@
         "Repeteix la contrasenya",
     "Email address":
         "Correu electrònic",
-    "I have read and agree to the ":
-        "He llegit i accepto les ",
-    "Terms of Service":
-        "Condicions del servei",
-    " and the ":
-        " i l'",
-    "Privacy Agreement":
-        "acord de privacitat",
+    "I have read and agree to the <a target=\"_blank\" href=\"tos.html\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy.html\">Privacy Agreement</a>":
+        "He llegit i accepto les <a target=\"_blank\" href=\"tos.html\">condicions del servei</a> i l'<a target=\"_blank\" href=\"privacy.html\">acord de privacitat</a>",
     "Sign up":
         "Registra'm",
     "Log into Snap<em>!</em>":

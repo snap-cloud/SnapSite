@@ -31,6 +31,10 @@
     filter: brightness(1.2);
 }
 
+#top-bar .run {
+    margin-right: 1em;
+}
+
 #top-bar .settings a::after {
     content: '';
 }
@@ -66,12 +70,16 @@
 }
 
 #top-bar .pure-menu-horizontal .pure-menu-children {
-    width: 100%;
+    width: auto;
     background: #2c3e50;
 }
 
 #top-bar .pure-menu-children {
     border: 1px solid #e3dedb;
+}
+
+#top-bar .pure-menu-children .pure-menu-link {
+    padding: 0 0.5em;
 }
 
 #top-bar .settings .pure-menu-children {

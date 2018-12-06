@@ -12,7 +12,7 @@ if test -n "$1"; then
             exit 1
         fi
         oldstrings=`grep '^    "' static/locales/$locale.json | sort`
-        newstrings=`diff -u <(echo "$oldstrings") <(echo "$allstrings") | grep -v "+++ /.*" | grep -E "^\+" | sed -E 's#\+.*(".*":$)#    \1\n        "",#g' | sed -E '$s:,$::' `
+        newstrings=`diff -u <(echo "$oldstrings") <(echo "$allstrings") | grep -v "+++ /.*" | grep -E "^\+" | sed -E 's#\+\s*(".*":$)#    \1\n        "",#g' | sed -E '$s:,$::' `
         # remove last line and attach comma to last entry
         sed '$ d' static/locales/$locale.json | sed -E '$s/$/,/' > /tmp/$locale.json
         echo "$newstrings" >> /tmp/$locale.json

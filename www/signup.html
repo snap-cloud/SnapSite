@@ -32,8 +32,10 @@
             <div class="pure-menu-horizontal pure-menu">
                 <ul class="pure-g pure-menu-list">
                     <a class="pure-u-1-12" href="index.html"><img src="img/topbar-logo.png" class="logo"/></a>
-                    <li class="pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link run" target="_blank">Run Snap<em>!</em></a></li>
-                    <li class="pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="explore.html">Explore</a></li>
+                    <span class="pure-u-1-4">
+                        <li class="pure-menu-item"><a localizable class="pure-menu-link run" target="_blank">Run Snap<em>!</em></a></li>
+                        <li class="pure-menu-item"><a localizable class="pure-menu-link" href="explore.html">Explore</a></li>
+                    </span>
                     <i class="pure-u-1-6"></i>
                     <div class="search pure-u-1-6">
                         <form action="search.html">
@@ -46,7 +48,7 @@
                     <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="login.html">Log In</a></li>
                     <li hidden="true" class="pure-menu-item pure-u-1-6 pure-menu-has-children pure-menu-allow-hover user-menu">
                         <a href="#" id="menuLink1" class="pure-menu-link visitor"></a>
-                        <ul class="pure-menu-children pure-u-3-24">
+                        <ul class="pure-menu-children">
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-projects" href="myprojects.html">My Projects</a></li>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
                             <li class="pure-menu-item"><a localizable class="pure-menu-link my-profile" href="profile.html">My Profile</a></li>
@@ -98,7 +100,7 @@
 
         <div class="pure-controls">
             <label for="tos" class="pure-checkbox">
-                <input id="tos" name="tos" type="checkbox" required> <span localizable>I have read and agree to the </span><a localizable target="_blank" href="tos.html">Terms of Service</a><span localizable> and the </span><a localizable target="_blank" href="privacy.html">Privacy Agreement</a>.
+                <input id="tos" name="tos" type="checkbox" required> <span localizable>I have read and agree to the <a target="_blank" href="tos.html">Terms of Service</a> and the <a target="_blank" href="privacy.html">Privacy Agreement</a></span>.
             </label>
 
             <button localizable type="submit" class="pure-button red-button">Sign up</button>
