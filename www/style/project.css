@@ -115,7 +115,8 @@
 
 .project.big .buttons a {
     margin-top: 5px;
-    flex-grow: 0.2; /* 20% max growth */
+    padding: 0.5em 0; /* flex-grow will take care of horizontal padding */
+    flex-grow: 0.15; /* 15% max growth */
 }
 
 .project.big .notes small {
