@@ -1,234 +1,241 @@
 {
     "Welcome to Snap<em>!</em>":
-        "",
+        "Herzliche Willkommen bei Snap!",
     "Run Snap<em>!</em>":
-        "",
+        "Snap<em>!</em> starten",
     "Explore":
-        "",
+        "Entdecken",
     "Forum":
-        "",
+        "Forum",
     "Join":
-        "",
+        "Mitmachen",
     "Log In":
-        "",
+        "Anmelden",
     "Language":
-        "",
+        "Sprache",
     "My Projects":
-        "",
+        "Meine Projekte",
     "My Public Page":
-        "",
+        "Meine öffentliche Seite",
     "My Profile":
-        "",
+        "Mein Profil",
     "Joined in ":
-        "",
+        "Mitglied seit",
     "Email: ":
-        "",
+        "E-Mail",
     "About you:":
-        "",
+        "Über dich:",
     "Change Your Password":
-        "",
+        "Passwort ändern",
     "Current Password":
-        "",
+        "Aktuelles Passwort",
     "New Password":
-        "",
+        "Neues Passwort",
     "Repeat New Password":
-        "",
+        "Neues Passwort bestätigen",
     "Change My Password":
-        "",
+        "Mein Passwort ändern",
     "Unknown error":
-        "",
+        "Unbekannter Fehler",
     "Created on ":
-        "",
+        "Erstellt am ",
     "last updated on ":
-        "",
+        "aktualisiert am ",
     "shared on ":
-        "",
+        "geteilt am",
     "Edit":
-        "",
+        "Bearbeiten",
     "Download":
-        "",
+        "Herunterladen",
     "Share":
-        "",
+        "Teilen",
     "Publish":
-        "",
+        "Veröffentlichen",
     "Unpublish":
-        "",
+        "Veröffentlichen rückgängig machen",
     "Delete":
-        "",
+        "Löschen",
     "Are you sure you want to share this project?":
-        "",
+        "Bist du sicher, dass du dieses Projekt teilen möchtest?",
     "You can now access this project at:":
-        "",
+        "Du kannst dieses Projekt jetzt abrufen unter:",
     "Unshare project":
-        "",
+        "Teilen rückgängig machen",
     "Are you sure you want to stop sharing this project?":
-        "",
+        "Bist du sicher, dass dieses Projekt nicht mehr geteilt werden soll?",
     "Project unshared":
-        "",
+        "Teilen des Projekts wurde rückgängig gemacht.",
     "This project is now private.":
-        "",
+        "Dieses Projekt ist jetzt privat.",
     "Publish project":
-        "",
+        "Projekt veröffentlichen",
     "Are you sure you want to publish this project<br>and make it visible in the Snap<em>!</em> website?":
-        "",
+        "Bist du sicher, dass du dieses Projekt sichtbar auf der Snap<em>!/<em>-Webseite veröffentlichen möchtest?",
     "Project published":
-        "",
+        "Projekt veröffentlicht.",
     "Unpublish project":
-        "",
+        "Veröffentlichung des Projekts rückgängig machen",
     "Are you sure you want to unpublish this project<br>and hide it from the Snap<em>!</em> website?":
-        "",
+        "Bist du sicher, dass dieses Projekt nicht mehr öffentlich sein soll und von der Snap<em>!</em>-Webseite versteckt werden soll?",
     "Project unpublished":
-        "",
+        "Veröffentlichung des Projekts wurde rückgängig gemacht.",
     "This project is not listed in the Snap<em>!</em> site anymore.":
-        "",
+        "Dieses Projekt ist nicht mehr auf der Snap<em>!</em>-Webseite gelistet.",
     "Delete project":
-        "",
+        "Projekt löschen",
     "Are you sure you want to delete this project?":
-        "",
+        "Bist du sicher, dass du dieses Projekt löschen möchtest?",
     "This project has been deleted.":
-        "",
+        "Dieses Projekt wurde gelöscht",
     "Project deleted":
-        "",
+        "Projekt gelöscht",
     "This project has no notes":
-        "",
+        "Dieses Projekt hat keine Notizen",
     " by ":
-        "",
+        " von ",
     "public":
-        "",
+        "öffentlich",
     "private":
-        "",
+        "privat",
     " but unlisted":
-        "",
+        " aber nicht gelistet ",
     "'s public page":
-        "",
+        "s öffentliche Seite",
     "Last updated on ":
-        "",
+        "Aktualisiert am ",
     ", shared on ":
-        "",
+        ", geteilt am ",
     "This project can be shared via URL":
-        "",
+        "Dieses Projekt kann mit der Projekt-URL geteilt werden.",
     "This project is publicly listed":
-        "",
+        "Dieses Projekt ist öffentlich gelistet",
     "This project is unlisted":
-        "",
+        "Dieses Projekt ist nicht gelistet",
     "Latest projects":
-        "",
+        "Neueste Projekte",
     "Search Results:":
-        "",
+        "Suchergebnisse",
     "Reset Your Password":
-        "",
+        "Passwort zurücksetzen",
     "Reset My Password":
-        "",
+        "Mein Passwort zurücksetzen",
     "Create a Snap<em>!</em> account":
-        "",
+        "Snap<em>!</em> Benutzerkonto erstellen",
     "Username":
-        "",
+        "Benutzername",
     "Password":
-        "",
+        "Passwort",
     "Repeat Password":
-        "",
+        "Passwort bestätigen",
     "Email address":
-        "",
+        "E-Mail-Adresse",
     " and the ":
-        "",
+        " ",
     "Privacy Agreement":
-        "",
+        "Datenschutzerklärung",
     "Sign up":
-        "",
+        "Registrieren",
     "Log into Snap<em>!</em>":
-        "",
+        "Anmelden in Snap<em>!</em>",
     "keep me logged in":
-        "",
+        "Eingeloggt bleiben",
     "Log in":
-        "",
+        "Anmelden",
     "* I forgot my password":
-        "",
+        "* Ich habe mein Passwort vergessen",
     "DMCA":
-        "",
+        "DMCA",
     "Privacy":
-        "",
+        "Datenschutz",
     "Contact Us":
-        "",
+        "Kontakt",
     "Change Password":
-        "",
+        "Passwort ändern",
     "Log Out":
-        "",
+        "Abmelden",
     "OK":
-        "",
+        "OK",
     "Project shared":
-        "",
+        "Projekt geteilt",
     "This project is now listed in the Snap<em>!</em> site.":
-        "",
+        "Dieses Projekt ist jetzt auf der Snap<em>!</em>-Webseite gelistet",
     "WARNING! This action cannot be undone!":
-        "",
+        "WARNUNG! Diese Aktion kann nicht rückgängig gemacht werden!",
     "I have read and agree to the ":
         "",
     "Terms of Service":
-        "",
+        "Nutzungsbedingungen",
     "Welcome to Snap":
-        "",
+        "Herzlich Willkommen bei Snap<em>!</em>",
     " and listed":
-        "",
+        " und gelistet",
     "Cancel":
-        "",
+        "Abbrechen",
     "Ok":
-        "",
+        "OK",
     "Sign Up":
-        "",
+        "Registrieren",
     "This project is private":
-        "",
+        "Dieses Projekt ist privat",
     "This project is public":
-        "",
+        "Dieses Projekt ist öffentlich",
     "Administration":
-        "",
+        "Administration",
     "Share project":
-        "",
+        "Projekt teilen",
     "administrator":
-        "",
+        "Administrator",
     "A link to reset your password has been\nsent to your email account.":
-        "",
+        "Ein Link, mit dem du dein Passwort zurücksetzen kannst, wurde an deine E-Mail-Adresse verschickt.",
     "Location: ":
-        "",
+        "Standort",
     "Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.":
-        "",
+        "Snap<em>!</em> ist eine blockbasierte Programmiersprache, die Kinder und Erwachsene einlädt, spielerisch und experimentierend Informatik zu erfahren, ist aber auch eine Plattform für Informatik-Studierende sowie Forscherinnen und Forscher.",
     "Unshare":
-        "",
+        "Teilen rückgängig machen",
     "About":
-        "",
+        "Über",
     "About Snap<em>!</em>":
-        "",
+        "Über Snap<em>!</em>",
     "Credits":
-        "",
+        "Credits",
     "Enjoy the preview, and thank you for your understanding!":
-        "",
+        "Viel Spaß mit dieser Vorschau und Danke für dein Verständnis",
     "Examples":
-        "",
+        "Beispiele",
     "Extensions":
-        "",
+        "Erweiterungen",
     "Latest Projects":
-        "",
+        "Neueste Projekte",
     "Learning":
-        "",
+        "Lernen",
     "Legal":
-        "",
+        "Rechtliches",
     "Mirrors":
-        "",
+        "Spiegelserver",
     "Partners":
-        "",
+        "Partner",
     ", published on ":
-        "",
+        ", veröffentlicht am ",
     "Reference Manual":
-        "",
+        "Reference Manual",
     "Source Code":
-        "",
+        "Quellcode",
     "Support":
-        "",
-    ">editor</a> and start programming right away!":
-        "",
+        "Support",
+    "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a>":
+        "Schaue dir einige <a href=\"examples.html\">Beispiele</a> and oder wirf einen Blick in das <a href=\"manual.html\">Reference Manual</a>, um mehr über Snap<em>!</em> zu lernen, oder lege direkt los im <a href=\"https://snap.berkeley.edu/run\">Editor</a>",
     "Technical Requirements":
-        "",
+        "Technische Voraussetzungen",
     "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
-        "",
+        "Dies ist eine Vorschau der kommenden Snap<em>!</em> Webseite. Bitte behalte im Hinterkopf, dass sich die Seite momentan im Aufbau befindet und sich im Laufe der nächsten Monate ändern wird. Viele Funktionen sind noch in Entwicklung.",
     "Tools":
-        ""
+        "Tools",
+    "Login failed":
+        "Anmeldung fehlgeschlagen",
+    "Could not login: No user with this username exists":
+        "Anmeldung fehlgeschlagen: dieser Benutzername existiert nicht",
+    "Could not login: wrong password":
+        "Anmeldung fehlgeschlagen: falsches Passwort"
+    
 }
