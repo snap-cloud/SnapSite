@@ -24,7 +24,7 @@
                     <li class="pure-menu-item"><a localizable class="pure-menu-link my-profile" href="profile.html">My Profile</a></li>
                     <li hidden="true" class="pure-menu-item admin"><a localizable class="pure-menu-link" href="admin.html">Administration</a></li>
                     <hr>
-                    <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { sessionStorage.clear(); location.reload(); });">Log Out</a></li>
+                    <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { sessionStorage.clear(); location.href = 'index.html'; });">Log Out</a></li>
                 </ul>
             </li>
             <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover settings">
@@ -33,10 +33,10 @@
                     <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                         <a localizable class="pure-menu-link" href="">Language</a>
                         <ul class="pure-menu-children languages">
-                            <a class="pure-menu-link" href="" onclick="localizer.setLanguage('en');">English</a>
-                            <a class="pure-menu-link" href="" onclick="localizer.setLanguage('ca');">Català</a>
                             <a class="pure-menu-link" href="" onclick="localizer.setLanguage('es');">Castellano</a>
+                            <a class="pure-menu-link" href="" onclick="localizer.setLanguage('ca');">Català</a>
                             <a class="pure-menu-link" href="" onclick="localizer.setLanguage('de');">Deutsch</a>
+                            <a class="pure-menu-link" href="" onclick="localizer.setLanguage('en');">English</a>
                         </ul>
                     </li>
                 </ul>

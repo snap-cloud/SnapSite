@@ -42,19 +42,6 @@ function downloadProject (project) {
     );
 };
 
-function remixProject (project) {
-    SnapCloud.remixProject(
-        project.projectname,
-        project.username,
-        function () {
-            location.href = projectURL(sessionStorage.username, project.projectname) + '&editMode&noRun';
-        },
-        function (response) {
-            genericError(response.errors[0], 'Could not remix project');
-        }
-    );
-};
-
 // Could probably refactor these. Not sure it's worth the hassle though.
 
 function confirmShareProject (project) {
@@ -183,4 +170,47 @@ function ownsProject (project) {
     // Not to worry. Actual secure permission check is performed in the backend.
     // sessionStorage stringifies everything, so we need to check against the 'true' string.
     return (sessionStorage.username == project.username) || sessionStorage.isadmin === 'true';
+};
+
+function toggleFullScreen() {
+    var embed = document.querySelector('.embed'),
+        iframe = document.querySelector('.embed iframe');
+    if (embed.fullScreen) {
+        embed.fullScreen = false;
+        embed.style = embed.oldStyle;
+        iframe.style = iframe.oldStyle;
+        document.body.style.overflow = 'auto';
+    } else {
+        embed.fullScreen = true;
+        embed.oldStyle = embed.style;
+        iframe.oldStyle = iframe.style;
+        embed.style.position = 'fixed';
+        embed.style.left = 0;
+        embed.style.top = 0;
+        embed.style.width = '100vw';
+        embed.style.height = '100vh';
+        iframe.style.height = '100%';
+        document.body.style.overflow = 'hidden';
+    }
+    embed.focus();
+};
+
+function runProject() {
+    var iframe = document.querySelector('.embed iframe'),
+        ide = iframe.contentWindow.world.children[0];
+    ide.runScripts();
+    if (ide.embedOverlay) {
+        ide.embedOverlay.destroy();
+        ide.embedPlayButton.destroy();
+    }
+};
+
+function stopProject() {
+    var iframe = document.querySelector('.embed iframe'),
+        ide = iframe.contentWindow.world.children[0];
+    ide.stopAllScripts();
+    if (ide.embedOverlay) {
+        ide.embedOverlay.destroy();
+        ide.embedPlayButton.destroy();
+    }
 };
