@@ -20,7 +20,6 @@
 
 .project iframe {
     border-radius: 0 0 5px 5px;
-    z-index: 100;
     width: 100%;
 }
 
@@ -69,6 +68,7 @@
 }
 
 .project.big .embed {
+    z-index: 100;
     display: flex;
     flex-direction: column;
     align-items: stretch;
