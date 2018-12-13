@@ -17,11 +17,11 @@
     position: relative;
     background: #2c3e50;
     height: 48px;
-    color: #e3dedb;
+    color: #e2e3db;
 }
 
 #top-bar a {
-    color: #e3dedb;
+    color: #e2e3db;
 }
 
 #top-bar .logo {
@@ -80,7 +80,7 @@
 }
 
 #top-bar .pure-menu-children {
-    border: 1px solid #e3dedb;
+    border: 1px solid #e2e3db;
 }
 
 #top-bar .pure-menu-children .pure-menu-link {
@@ -116,9 +116,9 @@
     transform: translateY(-50%);
     height: 24px;
     width: 100%;
-    border: 2px solid #e3dedb;
+    border: 2px solid #e2e3db;
     border-radius: 14px;
-    background: #e3dedb;
+    background: #e2e3db;
     color: #2c3e50;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -136,7 +136,7 @@
 #footer {
     background: #2c3e50;
     padding: 1em;
-    color: #e3dedb;
+    color: #e2e3db;
     margin-top: 3em;
     flex-shrink: 0;
     font-size: 0.75em;
@@ -153,7 +153,7 @@
 }
 
 #footer a {
-    color: #e3dedb;
+    color: #e2e3db;
     text-decoration: underline;
 }
 
@@ -169,7 +169,7 @@
 .customalert .header {
     font-size: 1em;
     background: #2c3e50;
-    color: #e3dedb;
+    color: #e2e3db;
     padding: 5px 0 8px 0;
     font-weight: bold;
     text-align: center;
@@ -178,7 +178,7 @@
 
 .customalert .body, 
 .customalert .footer {
-    background: #e3dedb;
+    background: #e2e3db;
     text-align: center;
     padding: 0.5em;
     line-height: 1.5em;
