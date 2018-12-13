@@ -6,5 +6,6 @@
 <div class="blog"></div>
 
 <script>
-    new Blog(document.querySelector('.blog'));
+    var blog = new Blog(document.querySelector('.blog'));
+    blog.render();
 </script>

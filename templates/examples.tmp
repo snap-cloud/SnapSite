@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="style/project.css">
-<h1>Examples</h1>
+<h1 localizable>Examples</h1>
 <div class="projects pure-g">
     <div class="project small pure-u-1-5">
         <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=tree%20animation">

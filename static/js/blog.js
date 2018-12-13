@@ -6,9 +6,12 @@ function Blog (element) {
 };
 
 Blog.prototype.init = function (element) {
-    var myself = this;
     this.element = element;
     this.baseUrl = 'https://raw.githubusercontent.com/snap-cloud/blog-contents/master/'; 
+};
+
+Blog.prototype.render = function () {
+    var myself = this;
     this.getPostList(function (posts) {
         posts.forEach(function (postName) {
             myself.renderPost(postName);

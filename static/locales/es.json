@@ -194,41 +194,49 @@
     "Welcome to Snap":
         "Bienvenidos a Snap",
     "About":
-        "",
+        "Acerca de",
     "About Snap<em>!</em>":
-        "",
+        "Acerca de Snap<em>!</em>",
     "Credits":
-        "",
+        "Créditos",
     "Enjoy the preview, and thank you for your understanding!":
-        "",
+        "¡Disfruta de la visita, y gracias por tu comprensión!",
     "Examples":
-        "",
+        "Ejemplos",
     "Extensions":
-        "",
+        "Extensiones",
     "Latest Projects":
-        "",
+        "Últimos proyectos",
     "Learning":
-        "",
+        "Aprendizaje",
     "Legal":
-        "",
+        "Legal",
     "Mirrors":
-        "",
+        "Réplicas",
     "Partners":
-        "",
+        "Colaboradores",
     ", published on ":
-        "",
+        ", publicado el ",
     "Reference Manual":
-        "",
+        "Manual de referencia",
     "Source Code":
-        "",
+        "Código fuente",
     "Support":
-        "",
-    ">editor</a> and start programming right away!":
-        "",
+        "Soporte",
     "Technical Requirements":
-        "",
+        "Requisitos técnicos",
     "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
-        "",
+        "Ésta es una versión preliminar de la web social de Snap<em>!</em>. Por favor, ten en cuenta que esta página se encuentra actualmente en desarrollo y cambiará a lo largo de los próximos meses. La mayoría de funcionalidades están todavía en construcción.",
     "Tools":
-        ""
+        "Herramientas",
+    "Blog":
+        "Blog",
+    "I have read and agree to the <a target=\"_blank\" href=\"tos.html\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy.html\">Privacy Agreement</a>":
+        "He leído y acepto las <a target=\"_blank\" href=\"tos.html\">Condiciones del servicio</a> y el <a target=\"_blank\" href=\"privacy.html\">Acuerdo de privacidad</a>",
+    "Materials":
+        "Materiales",
+    "Partners, sponsors and collaborators":
+        "Socios, patrocinadores y colaboradores",
+    "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Echa un vistazo a los <a href=\"examples.html\">ejemplos</a> o consulta el <a href=\"manual.html\">manual de referencia</a> para aprender más sobre el lenguaje, ¡o dirígete directamente al <a href=\"https://snap.berkeley.edu/run\">editor</a> y empieza a programar!"
 }
