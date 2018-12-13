@@ -26,6 +26,7 @@ $ Snippets/build.sh -w -s
 * **[pure.css](http://purecss.io)** by [Yahoo!](http://yahoo.com)
 * **[custom-alert](https://github.com/PhilippeAssis/custom-alert)** by [Philippe Assis](https://github.com/PhilippeAssis)
 * **[FileSaver.js](https://github.com/eligrey/FileSaver.js)** by [Eli Grey](https://github.com/eligrey)
+* **[MarkDown.js](https://github.com/evilstreak/markdown-js)** by [Dominic Baggott](https://github.com/evilstreak)
 
 ## Live Instance
 
