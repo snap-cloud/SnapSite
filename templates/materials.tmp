@@ -1,0 +1,8 @@
+<script src="libs/markdown.js"></script>
+<script src="js/blog.js"></script>
+<h1 localizable>Materials</h1>
+<div class="materials"></div>
+<script>
+    var blog = new Blog(document.querySelector('.materials'));
+    blog.renderPost('MATERIALS');
+</script>
