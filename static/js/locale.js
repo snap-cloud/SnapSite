@@ -27,7 +27,6 @@ Localizer.prototype.init = function () {
     request.send(null);
 };
 
-
 Localizer.prototype.loadTranslations = function (fileContents) {
     this.translations = JSON.parse(fileContents);
 };

@@ -1,0 +1,10 @@
+<script src="libs/markdown.js"></script>
+<script src="js/blog.js"></script>
+<link rel="stylesheet" href="style/blog.css">
+
+<h1>Blog</h1>
+<div class="blog"></div>
+
+<script>
+    new Blog(document.querySelector('.blog'));
+</script>

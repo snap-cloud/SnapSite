@@ -1,0 +1,23 @@
+.post {
+    margin: 3em 0;
+}
+
+.post h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.post .date {
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.post ul {
+    list-style-type: disc;
+    padding: 0 1em;
+}
+
+.post iframe {
+    border: 2px solid #101040;
+    border-radius: 3px;
+}
