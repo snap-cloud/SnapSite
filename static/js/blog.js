@@ -49,7 +49,7 @@ Blog.prototype.renderPost = function (postName) {
     postDiv.classList.add('post');
     dateDiv.classList.add('date');
     contentsDiv.classList.add('contents');
-    dateDiv.innerHTML = formatDate(postName.slice(0, -3) + 'T00:00');
+    dateDiv.innerHTML = formatDate(postName + 'T00:00');
     postDiv.appendChild(contentsDiv);
     this.element.appendChild(postDiv);
     this.getFile(postName, function (contents) {
