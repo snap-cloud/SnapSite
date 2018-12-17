@@ -48,7 +48,7 @@ function setTitle (newTitle) {
 function authorSpan (author) {
     var span = document.createElement('span');
     span.classList.add('author');
-    span.innerHTML = localizer.localize(' by ') + '<a href="user.html?user=' + author + '"><strong>' + author + '</strong></a>';
+    span.innerHTML = localizer.localize(' by ') + '<a href="user.html?user=' + encodeURIComponent(author) + '"><strong>' + author + '</strong></a>';
     return span;
 };
 
@@ -78,7 +78,14 @@ function isPublishedSpan (isPublished) {
 };
 
 function projectURL (author, project) {
-    return snapURL + '#present:Username=' + author + '&ProjectName=' + project;
+    return snapURL + '#present:Username=' + encodeURIComponent(author) + '&ProjectName=' + encodeURIComponent(project);
+};
+
+function projectSpan (author, project) {
+    var span = document.createElement('span');
+    span.classList.add('project-link');
+    span.innerHTML = '<a href="project.html?user=' + encodeURIComponent(author) + '&project=' + encodeURIComponent(project) + '">' + project + '</a>';
+    return span;
 };
 
 // Error handling

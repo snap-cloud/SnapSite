@@ -5,6 +5,7 @@
 <div hidden class="project big">
     <div class="title">
         <h1></h1>
+        <span class="remixed_from"></span>
     </div>
     <div class="viewer pure-g">
         <!-- Project viewer -->
@@ -22,6 +23,9 @@
 
             <!-- Notes -->
             <pre class="notes"> </pre>
+
+            <!-- Remix info -->
+            <span class="remixes"></span>
 
             <!-- Project Action Buttons -->
             <div class="buttons">
@@ -54,6 +58,7 @@
 
             // Fill up all fields
             var title = document.querySelector('.title h1');
+
             title.innerHTML = project.projectname;
             if (ownsProject(project)) {
                 new InPlaceEditor(
@@ -83,6 +88,13 @@
             } else {
                 document.querySelector('.shared').hidden = true;
                 document.querySelector('.is-public').append('private');
+            }
+
+            if (project.remixed_from) {
+                var div = document.querySelector('.remixed_from');
+                div.innerHTML = localizer.localize('Remixed from ');
+                div.append(projectSpan(project.remixed_from.username, project.remixed_from.projectname));
+                div.append(authorSpan(project.remixed_from.username));
             }
 
             // Set up all buttons
