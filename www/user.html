@@ -124,6 +124,9 @@
                                     }
                                 }));
                     });
+                } else {
+                    // collection is empty, so let's remove the carousel altogether
+                    document.querySelector('search').remove();
                 }
                 doneLoading('.search.projects');
             },

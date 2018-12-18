@@ -112,7 +112,7 @@ function beganLoading (selector) {
 
 function doneLoading (selector) {
     localizer.localizePage();
-    document.querySelector(selector ? (selector + ' .loader') : '#loading').hidden = true;
+    document.querySelector(selector ? (selector + '> .loader') : '#loading').hidden = true;
 };
 
 // Other goodies

@@ -46,6 +46,9 @@
                                     }
                                 }));
                     });
+                } else {
+                    // collection is empty, so let's remove the carousel altogether
+                    document.querySelector('${className}').remove();
                 }
                 doneLoading('.${className}.projects');
             },
