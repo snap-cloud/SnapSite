@@ -82,7 +82,7 @@
 <div hidden class="project big">
     <div class="title">
         <h1></h1>
-        <span class="remixed_from"></span>
+        <span class="remixed-from"></span>
     </div>
     <div class="viewer pure-g">
         <!-- Project viewer -->
@@ -167,11 +167,11 @@
                 document.querySelector('.is-public').append('private');
             }
 
-            if (project.remixed_from) {
-                var div = document.querySelector('.remixed_from');
+            if (project.remixedfrom) {
+                var div = document.querySelector('.remixed-from');
                 div.innerHTML = localizer.localize('Remixed from ');
-                div.append(projectSpan(project.remixed_from.username, project.remixed_from.projectname));
-                div.append(authorSpan(project.remixed_from.username));
+                div.append(projectSpan(project.remixedfrom.username, project.remixedfrom.projectname));
+                div.append(authorSpan(project.remixedfrom.username));
             }
 
             // Set up all buttons

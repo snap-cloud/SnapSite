@@ -67,6 +67,10 @@
     bottom: .4em;
 }
 
+.remixed-from .author {
+    position: relative;
+}
+
 .project.big .embed {
     z-index: 100;
     display: flex;
