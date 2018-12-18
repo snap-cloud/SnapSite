@@ -62,12 +62,12 @@
 }
 
 .remixed-from {
-    font-size: 0.8em;
-}
-.remixed-from .author {
     position: absolute;
     right: 0;
     bottom: .4em;
+    font-size: 0.8em;
+}
+.remixed-from .author {
     font-size: 1em;
 }
 
