@@ -24,9 +24,6 @@
             <!-- Notes -->
             <pre class="notes"> </pre>
 
-            <!-- Remix info -->
-            <span class="remixes"></span>
-
             <!-- Project Action Buttons -->
             <div class="buttons">
                 <a localizable class="pure-button open" target="_blank">Edit</a>
@@ -45,6 +42,11 @@
             <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
             <span localizable class="is-public">This project is </span><span localizable class="is-published"></span>.
         </span>
+    </div>
+
+    <!-- Collection of remixes -->
+    <div class="remixes">
+        @content
     </div>
 </div>
 

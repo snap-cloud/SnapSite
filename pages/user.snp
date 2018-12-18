@@ -3,4 +3,7 @@ user
 @param user="pageUser()"
 @param title="pageUser() + \"'s public projects - Snap! Build Your Own Blocks\""
 @param pageSize=15
+@param query=getPublishedProjectList
+@param extraParam='null,'
 projectgrid
+@param extraParam=''

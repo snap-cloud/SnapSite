@@ -106,7 +106,7 @@
             null,
             pageNumber,
             latest_pageSize,
-            getUrlParameter('term') || null,
+            null, // used for search terms, collection names, etc
             function (response) {
                 setTitle("Explore - Snap! Build Your Own Blocks");
                 latest_totalPages = response.pages;

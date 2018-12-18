@@ -3,4 +3,8 @@ search
 @param user=null
 @param title='term + " projects - Snap! Build Your Own Blocks"'
 @param pageSize=15
+@param query=getPublishedProjectList
+@param className=search
+@param extraParam='getUrlParameter("term") || null,'
 projectgrid
+@param extraParam=''

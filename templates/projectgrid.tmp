@@ -24,11 +24,11 @@
     function ${className}_toPage (pageNumber) {
         ${className}_projectsDiv.innerHTML = '';
         beganLoading('.${className}.projects');
-        SnapCloud.getPublishedProjectList(
+        SnapCloud.${query}(
             $user,
             pageNumber,
             ${className}_pageSize,
-            getUrlParameter('term') || null,
+            ${extraParam} // used for search terms, collection names, etc
             function (response) {
                 setTitle($title);
                 ${className}_totalPages = response.pages;

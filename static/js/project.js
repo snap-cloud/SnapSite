@@ -155,7 +155,7 @@ function confirmDelete (project) {
                         alert(
                             localizer.localize('This project has been deleted.'),
                             { title: localizer.localize('Project deleted') },
-                            function () { location.href = '/myprojects.html'; }
+                            function () { location.href = 'myprojects.html'; }
                         );
                     },
                     genericError
