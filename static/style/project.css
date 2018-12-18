@@ -61,14 +61,14 @@
     display: inline;
 }
 
-.project.big .title .author {
+.remixed-from {
+    font-size: 0.8em;
+}
+.remixed-from .author {
     position: absolute;
     right: 0;
     bottom: .4em;
-}
-
-.remixed-from .author {
-    position: relative;
+    font-size: 1em;
 }
 
 .project.big .embed {
