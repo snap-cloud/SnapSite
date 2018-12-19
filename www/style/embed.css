@@ -1,0 +1,10 @@
+.project {
+    margin: 0 !important;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+}
+
+iframe {
+    flex: 1;
+}
