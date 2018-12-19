@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="style/embed.css">
     </head>
     <body>
-        <div class="project big">
+        <div class="project big embed">
             <div class="controlbar">
                 <i class="start-button fas fa-flag clickable" onclick="runProject();"></i>
                 <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
