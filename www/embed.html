@@ -2,15 +2,16 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <meta name="snap-cloud-domain" location="https://cloud.snap.berkeley.edu">
-        <link rel="icon" href="favicon.png">
 
-        <script type="text/javascript" src="js/locale.js"></script>
+        <script type="text/javascript">
+            nop = function () {};
+            Localizer = nop;
+            Localizer.prototype.localize = nop;
+        </script>
         <script type="text/javascript" src="js/base.js"></script>
-        <script type="text/javascript" src="libs/cloud.js"></script>
         <script type="text/javascript" src="js/project.js"></script>
-        <script type="text/javascript">SnapCloud = new Cloud();</script>
 
+        <link rel="icon" href="favicon.png">
         <link rel="stylesheet" href="libs/reset.css">
         <link rel="stylesheet" href="libs/pure-min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -27,7 +28,7 @@
             <iframe src=""></iframe>
         </div>
         <script type="text/javascript">
-            setTitle(pageProject() + localizer.localize(' by ') + pageUser() + ' - Snap! Build Your Own Blocks');
+            setTitle(pageProject());
             document.querySelector('.project iframe').src = projectURL(pageUser(), pageProject()) + '&embedMode&noExitWarning&noRun';
         </script>
     </body>
