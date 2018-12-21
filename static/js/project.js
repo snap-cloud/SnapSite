@@ -3,10 +3,10 @@ function newProjectDiv (project, options) {
         div = document.createElement('div');
 
     div.innerHTML = 
-        '<a href="project.html?user=' + project.username + '&project=' + 
-        project.projectname + '"><img alt="' + project.projectname + 
-        '" title="' + project.notes + '" src="' + project.thumbnail +
-        '"><span class="project-name">' + project.projectname + '</span></a>';
+        '<a href="project.html?user=' + encodeURIComponent(project.username) + '&project=' + 
+        encodeURIComponent(project.projectname) + '"><img alt="' + escapeHtml(project.projectname) + 
+        '" title="' + escapeHtml(project.notes) + '" src="' + project.thumbnail +
+        '"><span class="project-name">' + escapeHtml(project.projectname) + '</span></a>';
 
     if (!project.thumbnail) {
         div.querySelector('img').classList.add('no-image');

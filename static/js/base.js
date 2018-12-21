@@ -25,7 +25,7 @@ function pageProject () {
 function fillVisitorFields () {
     if (sessionStorage.username) {
         document.querySelectorAll('.visitor').forEach(function (each) {
-            each.innerHTML = sessionStorage.username;
+            each.innerHTML = escapeHtml(sessionStorage.username);
         });
     }
 };
@@ -34,7 +34,7 @@ function fillUsernameFields () {
     var username = pageUser();
     if (username) {
         document.querySelectorAll('.username').forEach(function (each) {
-            each.innerHTML = username;
+            each.innerHTML = escapeHtml(username);
         });
     }
 };
@@ -48,7 +48,9 @@ function setTitle (newTitle) {
 function authorSpan (author) {
     var span = document.createElement('span');
     span.classList.add('author');
-    span.innerHTML = localizer.localize(' by ') + '<a href="user.html?user=' + encodeURIComponent(author) + '"><strong>' + author + '</strong></a>';
+    span.innerHTML =
+        localizer.localize(' by ') + '<a href="user.html?user=' + encodeURIComponent(author) +
+        '"><strong>' + escapeHtml(author) + '</strong></a>';
     return span;
 };
 
@@ -78,13 +80,17 @@ function isPublishedSpan (isPublished) {
 };
 
 function projectURL (author, project) {
-    return snapURL + '#present:Username=' + encodeURIComponent(author) + '&ProjectName=' + encodeURIComponent(project);
+    return snapURL + '#present:Username=' + encodeURIComponent(author) +
+        '&ProjectName=' + encodeURIComponent(project);
 };
 
 function projectSpan (author, project) {
     var span = document.createElement('span');
     span.classList.add('project-link');
-    span.innerHTML = '<a href="project.html?user=' + encodeURIComponent(author) + '&project=' + encodeURIComponent(project) + '">' + project + '</a>';
+    span.innerHTML =
+        '<a href="project.html?user=' + encodeURIComponent(author) +
+        '&project=' + encodeURIComponent(project) + '">' +
+        escapeHtml(project) + '</a>';
     return span;
 };
 
@@ -122,6 +128,18 @@ function formatDate (dateString) {
         localizer.locale || 'en-us',
         { month: 'long', day: '2-digit', year: 'numeric' }
     );
+};
+
+function escapeHtml (text) {
+    // Based on an answer by Kip @ StackOverflow
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text ? text.replace(/[&<>"']/g, function (m) { return map[m]; }) : ''
 };
 
 // JS additions
