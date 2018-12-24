@@ -113,8 +113,14 @@
             getUrlParameter("term") || null, // used for search terms, collection names, etc
             function (response) {
                 setTitle(term + " projects - Snap! Build Your Own Blocks");
+
                 search_totalPages = response.pages;
-                search_totalPagesSpan.textContent = search_totalPages;
+                if (search_totalPages == 1) {
+                    document.querySelector('.search.paginator').remove();
+                } else {
+                    search_totalPagesSpan.textContent = search_totalPages;
+                }
+
                 if (response.projects[0]) {
                     response.projects.forEach(function (project) {
                         search_projectsDiv.append(

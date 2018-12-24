@@ -156,8 +156,14 @@
             pageProject(), // used for search terms, collection names, etc
             function (response) {
                 setTitle("Snap! Build Your Own Blocks");
+
                 remixes_totalPages = response.pages;
-                remixes_totalPagesSpan.textContent = remixes_totalPages;
+                if (remixes_totalPages == 1) {
+                    document.querySelector('.remixes.paginator').remove();
+                } else {
+                    remixes_totalPagesSpan.textContent = remixes_totalPages;
+                }
+
                 if (response.projects[0]) {
                     response.projects.forEach(function (project) {
                         remixes_projectsDiv.append(

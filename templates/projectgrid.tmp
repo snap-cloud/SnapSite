@@ -31,8 +31,14 @@
             ${extraParam} // used for search terms, collection names, etc
             function (response) {
                 setTitle($title);
+
                 ${className}_totalPages = response.pages;
-                ${className}_totalPagesSpan.textContent = ${className}_totalPages;
+                if (${className}_totalPages == 1) {
+                    document.querySelector('.${className}.paginator').remove();
+                } else {
+                    ${className}_totalPagesSpan.textContent = ${className}_totalPages;
+                }
+
                 if (response.projects[0]) {
                     response.projects.forEach(function (project) {
                         ${className}_projectsDiv.append(
