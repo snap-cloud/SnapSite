@@ -234,8 +234,12 @@
             if (project.remixedfrom) {
                 var div = document.querySelector('.remixed-from');
                 div.innerHTML = localizer.localize('(remixed from ');
-                div.append(projectSpan(project.remixedfrom.username, project.remixedfrom.projectname));
-                div.append(authorSpan(project.remixedfrom.username));
+                if (project.remixedfrom.projectname) {
+                    div.append(projectSpan(project.remixedfrom.username, project.remixedfrom.projectname));
+                    div.append(authorSpan(project.remixedfrom.username));
+                } else {
+                    div.append('a project that no longer exists');
+                }
                 div.innerHTML += ')';
             }
 
