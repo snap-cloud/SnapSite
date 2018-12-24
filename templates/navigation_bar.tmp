@@ -27,8 +27,8 @@
                     <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { sessionStorage.clear(); location.href = 'index.html'; });">Log Out</a></li>
                 </ul>
             </li>
-            <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover settings">
-                <a class="pure-menu-link" href="#"><i class="fas fa-language"></i></a>
+            <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover language-select">
+                <a class="pure-menu-link" href="#"><i class="fas fa-globe"></i></a>
                 <ul class="pure-menu-children languages">
                     <a class="pure-menu-link" href="" onclick="localizer.setLanguage('es');">Castellano</a>
                     <a class="pure-menu-link" href="" onclick="localizer.setLanguage('ca');">Català</a>

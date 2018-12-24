@@ -14,7 +14,6 @@
 /* TOP BAR */
 
 #top-bar {
-    position: relative;
     background: #2c3e50;
     height: 48px;
     color: #e2e3db;
@@ -25,10 +24,7 @@
 }
 
 #top-bar .logo {
-    position: absolute;
-    left: 1em;
-    top: 50%;
-    transform: translateY(-50%);
+    padding-top: 8px;
 }
 
 #top-bar .logo:hover {
@@ -39,11 +35,20 @@
     margin-right: 1em;
 }
 
-#top-bar .settings a::after {
+#top-bar .language-select {
+    position: relative;
+}
+
+#top-bar .languages {
+    left: auto;
+    right: -1px;
+}
+
+#top-bar .language-select a::after {
     content: '';
 }
 
-#top-bar .settings:hover {
+#top-bar .language-select:hover {
     color: white;
 }
 
@@ -87,11 +92,11 @@
     padding: 0 0.5em;
 }
 
-#top-bar .settings .pure-menu-children {
+#top-bar .language-select .pure-menu-children {
     width: auto;
 }
 
-#top-bar .settings .pure-menu-children a {
+#top-bar .language-select .pure-menu-children a {
     padding: 0 2em;
 }
 
