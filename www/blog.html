@@ -73,15 +73,14 @@
         </div>
         <div id="wrapper">
 <script src="libs/markdown.js"></script>
-<script src="js/blog.js"></script>
+<script src="js/discourse.js"></script>
 <link rel="stylesheet" href="style/blog.css">
 
 <h1>Blog</h1>
 <div class="blog"></div>
 
 <script>
-    var blog = new Blog(document.querySelector('.blog'));
-    blog.render();
+    var blog = new DiscourseBlog('https://forum.snap.berkeley.edu', 'meta/blog', document.querySelector('.blog'));
 </script>
         </div>
         <div id="footer">

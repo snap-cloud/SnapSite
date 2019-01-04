@@ -102,6 +102,7 @@ function genericError (errorString, title) {
         localizer.localize(errorString || 'Unknown error'),
         { title: localizer.localize(title || 'Error')}
     );
+    console.error(errorString);
 };
 
 // Page loading
