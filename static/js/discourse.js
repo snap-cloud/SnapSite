@@ -55,7 +55,8 @@ DiscourseBlog.prototype.fetchPosts =  function () {
                                     title: postJSON.title,
                                     date: new Date(postJSON.created_at),
                                     author: postJSON.details.created_by.username,
-                                    content: postJSON.post_stream.posts[0].cooked
+                                    content: postJSON.post_stream.posts[0].cooked,
+                                    commentsURL: myself.url + '/t/' + postID + '/2'
                                 }
                             );
                         },
@@ -72,16 +73,24 @@ DiscourseBlog.prototype.renderPost = function (post) {
     var postDiv = document.createElement('div'),
         titleHeader = document.createElement('h1'),
         dateSpan = document.createElement('span'),
-        contentsDiv = document.createElement('div');
+        contentsDiv = document.createElement('div'),
+        separatorSpan = document.createElement('span'),
+        commentsAnchor = document.createElement('a');
 
     postDiv.classList.add('post');
     titleHeader.classList.add('title');
     dateSpan.classList.add('date');
     contentsDiv.classList.add('contents');
+    separatorSpan.classList.add('separator');
+    commentsAnchor.classList.add('comments');
 
     titleHeader.innerText = post.title;
     dateSpan.innerHTML = formatDate(post.date);
     contentsDiv.innerHTML = post.content;
+    commentsAnchor.innerText = localizer.localize('Discuss this in the forum');
+    commentsAnchor.href = post.commentsURL;
+    contentsDiv.appendChild(separatorSpan);
+    contentsDiv.appendChild(commentsAnchor);
 
     [titleHeader, authorSpan(post.author), dateSpan, contentsDiv].forEach(function (element) { postDiv.appendChild(element); });
 

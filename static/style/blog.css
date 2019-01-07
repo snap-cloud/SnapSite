@@ -30,3 +30,13 @@
     padding: 0 1em;
 }
 
+.post .comments {
+    font-size: 0.8em;
+}
+
+.post .separator {
+    display: block;
+    width: 120px;
+    border-bottom: 1px dashed #656565;
+    margin-bottom: 1em;
+}
