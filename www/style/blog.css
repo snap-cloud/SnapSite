@@ -7,9 +7,22 @@
     font-weight: bold;
 }
 
+.post .author {
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.post .author:after {
+    content: ', ';
+}
+
 .post .date {
     font-style: italic;
     font-size: 0.8em;
+}
+
+.post .contents {
+    padding: 0.5em;
 }
 
 .post ul {
@@ -17,7 +30,3 @@
     padding: 0 1em;
 }
 
-.post iframe {
-    border: 2px solid #101040;
-    border-radius: 3px;
-}
