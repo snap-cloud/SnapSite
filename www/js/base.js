@@ -1,4 +1,4 @@
-var snapURL = '/snap/snap.html';
+var snapURL = location.origin + '/snap/snap.html';
     modules = [], // compatibility with cloud.js
     nop = function () {},
     localizer = new Localizer(),

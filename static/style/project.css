@@ -132,13 +132,13 @@
 .project.big .buttons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    margin: 0 -0.1em;
 }
 
 .project.big .buttons a {
-    margin-top: 5px;
-    padding: 0.5em 0; /* flex-grow will take care of horizontal padding */
-    flex-grow: 0.15; /* 15% max growth */
+    margin: 5px 0.1em 0 0.1em; /* Edge margins get cancelled out by ↑ margin: 0 -0.1em; ↑ */
+    padding: 0.5em;
+    flex-grow: 0.20; /* 20% max growth */
 }
 
 .project.big .notes small {
@@ -161,4 +161,31 @@
 
 .paginator a {
     color: #505080;
+}
+
+/* Embed dialog */
+
+.embed-options {
+    display: inline-block;
+    vertical-align: super;
+    margin-top: 1em;
+}
+
+.embed-options span {
+    display: block;
+    text-align: left;
+}
+
+.embed-options span input {
+    margin-right: 0.5em;
+}
+
+.embed-code {
+    display: inline-block;
+    margin-left: 2em;
+    height: 85px;
+    width: 420px;
+    font-size: 0.8em;
+    line-height: 1.2em;
+    resize: none;
 }

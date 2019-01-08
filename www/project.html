@@ -106,6 +106,7 @@
                 <a localizable class="pure-button unshare" target="_blank">Unshare</a>
                 <a localizable class="pure-button publish" target="_blank">Publish</a>
                 <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
+                <a localizable class="pure-button embed-button" target="_blank">Embed</a>
                 <a localizable class="pure-button pure-button-warning delete" target="_blank">Delete</a>
             </div>
         </div>
@@ -251,6 +252,7 @@
             document.querySelector('.buttons .unshare').hidden = !project.ispublic || !ownsProject(project);
             document.querySelector('.buttons .publish').hidden = (!project.ispublic || project.ispublished) || !ownsProject(project);
             document.querySelector('.buttons .unpublish').hidden = (!project.ispublic || !project.ispublished) || !ownsProject(project);
+            document.querySelector('.embed-button').hidden = !project.ispublic;
             document.querySelector('.buttons .delete').hidden = !ownsProject(project);
 
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
@@ -259,6 +261,7 @@
             document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareProject(project); };
             document.querySelector('.buttons .publish').onclick = function () { confirmPublish(project); };
             document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublish(project); }
+            document.querySelector('.buttons .embed-button').onclick = function () { embedDialog(project); }
             document.querySelector('.buttons .delete').onclick = function () { confirmDelete(project); }
 
             doneLoading('#wrapper');

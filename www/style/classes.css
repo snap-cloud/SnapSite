@@ -81,6 +81,11 @@ pre.in-place {
     margin-left: -44px;
 }
 
+.pure-button {
+    color: #2c3e50;
+    background-color: #c2c3bb;
+}
+
 .pure-button-warning {
     background-color: Tomato;
 }

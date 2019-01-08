@@ -172,6 +172,57 @@ function ownsProject (project) {
     return (sessionStorage.username == project.username) || sessionStorage.isadmin === 'true';
 };
 
+function embedDialog (project) {
+    // I show a dialog with a bunch of options and display an HTML string
+    // one can paste into a website to embed the project as an iframe
+    // I reuse CustomAlert's dialogs, and my code is hideous
+    var dialogBox = document.querySelector('#customalert'),
+        codeArea = document.createElement('textarea'),
+        bodyDiv = document.querySelector('.body'),
+        bodyContent = 
+            '<span>' + localizer.localize('Please select the elements you wish ' + 
+            'to include in the embedded project viewer:') + '</span><br><form class="embed-options">';
+    new Map([
+        [ 'title', localizer.localize('Project title') ],
+        [ 'author', localizer.localize('Project author') ],
+        [ 'edit-button', localizer.localize('Edit button') ]
+    ]).forEach(function (value, key) {
+        bodyContent += '<span><input type="checkbox" name="' + key + '" value="' + key +
+            '" checked><label for="' + key +'">' + value + '</label></span>';
+    });
+    bodyContent += '</form>';
+    bodyDiv.innerHTML = bodyContent;
+    bodyDiv.appendChild(codeArea);
+
+    codeArea.classList.add('embed-code');
+    codeArea.set = function () {
+        var form = bodyDiv.querySelector('form');
+        codeArea.value = 
+            '<iframe frameBorder=0 src="' + location.origin + '/embed.html?project=' +
+            project.projectname + '&user=' + project.username +
+            (form.elements['title'].checked ? '&showTitle=true' : '') +
+            (form.elements['author'].checked ? '&showAuthor=true' : '') +
+            (form.elements['edit-button'].checked ? '&editButton=true' : '') +
+            '" width="480" height="390"></iframe>';
+    };
+    codeArea.set();
+
+    bodyDiv.querySelectorAll('input').forEach(function (input) {
+        input.onchange = function () { codeArea.set(); }
+    });
+
+    dialogBox.querySelector('.header').innerHTML = localizer.localize('Embed Options');
+    dialogBox.querySelector('.button-done').innerHTML = localizer.localize('Ok');
+    document.querySelector('html').style.overflow = 'hidden';
+    document.querySelector('#customalert-overlay').style.display = 'block';
+    dialogBox.style.display = 'block';
+    customalert.done = function() {
+        document.querySelector('#customalert').style.display = null;
+        document.querySelector('#customalert-overlay').style.display = null;
+        document.querySelector('html').style.overflow = 'auto';
+    }
+};
+
 function toggleFullScreen() {
     var embed = document.querySelector('.embed'),
         iframe = document.querySelector('.embed iframe');
