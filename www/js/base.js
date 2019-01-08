@@ -45,12 +45,12 @@ function setTitle (newTitle) {
 
 // Element creation
 
-function authorSpan (author) {
+function authorSpan (author, newTab) {
     var span = document.createElement('span');
     span.classList.add('author');
     span.innerHTML =
         localizer.localize(' by ') + '<a href="user.html?user=' + encodeURIComponent(author) +
-        '"><strong>' + escapeHtml(author) + '</strong></a>';
+        '"' + (newTab ? 'target="_blank"' : '') + '><strong>' + escapeHtml(author) + '</strong></a>';
     return span;
 };
 

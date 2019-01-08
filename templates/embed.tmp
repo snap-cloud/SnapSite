@@ -3,11 +3,7 @@
         <meta charset="UTF-8">
         <title></title>
 
-        <script type="text/javascript">
-            nop = function () {};
-            Localizer = nop;
-            Localizer.prototype.localize = nop;
-        </script>
+        <script type="text/javascript" src="js/locale.js"></script>
         <script type="text/javascript" src="js/base.js"></script>
         <script type="text/javascript" src="js/project.js"></script>
 
@@ -21,6 +17,7 @@
     <body>
         <div class="project big embed">
             <div class="controlbar">
+                <span class="title"></span>
                 <i class="start-button fas fa-flag clickable" onclick="runProject();"></i>
                 <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
             </div>
@@ -28,8 +25,31 @@
             <iframe src=""></iframe>
         </div>
         <script type="text/javascript">
+            var controlBar = document.querySelector('.controlbar');
             setTitle(pageProject());
             document.querySelector('.project iframe').src = projectURL(pageUser(), pageProject()) + '&embedMode&noExitWarning&noRun';
+            if (getUrlParameter('editButton')) {
+                var editButton = document.createElement('a'),
+                    icon = document.createElement('i');
+                editButton.classList.add('edit');
+                editButton.href = projectURL(pageUser(), pageProject()) + '&editMode&noRun';
+                editButton.target = '_blank';
+                icon.classList.add('far');
+                icon.classList.add('fa-eye');
+                editButton.appendChild(icon);
+                controlBar.appendChild(editButton);
+            } 
+            if (getUrlParameter('showTitle')) {
+                var titleSpan = document.querySelector('.controlbar .title');
+                titleSpan.append(pageProject());
+                if (getUrlParameter('showAuthor')) {
+                    titleSpan.append(',');
+                }
+            }
+            if (getUrlParameter('showAuthor')) {
+                var titleSpan = document.querySelector('.controlbar .title');
+                titleSpan.appendChild(authorSpan(pageUser(), true));
+            }
         </script>
     </body>
 </html>

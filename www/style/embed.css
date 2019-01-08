@@ -8,3 +8,27 @@
 iframe {
     flex: 1;
 }
+
+.edit {
+    color: #e2e3db;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.title {
+    position: absolute !important;
+    left: 0.5em;
+    color: #e2e3db;
+    font-weight: bold;
+}
+
+.author a {
+    color: #7070A0;
+    text-decoration: none;
+}
+
+.author a:hover {
+    filter: brightness(1.2);
+}
