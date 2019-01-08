@@ -181,8 +181,8 @@
         "Projekt teilen",
     "administrator":
         "Administrator",
-    "A link to reset your password has been\nsent to your email account.":
-        "Ein Link, mit dem du dein Passwort zurücksetzen kannst, wurde an deine E-Mail-Adresse verschickt.",
+    "A link to reset your password has been<br>sent to your email account.":
+        "Ein Link, mit dem du dein Passwort zurücksetzen kannst,<br>wurde an deine E-Mail-Adresse verschickt.",
     "Location: ":
         "Standort",
     "Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.":

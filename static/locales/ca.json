@@ -151,8 +151,8 @@
         "Restablir la contrasenya",
     "Reset My Password":
         "Restableix la meva contrasenya",
-    "A link to reset your password has been\nsent to your email account.":
-        "S'ha enviat un correu al teu compte amb un\nenllaç per restablir la teva contrasenya.",
+    "A link to reset your password has been<br>sent to your email account.":
+        "S'ha enviat un correu al teu compte amb un<br>enllaç per restablir la teva contrasenya.",
     "Sign Up":
         "Registre",
     "Create a Snap<em>!</em> account":
