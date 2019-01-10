@@ -240,11 +240,18 @@
     "Embed Options":
         "Opcions d'incrustació",
     "Please select the elements you wish to include in the embedded project viewer:":
-        "Escull els elements que vols incloure al projecte incrustat",
+        "Escull els elements que vols incloure al projecte incrustat:",
     "Project title":
         "Títol del projecte",
     "Project author":
         "Autor del projecte",
     "Edit button":
-        "Botó d'edició"
+        "Botó d'edició",
+    "Repeat email address":
+        "Repeteix el correu electrònic",
+    "Please make sure that you have entered your<br>email twice and that both emails match.":
+        "Si us plau, assegura't que has introduït correctament<br>el teu correu dues vegades.",
+    "Emails do not match":
+        "Els correus no coincideixen"
 }
+

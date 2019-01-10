@@ -238,5 +238,25 @@
     "Partners, sponsors and collaborators":
         "Socios, patrocinadores y colaboradores",
     "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "Echa un vistazo a los <a href=\"examples.html\">ejemplos</a> o consulta el <a href=\"manual.html\">manual de referencia</a> para aprender más sobre el lenguaje, ¡o dirígete directamente al <a href=\"https://snap.berkeley.edu/run\">editor</a> y empieza a programar!"
+        "Echa un vistazo a los <a href=\"examples.html\">ejemplos</a> o consulta el <a href=\"manual.html\">manual de referencia</a> para aprender más sobre el lenguaje, ¡o dirígete directamente al <a href=\"https://snap.berkeley.edu/run\">editor</a> y empieza a programar!",
+    "Discuss this in the forum":
+        "Comenta esta entrada en el foro",
+    "Edit button":
+        "Botón de edición",
+    "Emails do not match":
+        "Los correos no coinciden",
+    "Embed":
+        "Incrustar",
+    "Embed Options":
+        "Opciones de incrustación",
+    "Please make sure that you have entered your<br>email twice and that both emails match.":
+        "Por favor, asegúrate de que has inroducido<br>tu correo correctamente dos veces.",
+    "Please select the elements you wish to include in the embedded project viewer:":
+        "Selecciona los elementos que quieres incluir en el proyecto incrustado:",
+    "Project author":
+        "Autor del proyecto",
+    "Project title":
+        "Título del proyecto",
+    "Repeat email address":
+        "Repite el correo electrónico"
 }

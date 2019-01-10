@@ -95,6 +95,11 @@
             <input id="email" name="email" type="email" placeholder="Email address" required>
         </div>
 
+        <div class="pure-control-group">
+            <label localizable for="email">Repeat email address</label>
+            <input id="email-repeat" name="email-repeat" type="email" placeholder="Email address" required>
+        </div>
+
         <div class="pure-controls">
             <label for="tos" class="pure-checkbox">
                 <input id="tos" name="tos" type="checkbox" required> <span localizable>I have read and agree to the <a target="_blank" href="tos.html">Terms of Service</a> and the <a target="_blank" href="privacy.html">Privacy Agreement</a></span>.
@@ -113,31 +118,39 @@
             password = this.elements['password'].value,
             passwordRepeat = this.elements['password-repeat'].value,
             email = this.elements['email'].value,
+            emailRepeat = this.elements['email-repeat'].value,
             agreed = this.elements['tos'].checked;
 
         event.preventDefault();
 
-        SnapCloud.signup(
-            username,
-            password,
-            passwordRepeat,
-            email,
-            function (value) { 
-                alert(
-                    'User created.<br/>You can now log in.',
-                    function() {
-                        window.location.href = 'login.html';
-                    },
-                    { title: 'Account Created'}
-                );
-            },
-            function (response) {
-                genericError(
-                    'Could not create account: ' + response,
-                    'Sign Up Failed'
-                );
-            }
-        );
+        if (email !== emailRepeat) {
+            genericError(
+                'Please make sure that you have entered your<br>email twice and that both emails match.',
+                'Emails do not match'
+            );
+        } else {
+            SnapCloud.signup(
+                username,
+                password,
+                passwordRepeat,
+                email,
+                function (value) { 
+                    alert(
+                        'User created.<br/>You can now log in.',
+                        function() {
+                            window.location.href = 'login.html';
+                        },
+                        { title: 'Account Created'}
+                    );
+                },
+                function (response) {
+                    genericError(
+                        'Could not create account: ' + response,
+                        'Sign Up Failed'
+                    );
+                }
+            );
+        }
     });
 </script>
         </div>
