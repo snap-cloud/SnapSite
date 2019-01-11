@@ -93,11 +93,11 @@ becomeButton = function (user) {
                 false, // persist
                 function (username, isadmin, response) {
                     alert(
-                        response,
+                        response.message,
                         function () {
                             sessionStorage.username = username;
                             sessionStorage.isadmin = isadmin;
-                            location.href = redirectPath();
+                            location.href = 'profile.html';
                         }
                     );
                 },
