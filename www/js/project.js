@@ -2,9 +2,9 @@ function newProjectDiv (project, options) {
     var extraFields = options['extraFields'],
         div = document.createElement('div');
 
-    div.innerHTML = 
-        '<a href="project.html?user=' + encodeURIComponent(project.username) + '&project=' + 
-        encodeURIComponent(project.projectname) + '"><img alt="' + escapeHtml(project.projectname) + 
+    div.innerHTML =
+        '<a href="project.html?user=' + encodeURIComponent(project.username) + '&project=' +
+        encodeURIComponent(project.projectname) + '"><img alt="' + escapeHtml(project.projectname) +
         '" title="' + escapeHtml(project.notes) + '" src="' + project.thumbnail +
         '"><span class="project-name">' + escapeHtml(project.projectname) + '</span></a>';
 
@@ -94,7 +94,7 @@ function confirmUnshareProject (project) {
 
 function confirmPublish (project) {
     confirm(
-        localizer.localize('Are you sure you want to publish this project<br>' + 
+        localizer.localize('Are you sure you want to publish this project<br>' +
             'and make it visible in the Snap<em>!</em> website?'),
         function (ok) {
             if (ok) {
@@ -118,7 +118,7 @@ function confirmPublish (project) {
 
 function confirmUnpublish (project) {
     confirm(
-        localizer.localize('Are you sure you want to unpublish this project<br>' + 
+        localizer.localize('Are you sure you want to unpublish this project<br>' +
             'and hide it from the Snap<em>!</em> website?'),
         function (ok) {
             if (ok) {
@@ -142,7 +142,7 @@ function confirmUnpublish (project) {
 
 function confirmDelete (project) {
     confirm(
-        localizer.localize('Are you sure you want to delete this project?') + '<br>' + 
+        localizer.localize('Are you sure you want to delete this project?') + '<br>' +
             '<i class="warning fa fa-exclamation-triangle"></i> ' +
             localizer.localize('WARNING! This action cannot be undone!') +
             ' <i class="warning fa fa-exclamation-triangle"></i>',
@@ -179,8 +179,8 @@ function embedDialog (project) {
     var dialogBox = document.querySelector('#customalert'),
         codeArea = document.createElement('textarea'),
         bodyDiv = document.querySelector('.body'),
-        bodyContent = 
-            '<span>' + localizer.localize('Please select the elements you wish ' + 
+        bodyContent =
+            '<span>' + localizer.localize('Please select the elements you wish ' +
             'to include in the embedded project viewer:') + '</span><br><form class="embed-options">';
     new Map([
         [ 'title', localizer.localize('Project title') ],
@@ -197,7 +197,7 @@ function embedDialog (project) {
     codeArea.classList.add('embed-code');
     codeArea.set = function () {
         var form = bodyDiv.querySelector('form');
-        codeArea.value = 
+        codeArea.value =
             '<iframe frameBorder=0 src="' + location.origin + '/embed.html?project=' +
             project.projectname + '&user=' + project.username +
             (form.elements['title'].checked ? '&showTitle=true' : '') +

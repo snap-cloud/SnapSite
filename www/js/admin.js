@@ -49,8 +49,37 @@ blockButton = function (user) {
     return userButton(user, 'Block', nop, 'pure-button-warning');
 };
 
-makeAdmin = function (user) {
-    return userButton(user, 'Make Admin', nop);
+deleteButton = function (user) {
+    return userButton(
+        user,
+        'Delete',
+        function () {
+            confirm(
+                localizer.localize('Are you sure you want to delete the user') + ' <strong>' + user.username + '</strong>?<br>' +
+                '<i class="warning fa fa-exclamation-triangle"></i> ' +
+                localizer.localize('WARNING! This action cannot be undone!') +
+                ' <i class="warning fa fa-exclamation-triangle"></i>',
+                function (ok) {
+                    if (ok) {
+                       SnapCloud.withCredentialsRequest(
+                           'DELETE',
+                           '/users/' + encodeURIComponent(user.username),
+                           function (response) {
+                               alert(
+                                   response,
+                                   function () { location.reload(); }
+                               );
+                           },
+                           genericError,
+                           'Could not delete user'
+                       );
+                    }
+                },
+                confirmTitle('Delete user')
+            );
+        },
+        'pure-button-warning'
+    );
 };
 
 becomeButton = function (user) {
@@ -69,15 +98,12 @@ userDiv = function (user) {
     emailSpan.innerHTML = '<em><a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a></em>';
     idSpan.innerHTML = '<strong>id:</strong> ' + user.id;
     joinedSpan.innerHTML = '<strong localizable>Joined in </strong>' + formatDate(user.created);
- 
+
     userWrapperDiv.classList.add('user');
     userWrapperDiv.classList.add('pure-u-1-3');
     userDiv.classList.add('details');
 
     buttonsDiv.classList.add('buttons');
-    buttonsDiv.appendChild(blockButton(user));
-    buttonsDiv.appendChild(becomeButton(user));
-    buttonsDiv.appendChild(makeAdmin(user));
 
     [usernameAnchor, emailSpan, idSpan, joinedSpan, buttonsDiv].forEach(function (e) { userDiv.appendChild(e); });
 
@@ -91,6 +117,10 @@ userDiv = function (user) {
         userDiv.classList.add('unverified');
         userDiv.title += localizer.localize('User is not verified');
     }
+
+    buttonsDiv.appendChild(becomeButton(user));
+    buttonsDiv.appendChild(blockButton(user));
+    buttonsDiv.appendChild(deleteButton(user));
 
     userWrapperDiv.appendChild(userDiv);
     return userWrapperDiv;
