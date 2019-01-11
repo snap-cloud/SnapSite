@@ -29,7 +29,7 @@ verifyButton = function (user) {
         function () {
             SnapCloud.withCredentialsRequest(
                 'POST',
-                '/users/%username/verify_user',
+                '/users/' + encodeURIComponent(user.username) + '/verify_user',
                 function (response) {
                     alert(
                         response,
