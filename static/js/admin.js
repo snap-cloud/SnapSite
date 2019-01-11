@@ -90,12 +90,14 @@ becomeButton = function (user) {
             SnapCloud.login(
                 user.username,
                 0, // password is irrelevant
-                false,
-                function (message) {
+                false, // persist
+                function (username, isadmin, response) {
                     alert(
-                        message,
+                        response,
                         function () {
-                            location.href = '/';
+                            sessionStorage.username = username;
+                            sessionStorage.isadmin = isadmin;
+                            location.href = redirectPath();
                         }
                     );
                 },
