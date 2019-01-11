@@ -1,0 +1,63 @@
+<script>
+SnapCloud.getCurrentUser(function (user) {
+    if (!user.isadmin) {
+        location.href = '/';
+    }
+});
+</script>
+<script src="js/admin.js"></script>
+<link rel="stylesheet" href="style/admin.css">
+<h1 localizable>User Administration</h1>
+<div class="bar">
+    <div class="user search">
+        <form action="user-admin.html">
+            <input type="text" name="query">
+            <i class="fas fa-search"></i>
+        </form>
+        <script>
+            document.querySelector('.user form input').value = getUrlParameter('query');
+        </script>
+    </div>
+    @include=paginator
+</div>
+<div class="users list pure-g"></div>
+<script>
+    var usersDiv = document.querySelector('.users.list'),
+        users_pageSpan = document.querySelector('.users.paginator .page'),
+        users_totalPagesSpan = document.querySelector('.users.paginator .total-pages'),
+        users_page = 1,
+        users_totalPages = 1,
+        users_pageSize = ${pageSize} || 150;
+
+    users_toPage(1);
+
+    function users_toPage (pageNumber) {
+        usersDiv.innerHTML = '';
+        beganLoading('.users.list');
+        getUserList(
+            getUrlParameter('query'),
+            users_pageSize,
+            pageNumber,
+            function (response) {
+                users_totalPages = response.pages;
+                if (users_totalPages == 1) {
+                    document.querySelector('.users.paginator').remove();
+                } else {
+                    users_totalPagesSpan.textContent = users_totalPages;
+                }
+                if (response.users[0]) {
+                    response.users.forEach(function (user) {
+                        usersDiv.appendChild(userDiv(user));
+                    });
+                } else {
+                    document.querySelector('.users').remove();
+                }
+                doneLoading('.users.list');
+            }
+        );
+
+        users_page = pageNumber;
+        users_pageSpan.textContent = pageNumber;
+    };
+
+</script>

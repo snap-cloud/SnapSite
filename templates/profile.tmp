@@ -4,9 +4,6 @@
     <div class="pure-u-1-2 fields">
         <span class="pure-u-1-1"><strong localizable>Joined in </strong><span class="created"></span></span>
         <span class="pure-u-1-1"><strong localizable>Email: </strong><span class="email"></span></span>
-        <span class="pure-u-1-1"><strong localizable>Location: </strong><span class="location"></span></span>
-        <span class="pure-u-1-2"><strong localizable>About you:</strong></span>
-        <span class="pure-u-1-2 about"></span>
     </div> 
     <div class="pure-u-1-2 buttons">
         <a localizable class="pure-button" href="changePassword.html">Change Password</a>
@@ -19,8 +16,6 @@
         function (user) {
             fieldsDiv.querySelector('.created').innerHTML = formatDate(user.created);
             fieldsDiv.querySelector('.email').innerHTML = '<a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a>';
-            fieldsDiv.querySelector('.location').innerHTML = user.location || '';
-            fieldsDiv.querySelector('.about').innerHTML = user.about || '';
             if (user.isadmin) {
                 document.querySelector('h1 .visitor').append(' (' + localizer.localize('administrator') + ')');
             }

@@ -48,10 +48,17 @@ function setTitle (newTitle) {
 function authorSpan (author, newTab) {
     var span = document.createElement('span');
     span.classList.add('author');
-    span.innerHTML =
-        localizer.localize(' by ') + '<a href="user.html?user=' + encodeURIComponent(author) +
-        '"' + (newTab ? 'target="_blank"' : '') + '><strong>' + escapeHtml(author) + '</strong></a>';
+    span.innerHTML = localizer.localize(' by ');
+    span.appendChild(userAnchor(author, newTab));
     return span;
+};
+
+function userAnchor (username, newTab) {
+    var anchor = document.createElement('a');
+    anchor.href = 'user.html?user=' + encodeURIComponent(username);
+    anchor.target = newTab ? '_blank' : '';
+    anchor.innerHTML = '<strong>' + escapeHtml(username) + '</strong>';
+    return anchor;
 };
 
 function isPublicSpan (isPublic) {

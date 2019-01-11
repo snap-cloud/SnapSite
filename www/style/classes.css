@@ -66,6 +66,7 @@ pre.in-place {
     border-radius: 2em;
     padding: 1em 1.5em;
 }
+
 .bubble:after {
     content: '';
     position: absolute;
@@ -97,3 +98,21 @@ pre.in-place {
 .clickable {
     cursor: pointer;
 }
+
+.paginator {
+    text-align: right;
+    margin-bottom: 1em;
+    font-weight: bold;
+    color: #505080;
+    letter-spacing: 0.15em;
+}
+
+.paginator .total-pages {
+    filter: contrast(0);
+}
+
+.paginator a {
+    color: #505080;
+}
+
+

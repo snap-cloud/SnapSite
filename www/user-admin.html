@@ -72,75 +72,76 @@
             </div>
         </div>
         <div id="wrapper">
-<h1><span class="username"></span><span localizable>'s public page</span></h1>
-<h2 localizable></h2>
-<script src="js/project.js"></script>
-<link rel="stylesheet" href="style/project.css">
-<nav class="users paginator">
-    <a href="#" onclick="users_toPage(1);"><i class="fas fa-fast-backward"></i></a>
-    <a href="#" onclick="users_toPage(users_page - 5 > 0 ? users_page - 5 : 1);"><i class="fas fa-backward"></i></a>
-    <a href="#" onclick="users_toPage(users_page - 1 > 0 ? users_page - 1 : users_page);"><i class="fas fa-play fa-rotate-180"></i></a>
-    <span class="page"></span> / <span class="total-pages"></span>
-    <a href="#" onclick="users_toPage(users_page + 1 < users_totalPages ? users_page + 1 : users_totalPages);"><i class="fas fa-play"></i></a>
-    <a href="#" onclick="users_toPage(users_page + 5 < users_totalPages ? users_page + 5 : users_totalPages);"><i class="fas fa-forward"></i></a>
-    <a href="#" onclick="users_toPage(users_totalPages);"><i class="fas fa-fast-forward"></i></a>
-</nav>
-<div class="users projects pure-g"></div>
 <script>
-    var users_projectsDiv = document.querySelector('.users.projects'),
+SnapCloud.getCurrentUser(function (user) {
+    if (!user.isadmin) {
+        location.href = '/';
+    }
+});
+</script>
+<script src="js/admin.js"></script>
+<link rel="stylesheet" href="style/admin.css">
+<h1 localizable>User Administration</h1>
+<div class="bar">
+    <div class="user search">
+        <form action="user-admin.html">
+            <input type="text" name="query">
+            <i class="fas fa-search"></i>
+        </form>
+        <script>
+            document.querySelector('.user form input').value = getUrlParameter('query');
+        </script>
+    </div>
+    <nav class="users paginator">
+        <a href="#" onclick="users_toPage(1);"><i class="fas fa-fast-backward"></i></a>
+        <a href="#" onclick="users_toPage(users_page - 5 > 0 ? users_page - 5 : 1);"><i class="fas fa-backward"></i></a>
+        <a href="#" onclick="users_toPage(users_page - 1 > 0 ? users_page - 1 : users_page);"><i class="fas fa-play fa-rotate-180"></i></a>
+        <span class="page"></span> / <span class="total-pages"></span>
+        <a href="#" onclick="users_toPage(users_page + 1 < users_totalPages ? users_page + 1 : users_totalPages);"><i class="fas fa-play"></i></a>
+        <a href="#" onclick="users_toPage(users_page + 5 < users_totalPages ? users_page + 5 : users_totalPages);"><i class="fas fa-forward"></i></a>
+        <a href="#" onclick="users_toPage(users_totalPages);"><i class="fas fa-fast-forward"></i></a>
+    </nav>
+</div>
+<div class="users list pure-g"></div>
+<script>
+    var usersDiv = document.querySelector('.users.list'),
         users_pageSpan = document.querySelector('.users.paginator .page'),
         users_totalPagesSpan = document.querySelector('.users.paginator .total-pages'),
         users_page = 1,
         users_totalPages = 1,
-        users_pageSize = 15 || 15;
+        users_pageSize = 150 || 150;
 
     users_toPage(1);
 
     function users_toPage (pageNumber) {
-        users_projectsDiv.innerHTML = '';
-        beganLoading('.users.projects');
-        SnapCloud.getPublishedProjectList(
-            pageUser(),
-            pageNumber,
+        usersDiv.innerHTML = '';
+        beganLoading('.users.list');
+        getUserList(
+            getUrlParameter('query'),
             users_pageSize,
-            null, // used for search terms, collection names, etc
+            pageNumber,
             function (response) {
-                setTitle(pageUser() + "'s public projects - Snap! Build Your Own Blocks");
-
                 users_totalPages = response.pages;
                 if (users_totalPages == 1) {
                     document.querySelector('.users.paginator').remove();
                 } else {
                     users_totalPagesSpan.textContent = users_totalPages;
                 }
-
-                if (response.projects[0]) {
-                    response.projects.forEach(function (project) {
-                        users_projectsDiv.append(
-                                newProjectDiv(
-                                project,
-                                {
-                                    size: 'small',
-                                    gridSize: 5,
-                                    extraFields: {
-                                        author: 'username'
-                                    }
-                                }));
+                if (response.users[0]) {
+                    response.users.forEach(function (user) {
+                        usersDiv.appendChild(userDiv(user));
                     });
                 } else {
-                    // collection is empty, so let's remove the carousel altogether
                     document.querySelector('.users').remove();
                 }
-                doneLoading('.users.projects');
-            },
-            function (error) {
-                genericError(error);
-            },
-            true // withThumbnail
+                doneLoading('.users.list');
+            }
         );
+
         users_page = pageNumber;
         users_pageSpan.textContent = pageNumber;
     };
+
 </script>
         </div>
         <div id="footer">

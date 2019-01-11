@@ -146,23 +146,6 @@
     opacity: 0.5;
 }
 
-.paginator {
-    text-align: right;
-    padding-right: 2em;
-    margin-bottom: 1em;
-    font-weight: bold;
-    color: #505080;
-    letter-spacing: 0.15em;
-}
-
-.paginator .total-pages {
-    filter: contrast(0);
-}
-
-.paginator a {
-    color: #505080;
-}
-
 /* Embed dialog */
 
 .embed-options {
