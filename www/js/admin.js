@@ -28,7 +28,7 @@ verifyButton = function (user) {
         'Verify',
         function () {
             SnapCloud.withCredentialsRequest(
-                'POST',
+                'GET',
                 '/users/' + encodeURIComponent(user.username) + '/verify_user/0', // token is irrelevant for admins
                 function (response) {
                     alert(
