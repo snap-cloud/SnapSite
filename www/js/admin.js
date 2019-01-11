@@ -11,7 +11,7 @@ getUserList = function (query, pageSize, page, callback) {
 }
 
 userButton = function (user, label, action, extraClass) {
-    var button = document.createElement('div');
+    var button = document.createElement('a');
     button.classList.add('pure-button');
     button.classList.add(label.toLowerCase().replace(/\s/g,''));
     if (extraClass) {

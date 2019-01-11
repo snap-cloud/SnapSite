@@ -75,11 +75,14 @@
 <script>
 SnapCloud.getCurrentUser(function (user) {
     if (!user.isadmin) {
-        location.href = '/';
+        location.href = 'index.html';
     }
 });
 </script>
 <h1 localizable>Administration</h1>
+<div class="pure-g">
+    <a class="pure-u-1-5 pure-button" href="user-admin.html">User Administration</a>
+</div>
         </div>
         <div id="footer">
             <div class="links pure-g">
