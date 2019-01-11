@@ -46,7 +46,7 @@ verifyButton = function (user) {
 };
 
 blockButton = function (user) {
-    return userButton(user, 'Block', nop, 'pure-button-warning');
+    return userButton(user, 'Block', function () { alert('not yet implemented'); }, 'pure-button-warning');
 };
 
 deleteButton = function (user) {
@@ -83,7 +83,26 @@ deleteButton = function (user) {
 };
 
 becomeButton = function (user) {
-    return userButton(user, 'Become', nop);
+    return userButton(
+        user,
+        'Become',
+        function () {
+            SnapCloud.login(
+                user.username,
+                0, // password is irrelevant
+                false,
+                function (message) {
+                    alert(
+                        message,
+                        function () {
+                            location.href = '/';
+                        }
+                    );
+                },
+                genericError
+            );
+        }
+    );
 };
 
 userDiv = function (user) {
