@@ -110,7 +110,14 @@
                     function (response) {
                         alert(
                             response,
-                            function () { window.location.href = redirectPath(); }
+                            function () {
+                                SnapCloud.logout(
+                                    function () {
+                                        sessionStorage.clear();
+                                        location.href = redirectPath();
+                                    }
+                                );
+                            }
                         );
                     },
                     genericError,
@@ -122,7 +129,6 @@
                     localizer.localize('User account could not be removed:') + '<br>' + response,
                     'Could not delete user'
                 );
-                console.log('we should now redirect');
             }
         );
     });
