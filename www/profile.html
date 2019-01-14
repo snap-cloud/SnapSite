@@ -81,6 +81,8 @@
     </div> 
     <div class="pure-u-1-2 buttons">
         <a localizable class="pure-button" href="changePassword.html">Change Password</a>
+        <a localizable class="pure-button" href="changeEmail.html">Change Email</a>
+        <a localizable class="pure-button pure-button-warning" onclick="confirmDeleteMyself()">Delete my Account</a>
     </div>
 </div>
 <script>
@@ -96,6 +98,20 @@
         },
         genericError
     );
+    function confirmDeleteMyself () {
+        confirm(
+            localizer.localize('Are you sure you want to delete your user account?') + '<br>' +
+            '<i class="warning fa fa-exclamation-triangle"></i> ' +
+            localizer.localize('WARNING! This action cannot be undone!') +
+            ' <i class="warning fa fa-exclamation-triangle"></i>',
+            function (ok) {
+                if (ok) {
+                    location.href = 'deleteuser.html';
+                }
+            },
+            confirmTitle('Delete your Account')
+        );
+    };
 </script>
         </div>
         <div id="footer">

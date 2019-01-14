@@ -1,3 +1,7 @@
 .fields span {
     line-height: 2em;
 }
+
+.delete {
+    margin-top: 2em;
+}
