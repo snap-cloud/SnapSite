@@ -1,0 +1,27 @@
+<h1 localizable>Change Email</h1>
+<form id="change-email" class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label localizable for="password">Password</label>
+            <input id="password" name="password" type="password" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label localizable for="new-email">New Email</label>
+            <input id="new-email" name="new-email" type="email" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label localizable for="new-password-again">Repeat New Email</label>
+            <input id="new-email-again" name="new-email-again" type="email" required>
+        </div>
+
+        <div class="pure-controls">
+            <button localizable type="submit" class="pure-button red-button">Change My Email</button>
+        </div>
+    </fieldset>
+</form>
+
+<script>
+    setTitle(localizer.localize('Change Email') + ' - Snap! Build Your Own Blocks');
+</script>
