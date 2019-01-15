@@ -120,10 +120,10 @@
                     SnapCloud.withCredentialsRequest(
                         'POST',
                         '/users/' + encodeURIComponent(username) + '?' + 
-                        this.encodeDict({ email: email }),
+                        SnapCloud.encodeDict({ email: email }),
                         function (response) {
                             alert(
-                                localizer.localize('Your email has been updated.<br>Please log in again'),
+                                localizer.localize('Your email has been updated.<br>Please log in again.'),
                                 function () {
                                     SnapCloud.logout(
                                         function () {
