@@ -24,4 +24,54 @@
 
 <script>
     setTitle(localizer.localize('Change Email') + ' - Snap! Build Your Own Blocks');
+
+    document.querySelector('form#change-email').addEventListener('submit', function (event) {
+        var password = this.elements['password'].value,
+            email = this.elements['new-email'].value;
+            emailRepeat = this.elements['new-email-again'].value;
+
+        event.preventDefault();
+
+        if (email !== emailRepeat) {
+            genericError(
+                'Please make sure that you have entered your<br>email twice and that both emails match.',
+                'Emails do not match'
+            );
+        } else {
+            SnapCloud.login(
+                SnapCloud.username,
+                password,
+                false, // We'll ask users to log in again after changing their email
+                function (username) {
+                    SnapCloud.withCredentialsRequest(
+                        'POST',
+                        '/users/' + encodeURIComponent(username) + '?' + 
+                        this.encodeDict({ email: email }),
+                        function (response) {
+                            alert(
+                                localizer.localize('Your email has been updated.<br>Please log in again'),
+                                function () {
+                                    SnapCloud.logout(
+                                        function () {
+                                            sessionStorage.clear();
+                                            location.href = 'login.html';
+                                        }
+                                    );
+                                }
+                            );
+                        },
+                        genericError,
+                        'Could not update email'
+                    );
+                },
+                function (response) {
+                    genericError(
+                        localizer.localize('User profile could not be updated:') + '<br>' + response,
+                        'Could not update email'
+                    );
+                }
+            );
+        }
+    });
+
 </script>
