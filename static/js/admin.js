@@ -55,7 +55,7 @@ deleteButton = function (user) {
         'Delete',
         function () {
             confirm(
-                localizer.localize('Are you sure you want to delete the user') + ' <strong>' + user.username + '</strong>?<br>' +
+                localizer.localize('Are you sure you want to delete user') + ' <strong>' + user.username + '</strong>?<br>' +
                 '<i class="warning fa fa-exclamation-triangle"></i> ' +
                 localizer.localize('WARNING! This action cannot be undone!') +
                 ' <i class="warning fa fa-exclamation-triangle"></i>',
@@ -114,11 +114,13 @@ userDiv = function (user) {
         emailSpan = document.createElement('span'),
         idSpan = document.createElement('span'),
         joinedSpan = document.createElement('span'),
+        roleSpan = document.createElement('span'),
         buttonsDiv = document.createElement('div');
 
     emailSpan.innerHTML = '<em><a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a></em>';
-    idSpan.innerHTML = '<strong>id:</strong> ' + user.id;
+    idSpan.innerHTML = '<strong>ID:</strong> ' + user.id;
     joinedSpan.innerHTML = '<strong localizable>Joined in </strong>' + formatDate(user.created);
+    roleSpan.innerHTML = '<strong localizable>Role</strong>: ' + localizer.localize(user.role);
 
     userWrapperDiv.classList.add('user');
     userWrapperDiv.classList.add('pure-u-1-3');
@@ -126,7 +128,7 @@ userDiv = function (user) {
 
     buttonsDiv.classList.add('buttons');
 
-    [usernameAnchor, emailSpan, idSpan, joinedSpan, buttonsDiv].forEach(function (e) { userDiv.appendChild(e); });
+    [usernameAnchor, emailSpan, idSpan, joinedSpan, roleSpan, buttonsDiv].forEach(function (e) { userDiv.appendChild(e); });
 
     if (user.role == 'admin') {
         userDiv.classList.add('admin');

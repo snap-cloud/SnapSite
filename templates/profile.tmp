@@ -4,6 +4,7 @@
     <div class="pure-u-1-2 fields">
         <span class="pure-u-1-1"><strong localizable>Joined in </strong><span class="created"></span></span>
         <span class="pure-u-1-1"><strong localizable>Email: </strong><span class="email"></span></span>
+        <span hidden class="pure-u-1-1 role-container"><strong localizable>Role</strong><strong>: </strong><span class="role"></span></span>
     </div> 
     <div class="pure-u-1-2 buttons">
         <a localizable class="pure-button" href="changePassword.html">Change Password</a>
@@ -18,8 +19,9 @@
         function (user) {
             fieldsDiv.querySelector('.created').innerHTML = formatDate(user.created);
             fieldsDiv.querySelector('.email').innerHTML = '<a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a>';
-            if (user.role == 'admin') {
-                document.querySelector('h1 .visitor').append(' (' + localizer.localize('administrator') + ')');
+            if (user.role !== 'standard') {
+                document.querySelector('.role-container').hidden = false;
+                document.querySelector('.role').innerHTML = localizer.localize(user.role);
             }
         },
         genericError

@@ -20,19 +20,15 @@
     "My Profile":
         "El meu perfil",
     "Change Password":
-        "Canviar contrasenya",
+        "Canvia la contrasenya",
     "Log Out":
         "Tancar sessió",
     "administrator":
         "administrador",
     "Joined in ":
-        "Et vas registrar el ",
+        "Registrat el ",
     "Email: ":
         "Adreça electrònica: ",
-    "Location: ":
-        "Ubicació: ",
-    "About you:":
-        "Sobre tu:",
     "Change Your Password":
         "Canvia la teva contrasenya",
     "Current Password":
@@ -164,7 +160,7 @@
     "Repeat Password":
         "Repeteix la contrasenya",
     "Email address":
-        "Correu electrònic",
+        "Adreça electrònica",
     "I have read and agree to the <a target=\"_blank\" href=\"tos.html\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy.html\">Privacy Agreement</a>":
         "He llegit i accepto les <a target=\"_blank\" href=\"tos.html\">condicions del servei</a> i l'<a target=\"_blank\" href=\"privacy.html\">acord de privacitat</a>",
     "Sign up":
@@ -248,10 +244,52 @@
     "Edit button":
         "Botó d'edició",
     "Repeat email address":
-        "Repeteix el correu electrònic",
+        "Repeteix l'adreça electrònica",
     "Please make sure that you have entered your<br>email twice and that both emails match.":
-        "Si us plau, assegura't que has introduït correctament<br>el teu correu dues vegades.",
+        "Si us plau, assegura't que has introduït correctament<br>la teva adreça electrònica dues vegades.",
     "Emails do not match":
-        "Els correus no coincideixen"
+        "Les adreces no coincideixen",
+    "User Administration":
+        "Administració d'usuaris",
+    "Role":
+        "Rol",
+    "standard":
+        "estàndard",
+    "admin":
+        "administrador",
+    "moderator":
+        "moderador",
+    "reviewer":
+        "revisor",
+    "banned":
+        "blocat",
+    "Verify":
+        "Verifica",
+    "Become":
+        "Esdevingues",
+    "Block":
+        "Bloca",
+    "User is not verified":
+        "Aquest usuari no està verificat",
+    "Administrator":
+        "Administrador",
+    "Change Email":
+        "Canvia l'adreça electrònica",
+    "Delete my Account":
+        "Elimina aquest compte",
+    "Are you sure you want to delete your user account?":
+        "Segur que vols eliminar el teu compte d'usuari?",
+    "Delete your Account":
+        "Eliminar el teu compte",
+    "New Email":
+        "Nova adreça electrònica",
+    "Repeat New Email":
+        "Repeteix la nova adreça",
+    "Change My Email":
+        "Canvia la meva adreça",
+    "Delete user":
+        "Eliminar usuari",
+    "Are you sure you want to delete user":
+        "Segur que vols eliminar l'usuari"
 }
 
