@@ -74,7 +74,7 @@
         <div id="wrapper">
 <script>
 SnapCloud.getCurrentUser(function (user) {
-    if (!user.isadmin) {
+    if (user.role !== 'admin') {
         location.href = 'index.html';
     }
 });
@@ -128,9 +128,9 @@ SnapCloud.getCurrentUser(function (user) {
     document.querySelector('#top-bar .run').href = snapURL;
     if (!sessionStorage.username) {
         SnapCloud.initSession(
-            function (username, isadmin) {
+            function (username, role) {
                 sessionStorage.username = username;
-                sessionStorage.isadmin = isadmin;
+                sessionStorage.role = role;
                 initForUsername(username);
             }
         );
@@ -145,7 +145,7 @@ SnapCloud.getCurrentUser(function (user) {
             document.querySelector('li.sign-in').hidden = true;
             document.querySelector('li.user-menu').hidden = false;
             document.querySelector('a.my-public-projects').href = 'user.html?user=' + username;
-            if (sessionStorage.isadmin == 'true') {
+            if (sessionStorage.role == 'admin') {
                 document.querySelector('.admin').hidden = false;
             }
             fillVisitorFields();

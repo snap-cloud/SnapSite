@@ -169,7 +169,7 @@ function confirmDelete (project) {
 function ownsProject (project) {
     // Not to worry. Actual secure permission check is performed in the backend.
     // sessionStorage stringifies everything, so we need to check against the 'true' string.
-    return (sessionStorage.username == project.username) || sessionStorage.isadmin === 'true';
+    return (sessionStorage.username == project.username) || sessionStorage.role === 'admin';
 };
 
 function embedDialog (project) {

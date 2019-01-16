@@ -92,7 +92,7 @@
         function (user) {
             fieldsDiv.querySelector('.created').innerHTML = formatDate(user.created);
             fieldsDiv.querySelector('.email').innerHTML = '<a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a>';
-            if (user.isadmin) {
+            if (user.role == 'admin') {
                 document.querySelector('h1 .visitor').append(' (' + localizer.localize('administrator') + ')');
             }
         },
@@ -158,9 +158,9 @@
     document.querySelector('#top-bar .run').href = snapURL;
     if (!sessionStorage.username) {
         SnapCloud.initSession(
-            function (username, isadmin) {
+            function (username, role) {
                 sessionStorage.username = username;
-                sessionStorage.isadmin = isadmin;
+                sessionStorage.role = role;
                 initForUsername(username);
             }
         );
@@ -175,7 +175,7 @@
             document.querySelector('li.sign-in').hidden = true;
             document.querySelector('li.user-menu').hidden = false;
             document.querySelector('a.my-public-projects').href = 'user.html?user=' + username;
-            if (sessionStorage.isadmin == 'true') {
+            if (sessionStorage.role == 'admin') {
                 document.querySelector('.admin').hidden = false;
             }
             fillVisitorFields();

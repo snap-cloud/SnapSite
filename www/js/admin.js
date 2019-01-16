@@ -91,12 +91,12 @@ becomeButton = function (user) {
                 user.username,
                 0, // password is irrelevant
                 false, // persist
-                function (username, isadmin, response) {
+                function (username, role, response) {
                     alert(
                         response.message,
                         function () {
                             sessionStorage.username = username;
-                            sessionStorage.isadmin = isadmin;
+                            sessionStorage.role = role;
                             location.href = 'profile.html';
                         }
                     );
@@ -128,7 +128,7 @@ userDiv = function (user) {
 
     [usernameAnchor, emailSpan, idSpan, joinedSpan, buttonsDiv].forEach(function (e) { userDiv.appendChild(e); });
 
-    if (user.isadmin) {
+    if (user.role == 'admin') {
         userDiv.classList.add('admin');
         userDiv.title += localizer.localize('Administrator') + '\n';
     }

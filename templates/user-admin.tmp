@@ -1,6 +1,6 @@
 <script>
 SnapCloud.getCurrentUser(function (user) {
-    if (!user.isadmin) {
+    if (user.role !== 'admin') {
         location.href = 'index.html';
     }
 });

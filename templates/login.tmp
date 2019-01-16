@@ -45,10 +45,10 @@
             username,
             password,
             persist,
-            function (username, isadmin) {
+            function (username, role) {
                 // TODO: this should handle verification.
                 sessionStorage.username = username;
-                sessionStorage.isadmin = isadmin;
+                sessionStorage.role = role;
                 window.location.href = redirectPath();
             },
             function (response) {

@@ -18,7 +18,7 @@
         function (user) {
             fieldsDiv.querySelector('.created').innerHTML = formatDate(user.created);
             fieldsDiv.querySelector('.email').innerHTML = '<a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a>';
-            if (user.isadmin) {
+            if (user.role == 'admin') {
                 document.querySelector('h1 .visitor').append(' (' + localizer.localize('administrator') + ')');
             }
         },
