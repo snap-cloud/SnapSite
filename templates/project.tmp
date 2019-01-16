@@ -12,7 +12,7 @@
         <div class="embed pure-u-1-2">
             <div class="controlbar">
                 <i class="present-button fas fa-expand clickable" onclick="toggleFullScreen();"></i>
-                <i class="start-button fas fa-flag clickable" onclick="runProject();"></i>
+                <i class="start-button fas fa-flag clickable" onclick="runProject(event);"></i>
                 <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
             </div>
             <iframe height="406" src=""> </iframe>

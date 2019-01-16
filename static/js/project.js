@@ -246,13 +246,23 @@ function toggleFullScreen() {
     embed.focus();
 };
 
-function runProject() {
+function runProject(event) {
     var iframe = document.querySelector('.embed iframe'),
+        startButton = document.querySelector('.start-button'),
         ide = iframe.contentWindow.world.children[0];
-    ide.runScripts();
-    if (ide.embedOverlay) {
-        ide.embedOverlay.destroy();
-        ide.embedPlayButton.destroy();
+    if (event.shiftKey) {
+        ide.toggleFastTracking();
+        if (startButton.classList.contains('fa-flag')) {
+            startButton.classList.replace('fa-flag', 'fa-bolt');
+        } else {
+            startButton.classList.replace('fa-bolt', 'fa-flag');
+        }
+    } else {
+        ide.runScripts();
+        if (ide.embedOverlay) {
+            ide.embedOverlay.destroy();
+            ide.embedPlayButton.destroy();
+        }
     }
 };
 
