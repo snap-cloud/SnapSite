@@ -46,7 +46,34 @@ verifyButton = function (user) {
 };
 
 blockButton = function (user) {
-    return userButton(user, 'Block', function () { alert('not yet implemented'); }, 'pure-button-warning');
+    return userButton(
+        user,
+        'Block',
+        function () {
+            confirm(
+                localizer.localize('Are you sure you want to block user') + ' <strong>' + user.username + '</strong>?',
+                function (ok) {
+                    if (ok) {
+                        SnapCloud.withCredentialsRequest(
+                            'POST',
+                            '/users/' + encodeURIComponent(user.username) + '?' + 
+                                SnapCloud.encodeDict({ role: 'banned' }),
+                            function (response) {
+                                alert(
+                                    localizer.localize('User has been blocked.'),
+                                    function () { location.reload(); }
+                                );
+                            },
+                            genericError,
+                            'Could not block user'
+                        );
+                    }
+                },
+                confirmTitle('Block user')
+            );
+        }, 
+        'pure-button-warning'
+    );
 };
 
 deleteButton = function (user) {
