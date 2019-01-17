@@ -160,6 +160,9 @@ userDiv = function (user) {
     if (user.role == 'admin') {
         userDiv.classList.add('admin');
         userDiv.title += localizer.localize('Administrator') + '\n';
+    } else if (user.role == 'banned') {
+        userDiv.classList.add('banned');
+        userDiv.title += localizer.localize('Banned') + '\n';
     }
 
     if (!user.verified) {
