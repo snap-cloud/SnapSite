@@ -51,7 +51,7 @@ blockButton = function (user) {
         user.role == 'banned' ? 'Unblock' : 'Block',
         function () {
             confirm(
-                localizer.localize('Are you sure you want to ' + (user.role == 'banned' : 'unblock' : 'block') ' user') + ' <strong>' + user.username + '</strong>?',
+                localizer.localize('Are you sure you want to ' + (user.role == 'banned' : 'unblock' : 'block') + ' user') + ' <strong>' + user.username + '</strong>?',
                 function (ok) {
                     if (ok) {
                         SnapCloud.withCredentialsRequest(
