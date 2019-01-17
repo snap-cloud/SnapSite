@@ -48,7 +48,7 @@ verifyButton = function (user) {
 blockButton = function (user) {
     return userButton(
         user,
-        'Block',
+        user.role == 'banned' ? 'Unblock' : 'Block',
         function () {
             confirm(
                 localizer.localize('Are you sure you want to block user') + ' <strong>' + user.username + '</strong>?',
@@ -57,10 +57,10 @@ blockButton = function (user) {
                         SnapCloud.withCredentialsRequest(
                             'POST',
                             '/users/' + encodeURIComponent(user.username) + '?' + 
-                                SnapCloud.encodeDict({ role: 'banned' }),
+                                SnapCloud.encodeDict({ role: user.role == 'banned' ? 'standard' : 'banned' }),
                             function (response) {
                                 alert(
-                                    localizer.localize('User has been blocked.'),
+                                    localizer.localize('User has been ' + (user.role == 'banned' ? 'unblocked' : 'blocked.')),
                                     function () { location.reload(); }
                                 );
                             },
