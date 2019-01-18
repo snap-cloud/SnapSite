@@ -180,10 +180,7 @@ setRole = function (user, role) {
         '/users/' + encodeURIComponent(user.username) + '?' + 
             SnapCloud.encodeDict({ role: role }),
         function (response) {
-            alert(
-                localizer.localize('User ' + user.username + ' is now ' + role + '.'),
-                function () { location.reload(); }
-            );
+            alert(localizer.localize('User ' + user.username + ' is now ' + role + '.'));
         },
         genericError,
         'Could not set user role'

@@ -208,7 +208,7 @@
             document.querySelector('li.sign-in').hidden = true;
             document.querySelector('li.user-menu').hidden = false;
             document.querySelector('a.my-public-projects').href = 'user.html?user=' + username;
-            if (sessionStorage.role == 'admin') {
+            if (['admin', 'moderator'].indexOf(sessionStorage.role) > -1) {
                 document.querySelector('.admin').hidden = false;
             }
             fillVisitorFields();
