@@ -1,6 +1,7 @@
 <script>
 SnapCloud.getCurrentUser(function (user) {
-    if (user.role !== 'admin') {
+    // Only admins and moderators can access this page
+    if (['admin', 'moderator'].indexOf(user.role) > -1) {
         location.href = 'index.html';
     }
 });
