@@ -178,10 +178,10 @@ setRole = function (user, role) {
     SnapCloud.withCredentialsRequest(
         'POST',
         '/users/' + encodeURIComponent(user.username) + '?' + 
-        SnapCloud.encodeDict({ role: role }),
+            SnapCloud.encodeDict({ role: role }),
         function (response) {
             alert(
-                localizer.localize('User ' + user.username + ' is now ' + user.role + '.')),
+                localizer.localize('User ' + user.username + ' is now ' + user.role + '.'),
                 function () { location.reload(); }
             );
         },
