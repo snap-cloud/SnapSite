@@ -242,13 +242,18 @@ userDiv = function (user) {
         userDiv.title += localizer.localize('User is not verified');
     }
 
-    buttonsDiv.appendChild(becomeButton(user));
+    if (sessionStorage.role == 'admin') {
+        buttonsDiv.appendChild(becomeButton(user));
+    }
 
     if (canSetRole(user.role, 'banned')) {
         buttonsDiv.appendChild(blockButton(user));
     }
 
-    buttonsDiv.appendChild(deleteButton(user));
+    if (sessionStorage.role == 'admin' ||
+            sessionStorage.username == user.username) {
+        buttonsDiv.appendChild(deleteButton(user));
+    }
 
     userWrapperDiv.appendChild(userDiv);
     return userWrapperDiv;
