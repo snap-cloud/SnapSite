@@ -45,13 +45,13 @@ verifyButton = function (user) {
     );
 };
 
-blockButton = function (user) {
+banButton = function (user) {
     return userButton(
         user,
-        user.role == 'banned' ? 'Unblock' : 'Block',
+        user.role == 'banned' ? 'Unban' : 'Ban',
         function () {
             confirm(
-                localizer.localize('Are you sure you want to ' + (user.role == 'banned' ? 'unblock' : 'block') + ' user') + ' <strong>' + user.username + '</strong>?',
+                localizer.localize('Are you sure you want to ' + (user.role == 'banned' ? 'unban' : 'ban') + ' user') + ' <strong>' + user.username + '</strong>?',
                 function (ok) {
                     if (ok) {
                         SnapCloud.withCredentialsRequest(
@@ -60,16 +60,16 @@ blockButton = function (user) {
                                 SnapCloud.encodeDict({ role: user.role == 'banned' ? 'standard' : 'banned' }),
                             function (response) {
                                 alert(
-                                    localizer.localize('User has been ' + (user.role == 'banned' ? 'unblocked' : 'blocked.')),
+                                    localizer.localize('User has been ' + (user.role == 'banned' ? 'unbanned' : 'banned.')),
                                     function () { location.reload(); }
                                 );
                             },
                             genericError,
-                            'Could not block user'
+                            'Could not ban user'
                         );
                     }
                 },
-                confirmTitle('Block user')
+                confirmTitle('Ban user')
             );
         }, 
         'pure-button-warning'
@@ -239,7 +239,7 @@ userDiv = function (user) {
     }
 
     if (canSetRole(user.role, 'banned')) {
-        buttonsDiv.appendChild(blockButton(user));
+        buttonsDiv.appendChild(banButton(user));
     }
 
     if (sessionStorage.role == 'admin' ||

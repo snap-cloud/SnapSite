@@ -267,7 +267,7 @@
         "Verifica",
     "Become":
         "Esdevingues",
-    "Block":
+    "Ban":
         "Bloca",
     "User is not verified":
         "Aquest usuari no està verificat",
@@ -292,4 +292,3 @@
     "Are you sure you want to delete user":
         "Segur que vols eliminar l'usuari"
 }
-
