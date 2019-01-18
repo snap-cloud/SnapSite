@@ -148,13 +148,13 @@ canSetRole = function (currentRole, newRole) {
         return false;
     }
 
-    // now for the rest of the cases except banning (taken care by a button)
+    // now for the rest of the cases
     if (newRole === 'admin') {
         // only admins can grant admin roles to others
         return false;
-    } else if (newRole === 'moderator') {
-        // only admins and moderators can grant moderator roles to others.
-        // moderators can't turn admins into moderators as per second check at the top of this function.
+    } else if (newRole === 'moderator' || newRole === 'banned') {
+        // only admins and moderators can ban and grant moderator roles to others.
+        // moderators can't turn admins into moderators (or ban them) as per second check at the top of this function.
         return requestingRole === 'moderator';
     } else if (newRole === 'reviewer') {
         // admins (already taken care of), moderators, and reviewers can grant reviewer roles to others.
