@@ -136,39 +136,28 @@ becomeButton = function (user) {
 
 canSetRole = function (currentRole, newRole) {
     // answers the question "can a sessionStorage.role turn a currentRole into a newRole?"
-    var requestingRole = sessionStorage.role;
-
-    // admins can do anything
-    if (requestingRole === 'admin') {
-        return true;
+    var canSet = {
+        admin: {
+            admin: { admin: true, moderator: true, reviewer: true, standard: true, banned: true },
+            moderator: { admin: true, moderator: true, reviewer: true, standard: true, banned: true },
+            reviewer: { admin: true, moderator: true, reviewer: true, standard: true, banned: true },
+            standard: { admin: true, moderator: true, reviewer: true, standard: true, banned: true },
+            banned: { admin: true, moderator: true, reviewer: true, standard: true, banned: true }
+        },
+        moderator: {
+            admin: {}, moderator: {},
+            reviewer: { moderator: true, reviewer: true, standard: true, banned: true },
+            standard: { moderator: true, reviewer: true, standard: true, banned: true },
+            banned: { moderator: true, reviewer: true, standard: true, banned: true }
+        },
+        reviewer: {
+            admin: {}, moderator: {}, reviewer: {}, banned: {},
+            standard: { reviewer: true, standard: true }
+        },
+        standard: { admin: {}, moderator: {}, reviewer: {}, standard: {}, banned: {} },
+        banned: { admin: {}, moderator: {}, reviewer: {}, standard: {}, banned: {} }
     }
-
-    // nobody but admins can revoke roles from admins
-    if (currentRole === 'admin') {
-        return false;
-    }
-
-    // now for the rest of the cases
-    if (newRole === 'admin') {
-        // only admins can grant admin roles to others
-        return false;
-    } else if (newRole === 'moderator' || newRole === 'banned') {
-        // only admins and moderators can ban and grant moderator roles to others.
-        // moderators can't turn admins into moderators (or ban them) as per second check at the top of this function.
-        return requestingRole === 'moderator';
-    } else if (newRole === 'reviewer') {
-        // admins (already taken care of), moderators, and reviewers can grant reviewer roles to standard users.
-        // nobody can turn admins into reviewers as per second check at the top of this function, but we need to make
-        // sure that reviewers can't downgrade moderators.
-        return currentRole === 'standard' &&
-            (requestingRole === 'moderator' || requestingRole === 'reviewer');
-    } else if (newRole === 'standard') {
-        // admins can downgrade moderators or reviewers to standard users (taken care of)
-        // moderators can downgrade reviewers to standard users
-        return currentRole === 'reviewer' && requestingRole === 'moderator';
-    } else {
-        return false;
-    }
+    return canSet[sessionStorage.role][currentRole][newRole] || false
 };
 
 setRole = function (user, role) {
