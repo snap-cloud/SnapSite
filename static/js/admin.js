@@ -134,6 +134,62 @@ becomeButton = function (user) {
     );
 };
 
+canSetRole = function (currentRole, newRole) {
+    // answers the question "can a sessionStorage.role turn a currentRole into a newRole?"
+    var requestingRole = sessionStorage.role;
+
+    // admins can do anything
+    if (requestingRole === 'admin') {
+        return true;
+    }
+
+    // nobody but admins can revoke roles from admins
+    if (currentRole === 'admin') {
+        return false;
+    }
+
+    // now for the rest of the cases except banning (taken care by a button)
+    if (newRole === 'admin') {
+        // only admins can grant admin roles to others
+        return false;
+    } else if (newRole === 'moderator') {
+        // only admins and moderators can grant moderator roles to others.
+        // moderators can't turn admins into moderators as per second check at the top of this function.
+        return requestingRole === 'moderator';
+    } else if (newRole === 'reviewer') {
+        // admins (already taken care of), moderators, and reviewers can grant reviewer roles to others.
+        // nobody can turn admins into reviewers as per second check at the top of this function, but
+        // we need to make sure that reviewers can't downgrade moderators.
+        if (currentRole === 'moderator') {
+            return requestingRole === 'moderator';
+        } else {
+            return requestingRole === 'moderator' || requestingRole === 'reviewer';
+        }
+    } else if (newRole === 'standard') {
+        // admins can downgrade moderators or reviewers to standard users (taken care of)
+        // moderators can downgrade reviewers to standard users
+        return currentRole === 'reviewer' && requestingRole === 'moderator';
+    } else {
+        return false;
+    }
+};
+
+setRole = function (user, role) {
+    SnapCloud.withCredentialsRequest(
+        'POST',
+        '/users/' + encodeURIComponent(user.username) + '?' + 
+        SnapCloud.encodeDict({ role: role }),
+        function (response) {
+            alert(
+                localizer.localize('User ' + user.username + ' is now ' + user.role + '.')),
+                function () { location.reload(); }
+            );
+        },
+        genericError,
+        'Could not set user role'
+    );
+};
+
 userDiv = function (user) {
     var userWrapperDiv = document.createElement('div'),
         userDiv = document.createElement('div'),
@@ -142,12 +198,30 @@ userDiv = function (user) {
         idSpan = document.createElement('span'),
         joinedSpan = document.createElement('span'),
         roleSpan = document.createElement('span'),
+        roleSelect = document.createElement('select'),
         buttonsDiv = document.createElement('div');
 
     emailSpan.innerHTML = '<em><a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a></em>';
     idSpan.innerHTML = '<strong>ID:</strong> ' + user.id;
     joinedSpan.innerHTML = '<strong localizable>Joined in </strong>' + formatDate(user.created);
-    roleSpan.innerHTML = '<strong localizable>Role</strong>: ' + localizer.localize(user.role);
+
+    roleSpan.innerHTML = '<strong localizable>Role</strong>:';
+    ['standard', 'reviewer', 'moderator', 'admin', 'banned'].forEach(
+        function (role) {
+            var roleOption = document.createElement('option');
+            roleOption.value = role;
+            roleOption.innerHTML = role;
+            if (role === 'banned' || !canSetRole(user.role, role)) {
+                roleOption.disabled = true;
+            }
+            if (user.role == role) {
+                roleOption.selected = true;
+            }
+            roleSelect.appendChild(roleOption); 
+        }
+    );
+    roleSelect.onchange = function () { setRole(user, roleSelect.value) };
+    roleSpan.appendChild(roleSelect);
 
     userWrapperDiv.classList.add('user');
     userWrapperDiv.classList.add('pure-u-1-3');
@@ -172,7 +246,11 @@ userDiv = function (user) {
     }
 
     buttonsDiv.appendChild(becomeButton(user));
-    buttonsDiv.appendChild(blockButton(user));
+
+    if (canSetRole(user.role, 'banned')) {
+        buttonsDiv.appendChild(blockButton(user));
+    }
+
     buttonsDiv.appendChild(deleteButton(user));
 
     userWrapperDiv.appendChild(userDiv);
