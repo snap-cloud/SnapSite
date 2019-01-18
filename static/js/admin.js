@@ -157,14 +157,11 @@ canSetRole = function (currentRole, newRole) {
         // moderators can't turn admins into moderators (or ban them) as per second check at the top of this function.
         return requestingRole === 'moderator';
     } else if (newRole === 'reviewer') {
-        // admins (already taken care of), moderators, and reviewers can grant reviewer roles to others.
-        // nobody can turn admins into reviewers as per second check at the top of this function, but
-        // we need to make sure that reviewers can't downgrade moderators.
-        if (currentRole === 'moderator') {
-            return requestingRole === 'moderator';
-        } else {
-            return requestingRole === 'moderator' || requestingRole === 'reviewer';
-        }
+        // admins (already taken care of), moderators, and reviewers can grant reviewer roles to standard users.
+        // nobody can turn admins into reviewers as per second check at the top of this function, but we need to make
+        // sure that reviewers can't downgrade moderators.
+        return currentRole === 'standard' &&
+            (requestingRole === 'moderator' || requestingRole === 'reviewer');
     } else if (newRole === 'standard') {
         // admins can downgrade moderators or reviewers to standard users (taken care of)
         // moderators can downgrade reviewers to standard users
