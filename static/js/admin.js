@@ -135,7 +135,6 @@ becomeButton = function (user) {
 };
 
 canSetRole = function (currentRole, newRole) {
-    // answers the question "can a sessionStorage.role turn a currentRole into a newRole?"
     var canSet = {
         admin: {
             admin: { admin: true, moderator: true, reviewer: true, standard: true, banned: true },
@@ -157,6 +156,13 @@ canSetRole = function (currentRole, newRole) {
         standard: { admin: {}, moderator: {}, reviewer: {}, standard: {}, banned: {} },
         banned: { admin: {}, moderator: {}, reviewer: {}, standard: {}, banned: {} }
     }
+
+    // ex:
+    // canSet[reviewer][moderator][banned] || false → false
+    // - Can a reviewer set a moderator user to banned? - No.
+    // canSet[moderator][standard][reviewer] || false → true
+    // - Can a moderator set a standard user to reviewer? - Yes.
+
     return canSet[sessionStorage.role][currentRole][newRole] || false
 };
 

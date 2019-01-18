@@ -250,8 +250,10 @@
             // Set up all buttons
             document.querySelector('.buttons .share').hidden = project.ispublic || !ownsProject(project);
             document.querySelector('.buttons .unshare').hidden = !project.ispublic || !ownsProject(project);
-            document.querySelector('.buttons .publish').hidden = (!project.ispublic || project.ispublished) || !ownsProject(project);
-            document.querySelector('.buttons .unpublish').hidden = (!project.ispublic || !project.ispublished) || !ownsProject(project);
+            document.querySelector('.buttons .publish').hidden = (!project.ispublic || project.ispublished) ||
+                                                                    !ownsProject(project) || sessionStorage.role === 'banned';
+            document.querySelector('.buttons .unpublish').hidden = (!project.ispublic || !project.ispublished) ||
+                                                                    !ownsProject(project);
             document.querySelector('.embed-button').hidden = !project.ispublic;
             document.querySelector('.buttons .delete').hidden = !ownsProject(project);
 
