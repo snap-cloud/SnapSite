@@ -75,7 +75,7 @@
 <script>
 SnapCloud.getCurrentUser(function (user) {
     // Only admins and moderators can access this page
-    if (['admin', 'moderator'].indexOf(user.role) > -1) {
+    if (['admin', 'moderator'].indexOf(user.role) == -1) {
         location.href = 'index.html';
     }
 });
