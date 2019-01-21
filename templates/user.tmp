@@ -1,2 +1,24 @@
 <h1><span class="username"></span><span localizable>'s public page</span></h1>
 @content
+<div hidden="true" class="profile">
+    <h2>Admin tools</h2>
+</div>
+<script src="js/admin.js"></script>
+<link rel="stylesheet" href="style/admin.css">
+<script>
+    var profileDiv = document.querySelector('.profile');
+    if (['admin', 'moderator'].indexOf(sessionStorage.role) > -1) {
+        profileDiv.hidden = false;
+        beganLoading('.profile');
+        SnapCloud.withCredentialsRequest(
+            'GET',
+            '/users/' + encodeURIComponent(pageUser()),
+            function (user) {
+                profileDiv.appendChild(userDiv(user));
+                doneLoading('.profile');
+            },
+            genericError,
+            'Could not fetch user data'
+        );
+    }
+</script>
