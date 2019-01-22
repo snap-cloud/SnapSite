@@ -256,7 +256,7 @@ userDiv = function (user) {
     roleSpan.appendChild(roleSelect);
 
     userWrapperDiv.classList.add('user');
-    userWrapperDiv.classList.add('pure-u-1-3');
+    userWrapperDiv.classList.add('pure-u-1-2');
     userDiv.classList.add('details');
 
     buttonsDiv.classList.add('buttons');
@@ -279,6 +279,7 @@ userDiv = function (user) {
 
     if (sessionStorage.role == 'admin') {
         buttonsDiv.appendChild(becomeButton(user));
+        buttonsDiv.appendChild(messageButton(user));
     }
 
     if (canSetRole(user.role, 'banned')) {
@@ -287,7 +288,6 @@ userDiv = function (user) {
 
     if (sessionStorage.role == 'admin' ||
             sessionStorage.username == user.username) {
-        buttonsDiv.appendChild(messageButton(user));
         buttonsDiv.appendChild(deleteButton(user));
     }
 
