@@ -160,25 +160,44 @@ function confirmUnpublish (project) {
 };
 
 function confirmDelete (project) {
+    function done () {
+        alert(
+            localizer.localize('This project has been deleted.'),
+            { title: localizer.localize('Project deleted') },
+            function () { location.href = 'myprojects.html'; }
+        );
+    };
+
     confirm(
         localizer.localize('Are you sure you want to delete this project?') + '<br>' +
-            '<i class="warning fa fa-exclamation-triangle"></i> ' +
-            localizer.localize('WARNING! This action cannot be undone!') +
-            ' <i class="warning fa fa-exclamation-triangle"></i>',
+        '<i class="warning fa fa-exclamation-triangle"></i> ' +
+        localizer.localize('WARNING! This action cannot be undone!') +
+        ' <i class="warning fa fa-exclamation-triangle"></i>',
         function (ok) {
             if (ok) {
-                SnapCloud.deleteProject(
-                    project.projectname,
-                    project.username,
-                    function () {
-                        alert(
-                            localizer.localize('This project has been deleted.'),
-                            { title: localizer.localize('Project deleted') },
-                            function () { location.href = 'myprojects.html'; }
-                        );
-                    },
-                    genericError
-                );
+                if (sessionStorage.username !== project.username) {
+                    reasonDialog(
+                        project,
+                        function (reason) {
+                            SnapCloud.withCredentialsRequest(
+                                'DELETE',
+                                '/projects/' + encodeURIComponent(project.username) +
+                                '/' + encodeURIComponent(project.projectname) +
+                                '?reason=' + encodeURIComponent(reason),
+                                done,
+                                genericError,
+                                'Could not delete project'
+                            );
+                        }
+                    );
+                } else {
+                    SnapCloud.deleteProject(
+                        project.projectname,
+                        project.username,
+                        done,
+                        genericError
+                    );
+                }
             }
         },
         confirmTitle('Delete project')

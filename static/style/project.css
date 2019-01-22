@@ -115,6 +115,7 @@
 .project.big .details {
     display: flex;
     flex-direction: column;
+    height: 440px;
 }
 
 .project.big .notes {
