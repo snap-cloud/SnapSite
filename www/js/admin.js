@@ -134,6 +134,49 @@ becomeButton = function (user) {
     );
 };
 
+messageButton = function (user) {
+    return userButton(
+        user,
+        'Send a message',
+        function () {
+            var form = document.createElement('form');
+            form.classList.add('email-compose');
+            form.classList.add('pure-form');
+            form.classList.add('pure-form-aligned');
+            form.innerHTML = 
+                '<fieldset>' +
+                '<div class="pure-control-group"><label localizable for="subject">Subject</label>' +
+                '<input name="subject" type="text"></input></div>' +
+                '<div class="pure-control-group"><label localizable for="body">Email body</label>' +
+                '<textarea name="body"></textarea></div>' +
+                '</fieldset>';
+
+            dialog(
+                'Compose a message',
+                form,
+                function () {
+                    SnapCloud.withCredentialsRequest(
+                        'POST',
+                        '/users/' + encodeURIComponent(user.username) +
+                        '/message',
+                        function () {
+                            alert('Message delivered');
+                        },
+                        genericError,
+                        'Message could not be sent',
+                        false, // wantsRawResponse
+                        JSON.stringify({
+                            subject: form.querySelector('input[name="subject"]').value,
+                            contents: form.querySelector('textarea[name="body"]').value
+                        })
+                    ); 
+                },
+                nop // cancel action
+            );
+        }
+    );
+};
+
 canSetRole = function (currentRole, newRole) {
     var canSet = {
         admin: {
@@ -244,6 +287,7 @@ userDiv = function (user) {
 
     if (sessionStorage.role == 'admin' ||
             sessionStorage.username == user.username) {
+        buttonsDiv.appendChild(messageButton(user));
         buttonsDiv.appendChild(deleteButton(user));
     }
 

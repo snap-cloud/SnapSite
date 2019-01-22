@@ -164,7 +164,12 @@ function confirmDelete (project) {
         alert(
             localizer.localize('This project has been deleted.'),
             { title: localizer.localize('Project deleted') },
-            function () { location.href = 'myprojects.html'; }
+            function () {
+                location.href =
+                    (sessionStorage.username !== project.username)
+                        ? 'index.html'
+                        : 'myprojects.html';
+            }
         );
     };
 
@@ -260,7 +265,10 @@ function reasonDialog (project, onSuccess) {
         'Please choose a reason',
         form,
         function () {
-            onSuccess.call(this, reasons[form.querySelector('input[name="reason"]:checked').value]);
+            onSuccess.call(
+                this,
+                reasons[form.querySelector('input[name="reason"]:checked').value]
+            );
         }
     );
 }; 

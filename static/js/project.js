@@ -265,7 +265,10 @@ function reasonDialog (project, onSuccess) {
         'Please choose a reason',
         form,
         function () {
-            onSuccess.call(this, reasons[form.querySelector('input[name="reason"]:checked').value]);
+            onSuccess.call(
+                this,
+                reasons[form.querySelector('input[name="reason"]:checked').value]
+            );
         }
     );
 }; 
