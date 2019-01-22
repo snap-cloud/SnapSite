@@ -137,7 +137,7 @@ function confirmUnpublish (project) {
                             SnapCloud.withCredentialsRequest(
                                 'POST',
                                 '/projects/' + encodeURIComponent(project.username) +
-                                '/' + encodeURIComponent(project.projectName) +
+                                '/' + encodeURIComponent(project.projectname) +
                                 '/metadata?ispublished=false&reason=' + encodeURIComponent(reason),
                                 done,
                                 genericError,
