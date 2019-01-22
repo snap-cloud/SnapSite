@@ -290,5 +290,7 @@
     "Delete user":
         "Eliminar usuari",
     "Are you sure you want to delete user":
-        "Segur que vols eliminar l'usuari"
+        "Segur que vols eliminar l'usuari",
+    "Send a message":
+        "Envia un missatge"
 }

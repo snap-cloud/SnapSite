@@ -10,7 +10,10 @@ function dialog (title, body, onSuccess, onCancel) {
 
     dialogBox.querySelector('.header').innerHTML = localizer.localize(title);
     dialogBox.querySelector('.button-done').innerHTML = localizer.localize('Ok');
-    dialogBox.querySelector('.button-cancel').innerHTML = localizer.localize('Cancel');
+
+    if (onCancel) {
+        dialogBox.querySelector('.button-cancel').innerHTML = localizer.localize('Cancel');
+    }
 
     document.querySelector('#customalert-overlay').style.display = 'block';
     dialogBox.style.display = 'block';

@@ -254,5 +254,49 @@
     "Project title":
         "Título del proyecto",
     "Repeat email address":
-        "Repite el correo electrónico"
+        "Repite el correo electrónico",
+    "Send a message":
+        "Envia un mensaje",
+    "admin":
+        "administrador",
+    "Administrator":
+        "Administrador",
+    "Are you sure you want to delete user":
+        "¿Seguro que quieres eliminar el usuario",
+    "Are you sure you want to delete your user account?":
+        "¿Seguro que quieres eliminar tu cuenta de usuario?",
+    "Ban":
+        "Banea",
+    "banned":
+        "baneado",
+    "Become":
+        "Conviértete",
+    "Change Email":
+        "Cambia el correo",
+    "Change My Email":
+        "Cambia mi correo",
+    "Delete my Account":
+        "Borrar mi cuenta",
+    "Delete user":
+        "Borrar usuario",
+    "Delete your Account":
+        "Borrar tu cuenta",
+    "moderator":
+        "moderador",
+    "New Email":
+        "Nuevo correo",
+    "Repeat New Email":
+        "Repite el nuevo correo",
+    "reviewer":
+        "revisor",
+    "Role":
+        "Rol",
+    "standard":
+        "estándar",
+    "User Administration":
+        "Administración de usuarios",
+    "User is not verified":
+        "El usuario no está verificado",
+    "Verify":
+        "Verifica"
 }
