@@ -148,27 +148,43 @@
 
 /* Embed dialog */
 
-.embed-options {
-    display: inline-block;
-    vertical-align: super;
-    margin-top: 1em;
-}
-
-.embed-options span {
+.embed-options .info {
+    margin-bottom: 0.5em;
     display: block;
-    text-align: left;
+    text-align: center;
 }
 
-.embed-options span input {
+.embed-options input {
     margin-right: 0.5em;
 }
 
+.embed-options .option {
+    text-align: left;
+    margin-left: 3em;
+    display: block;
+}
+
 .embed-code {
-    display: inline-block;
-    margin-left: 2em;
+    margin: 1em auto 0 auto;
+    display: block;
     height: 85px;
     width: 420px;
     font-size: 0.8em;
     line-height: 1.2em;
     resize: none;
+}
+
+/* Reasons dialog */
+
+.reasons {
+    text-align: left;
+}
+
+.reasons .option {
+    display: block;
+    margin-left: 3em;
+}
+
+.reasons input {
+    margin-right: 0.5em;
 }

@@ -72,6 +72,7 @@
             </div>
         </div>
         <div id="wrapper">
+<script src="js/dialog.js"></script>
 <script src="js/project.js"></script>
 <script src="js/inplace.js"></script>
 <link rel="stylesheet" href="style/project.css">
@@ -205,7 +206,7 @@
             var title = document.querySelector('.title h1');
 
             title.innerHTML = project.projectname;
-            if (ownsProject(project)) {
+            if (canRename(project)) {
                 new InPlaceEditor(
                     title,
                     function () {
@@ -248,14 +249,14 @@
             }
 
             // Set up all buttons
-            document.querySelector('.buttons .share').hidden = project.ispublic || !ownsProject(project);
-            document.querySelector('.buttons .unshare').hidden = !project.ispublic || !ownsProject(project);
+            document.querySelector('.buttons .share').hidden = project.ispublic || !canShare(project);
+            document.querySelector('.buttons .unshare').hidden = !project.ispublic || !canShare(project);
             document.querySelector('.buttons .publish').hidden = (!project.ispublic || project.ispublished) ||
-                                                                    !ownsProject(project) || sessionStorage.role === 'banned';
+                                                                    !canPublish(project) || sessionStorage.role === 'banned';
             document.querySelector('.buttons .unpublish').hidden = (!project.ispublic || !project.ispublished) ||
-                                                                    !ownsProject(project);
+                                                                    !canUnpublish(project);
             document.querySelector('.embed-button').hidden = !project.ispublic;
-            document.querySelector('.buttons .delete').hidden = !ownsProject(project);
+            document.querySelector('.buttons .delete').hidden = !canDelete(project);
 
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
@@ -271,7 +272,7 @@
 
             // In-place notes editor
             var notes = document.querySelector('.notes');
-            if (ownsProject(project)) {
+            if (canEditNotes(project)) {
                 new InPlaceEditor(
                     notes,
                     function () {

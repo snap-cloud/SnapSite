@@ -1,4 +1,5 @@
-var snapURL = location.origin + '/snap/snap.html';
+var snapURL = location.origin + '/snap/snap.html',
+    baseURL = location.href.replace(/(.*)\/.*\.html.*/, '$1'),
     modules = [], // compatibility with cloud.js
     nop = function () {},
     localizer = new Localizer(),

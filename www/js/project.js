@@ -117,23 +117,42 @@ function confirmPublish (project) {
 };
 
 function confirmUnpublish (project) {
+    function done () {
+        alert(
+            localizer.localize('This project is not listed in the Snap<em>!</em> site anymore.'),
+            { title: localizer.localize('Project unpublished') },
+            function () { location.reload(); }
+        );
+    };
+
     confirm(
         localizer.localize('Are you sure you want to unpublish this project<br>' +
             'and hide it from the Snap<em>!</em> website?'),
         function (ok) {
             if (ok) {
-                SnapCloud.unpublishProject(
-                    project.projectname,
-                    project.username,
-                    function () {
-                        alert(
-                            localizer.localize('This project is not listed in the Snap<em>!</em> site anymore.'),
-                            { title: localizer.localize('Project unpublished') },
-                            function () { location.reload() }
-                        );
-                    },
-                    genericError
-                );
+                if (sessionStorage.username !== project.username) {
+                    reasonDialog(
+                        project,
+                        function (reason) {
+                            SnapCloud.withCredentialsRequest(
+                                'POST',
+                                '/projects/' + encodeURIComponent(project.username) +
+                                '/' + encodeURIComponent(project.projectName) +
+                                '/metadata?ispublished=false&reason=' + encodeURIComponent(reason),
+                                done,
+                                genericError,
+                                'Could not unpublish project'
+                            );
+                        }
+                    );
+                } else {
+                    SnapCloud.unpublishProject(
+                        project.projectname,
+                        project.username,
+                        done,
+                        genericError
+                    );
+                }
             }
         },
         confirmTitle('Unpublish project')
@@ -166,39 +185,90 @@ function confirmDelete (project) {
     );
 };
 
-function ownsProject (project) {
+function ownsProjectOrIsAdmin (project) {
     // Not to worry. Actual secure permission check is performed in the backend.
-    // sessionStorage stringifies everything, so we need to check against the 'true' string.
     return (sessionStorage.username == project.username) || sessionStorage.role === 'admin';
 };
 
+function canShare (project) {
+    return ownsProjectOrIsAdmin(project);
+};
+
+function canPublish (project) {
+    return ownsProjectOrIsAdmin(project);
+};
+
+function canRename (project) {
+    return ownsProjectOrIsAdmin(project);
+};
+
+function canEditNotes (project) {
+    return ownsProjectOrIsAdmin(project);
+};
+
+function canUnpublish (project) {
+    return (sessionStorage.username == project.username) ||
+        [ 'admin', 'moderator', 'reviewer' ].indexOf(sessionStorage.role) > -1;
+};
+
+function canDelete (project) {
+    return (sessionStorage.username == project.username) ||
+        [ 'admin', 'moderator' ].indexOf(sessionStorage.role) > -1;
+};
+
+function reasonDialog (project, onSuccess) {
+    var form = document.createElement('form'),
+        reasons = {
+            hack: 'Your project <strong>' + project.projectname + '</strong>' +
+                    ' was trying to exploit a security vulnerability.',
+            coc: 'Your project <strong>' + project.projectname + '</strong>' +
+                    ' has been found to violate the <a href="' + baseURL + '/coc.html">Code of Conduct</a>' +
+                    ' of the Snap<em>!</em> community website.',
+            dmca: 'Your project <strong>' + project.projectname + '</strong>' +
+                    ' has been found to violate the <a href="' + baseURL + '/dmca.html">DMCA policy</a>' +
+                    ' of the Snap<em>!</em> community website.' 
+        };
+    form.classList.add('reasons');
+    new Map([
+        [ 'hack', localizer.localize('Security vulnerability') ],
+        [ 'coc', localizer.localize('Code of Conduct violation') ],
+        [ 'dmca', localizer.localize('DMCA violation') ]
+    ]).forEach(function (value, key) {
+        form.innerHTML += '<span class="option"><input type="radio" name="reason" value="' + key +
+            '"><label for="' + key +'">' + value + '</label></span>';
+    });
+    dialog(
+        'Please choose a reason',
+        form,
+        function () {
+            onSuccess.call(this, reasons[form.querySelector('input[name="reason"]:checked').value]);
+        }
+    );
+}; 
+
 function embedDialog (project) {
-    // I show a dialog with a bunch of options and display an HTML string
-    // one can paste into a website to embed the project as an iframe
-    // I reuse CustomAlert's dialogs, and my code is hideous
-    var dialogBox = document.querySelector('#customalert'),
-        codeArea = document.createElement('textarea'),
-        bodyDiv = document.querySelector('.body'),
-        bodyContent =
-            '<span>' + localizer.localize('Please select the elements you wish ' +
-            'to include in the embedded project viewer:') + '</span><br><form class="embed-options">';
+    var codeArea = document.createElement('textarea'),
+        form = document.createElement('form');
+    
+    form.classList.add('embed-options');
+    form.innerHTML =
+            '<span class="info">' + localizer.localize('Please select the elements you wish ' +
+            'to include in the embedded project viewer:') + '</span>';
+
     new Map([
         [ 'title', localizer.localize('Project title') ],
         [ 'author', localizer.localize('Project author') ],
         [ 'edit-button', localizer.localize('Edit button') ]
     ]).forEach(function (value, key) {
-        bodyContent += '<span><input type="checkbox" name="' + key + '" value="' + key +
+        form.innerHTML += '<span class="option"><input type="checkbox" name="' + key + '" value="' + key +
             '" checked><label for="' + key +'">' + value + '</label></span>';
     });
-    bodyContent += '</form>';
-    bodyDiv.innerHTML = bodyContent;
-    bodyDiv.appendChild(codeArea);
+    form.appendChild(codeArea);
 
     codeArea.classList.add('embed-code');
     codeArea.set = function () {
-        var form = bodyDiv.querySelector('form');
         codeArea.value =
-            '<iframe frameBorder=0 src="' + location.origin + '/embed.html?project=' +
+            '<iframe frameBorder=0 src="' + baseURL + '/embed.html?project=' +
             project.projectname + '&user=' + project.username +
             (form.elements['title'].checked ? '&showTitle=true' : '') +
             (form.elements['author'].checked ? '&showAuthor=true' : '') +
@@ -207,21 +277,13 @@ function embedDialog (project) {
     };
     codeArea.set();
 
-    bodyDiv.querySelectorAll('input').forEach(function (input) {
+    form.querySelectorAll('input').forEach(function (input) {
         input.onchange = function () { codeArea.set(); }
     });
 
-    dialogBox.querySelector('.header').innerHTML = localizer.localize('Embed Options');
-    dialogBox.querySelector('.button-done').innerHTML = localizer.localize('Ok');
-    document.querySelector('html').style.overflow = 'hidden';
-    document.querySelector('#customalert-overlay').style.display = 'block';
-    dialogBox.style.display = 'block';
-    customalert.done = function() {
-        document.querySelector('#customalert').style.display = null;
-        document.querySelector('#customalert-overlay').style.display = null;
-        document.querySelector('html').style.overflow = 'auto';
-    }
+    dialog('Embed Options', form);
 };
+
 
 function toggleFullScreen() {
     var embed = document.querySelector('.embed'),
