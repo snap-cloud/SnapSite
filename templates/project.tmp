@@ -16,7 +16,7 @@
                 <i class="start-button fas fa-flag clickable" onclick="runProject(event);"></i>
                 <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
             </div>
-            <iframe height="406" src=""> </iframe>
+            <!--<iframe height="406"> </iframe>-->
         </div>
 
         <i class="pure-u-1-24"></i>
@@ -77,7 +77,12 @@
                     })
             }
             document.querySelector('.title').append(authorSpan(project.username));
-            document.querySelector('.project iframe').src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
+
+            var iframe = document.createElement('iframe');
+            iframe.height = 406;
+            iframe.src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
+            document.querySelector('.project .embed').append(iframe);
+
             document.querySelector('.notes').innerHTML = project.notes || '<small>' + localizer.localize('This project has no notes') + '</small>';
             document.querySelector('.created').append(formatDate(project.created));
             document.querySelector('.updated').append(formatDate(project.lastupdated));

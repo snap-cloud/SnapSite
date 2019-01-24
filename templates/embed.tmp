@@ -21,13 +21,15 @@
                 <i class="start-button fas fa-flag clickable" onclick="runProject(event);"></i>
                 <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
             </div>
-
-            <iframe src=""></iframe>
         </div>
         <script type="text/javascript">
             var controlBar = document.querySelector('.controlbar');
             setTitle(pageProject());
-            document.querySelector('.project iframe').src = projectURL(pageUser(), pageProject()) + '&embedMode&noExitWarning&noRun';
+
+            var iframe = document.createElement('iframe');
+            iframe.src = projectURL(pageUser(), pageProject()) + '&embedMode&noExitWarning&noRun';
+            document.querySelector('.project.embed').append(iframe);
+
             if (getUrlParameter('editButton')) {
                 var editButton = document.createElement('a'),
                     icon = document.createElement('i');

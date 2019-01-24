@@ -126,8 +126,11 @@ function beganLoading (selector) {
 };
 
 function doneLoading (selector) {
+    var element = document.querySelector(selector ? (selector + '> .loader') : '#loading');
     localizer.localizePage();
-    document.querySelector(selector ? (selector + '> .loader') : '#loading').hidden = true;
+    if (element) {
+        element.hidden = true;
+    }
 };
 
 // Other goodies
