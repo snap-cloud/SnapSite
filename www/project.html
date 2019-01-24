@@ -90,14 +90,9 @@
                 <i class="start-button fas fa-flag clickable" onclick="runProject(event);"></i>
                 <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
             </div>
-            <!--<iframe height="406"> </iframe>-->
-        </div>
 
-        <i class="pure-u-1-24"></i>
-        <div class="details pure-u-11-24">
-
-            <!-- Notes -->
-            <pre class="notes"> </pre>
+            <!-- Project iframe placeholder -->
+            <i class="iframe-placeholder"></i>
 
             <!-- Project Action Buttons -->
             <div class="buttons">
@@ -111,13 +106,18 @@
                 <a localizable class="pure-button pure-button-warning delete" target="_blank">Delete</a>
             </div>
         </div>
-
-        <!-- Dates and project meta -->
-        <span class="dates pure-u-1-2">
-            <span localizable class="created">Created on </span>.
-            <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
-            <span localizable class="is-public">This project is </span><span localizable class="is-published"></span>.
-        </span>
+        <!-- just a separator -->
+        <i class="pure-u-1-24"></i>
+        <div class="details pure-u-11-24">
+            <!-- Notes -->
+            <pre class="notes"> </pre>
+            <!-- Dates and project meta -->
+            <span class="dates">
+                <span localizable class="created">Created on </span>.
+                <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
+                <span localizable class="is-public">This project is </span><span localizable class="is-published"></span>.
+            </span>
+        </div>
     </div>
 
     <!-- Collection of remixes -->
@@ -220,10 +220,11 @@
             }
             document.querySelector('.title').append(authorSpan(project.username));
 
-            var iframe = document.createElement('iframe');
+            var iframe = document.createElement('iframe'),
+                placeholder = document.querySelector('.iframe-placeholder');
             iframe.height = 406;
             iframe.src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
-            document.querySelector('.project .embed').append(iframe);
+            placeholder.parentNode.replaceChild(iframe, placeholder);
 
             document.querySelector('.notes').innerHTML = project.notes || '<small>' + localizer.localize('This project has no notes') + '</small>';
             document.querySelector('.created').append(formatDate(project.created));

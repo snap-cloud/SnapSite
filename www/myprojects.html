@@ -75,38 +75,79 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Projects</h1>
-<div class="projects pure-g"></div>
+<div class="bar">
+    <div class="myprojects search">
+        <form action="myprojects.html">
+            <input type="text" name="query">
+            <i class="fas fa-search"></i>
+        </form>
+        <script>
+            document.querySelector('.myprojects form input').value = getUrlParameter('query');
+        </script>
+    </div>
+    <nav class="myprojects paginator">
+        <a href="#" onclick="myprojects_toPage(1);"><i class="fas fa-fast-backward"></i></a>
+        <a href="#" onclick="myprojects_toPage(myprojects_page - 5 > 0 ? myprojects_page - 5 : 1);"><i class="fas fa-backward"></i></a>
+        <a href="#" onclick="myprojects_toPage(myprojects_page - 1 > 0 ? myprojects_page - 1 : myprojects_page);"><i class="fas fa-play fa-rotate-180"></i></a>
+        <span class="page"></span> / <span class="total-pages"></span>
+        <a href="#" onclick="myprojects_toPage(myprojects_page + 1 < myprojects_totalPages ? myprojects_page + 1 : myprojects_totalPages);"><i class="fas fa-play"></i></a>
+        <a href="#" onclick="myprojects_toPage(myprojects_page + 5 < myprojects_totalPages ? myprojects_page + 5 : myprojects_totalPages);"><i class="fas fa-forward"></i></a>
+        <a href="#" onclick="myprojects_toPage(myprojects_totalPages);"><i class="fas fa-fast-forward"></i></a>
+    </nav>
+</div>
+<div class="projects list pure-g"></div>
 <script>
-    var projectsDiv = document.querySelector('.projects');
-    beganLoading('.projects');
-    SnapCloud.getProjectList(
-        function (response) {
-            setTitle(localizer.localize('My Projects') + ' - Snap! Build Your Own Blocks');
-            if (response.projects[0]) {
-                response.projects.sortBy('lastupdated').forEach(function (project) {
-                    projectsDiv.append(
-                        newProjectDiv(
-                            project, 
-                            { 
-                                size: 'small', 
-                                gridSize: 5, 
-                                extraFields: {
-                                    isPublic: 'ispublic',
-                                    isPublished: 'ispublished'
+    var projectsDiv = document.querySelector('.projects'),
+        myprojects_pageSpan = document.querySelector('.myprojects.paginator .page'),
+        myprojects_totalPagesSpan = document.querySelector('.myprojects.paginator .total-pages'),
+        myprojects_page = 1,
+        myprojects_totalPages = 1,
+        myprojects_pageSize = 15 || 15;
+
+    myprojects_toPage(1);
+
+    function myprojects_toPage (pageNumber) {
+        query = getUrlParameter('query');
+        projectsDiv.innerHTML = '';
+        beganLoading('.projects.list');
+        SnapCloud.withCredentialsRequest(
+            'GET',
+            '/projects/%username?updatingnotes=true&pagesize=' + myprojects_pageSize +
+                '&page=' + pageNumber + '&withthumbnail=true&matchtext=' + (query ? query : '') ,
+            function (response) {
+                myprojects_totalPages = response.pages;
+                if (myprojects_totalPages == 1) {
+                    document.querySelector('.myprojects.paginator').remove();
+                } else {
+                    myprojects_totalPagesSpan.textContent = myprojects_totalPages;
+                }
+                if (response.projects[0]) {
+                    response.projects.forEach(function (project) {
+                        projectsDiv.append(
+                            newProjectDiv(
+                                project, 
+                                { 
+                                    size: 'small', 
+                                    gridSize: 5, 
+                                    extraFields: {
+                                        isPublic: 'ispublic',
+                                        isPublished: 'ispublished'
+                                    }
                                 }
-                            }
-                        )
-                    );
-                });
+                            )
+                        );
+                    });
+                } else {
+                    document.querySelector('.projects').remove();
+                }
+                doneLoading('.projects.list');
             }
-            doneLoading('.projects');
-        },
-        function (error) {
-            throw(error);
-            genericError(error);
-        },
-        true // withThumbnail
-    );
+        );
+
+        myprojects_page = pageNumber;
+        myprojects_pageSpan.textContent = pageNumber;
+    };
+
 </script>
         </div>
         <div id="footer">

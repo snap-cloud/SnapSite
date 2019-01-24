@@ -67,7 +67,7 @@ function isPublicSpan (isPublic) {
         tooltip = isPublic ?
             'This project can be shared via URL' :
             'This project is private',
-        faClass = isPublic ? 'fa-unlock' : 'fa-lock';
+        faClass = isPublic ? 'fa-lock-open' : 'fa-lock';
     span.classList.add('is-public');
     span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
     span.title = localizer.localize(tooltip);
