@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="style/research.css">
+<h1>Research</h1>
+<ul>
+    <li>
+        <a href="https://bjc.berkeley.edu/documents/2015 ACM Inroads - The Beauty and Joy of Computing.pdf" target="_blank" class="article-title">The Beauty and Joy of Computing</a>
+        <span class="authors">Dan Garcia, Brian Harvey, Tiffany Barnes. (2015).</span> <span class="publication"><a href="https://inroads.acm.org/article.cfm?aid=2835184" target="_blank">ACM Inroads.</a></span>
+        <blockquote class="abstract">In this article, we share our philosophy, an update on our course design principles, a general flow through our curriculum, the impact BJC has had, and conclude with lessons learned.</blockquote>
+    </li>
+
+    <li>
+        <a href="https://bjc.berkeley.edu/documents/2014 SIGCSE - Lessons Learned from BJC CS Principles Professional Development.pdf" target="_blank" class="article-title">Lessons Learned from "BJC" CS Principles Professional Development</a>
+        <span class="authors">Thomas Prince, Veronica Cateté, Jennifer Albert, Tiffany Barnes, Dan Garcia. (2014).</span> <span class="publication">SIGCSE.</span>
+        <blockquote class="abstract">Computer Science Principles (CSP) will become an Advanced Placement course during the 2016-17 school year, and there is an immediate need to train new teachers to be leaders in computing classrooms. From 2012-2015, the Beauty and Joy of Computing team offered professional development (PD) to 133 teachers, resulting in 89 BJC CSP courses taught in high schools. Our data show that the PD improved teachers’ confidence in our four core content categories and met its primary goal of training teachers in equitable, inquiry-based instruction. In this paper, we present the evolution of the BJC PD, its challenges and lessons that we learned while continually adapting to teachers’ needs and contexts.
+        </blockquote>
+    </li>
+
+    <li>
+        <a href="https://bjc.berkeley.edu/documents/2014 SIGCSE - CS Principles Professional Development- Only 9,500 to go! Lessons Learned from our CS10K Summer 2013 PD.pdf" target="_blank" class="article-title">CS Principles Professional Development: Only 9,500 to go! Lessons Learned from our CS10K Summer 2013 PD</a>
+        <span class="authors">Jan Cuny, Diane Baxter, Dan Garcia, Jeff Gray, Ralph Morelli. (2014).</span> <span class="publication"><a href="https://dl.acm.org/citation.cfm?id=2538876&amp;CFID=594678540&amp;CFTOKEN=45784601" target="_blank">SIGCSE.</a></span>
+        <blockquote class="abstract">Our grand challenge is to scale high-quality computer science curriculum and instruction to reach all high school students. CS10K – an NSF and ACM-sponsored project – is working to do just that by supporting curriculum development, computer education research and professional development through the Computing Education for the 21st Century (CE21) program at NSF. Professional Development (PD) is a key piece of the project, as we need to train 10,000 teachers to teach rigorous computing courses in 10,000 high schools by 2016 – the school year that a new Advanced Placement Course will be rolled out. This panel will provide an overview of the PD landscape and then each panelist will discuss the unique aspects of their PD project for high school teachers.</blockquote>
+    </li>
+
+    <li>
+        <a href="https://bjc.berkeley.edu/documents/2012 Constructionism - The Beauty and Joy of Computing - Computer Science for Everyone.pdf" target="_blank" class="article-title">The Beauty and Joy of Computing: Computer Science for Everyone</a>
+        <span class="authors">Brian Harvey. (2012).</span> <span class="publication">Constructionism.</span>
+        <blockquote class="abstract">The Beauty and Joy of Computing is a computer science course for undergraduate non-majors that combines a deep programming experience with lectures, readings, and discussions about nonprogramming topics such as the social context of computing and the future and limitations of computing. The course is designed to appeal to a wide range of students, including women and underrepresented minorities. The programming half of the course uses BYOB, an extension to Scratch adding first class procedures, lists, and objects. The course has been chosen as one of the pilots for a coming (2016) high school Advanced Placement exam. Our current work includes further curriculum development, an NSF-funded teacher preparation program, and the implementation of Snap!, a new browser-based version of BYOB.</blockquote>
+    </li>
+
+    <li>
+        <a href="https://bjc.berkeley.edu/documents/2012 ACM Inroads - CS Principles Pilot at University of California, Berkeley.pdf" target="_blank" class="article-title">CS Principles Pilot at University of California, Berkeley</a>
+        <span class="authors">Dan Garcia, Brian Harvey, Luke Segars. (2012).</span><span class="publication"><a href="https://dl.acm.org/citation.cfm?doid=2189835.2189853" target="_blank">ACM Inroads.</a></span>
+        <blockquote class="abstract">The course is intended for non-CS majors. For students in the College of Letters and Sciences, it fulfills the “Quantitative Reasoning” breadth requirement. It is not required for CS majors, but some intended CS majors with no prior programming experience decide to take it as preparation for our first course for CS majors. In addition, many non-CS majors enjoy CS10 enough to continue with the sequence for majors.</blockquote> 
+    </li>
+
+    <li>
+        <a href="https://bjc.berkeley.edu/documents/2010 Constructionism - Bringing No Ceiling to Scratch - Can One Language Serve Kids and Computer Scientists.pdf" target="_blank" class="article-title">Bringing "No Ceiling" to Scratch: Can One Language Serve Kids and Computer Scientists?</a>
+        <span class="authors">Brian Harvey, Jens Monig. (2010).</span><span class="publication"><a href="" target="_blank">Constructionism.</a></span> 
+        <blockquote class="abstract"><a href="https://scratch.mit.edu">Scratch</a> is a computer programming language for children, with a graphical drag-and-drop user interface. It is a descendent of Logo, developed at the MIT Media Lab. A small but growing trend among universities is to develop computer science courses for non-majors using Scratch as the programming environment, because it isn’‘t threatening - the same reason it works for kids. Also, the visible use of multiple threads in Scratch provide a simple introduction to parallelism. One such course was piloted this year at the University of California, Berkeley: “The Beauty and Joy of Computing.” But Scratch has weaknesses as a programming language. Most notably, it lacks procedures, so it can’t convey the impressive phenomenon of recursion, one of the central ideas of computer science (and also one of the central ideas of early Logo pedagogy). Its support for data structures is also weak. These weaknesses aren’t oversights; the designers of Scratch deliberately avoided cluttering the language with anything a child might find threatening. To serve these two audiences, it has been proposed to split the Scratch community with two versions of the language, one for kids and one for advanced users. We believe that this is not necessary. By taking key ideas, such as procedures as first class data, from the Scheme language, we can add only a few features to Scratch and still make it powerful enough to support a serious introductory computer science curriculum. Furthermore, the graphical interface of Scratch makes the reification of procedures as data seem much less abstract and intimidating to novices.</blockquote>
+    </li>
+</ul>

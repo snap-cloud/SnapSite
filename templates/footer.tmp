@@ -15,6 +15,7 @@
             <p><a localizable href="manual.html">Reference Manual</a></p>
             <p><a localizable href="materials.html">Materials</a></p>
             <p><a localizable href="bjc.html">BJC</a></p>
+            <p><a localizable href="research.html">Research</a></p>
         </div>
         <div class="pure-u-1-5">
             <p><h4 localizable>Tools</h4></p>
