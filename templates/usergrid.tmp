@@ -1,9 +1,9 @@
 <h2 localizable>Users</h2>
 <link rel="stylesheet" href="style/usergrid.css">
 @param className=user_results
-@param pageSize=25
+@param pageSize=51
 @include=paginator
-<div class="${className} users"></div>
+<div class="${className} users pure-g"></div>
 <script>
     var ${className}_usersDiv = document.querySelector('.${className}.users'),
         ${className}_pageSpan = document.querySelector('.${className}.paginator .page'),
@@ -32,6 +32,7 @@
                 if (response.users[0]) {
                     response.users.forEach(function (user) {
                         var div = document.createElement('div');
+                        div.classList.add('pure-u-1-3');
                         div.classList.add('user');
                         div.appendChild(userAnchor(user.username));
                         ${className}_usersDiv.append(div);
