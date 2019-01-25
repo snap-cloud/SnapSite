@@ -18,6 +18,7 @@
         </div>
         <div class="pure-u-1-5">
             <p><h4 localizable>Tools</h4></p>
+            <p><a localizable href="offline.html">Offline Version</a></p>
             <p><a localizable href="extensions.html">Extensions</a></p>
             <p><a target="_blank" href="http://snapp.citilab.eu">Snapp<em>!</em></a></p>
             <p><a target="_blank" href="https://djsrv.github.io/Snapin8r2/">Snapin8r2</a></p>
