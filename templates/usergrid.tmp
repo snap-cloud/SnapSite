@@ -1,0 +1,49 @@
+<h2 localizable>Users</h2>
+<!--
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">-->
+@param className=user_results
+@include=paginator
+<div class="${className} users pure-g"></div>
+<script>
+    var ${className}_usersDiv = document.querySelector('.${className}.users'),
+        ${className}_pageSpan = document.querySelector('.${className}.paginator .page'),
+        ${className}_totalPagesSpan = document.querySelector('.${className}.paginator .total-pages'),
+        ${className}_page = 1,
+        ${className}_totalPages = 1,
+        ${className}_pageSize = ${pageSize} || 15;
+
+    ${className}_toPage(1);
+
+    function ${className}_toPage (pageNumber) {
+        ${className}_usersDiv.innerHTML = '';
+        beganLoading('.${className}.users');
+        SnapCloud.withCredentialsRequest(
+            'GET',
+            '/users?matchtext=' + encodeURIComponent(${extraParam}) +
+                '&pagesize=' + ${className}_pageSize + '&page=' + pageNumber,
+            function (response) {
+                ${className}_totalPages = response.pages;
+                if (${className}_totalPages == 1) {
+                    document.querySelector('.${className}.paginator').remove();
+                } else {
+                    ${className}_totalPagesSpan.textContent = ${className}_totalPages;
+                }
+
+                if (response.users[0]) {
+                    response.users.forEach(function (user) {
+                        ${className}_usersDiv.append(userAnchor(user.username));
+                    });
+                } else {
+                    // collection is empty, so let's remove the carousel altogether
+                    document.querySelector('.${className}').remove();
+                }
+                doneLoading('.${className}.users');
+            },
+            genericError,
+            'Could not fetch user list'
+        );
+        ${className}_page = pageNumber;
+        ${className}_pageSpan.textContent = pageNumber;
+    };
+</script>
