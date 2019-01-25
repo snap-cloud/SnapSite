@@ -1,7 +1,7 @@
 base
 search
 @param user=null
-@param title='term + " projects - Snap! Build Your Own Blocks"'
+@param title='term + " search results - Snap! Build Your Own Blocks"'
 @param pageSize=15
 @param query=getPublishedProjectList
 @param className=project_results
