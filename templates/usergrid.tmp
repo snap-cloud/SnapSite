@@ -1,7 +1,5 @@
-<h2 localizable>Users</h2>
+<h2 localizable>${header}</h2>
 <link rel="stylesheet" href="style/usergrid.css">
-@param className=user_results
-@param pageSize=51
 @include=paginator
 <div class="${className} users pure-g"></div>
 <script>

@@ -3,4 +3,15 @@
     var term = getUrlParameter('term');
     document.querySelector('.term').append(term);
 </script>
-@content
+@param pageSize=15
+@param query=getPublishedProjectList
+@param extraParam='getUrlParameter("term") || null,'
+@param className=project_results
+@param header=Projects
+@include=projectgrid
+@param pageSize=51
+@param className=user_results
+@param header=Users
+@include=usergrid
+@param header=''
+@param extraParam=''
