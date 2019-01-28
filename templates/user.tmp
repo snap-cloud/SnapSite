@@ -3,6 +3,7 @@
 <div hidden="true" class="profile">
     <h2>Admin tools</h2>
 </div>
+<script src="js/dialog.js"></script>
 <script src="js/admin.js"></script>
 <link rel="stylesheet" href="style/admin.css">
 <script>
