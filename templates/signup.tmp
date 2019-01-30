@@ -28,7 +28,7 @@
 
         <div class="pure-controls">
             <label for="tos" class="pure-checkbox">
-                <input id="tos" name="tos" type="checkbox" required> <span localizable>I have read and agree to the <a target="_blank" href="tos.html">Terms of Service</a> and the <a target="_blank" href="privacy.html">Privacy Agreement</a></span>.
+                <input id="tos" name="tos" type="checkbox" required> <span localizable>I have read and agree to the <a target="_blank" href="tos">Terms of Service</a> and the <a target="_blank" href="privacy">Privacy Agreement</a></span>.
             </label>
 
             <button localizable type="submit" class="pure-button red-button">Sign up</button>
@@ -64,7 +64,7 @@
                     alert(
                         'User created.<br/>You can now log in.',
                         function() {
-                            window.location.href = 'login.html';
+                            window.location.href = 'login';
                         },
                         { title: 'Account Created'}
                     );

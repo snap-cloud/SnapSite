@@ -3,7 +3,7 @@ function newProjectDiv (project, options) {
         div = document.createElement('div');
 
     div.innerHTML =
-        '<a href="project.html?user=' + encodeURIComponent(project.username) + '&project=' +
+        '<a href="project?user=' + encodeURIComponent(project.username) + '&project=' +
         encodeURIComponent(project.projectname) + '"><img alt="' + escapeHtml(project.projectname) +
         '" title="' + escapeHtml(project.notes) + '" src="' + project.thumbnail +
         '"><span class="project-name">' + escapeHtml(project.projectname) + '</span></a>';
@@ -167,8 +167,8 @@ function confirmDelete (project) {
             function () {
                 location.href =
                     (sessionStorage.username !== project.username)
-                        ? 'index.html'
-                        : 'myprojects.html';
+                        ? 'index'
+                        : 'myprojects';
             }
         );
     };
@@ -246,10 +246,10 @@ function reasonDialog (project, onSuccess) {
             hack: 'Your project <strong>' + project.projectname + '</strong>' +
                     ' was trying to exploit a security vulnerability.',
             coc: 'Your project <strong>' + project.projectname + '</strong>' +
-                    ' has been found to violate the <a href="' + baseURL + '/coc.html">Code of Conduct</a>' +
+                    ' has been found to violate the <a href="' + baseURL + '/coc">Code of Conduct</a>' +
                     ' of the Snap<em>!</em> community website.',
             dmca: 'Your project <strong>' + project.projectname + '</strong>' +
-                    ' has been found to violate the <a href="' + baseURL + '/dmca.html">DMCA policy</a>' +
+                    ' has been found to violate the <a href="' + baseURL + '/dmca">DMCA policy</a>' +
                     ' of the Snap<em>!</em> community website.' 
         };
     form.classList.add('reasons');
@@ -295,7 +295,7 @@ function embedDialog (project) {
     codeArea.classList.add('embed-code');
     codeArea.set = function () {
         codeArea.value =
-            '<iframe frameBorder=0 src="' + baseURL + '/embed.html?project=' +
+            '<iframe frameBorder=0 src="' + baseURL + '/embed?project=' +
             project.projectname + '&user=' + project.username +
             (form.elements['title'].checked ? '&showTitle=true' : '') +
             (form.elements['author'].checked ? '&showAuthor=true' : '') +

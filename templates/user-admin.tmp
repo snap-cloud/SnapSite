@@ -2,7 +2,7 @@
 SnapCloud.getCurrentUser(function (user) {
     // Only admins and moderators can access this page
     if (['admin', 'moderator'].indexOf(user.role) == -1) {
-        location.href = 'index.html';
+        location.href = 'index';
     }
 });
 </script>
@@ -12,7 +12,7 @@ SnapCloud.getCurrentUser(function (user) {
 <h1 localizable>User Administration</h1>
 <div class="bar">
     <div class="user search">
-        <form action="user-admin.html">
+        <form action="user-admin">
             <input type="text" name="query">
             <i class="fas fa-search"></i>
         </form>

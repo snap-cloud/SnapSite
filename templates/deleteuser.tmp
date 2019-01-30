@@ -17,7 +17,7 @@
     setTitle(localizer.localize('Delete your Account') + ' - Snap! Build Your Own Blocks');
 
     function redirectPath() {
-        var defaultPath = 'index.html';
+        var defaultPath = 'index';
         var redirect_to = getUrlParameter('redirect_to');
         return redirect_to || defaultPath;
     };

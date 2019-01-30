@@ -3,12 +3,12 @@
 <h2>MOOCS and Online Courses</h2>
 <ul>
     <li><a href="https://open.sap.com/courses/snap1">Get Coding with Snap!</a> at OpenSAP</li>
-    <li><a href="/snap-cloud/blog-contents/blob/master/bjc.html">The Beauty and Joy of Coumputing</a></li>
+    <li><a href="bjc">The Beauty and Joy of Coumputing</a></li>
     <li><a href="https://tealsk12.gitbook.io/intro-cs/">Introduction to Computer Science</a> at TEALS</li>
 </ul>
 <h2>Manuals and documentation</h2>
 <ul>
-    <li><a href="/snap-cloud/blog-contents/blob/master/manual.html">Reference Manual</a></li>
+    <li><a href="manual">Reference Manual</a></li>
 </ul>
 <h2>Books</h2>
 <ul>

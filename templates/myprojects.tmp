@@ -3,7 +3,7 @@
 <h1 localizable>My Projects</h1>
 <div class="bar">
     <div class="myprojects search">
-        <form action="myprojects.html">
+        <form action="myprojects">
             <input type="text" name="query">
             <i class="fas fa-search"></i>
         </form>

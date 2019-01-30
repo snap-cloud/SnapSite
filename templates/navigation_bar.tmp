@@ -1,30 +1,30 @@
 <div id="top-bar">
     <div class="pure-menu-horizontal pure-menu">
         <ul class="pure-g pure-menu-list">
-            <a class="pure-u-1-12" href="index.html"><img src="img/topbar-logo.png" class="logo clickable"/></a>
+            <a class="pure-u-1-12" href="index"><img src="img/topbar-logo.png" class="logo clickable"/></a>
             <span class="pure-u-1-4">
                 <li class="pure-menu-item"><a localizable class="pure-menu-link run" target="_blank">Run Snap<em>!</em></a></li>
-                <li class="pure-menu-item"><a localizable class="pure-menu-link" href="explore.html">Explore</a></li>
+                <li class="pure-menu-item"><a localizable class="pure-menu-link" href="explore">Explore</a></li>
             </span>
             <i class="pure-u-1-6"></i>
             <div class="search pure-u-1-6">
-                <form action="search.html">
+                <form action="search">
                     <input type="text" name="term">
                     <i class="fas fa-search"></i>
                 </form>
             </div>
             <i class="pure-u-3-24"></i>
-            <li hidden="true" class="join pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="signup.html">Join</a></li>
-            <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="login.html">Log In</a></li>
+            <li hidden="true" class="join pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="signup">Join</a></li>
+            <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="login">Log In</a></li>
             <li hidden="true" class="pure-menu-item pure-u-1-6 pure-menu-has-children pure-menu-allow-hover user-menu">
                 <a href="#" id="menuLink1" class="pure-menu-link visitor"></a>
                 <ul class="pure-menu-children">
-                    <li class="pure-menu-item"><a localizable class="pure-menu-link my-projects" href="myprojects.html">My Projects</a></li>
+                    <li class="pure-menu-item"><a localizable class="pure-menu-link my-projects" href="myprojects">My Projects</a></li>
                     <li class="pure-menu-item"><a localizable class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
-                    <li class="pure-menu-item"><a localizable class="pure-menu-link my-profile" href="profile.html">My Profile</a></li>
-                    <li hidden="true" class="pure-menu-item admin"><a localizable class="pure-menu-link" href="admin.html">Administration</a></li>
+                    <li class="pure-menu-item"><a localizable class="pure-menu-link my-profile" href="profile">My Profile</a></li>
+                    <li hidden="true" class="pure-menu-item admin"><a localizable class="pure-menu-link" href="admin">Administration</a></li>
                     <hr>
-                    <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { sessionStorage.clear(); location.href = 'index.html'; });">Log Out</a></li>
+                    <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { sessionStorage.clear(); location.href = 'index'; });">Log Out</a></li>
                 </ul>
             </li>
             <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover language-select">

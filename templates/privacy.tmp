@@ -18,7 +18,7 @@
  <li>When you sign up for an account, we immediately send you a confirming email with a verification link.</li>
  <li>If you ask for a new verification link, we will also send it to your email account.</li>
  <li>If you forget your password, we use your address to send you a password-reset email.</li>
- <li>If your account is suspended for violation of our <a href="tos.html">Terms of Service</a>, we will notify you by email.</li>
+ <li>If your account is suspended for violation of our <a href="tos">Terms of Service</a>, we will notify you by email.</li>
 </ul>
 
 <p>We do not use your address for any other purpose. You will never receive marketing emails of any kind through this site, neither from us nor from third parties.</p>
@@ -34,7 +34,7 @@
 
 <h3>Communications that you initiate</h3>
 
-<p>If you <a href="contact.html">contact us</a> by email, we save your email address and whatever other information you include in your message long enough to respond to you, which might take some time if your message is a bug report. We then delete your email.</p>
+<p>If you <a href="contact">contact us</a> by email, we save your email address and whatever other information you include in your message long enough to respond to you, which might take some time if your message is a bug report. We then delete your email.</p>
 
 <h3>Server logging</h3>
 
@@ -54,7 +54,7 @@
 
 <p>If you delete your account on our site, we will delete all the information associated with that account, including your email and your saved projects.</p>
 
-<p>If you are the parent of a child with an account on this site and would like us to remove the account, please <a href="contact.html">contact us</a>, and include in your message your child's account name, the email address associated with the account, and a way to contact you offline (to prevent forgeries).</p>
+<p>If you are the parent of a child with an account on this site and would like us to remove the account, please <a href="contact">contact us</a>, and include in your message your child's account name, the email address associated with the account, and a way to contact you offline (to prevent forgeries).</p>
 
 <h2>For further questions</h2>
 

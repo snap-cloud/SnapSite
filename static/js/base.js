@@ -56,7 +56,7 @@ function authorSpan (author, newTab) {
 
 function userAnchor (username, newTab) {
     var anchor = document.createElement('a');
-    anchor.href = 'user.html?user=' + encodeURIComponent(username);
+    anchor.href = 'user?user=' + encodeURIComponent(username);
     anchor.target = newTab ? '_blank' : '';
     anchor.innerHTML = '<strong>' + escapeHtml(username) + '</strong>';
     return anchor;
@@ -96,7 +96,7 @@ function projectSpan (author, project) {
     var span = document.createElement('span');
     span.classList.add('project-link');
     span.innerHTML =
-        '<a href="project.html?user=' + encodeURIComponent(author) +
+        '<a href="project?user=' + encodeURIComponent(author) +
         '&project=' + encodeURIComponent(project) + '">' +
         escapeHtml(project) + '</a>';
     return span;

@@ -20,7 +20,7 @@
             <button localizable type="submit" class="pure-button">Log in</button>
         </div>
         <div class="pure-controls">
-            <em><a localizable href="forgotPassword.html" onclick="">* I forgot my password</a></em>
+            <em><a localizable href="forgotPassword" onclick="">* I forgot my password</a></em>
         </div>
     </fieldset>
 </form>
@@ -29,7 +29,7 @@
     setTitle(localizer.localize('Log In') + ' - Snap! Build Your Own Blocks');
 
     function redirectPath() {
-        var defaultPath = 'index.html';
+        var defaultPath = 'index';
         var redirect_to = getUrlParameter('redirect_to');
         return redirect_to || defaultPath;
     }

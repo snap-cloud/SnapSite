@@ -54,7 +54,7 @@
                                     SnapCloud.logout(
                                         function () {
                                             sessionStorage.clear();
-                                            location.href = 'login.html';
+                                            location.href = 'login';
                                         }
                                     );
                                 }

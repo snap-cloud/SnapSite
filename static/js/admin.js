@@ -34,7 +34,7 @@ verifyButton = function (user) {
                     alert(
                         response,
                         function () {
-                            location.href = 'user.html?user=' + encodeURIComponent(user.username);
+                            location.href = 'user?user=' + encodeURIComponent(user.username);
                         }
                     );
                 },
@@ -124,7 +124,7 @@ becomeButton = function (user) {
                         function () {
                             sessionStorage.username = username;
                             sessionStorage.role = role;
-                            location.href = 'profile.html';
+                            location.href = 'profile';
                         }
                     );
                 },
