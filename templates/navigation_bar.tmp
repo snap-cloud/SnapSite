@@ -20,6 +20,7 @@
                 <a href="#" id="menuLink1" class="pure-menu-link visitor"></a>
                 <ul class="pure-menu-children">
                     <li class="pure-menu-item"><a localizable class="pure-menu-link my-projects" href="myprojects">My Projects</a></li>
+                    <li class="pure-menu-item"><a localizable class="pure-menu-link my-collections" href="mycollections">My Collections</a></li>
                     <li class="pure-menu-item"><a localizable class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
                     <li class="pure-menu-item"><a localizable class="pure-menu-link my-profile" href="profile">My Profile</a></li>
                     <li hidden="true" class="pure-menu-item admin"><a localizable class="pure-menu-link" href="admin">Administration</a></li>

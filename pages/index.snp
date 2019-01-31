@@ -1,11 +1,2 @@
 base
-welcome
-@param user=null
-@param title='"Snap! Build Your Own Blocks"'
-@param pageSize=5
-@param query=getPublishedProjectList
-@param className=latest
-@param header='Latest Projects'
-@param extraParam='null,'
-projectgrid
-@param header=''
+welcome 

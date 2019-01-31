@@ -20,7 +20,8 @@
             <button localizable type="submit" class="pure-button">Log in</button>
         </div>
         <div class="pure-controls">
-            <em><a localizable href="forgotPassword" onclick="">* I forgot my password</a></em>
+            <p><small><em><a localizable href="forgotPassword" onclick="">* I forgot my password</a></em></small></p>
+            <p><small><em><a localizable href="forgotUsername" onclick="">* I forgot my username</a></em></small></p>
         </div>
     </fieldset>
 </form>
