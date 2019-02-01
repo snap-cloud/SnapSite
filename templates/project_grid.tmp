@@ -1,0 +1,61 @@
+<h2 localizable>$header</h2>
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+@include=paginator
+<div class="${className} projects pure-g"></div>
+<script>
+    var ${className}_projectsDiv = document.querySelector('.${className}.projects'),
+        ${className}_pageSpan = document.querySelector('.${className}.paginator .page'),
+        ${className}_totalPagesSpan = document.querySelector('.${className}.paginator .total-pages'),
+        ${className}_page = 1,
+        ${className}_totalPages = 1,
+        ${className}_pageSize = ${pageSize} || 15;
+
+    ${className}_toPage(1);
+
+    function ${className}_toPage (pageNumber) {
+        ${className}_projectsDiv.innerHTML = '';
+        beganLoading('.${className}.projects');
+        SnapCloud.${query}(
+            $user,
+            pageNumber,
+            ${className}_pageSize,
+            ${extraParam} // used for search terms, collection names, etc
+            function (response) {
+                setTitle($title);
+
+                ${className}_totalPages = response.pages;
+                if (${className}_totalPages == 1) {
+                    document.querySelector('.${className}.paginator').remove();
+                } else {
+                    ${className}_totalPagesSpan.textContent = ${className}_totalPages;
+                }
+
+                if (response.projects[0]) {
+                    response.projects.forEach(function (project) {
+                        ${className}_projectsDiv.append(
+                                newProjectDiv(
+                                project,
+                                {
+                                    size: 'small',
+                                    gridSize: 5,
+                                    extraFields: {
+                                        author: 'username'
+                                    }
+                                }));
+                    });
+                } else {
+                    // collection is empty, so let's remove the carousel altogether
+                    document.querySelector('.${className}').remove();
+                }
+                doneLoading('.${className}.projects');
+            },
+            function (error) {
+                genericError(error);
+            },
+            true // withThumbnail
+        );
+        ${className}_page = pageNumber;
+        ${className}_pageSpan.textContent = pageNumber;
+    };
+</script>

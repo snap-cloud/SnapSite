@@ -1,0 +1,72 @@
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+<h1 localizable>My Collections</h1>
+<div class="bar">
+    <div class="mycollections search">
+        <form action="mycollections">
+            <input type="text" name="query">
+            <i class="fas fa-search"></i>
+        </form>
+        <script>
+            document.querySelector('.mycollections form input').value = getUrlParameter('query');
+        </script>
+    </div>
+    @include=paginator
+</div>
+<div class="collections list pure-g"></div>
+<script>
+    var collectionsDiv = document.querySelector('.collections'),
+        mycollections_pageSpan = document.querySelector('.mycollections.paginator .page'),
+        mycollections_totalPagesSpan = document.querySelector('.mycollections.paginator .total-pages'),
+        mycollections_page = 1,
+        mycollections_totalPages = 1,
+        mycollections_pageSize = ${pageSize} || 15;
+
+    mycollections_toPage(1);
+
+    function mycollections_toPage (pageNumber) {
+        query = getUrlParameter('query');
+        collectionsDiv.innerHTML = '';
+        beganLoading('.collections.list');
+        SnapCloud.getUserCollections(
+            null, // username is implicit
+            mycollections_page,
+            mycollections_pageSize,
+            query,
+            function (response) {
+                mycollections_totalPages = response.pages;
+                if (mycollections_totalPages == 1) {
+                    document.querySelector('.mycollections.paginator').remove();
+                } else {
+                    mycollections_totalPagesSpan.textContent = mycollections_totalPages;
+                }
+                if (response.collections && response.collections[0]) {
+                    response.collections.forEach(function (collection) {
+                        collectionsDiv.append(
+                            newCollectionDiv(
+                                collection, 
+                                { 
+                                    size: 'small', 
+                                    gridSize: 5, 
+                                    extraFields: {
+                                        isPublic: 'ispublic',
+                                        isPublished: 'ispublished'
+                                    }
+                                }
+                            )
+                        );
+                    });
+                } else {
+                    document.querySelector('.collections').remove();
+                }
+                doneLoading('.collections.list');
+            }
+        );
+
+        mycollections_page = pageNumber;
+        mycollections_pageSpan.textContent = pageNumber;
+    };
+</script>
+<div class="buttons">
+    <a class="pure-button" href="new_collection">New Collection</a>
+</div>

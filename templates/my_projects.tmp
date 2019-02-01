@@ -1,0 +1,68 @@
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+<h1 localizable>My Projects</h1>
+<div class="bar">
+    <div class="myprojects search">
+        <form action="myprojects">
+            <input type="text" name="query">
+            <i class="fas fa-search"></i>
+        </form>
+        <script>
+            document.querySelector('.myprojects form input').value = getUrlParameter('query');
+        </script>
+    </div>
+    @include=paginator
+</div>
+<div class="projects list pure-g"></div>
+<script>
+    var projectsDiv = document.querySelector('.projects'),
+        myprojects_pageSpan = document.querySelector('.myprojects.paginator .page'),
+        myprojects_totalPagesSpan = document.querySelector('.myprojects.paginator .total-pages'),
+        myprojects_page = 1,
+        myprojects_totalPages = 1,
+        myprojects_pageSize = ${pageSize} || 15;
+
+    myprojects_toPage(1);
+
+    function myprojects_toPage (pageNumber) {
+        query = getUrlParameter('query');
+        projectsDiv.innerHTML = '';
+        beganLoading('.projects.list');
+        SnapCloud.withCredentialsRequest(
+            'GET',
+            '/projects/%username?updatingnotes=true&pagesize=' + myprojects_pageSize +
+                '&page=' + pageNumber + '&withthumbnail=true&matchtext=' + (query ? query : '') ,
+            function (response) {
+                myprojects_totalPages = response.pages;
+                if (myprojects_totalPages == 1) {
+                    document.querySelector('.myprojects.paginator').remove();
+                } else {
+                    myprojects_totalPagesSpan.textContent = myprojects_totalPages;
+                }
+                if (response.projects && response.projects[0]) {
+                    response.projects.forEach(function (project) {
+                        projectsDiv.append(
+                            newProjectDiv(
+                                project, 
+                                { 
+                                    size: 'small', 
+                                    gridSize: 5, 
+                                    extraFields: {
+                                        isPublic: 'ispublic',
+                                        isPublished: 'ispublished'
+                                    }
+                                }
+                            )
+                        );
+                    });
+                } else {
+                    document.querySelector('.projects').remove();
+                }
+                doneLoading('.projects.list');
+            }
+        );
+
+        myprojects_page = pageNumber;
+        myprojects_pageSpan.textContent = pageNumber;
+    };
+</script>
