@@ -11,7 +11,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
         div = document.createElement('div');
 
     div.innerHTML =
-        '<a href="' + itemType + '?user=' + encodeURIComponent(eval(itemType + '.' + ownerUsernamePath)) + '&' + itemType + '=' +
+        '<a href="' + itemType + '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) + '&' + itemType + '=' +
         encodeURIComponent(item[nameField]) + '"><img alt="' + escapeHtml(item[nameField]) +
         '" title="' + escapeHtml(item[descriptionField]) + '" src="' + item.thumbnail +
         '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) + '</span></a>';
