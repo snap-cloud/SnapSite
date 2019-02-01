@@ -3,7 +3,7 @@ function newProjectDiv (project, options) {
 };
 
 function newCollectionDiv (collection, options) {
-    return itemDiv(collection, 'collection', 'owner.username', 'name', 'description', options)
+    return itemDiv(collection, 'collection', 'creator.username', 'name', 'description', options)
 };
 
 function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField, options) {
