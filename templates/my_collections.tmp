@@ -41,7 +41,7 @@
                 } else {
                     mycollections_totalPagesSpan.textContent = mycollections_totalPages;
                 }
-                if (response.collections && response.collections[0]) {
+                if (response.collections[0]) {
                     response.collections.forEach(function (collection) {
                         collectionsDiv.append(
                             newCollectionDiv(

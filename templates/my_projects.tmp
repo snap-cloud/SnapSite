@@ -39,7 +39,7 @@
                 } else {
                     myprojects_totalPagesSpan.textContent = myprojects_totalPages;
                 }
-                if (response.projects && response.projects[0]) {
+                if (response.projects[0]) {
                     response.projects.forEach(function (project) {
                         projectsDiv.append(
                             newProjectDiv(
