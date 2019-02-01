@@ -4,7 +4,7 @@
 <h1 localizable>My Collections</h1>
 <div class="bar">
     <div class="mycollections search">
-        <form action="mycollections">
+        <form action="my_collections">
             <input type="text" name="query">
             <i class="fas fa-search"></i>
         </form>

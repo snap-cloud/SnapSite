@@ -12,7 +12,7 @@ SnapCloud.getCurrentUser(function (user) {
 <h1 localizable>User Administration</h1>
 <div class="bar">
     <div class="user search">
-        <form action="user-admin">
+        <form action="user_admin">
             <input type="text" name="query">
             <i class="fas fa-search"></i>
         </form>
