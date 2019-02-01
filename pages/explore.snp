@@ -6,5 +6,5 @@ explore
 @param query=getPublishedProjectList
 @param className=latest
 @param extraParam='null,'
-projectgrid
+project_grid
 @param extraParam=''

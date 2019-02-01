@@ -7,8 +7,8 @@
         <span hidden class="pure-u-1-1 role-container"><strong localizable>Role</strong><strong>: </strong><span class="role"></span></span>
     </div> 
     <div class="pure-u-1-2 buttons">
-        <a localizable class="pure-button" href="changePassword">Change Password</a>
-        <a localizable class="pure-button" href="changeEmail">Change Email</a>
+        <a localizable class="pure-button" href="change_password">Change Password</a>
+        <a localizable class="pure-button" href="change_email">Change Email</a>
         <a localizable class="pure-button pure-button-warning" onclick="confirmDeleteMyself()">Delete my Account</a>
     </div>
 </div>
@@ -34,7 +34,7 @@
             ' <i class="warning fa fa-exclamation-triangle"></i>',
             function (ok) {
                 if (ok) {
-                    location.href = 'deleteuser';
+                    location.href = 'delete_user';
                 }
             },
             confirmTitle('Delete your Account')

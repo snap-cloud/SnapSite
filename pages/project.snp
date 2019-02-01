@@ -6,6 +6,6 @@ project
 @param header='Remixes'
 @param user='pageUser()'
 @param extraParam='pageProject(),'
-projectgrid
+project_grid
 @param header=''
 @param extraParam=''

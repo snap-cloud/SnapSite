@@ -1,9 +1,9 @@
-.project.small {
+.collection.small, .project.small {
     text-align: center;
     margin-bottom: 1.5em;
 }
 
-.project img {
+.collection img, .project img {
     width: 160px;
     height: 120px;
     background-image: linear-gradient(45deg, #4c5e70 25%, transparent 25%), linear-gradient(-45deg, #4c5e70 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #4c5e70 75%), linear-gradient(-45deg, transparent 75%, #4c5e70 75%);
@@ -13,7 +13,7 @@
     margin-bottom: .5em;
 }
 
-.project img, .project iframe {
+.collection img, .project img, .project iframe {
     border: 2px solid #2c3e50;
     box-sizing: border-box;
 }
@@ -23,28 +23,28 @@
     width: 100%;
 }
 
-.project.small img {
+.collection.small img, .project.small img {
     margin-bottom: 0;
 }
 
-.project img:hover {
+.collection img:hover, .project img:hover {
     filter: brightness(1.2);
     border-color: #4c5e70;
 }
 
-.project.small {
+.collection.small, .project.small {
     line-height: 1.5em;
 }
 
-.project.small span.project-name {
+.collection.small span.collection-name, .project.small span.project-name {
     display: block;
 }
 
-.project.small span.is-public {
+.collection.small span.is-public, .project.small span.is-public {
     margin-right: 0.5em;
 }
 
-.project .author {
+.collection .author, .project .author {
     font-size: .8em;
 }
 
@@ -184,7 +184,7 @@
     margin-right: 0.5em;
 }
 
-/* My Projects */
+/* My Projects / My Collections */
 
 .bar {
     display: flex;
@@ -193,16 +193,16 @@
     margin-bottom: 1em;
 }
 
-.myprojects.search {
+.mycollections.search, .myprojects.search {
     margin-left: 0.5em;
     width: 220px;
 }
 
-.myprojects.search form {
+.mycollections.search form, .myprojects.search form {
     position: relative;
 }
 
-.myprojects.search input {
+.mycollections.search input, .myprojects.search input {
     width: 100%;
     height: 2em;
     padding-left: 0.75em;
@@ -212,13 +212,13 @@
     border: 1px solid #AAAAAA;
 }
 
-.myprojects.search i {
+.mycollections.search i, .myprojects.search i {
     position: absolute;
     right: 0.45em;
     top: 0.45em;
 }
 
-.myprojects.paginator {
+.mycollections.paginator, .myprojects.paginator {
     line-height: 2em;
     margin: 0;
 }

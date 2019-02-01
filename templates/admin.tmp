@@ -7,4 +7,4 @@ SnapCloud.getCurrentUser(function (user) {
 });
 </script>
 <h1 localizable>Administration</h1>
-<a localizable class="pure-button" href="user-admin">User Administration</a>
+<a localizable class="pure-button" href="user_admin">User Administration</a>

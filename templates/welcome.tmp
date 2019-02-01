@@ -16,5 +16,5 @@
 @param className=latest
 @param header='Latest Projects'
 @param extraParam='null,'
-@include=projectgrid
+@include=project_grid
 @param header=''

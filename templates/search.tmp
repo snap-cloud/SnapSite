@@ -8,10 +8,10 @@
 @param extraParam='getUrlParameter("term") || null,'
 @param className=project_results
 @param header=Projects
-@include=projectgrid
+@include=project_grid
 @param pageSize=51
 @param className=user_results
 @param header=Users
-@include=usergrid
+@include=user_grid
 @param header=''
 @param extraParam=''

@@ -1,25 +1,33 @@
 function newProjectDiv (project, options) {
+    return itemDiv(project, 'project', 'username', 'projectname', 'notes', options)
+};
+
+function newCollectionDiv (collection, options) {
+    return itemDiv(collection, 'collection', 'creator', 'name', 'description', options)
+};
+
+function itemDiv (item, itemType, ownerUsernameField, nameField, descriptionField, options) {
     var extraFields = options['extraFields'],
         div = document.createElement('div');
 
     div.innerHTML =
-        '<a href="project?user=' + encodeURIComponent(project.username) + '&project=' +
-        encodeURIComponent(project.projectname) + '"><img alt="' + escapeHtml(project.projectname) +
-        '" title="' + escapeHtml(project.notes) + '" src="' + project.thumbnail +
-        '"><span class="project-name">' + escapeHtml(project.projectname) + '</span></a>';
+        '<a href="' + itemType + '?user=' + encodeURIComponent(item[ownerUsernameField]) + '&' + itemType + '=' +
+        encodeURIComponent(item[nameField]) + '"><img alt="' + escapeHtml(item[nameField]) +
+        '" title="' + escapeHtml(item[descriptionField]) + '" src="' + item.thumbnail +
+        '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) + '</span></a>';
 
-    if (!project.thumbnail) {
+    if (!item.thumbnail) {
         div.querySelector('img').classList.add('no-image');
     }
 
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {
             var attribute = extraFields[fieldName];
-            div.appendChild(window[fieldName + 'Span'](project[attribute]));
+            div.appendChild(window[fieldName + 'Span'](item[attribute]));
         });
     }
 
-    div.classList.add('project', options['size']);
+    div.classList.add(itemType, options['size']);
 
     if (options['gridSize']) {
         div.classList.add('pure-u-1-' + options['gridSize']);

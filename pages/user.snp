@@ -5,5 +5,5 @@ user
 @param pageSize=15
 @param query=getPublishedProjectList
 @param extraParam='null,'
-projectgrid
+project_grid
 @param extraParam=''
