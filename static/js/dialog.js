@@ -34,3 +34,27 @@ function dialog (title, body, onSuccess, onCancel) {
         if (onCancel) { onCancel.call(this); }
     };
 };
+
+window.prompt = function (title, onSuccess, onCancel) {
+    var input = document.createElement('input'),
+        dialogBox = onCancel
+            ? document.querySelector('#customconfirm')
+            : document.querySelector('#customalert');
+
+    // Kind of a hack to have Enter trigger the onSuccess action and close the dialog
+    input.addEventListener('keyup', function(event) {
+        if (event.keyCode === 13) {
+            dialogBox.style.display = null;
+            document.querySelector('#customalert-overlay').style.display = null;
+            document.querySelector('html').style.overflow = 'auto';
+            onSuccess.call(this, input.value);
+        }
+    });
+
+    dialog(
+        title,
+        input,
+        function () { onSuccess.call(this, input.value); },
+        onCancel
+    );
+};

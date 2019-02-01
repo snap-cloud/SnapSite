@@ -1,4 +1,5 @@
 <script src="js/project.js"></script>
+<script src="js/dialog.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Collections</h1>
 <div class="bar">
@@ -68,5 +69,22 @@
     };
 </script>
 <div class="buttons">
-    <a class="pure-button" href="new_collection">New Collection</a>
+    <a class="pure-button new-collection">New Collection</a>
 </div>
+<script>
+    document.querySelector('.new-collection').onclick = function () {
+        prompt(
+            localizer.localize('Collection name?'),
+            function (collectionName) {
+                SnapCloud.newCollection(
+                    collectionName,
+                    function (collection) {
+                        location.replace(collectionURL(SnapCloud.username, collectionName));
+                    },
+                    genericError
+                ); 
+            },
+            nop
+        );
+    };
+</script>

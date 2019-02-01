@@ -1,0 +1,13 @@
+<script src="js/inplace.js"></script>
+<h1 class="collection-name"></h1>
+<p><span class="author"></span></p>
+@param pageSize=15
+@param query=getCollectionProjects
+@param className="collection"
+project_grid
+@include=project_grid
+<script>
+    var collectionUsername = getUrlParameter('author'),
+        collectionName = '${collectionName}' || getUrlParameter('name'),
+        title = document.querySelector('.collection-name');
+</script>

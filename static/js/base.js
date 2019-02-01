@@ -102,6 +102,14 @@ function projectSpan (author, project) {
     return span;
 };
 
+function collectionURL (author, name) {
+    return 'collection?' + 
+        SnapCloud.encodeDict({
+            author: author,
+            name: name
+        });
+};
+
 // Error handling
 
 function genericError (errorString, title) {
