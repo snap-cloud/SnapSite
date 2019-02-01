@@ -3,15 +3,15 @@ function newProjectDiv (project, options) {
 };
 
 function newCollectionDiv (collection, options) {
-    return itemDiv(collection, 'collection', 'creator', 'name', 'description', options)
+    return itemDiv(collection, 'collection', 'owner.username', 'name', 'description', options)
 };
 
-function itemDiv (item, itemType, ownerUsernameField, nameField, descriptionField, options) {
+function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField, options) {
     var extraFields = options['extraFields'],
         div = document.createElement('div');
 
     div.innerHTML =
-        '<a href="' + itemType + '?user=' + encodeURIComponent(item[ownerUsernameField]) + '&' + itemType + '=' +
+        '<a href="' + itemType + '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) + '&' + itemType + '=' +
         encodeURIComponent(item[nameField]) + '"><img alt="' + escapeHtml(item[nameField]) +
         '" title="' + escapeHtml(item[descriptionField]) + '" src="' + item.thumbnail +
         '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) + '</span></a>';
