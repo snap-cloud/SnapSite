@@ -338,10 +338,14 @@ function collect (project) {
         null, // searchTerm
         function (response) {
             collections = response.collections;
-            collections.forEach(function (collection) {
-                form.innerHTML += '<p class="option"><input type="radio" name="collection" value="' + collection.name +
-                    '"><label> ' + collection.name + '</label></p>';
-            });
+            if (collections[0]) {
+                collections.forEach(function (collection) {
+                    form.innerHTML += '<p class="option"><input type="radio" name="collection" value="' + collection.name +
+                        '"><label> ' + collection.name + '</label></p>';
+                });
+            } else {
+                form.innerHTML = '<p>' + localizer.localize('You do not have any collections.') + '</p>';
+            }
             doneLoading('.collect-form');
         },
         genericError
