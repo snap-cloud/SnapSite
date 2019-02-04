@@ -1,4 +1,4 @@
-function dialog (title, body, onSuccess, onCancel) {
+function dialog (title, body, onSuccess, onCancel, onOpen) {
     // I reuse CustomAlert's dialogs
     var dialogBox = onCancel
             ? document.querySelector('#customconfirm')
@@ -33,6 +33,10 @@ function dialog (title, body, onSuccess, onCancel) {
         close();
         if (onCancel) { onCancel.call(this); }
     };
+
+    if (onOpen) {
+        onOpen.call(dialogBox);
+    }
 };
 
 window.prompt = function (title, onSuccess, onCancel) {

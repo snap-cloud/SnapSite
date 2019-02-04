@@ -8,7 +8,6 @@
 @param extraParam="getUrlParameter('collection'),"
 @include=project_grid
 <script>
-    var collectionUsername = '${user}' || getUrlParameter('user'),
-        collectionName = '${collectionName}' || getUrlParameter('collection'),
-        title = document.querySelector('.collection-name');
+    var collectionUsername = getUrlParameter('user'),
+        collectionName = '${collectionName}' || getUrlParameter('collection');
 </script>

@@ -29,6 +29,7 @@
                 <a localizable class="pure-button publish" target="_blank">Publish</a>
                 <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
                 <a localizable class="pure-button embed-button" target="_blank">Embed</a>
+                <a localizable class="pure-button collect" target="_blank">Add to Collection</a>
                 <a localizable class="pure-button pure-button-warning delete" target="_blank">Delete</a>
             </div>
         </div>
@@ -129,6 +130,7 @@
             document.querySelector('.buttons .publish').onclick = function () { confirmPublish(project); };
             document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublish(project); }
             document.querySelector('.buttons .embed-button').onclick = function () { embedDialog(project); }
+            document.querySelector('.buttons .collect').onclick = function () { collect(project); }
             document.querySelector('.buttons .delete').onclick = function () { confirmDelete(project); }
 
             doneLoading('#wrapper');

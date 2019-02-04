@@ -258,7 +258,7 @@ function reasonDialog (project, onSuccess) {
                     ' of the Snap<em>!</em> community website.',
             dmca: 'Your project <strong>' + project.projectname + '</strong>' +
                     ' has been found to violate the <a href="' + baseURL + '/dmca">DMCA policy</a>' +
-                    ' of the Snap<em>!</em> community website.' 
+                    ' of the Snap<em>!</em> community website.'
         };
     form.classList.add('reasons');
     new Map([
@@ -279,12 +279,12 @@ function reasonDialog (project, onSuccess) {
             );
         }
     );
-}; 
+};
 
 function embedDialog (project) {
     var codeArea = document.createElement('textarea'),
         form = document.createElement('form');
-    
+
     form.classList.add('embed-options');
     form.innerHTML =
             '<span class="info">' + localizer.localize('Please select the elements you wish ' +
@@ -319,6 +319,60 @@ function embedDialog (project) {
     dialog('Embed Options', form);
 };
 
+function collect (project) {
+    // Add this project to a user's collection
+    // TODO get all collections where user has write permission
+
+    var form = document.createElement('form'),
+        collections;
+
+    form.classList.add('collect-form');
+    form.innerHTML =
+        '<p class="info">' + localizer.localize('Please select the collection to which you want ' +
+        'to add this project:') + '</p>';
+
+    SnapCloud.getUserCollections(
+        null, // username is implicit
+        null, // page
+        null, // pageSize
+        null, // searchTerm
+        function (response) {
+            collections = response.collections;
+            collections.forEach(function (collection) {
+                form.innerHTML += '<p class="option"><input type="radio" name="collection" value="' + collection.name +
+                    '"><label> ' + collection.name + '</label></p>';
+            });
+            doneLoading('.collect-form');
+        },
+        genericError
+    );
+
+    dialog(
+        'Add project to collection',
+        form,
+        function () {
+            var collection = collections.find(
+                    function(collection) {
+                        return collection.name ===
+                            form.querySelector('input[name="collection"]:checked').value;
+                    }
+            );
+            SnapCloud.addProjectToCollection(
+                collection.creator.username,
+                collection.name,
+                project.username,
+                project.projectname,
+                function (response) {
+                    alert(response);
+                },
+                genericError
+            );
+        },
+        nop,
+        function () { beganLoading('.collect-form'); } // onOpen
+    );
+
+};
 
 function toggleFullScreen() {
     var embed = document.querySelector('.embed'),
