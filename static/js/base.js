@@ -105,8 +105,8 @@ function projectSpan (author, project) {
 function collectionURL (author, name) {
     return 'collection?' + 
         SnapCloud.encodeDict({
-            author: author,
-            name: name
+            user: author,
+            collection: name
         });
 };
 
