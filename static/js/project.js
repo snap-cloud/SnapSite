@@ -366,8 +366,11 @@ function collect (project) {
                 collection.name,
                 project.username,
                 project.projectname,
-                function (response) {
-                    alert(response);
+                function () {
+                    alert(
+                        localizer.localize('Project added to collection') + '.',
+                        { title: localizer.localize('Project added to collection') }
+                    );
                 },
                 genericError
             );
