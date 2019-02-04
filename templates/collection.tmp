@@ -4,11 +4,11 @@
 @param pageSize=15
 @param query="getCollectionProjects"
 @param className="collection"
-@param user="getUrlParameter('author')"
-@param extraParam="getUrlParameter('name'),"
+@param user="getUrlParameter('user')"
+@param extraParam="getUrlParameter('collection'),"
 @include=project_grid
 <script>
-    var collectionUsername = getUrlParameter('author'),
-        collectionName = '${collectionName}' || getUrlParameter('name'),
+    var collectionUsername = '${user}' || getUrlParameter('user'),
+        collectionName = '${collectionName}' || getUrlParameter('collection'),
         title = document.querySelector('.collection-name');
 </script>
