@@ -2,9 +2,10 @@
 <h1 class="collection-name"></h1>
 <p><span class="author"></span></p>
 @param pageSize=15
-@param query=getCollectionProjects
+@param query="getCollectionProjects"
 @param className="collection"
-project_grid
+@param user="getUrlParameter('author')"
+@param extraParam="getUrlParameter('name'),"
 @include=project_grid
 <script>
     var collectionUsername = getUrlParameter('author'),
