@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="style/project.css">
-<h1 class="collection-name" localizable>Collection: </h1>
+<h1 class="title" localizable>Collection: </h1>
 <p><span class="author"></span></p>
 @param pageSize=15
 @param query="getCollectionProjects"
