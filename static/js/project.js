@@ -217,9 +217,37 @@ function confirmDelete (project) {
     );
 };
 
+function confirmFlag (project) {
+    confirm(
+        localizer.localize('Are you sure you want to flag this project as inappropriate?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.addProjectToCollection(
+                    'snapcloud',
+                    'Flagged',
+                    project.username,
+                    project.projectname,
+                    function () {
+                        alert(
+                            localizer.localize('This project has been flagged.'),
+                            { title: localizer.localize('Project flagged') }
+                        );
+                    },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Flag project')
+    );
+};
+
+function ownsProject (project) {
+    return sessionStorage.username == project.username;
+};
+
 function ownsProjectOrIsAdmin (project) {
     // Not to worry. Actual secure permission check is performed in the backend.
-    return (sessionStorage.username == project.username) || sessionStorage.role === 'admin';
+    return ownsProject(project) || sessionStorage.role === 'admin';
 };
 
 function canShare (project) {

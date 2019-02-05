@@ -30,6 +30,7 @@
                 <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
                 <a localizable class="pure-button embed-button" target="_blank">Embed</a>
                 <a localizable class="pure-button collect" target="_blank">Add to Collection</a>
+                <a localizable class="pure-button pure-button-warning flag" target="_blank">Report</a>
                 <a localizable class="pure-button pure-button-warning delete" target="_blank">Delete</a>
             </div>
         </div>
@@ -121,6 +122,8 @@
             document.querySelector('.buttons .unpublish').hidden = (!project.ispublic || !project.ispublished) ||
                                                                     !canUnpublish(project);
             document.querySelector('.embed-button').hidden = !project.ispublic;
+            document.querySelector('.buttons .collect').hidden = !project.ispublished || !ownsProjectOrIsAdmin(project);
+            document.querySelector('.buttons .flag').hidden = ownsProject(project); // why whould you want to flag your own project?
             document.querySelector('.buttons .delete').hidden = !canDelete(project);
 
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
@@ -131,6 +134,7 @@
             document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublish(project); }
             document.querySelector('.buttons .embed-button').onclick = function () { embedDialog(project); }
             document.querySelector('.buttons .collect').onclick = function () { collect(project); }
+            document.querySelector('.buttons .flag').onclick = function () { confirmFlag(project); }
             document.querySelector('.buttons .delete').onclick = function () { confirmDelete(project); }
 
             doneLoading('#wrapper');
