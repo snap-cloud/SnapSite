@@ -7,10 +7,10 @@ SnapCloud.getCurrentUser(function (user) {
 });
 </script>
 <h1 localizable>Administration</h1>
-<a localizable hidden class="pure-button" href="user_admin">User Administration</a>
+<a localizable hidden class="user-admin pure-button" href="user_admin">User Administration</a>
 <a localizable class="pure-button" href="collection?user=snapcloud&collection=Flagged">Flagged Projects</a>
 <script>
-    if (['admin', 'moderator'].indexOf(user.role) > -1) {
-        document.querySelector('.user_admin').hidden = false;
+    if (['admin', 'moderator'].indexOf(sessionStorage.role) > -1) {
+        document.querySelector('.user-admin').hidden = false;
     }
 </script>
