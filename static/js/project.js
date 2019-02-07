@@ -10,15 +10,19 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
     var extraFields = options['extraFields'],
         div = document.createElement('div');
 
-    div.innerHTML =
+    if (!item.thumbnail) {
+        div.innerHTML = '<i class="no-image fas ' +
+            (itemType == 'collection' ?  'fa-briefcase' : 'fa-question-circle') +
+            '"></i>'
+    }
+
+    div.innerHTML +=
         '<a href="' + itemType + '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) + '&' + itemType + '=' +
-        encodeURIComponent(item[nameField]) + '"><img alt="' + escapeHtml(item[nameField]) +
-        '" title="' + escapeHtml(item[descriptionField]) + '" src="' + item.thumbnail +
+        encodeURIComponent(item[nameField]) + '"><img alt="' + (item.thumbnail ? escapeHtml(item[nameField]) : '') +
+        '" title="' + escapeHtml(item[descriptionField]) + '" src="' + (item.thumbnail ? item.thumbnail : '') +
         '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) + '</span></a>';
 
-    if (!item.thumbnail) {
-        div.querySelector('img').classList.add('no-image');
-    }
+
 
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {
