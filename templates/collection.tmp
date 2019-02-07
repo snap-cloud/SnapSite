@@ -9,6 +9,7 @@
 @param title="collectionName + ' - Snap! Build Your Own Blocks'"
 @param extraOptions="withCollectionControls: true"
 @include=project_grid
+@param extraOptions=''
 <script>
     var collectionUsername = getUrlParameter('user'),
         collectionName = '${collectionName}' || getUrlParameter('collection');
