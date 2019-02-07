@@ -41,7 +41,8 @@
                                     gridSize: 5,
                                     extraFields: {
                                         author: 'username'
-                                    }
+                                    },
+                                    ${extraOptions}
                                 }));
                     });
                 } else {

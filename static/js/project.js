@@ -22,8 +22,6 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
         '" title="' + escapeHtml(item[descriptionField]) + '" src="' + (item.thumbnail ? item.thumbnail : '') +
         '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) + '</span></a>';
 
-
-
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {
             var attribute = extraFields[fieldName];
@@ -37,7 +35,32 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
         div.classList.add('pure-u-1-' + options['gridSize']);
     };
 
+    if (options['withCollectionControls']) {
+        // Adds controls to remove this project from a collection or choose it as a thumbnail
+        div.appendChild(collectionControls(item));
+    }
+
     return div;
+};
+
+function collectionControls (project) {
+    var controls = document.createElement('div'),
+        removeAnchor = document.createElement('a'),
+        thumbnailAnchor = document.createElement('a');
+
+    controls.classList.add('collection-controls');
+
+    removeAnchor.classList.add('clickable');
+    removeAnchor.innerHTML = '<i class="fas fa-times-circle"></i>';
+    removeAnchor.onclick = function () { confirmRemoveFromCollection(project); };
+    controls.appendChild(removeAnchor);
+
+    thumbnailAnchor.classList.add('clickable');
+    thumbnailAnchor.innerHTML = '<i class="fas fa-image"></i>';
+    thumbnailAnchor.onclick = function () { chooseAsThumbnailForCollection(project); };
+    controls.appendChild(thumbnailAnchor);
+
+    return controls;
 };
 
 function downloadProject (project) {
@@ -54,7 +77,35 @@ function downloadProject (project) {
     );
 };
 
+function chooseAsThumbnailForCollection (project) {
+    SnapCloud.setCollectionThumbnail(
+        getUrlParameter('user'),
+        getUrlParameter('collection'),
+        project.id,
+        function () { location.reload(); },
+        genericError
+    );
+};
+
 // Could probably refactor these. Not sure it's worth the hassle though.
+function confirmRemoveFromCollection (project) {
+    confirm(
+        localizer.localize('Are you sure you want to remove this project from the collection?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.removeProjectFromCollection(
+                    getUrlParameter('user'),
+                    getUrlParameter('collection'),
+                    project.username,
+                    project.projectname,
+                    function () { location.reload(); },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Share project')
+    );
+};
 
 function confirmShareProject (project) {
     confirm(
@@ -70,7 +121,7 @@ function confirmShareProject (project) {
                             '<br><a href="' + projectURL(project.username, project.projectname) + '">' +
                             projectURL(project.username, project.projectname) + '</a>',
                             { title: localizer.localize('Project shared') },
-                            function () { location.reload() }
+                            function () { location.reload(); }
                         );
                     },
                     genericError
