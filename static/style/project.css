@@ -24,6 +24,10 @@
     opacity: 0.2;
 }
 
+.project.small .no-image:hover, .collection.small .no-image:hover {
+    filter: brightness(1.2);
+}
+
 .project iframe {
     border-radius: 0 0 5px 5px;
     width: 100%;
