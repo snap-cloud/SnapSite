@@ -6,10 +6,10 @@
 @param className="collection"
 @param user="getUrlParameter('user')"
 @param extraParam="getUrlParameter('collection'),"
+@param title="collectionName + ' - Snap! Build Your Own Blocks'"
 @include=project_grid
 <script>
     var collectionUsername = getUrlParameter('user'),
         collectionName = '${collectionName}' || getUrlParameter('collection');
-    setTitle(collectionName + ' - Snap! Build Your Own Blocks');
     document.querySelector('.title').innerHTML += collectionName;
 </script>
