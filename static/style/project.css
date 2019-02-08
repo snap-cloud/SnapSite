@@ -1,22 +1,28 @@
-.collection.small, .project.small {
+.collection.small,
+.project.small {
     text-align: center;
     margin-bottom: 1.5em;
     position: relative;
 }
 
-.collection img, .project img {
+.collection img.thumbnail,
+.project img.thumbnail {
     width: 160px;
     height: 120px;
     border-radius: 5px;
     margin-bottom: .5em;
 }
 
-.collection img, .project img, .project iframe {
+.collection img.thumbnail,
+img.collection-thumbnail,
+.project img.thumbnail,
+.project iframe {
     border: 2px solid #2c3e50;
     box-sizing: border-box;
 }
 
-.project.small .no-image, .collection.small .no-image {
+.project.small .no-image,
+.collection.small .no-image {
     position: absolute;
     left: 88px;
     font-size: 40px; 
@@ -24,7 +30,16 @@
     opacity: 0.2;
 }
 
-.project.small .no-image:hover, .collection.small .no-image:hover {
+.collection-thumbnail {
+    border-radius: 5px;
+}
+
+.project.small .author {
+    display: block;
+}
+
+.project.small .no-image:hover,
+.collection.small .no-image:hover {
     filter: brightness(1.2);
 }
 
@@ -38,7 +53,7 @@
     justify-content: space-evenly;
     position: absolute;
     top: 2px;
-    right: 30px;
+    right: 12px;
 }
 
 .collection-controls:hover {
@@ -50,42 +65,55 @@
     width: 100%;
 }
 
-.collection.small img, .project.small img {
+.collection img.thumbnail,
+.project.small img.thumbnail {
     margin-bottom: 0;
 }
 
-.collection img:hover, .project img:hover {
+.collection img.thumbnail:hover,
+.project img.thumbnail:hover {
     filter: brightness(1.2);
     border-color: #4c5e70;
 }
 
-.collection.small, .project.small {
+.collection.small,
+.project.small {
     line-height: 1.5em;
 }
 
-.collection.small span.collection-name, .project.small span.project-name {
+.collection.small span.collection-name,
+.project.small span.project-name {
     display: block;
 }
 
-.collection.small span.is-public, .project.small span.is-public {
+.collection.small span.is-public,
+.project.small span.is-public {
     margin-right: 0.5em;
 }
 
-.collection .author, .project .author {
+.collection .author,
+.project .author {
     font-size: .8em;
 }
 
+.collection,
 .project.big {
     margin-top: 1em;
 }
 
+.collection .title,
 .project.big .title {
     position: relative;
     margin-bottom: .5em;
 }
 
+.collection .title h1,
 .project.big .title h1 {
     display: inline;
+}
+
+.collection .title {
+    margin-bottom: 1em;
 }
 
 .remixed-from {
@@ -94,6 +122,7 @@
     bottom: .4em;
     font-size: 0.8em;
 }
+
 .remixed-from .author {
     font-size: 1em;
 }
@@ -135,18 +164,21 @@
     filter: brightness(1.5);
 }
 
+.collection .buttons,
 .project.big .buttons {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -0.1em;
 }
 
+.collection .buttons a,
 .project.big .buttons a {
     margin: 5px 0.1em 0 0.1em; /* Edge margins get cancelled out by ↑ margin: 0 -0.1em; ↑ */
     padding: 0.5em;
     flex-grow: 0.20; /* 20% max growth */
 }
 
+.collection .description,
 .project.big .notes {
     padding: .5em;
     background: #f3eeeb;
@@ -160,12 +192,27 @@
     margin-bottom: .5em;
 }
 
+.collection .description {
+    margin-top: .5em;
+}
+
+.collection .description small,
 .project.big .notes small {
     font-style: italic;
     opacity: 0.5;
 }
+
 .project.big .dates span {
     font-size: 0.8em;
+}
+
+.collection .dates span {
+    font-size: 0.7em;
+}
+
+.collection .dates {
+    padding-left: .5em;
+    box-sizing: border-box; 
 }
 
 /* Embed dialog */
@@ -220,16 +267,19 @@
     margin-bottom: 1em;
 }
 
-.mycollections.search, .myprojects.search {
+.mycollections.search,
+.myprojects.search {
     margin-left: 0.5em;
     width: 220px;
 }
 
-.mycollections.search form, .myprojects.search form {
+.mycollections.search form,
+.myprojects.search form {
     position: relative;
 }
 
-.mycollections.search input, .myprojects.search input {
+.mycollections.search input,
+.myprojects.search input {
     width: 100%;
     height: 2em;
     padding-left: 0.75em;
@@ -239,13 +289,15 @@
     border: 1px solid #AAAAAA;
 }
 
-.mycollections.search i, .myprojects.search i {
+.mycollections.search i,
+.myprojects.search i {
     position: absolute;
     right: 0.45em;
     top: 0.45em;
 }
 
-.mycollections.paginator, .myprojects.paginator {
+.mycollections.paginator,
+.myprojects.paginator {
     line-height: 2em;
     margin: 0;
 }

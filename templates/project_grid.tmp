@@ -1,4 +1,4 @@
-<h2 localizable>$header</h2>
+<h2 class="${className} header" localizable>$header</h2>
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 @include=paginator
@@ -9,9 +9,15 @@
         ${className}_totalPagesSpan = document.querySelector('.${className}.paginator .total-pages'),
         ${className}_page = 1,
         ${className}_totalPages = 1,
-        ${className}_pageSize = ${pageSize} || 15;
+    // hack so this works with empty gridSize or pageSize. [][0] || 5 → 5
+        ${className}_gridSize = [${gridSize}][0] || 5,
+        ${className}_pageSize = [${pageSize}][0] || 15;
 
     ${className}_toPage(1);
+
+    if (![$header][0]) {
+        document.querySelector('.${className}.header').remove();
+    }
 
     function ${className}_toPage (pageNumber) {
         ${className}_projectsDiv.innerHTML = '';
@@ -38,7 +44,7 @@
                                 project,
                                 {
                                     size: 'small',
-                                    gridSize: 5,
+                                    gridSize: ${className}_gridSize || 5,
                                     extraFields: {
                                         author: 'username'
                                     },

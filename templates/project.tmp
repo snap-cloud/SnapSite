@@ -137,9 +137,6 @@
             document.querySelector('.buttons .flag').onclick = function () { confirmFlag(project); }
             document.querySelector('.buttons .delete').onclick = function () { confirmDelete(project); }
 
-            doneLoading('#wrapper');
-            document.querySelector('.project').hidden = false;
-
             // In-place notes editor
             var notes = document.querySelector('.notes');
             if (canEditNotes(project)) {
@@ -153,12 +150,15 @@
                                 if (notes.textContent == '') {
                                     notes.innerHTML = '<small>' + localizer.localize('This project has no notes') + '</small>';
                                 }
-                            }, 
+                            },
                             genericError
                         );
                     }
                 );
-            } 
+            }
+
+            doneLoading('#wrapper');
+            document.querySelector('.project').hidden = false;
         },
         genericError
     );

@@ -1,26 +1,127 @@
-<link rel="stylesheet" href="style/project.css">
-<div class="title">
-    <h1></h1>
-</div>
-@param pageSize=15
+<script src="js/dialog.js"></script>
+<script src="js/project.js"></script>
+<script src="js/inplace.js"></script>
+<div hidden class="collection">
+    <div class="title">
+        <h1></h1>
+    </div>
+    <div class="contents pure-g">
+        <div class="pure-u-7-24 info">
+            <div class="pure-g">
+                <img class="pure-u-1-2 collection-thumbnail"/>
+                <span class="pure-u-1-2 dates">
+                    <span localizable class="created">Created on </span>.
+                    <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
+                    <span localizable class="is-public">This collection is </span><span localizable class="is-published"></span>.
+                </span>
+            </div>
+            <pre class="description"></pre>
+            
+            <div class="buttons">
+                <a localizable class="pure-button share" target="_blank">Share</a>
+                <a localizable class="pure-button unshare" target="_blank">Unshare</a>
+                <a localizable class="pure-button publish" target="_blank">Publish</a>
+                <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
+                <a localizable class="pure-button pure-button-warning delete" target="_blank">Delete</a>
+            </div>
+        </div>
+        <!-- just a separator -->
+        <i class="pure-u-1-24"></i>
+        <div class="pure-u-2-3 projects">
+@param pageSize=12
 @param query="getCollectionProjects"
-@param className="collection"
+@param className="collection_projects"
 @param user="getUrlParameter('user')"
 @param extraParam="getUrlParameter('collection'),"
 @param title="collectionName + ' - Snap! Build Your Own Blocks'"
-@param extraOptions="withCollectionControls: true"
+@param extraOptions="extraFields: { author: 'username', isPublic: 'ispublic', isPublished: 'ispublished' }, withCollectionControls: true"
+@param gridSize=4
 @include=project_grid
 @param extraOptions=''
+@param gridSize=''
+        </div>
+    </div>
+</div>
 <script>
     var collectionUsername = getUrlParameter('user'),
-        collectionName = '${collectionName}' || getUrlParameter('collection');
-    document.querySelector('.title h1').innerHTML = collectionName;
+        collectionName = '${collectionName}' || getUrlParameter('collection'),
+        title = document.querySelector('.title h1');
+
+    beganLoading('#wrapper');
+
     SnapCloud.getCollectionMetadata(
         collectionUsername,
         collectionName,
         function (collection) {
-            console.log(collection);
+            window.collection = collection;
+
+            title.innerHTML = collectionName;
+                if (canRename(collection)) {
+                    new InPlaceEditor(
+                        title,
+                        function () {
+                            SnapCloud.updateCollectionName(
+                                collectionUsername,
+                                collectionName,
+                                title.textContent,
+                                function () {
+                                    location.href = 'collection.html?user=' + collectionUsername + '&collection=' + title.textContent;
+                                },
+                                genericError
+                            );
+                        })
+                }
+
+            document.querySelector('.collection-thumbnail').src = collection.thumbnail;
+
             document.querySelector('.title').appendChild(authorSpan(collection.creator.username));
-        }
+            document.querySelector('.description').innerHTML = collection.description || '<small>' + localizer.localize('This collection has no description') + '</small>';
+
+            document.querySelector('.created').append(formatDate(collection.created_at));
+            document.querySelector('.updated').append(formatDate(collection.updated_at));
+
+            if (collection.shared) {
+                document.querySelector('.shared').append(formatDate(collection.shared_at));
+                document.querySelector('.is-published').innerHTML += (collection.published ? ' and listed' : ' but unlisted');
+                if (collection.published) {
+                    document.querySelector('.published').innerHTML = localizer.localize(', published on ') + formatDate(collection.firstpublished);
+                }
+                document.querySelector('.is-public').innerHTML += ('public');
+            } else {
+                document.querySelector('.shared').hidden = true;
+                document.querySelector('.is-public').append('private');
+            }
+
+            // Set up all buttons
+            document.querySelector('.buttons .share').hidden = collection.shared || !canShare(collection);
+            document.querySelector('.buttons .unshare').hidden = !collection.shared || !canShare(collection);
+            document.querySelector('.buttons .publish').hidden = (!collection.shared || collection.published) ||
+                !canPublish(collection) || sessionStorage.role === 'banned';
+            document.querySelector('.buttons .unpublish').hidden = (!collection.shared || !collection.published) ||
+                !canUnpublish(collection);
+
+            var description = document.querySelector('.description');
+            if (canEditDescription(collection)) {
+                new InPlaceEditor(
+                    description,
+                    function () {
+                        SnapCloud.updateCollectionDescription(
+                            collectionUsername,
+                            collectionName,
+                            description.textContent,
+                            function () {
+                                if (description.textContent == '') {
+                                    description.innerHTML = '<small>' + localizer.localize('This collection has no description') + '</small>';
+                                }
+                            },
+                            genericError
+                        );
+                    }
+                );
+            }
+            doneLoading('#wrapper');
+            document.querySelector('.collection').hidden = false;
+        },
+        genericError
     );
 </script>

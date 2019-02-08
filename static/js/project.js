@@ -18,7 +18,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
 
     div.innerHTML +=
         '<a href="' + itemType + '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) + '&' + itemType + '=' +
-        encodeURIComponent(item[nameField]) + '"><img alt="' + (item.thumbnail ? escapeHtml(item[nameField]) : '') +
+        encodeURIComponent(item[nameField]) + '"><img class="thumbnail" alt="' + (item.thumbnail ? escapeHtml(item[nameField]) : '') +
         '" title="' + escapeHtml(item[descriptionField]) + '" src="' + (item.thumbnail ? item.thumbnail : '') +
         '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) + '</span></a>';
 
@@ -230,7 +230,7 @@ function confirmDelete (project) {
                 location.href =
                     (sessionStorage.username !== project.username)
                         ? 'index'
-                        : 'myprojects';
+                        : 'my_projects';
             }
         );
     };
@@ -320,6 +320,9 @@ function canEditNotes (project) {
     return ownsProjectOrIsAdmin(project);
 };
 
+function canEditDescription (collection) {
+    return ownsProjectOrIsAdmin(collection);
+};
 function canUnpublish (project) {
     return (sessionStorage.username == project.username) ||
         [ 'admin', 'moderator', 'reviewer' ].indexOf(sessionStorage.role) > -1;
