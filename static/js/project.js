@@ -96,8 +96,7 @@ function confirmRemoveFromCollection (project) {
                 SnapCloud.removeProjectFromCollection(
                     getUrlParameter('user'),
                     getUrlParameter('collection'),
-                    project.username,
-                    project.projectname,
+                    project.id,
                     function () { location.reload(); },
                     genericError
                 );

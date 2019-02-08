@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="style/project.css">
-<h1 class="title" localizable>Collection: </h1>
-<p><span class="author"></span></p>
+<div class="title">
+    <h1></h1>
+</div>
 @param pageSize=15
 @param query="getCollectionProjects"
 @param className="collection"
@@ -13,5 +14,13 @@
 <script>
     var collectionUsername = getUrlParameter('user'),
         collectionName = '${collectionName}' || getUrlParameter('collection');
-    document.querySelector('.title').innerHTML += collectionName;
+    document.querySelector('.title h1').innerHTML = collectionName;
+    SnapCloud.getCollectionMetadata(
+        collectionUsername,
+        collectionName,
+        function (collection) {
+            console.log(collection);
+            document.querySelector('.title').appendChild(authorSpan(collection.creator.username));
+        }
+    );
 </script>
