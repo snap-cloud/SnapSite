@@ -15,7 +15,7 @@
 
     ${className}_toPage(1);
 
-    if (![$header][0]) {
+    if (!['$header'][0]) {
         document.querySelector('.${className}.header').remove();
     }
 
