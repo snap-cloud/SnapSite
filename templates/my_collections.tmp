@@ -2,12 +2,11 @@
 <script src="js/dialog.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Collections</h1>
-<div class="bar">
 @param actionPage=my_collections
 @include=search_bar
-@include=paginator
+<div class="buttons">
+    <a class="pure-button new-collection">New Collection</a>
 </div>
-<div class="${className} list pure-g"></div>
 <script>
     ${className}_loadPage =
         function (term, pageSize, pageNumber, onSuccess) {
@@ -42,11 +41,7 @@
         };
 
     ${className}_initSearch();
-</script>
-<div class="buttons">
-    <a class="pure-button new-collection">New Collection</a>
-</div>
-<script>
+
     document.querySelector('.new-collection').onclick = function () {
         prompt(
             localizer.localize('Collection name?'),

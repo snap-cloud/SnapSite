@@ -1,12 +1,8 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Projects</h1>
-<div class="bar">
 @param actionPage=my_projects
 @include=search_bar
-@include=paginator
-</div>
-<div class="${className} list pure-g"></div>
 <script>
     ${className}_loadPage =
         function (term, pageSize, pageNumber, onSuccess) {

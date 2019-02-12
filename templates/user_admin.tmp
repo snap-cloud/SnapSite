@@ -10,12 +10,8 @@
 <script src="js/admin.js"></script>
 <link rel="stylesheet" href="style/admin.css">
 <h1 localizable>User Administration</h1>
-<div class="bar">
 @param actionPage=user_admin
 @include=search_bar
-@include=paginator
-</div>
-<div class="${className} list pure-g"></div>
 <script>
     ${className}_loadPage =
         function (term, pageSize, pageNumber, onSuccess) {
