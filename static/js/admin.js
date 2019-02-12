@@ -1,15 +1,3 @@
-getUserList = function (query, pageSize, page, callback) {
-    SnapCloud.withCredentialsRequest(
-        'GET',
-        '/users?' +
-            (query ? 'matchtext=' + encodeURIComponent(query) + '&' : '' ) +
-            'pagesize=' + pageSize + '&page=' + page,
-        callback,
-        genericError,
-        'Could not fetch user list'
-    );
-}
-
 userButton = function (user, label, action, extraClass) {
     var button = document.createElement('a');
     button.classList.add('pure-button');

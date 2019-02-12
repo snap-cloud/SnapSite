@@ -1,58 +1,44 @@
 <script>
-SnapCloud.getCurrentUser(function (user) {
-    // Only admins and moderators can access this page
-    if (['admin', 'moderator'].indexOf(user.role) == -1) {
-        location.href = 'index';
-    }
-});
+    SnapCloud.getCurrentUser(function (user) {
+        // Only admins and moderators can access this page
+        if (['admin', 'moderator'].indexOf(user.role) == -1) {
+            location.href = 'index';
+        }
+    });
 </script>
 <script src="js/dialog.js"></script>
 <script src="js/admin.js"></script>
 <link rel="stylesheet" href="style/admin.css">
 <h1 localizable>User Administration</h1>
 <div class="bar">
-    @param actionPage="user_admin"
-    @include=search_bar
-    @include=paginator
+@param actionPage=user_admin
+@include=search_bar
+@include=paginator
 </div>
 <div class="users list pure-g"></div>
 <script>
-    var usersDiv = document.querySelector('.users.list'),
-        users_pageSpan = document.querySelector('.users.paginator .page'),
-        users_totalPagesSpan = document.querySelector('.users.paginator .total-pages'),
-        users_page = 1,
-        users_totalPages = 1,
-        users_pageSize = ${pageSize} || 150;
+    ${className}_loadPage =
+        function (term, pageSize, pageNumber, onSuccess) {
+            SnapCloud.withCredentialsRequest(
+                'GET',
+                '/users?' +
+                    (term ?
+                        'matchtext=' + encodeURIComponent(term) + '&'
+                        : '' ) +
+                    'pagesize=' + pageSize + '&page=' + pageNumber,
+                onSuccess,
+                genericError,
+                'Could not fetch user list'
+            ); 
+        };
 
-    users_toPage(1);
+    ${className}_onLoadPage =
+        function (response, targetElement) {
+            response.users.forEach(function (user) {
+                targetElement.appendChild(userDiv(user));
+            });
+        };
 
-    function users_toPage (pageNumber) {
-        usersDiv.innerHTML = '';
-        beganLoading('.users.list');
-        getUserList(
-            getUrlParameter('query'),
-            users_pageSize,
-            pageNumber,
-            function (response) {
-                users_totalPages = response.pages;
-                if (users_totalPages == 1) {
-                    document.querySelector('.users.paginator').remove();
-                } else {
-                    users_totalPagesSpan.textContent = users_totalPages;
-                }
-                if (response.users[0]) {
-                    response.users.forEach(function (user) {
-                        usersDiv.appendChild(userDiv(user));
-                    });
-                } else {
-                    document.querySelector('.users').remove();
-                }
-                doneLoading('.users.list');
-            }
-        );
-
-        users_page = pageNumber;
-        users_pageSpan.textContent = pageNumber;
-    };
-
+    ${className}_init();
 </script>
+    

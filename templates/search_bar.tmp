@@ -5,5 +5,46 @@
     </form>
     <script>
         document.querySelector('.${className} form input').value = getUrlParameter('query');
+        
+        function ${className}_toPage (pageNumber) {
+            var ${className}_div = document.querySelector('.${className}.list'),
+                ${className}_pageSpan = document.querySelector('.${className}.paginator .page'),
+                ${className}_totalPagesSpan = document.querySelector('.${className}.paginator .total-pages'),
+                ${className}_page = 1,
+                ${className}_totalPages = 1,
+                ${className}_pageSize = ${pageSize} || 150;
+
+            ${className}_div.innerHTML = '';
+            beganLoading('.${className}.list');
+
+            ${className}_loadPage(
+                getUrlParameter('query'),
+                ${className}_pageSize,
+                pageNumber,
+                function (response) {
+                    ${className}_totalPages = response.pages;
+                    if (${className}_totalPages == 1) {
+                        document.querySelector('.${className}.paginator').remove();
+                    } else if (${className}_totalPages == 0) {
+                        ${className}_div.remove();
+                        return;
+                    } else {
+                        ${className}_totalPagesSpan.textContent = ${className}_totalPages;
+                    }
+
+                    ${className}_onLoadPage(response, ${className}_div);
+
+                    doneLoading('.${className}.list');
+                }
+            );
+
+            ${className}_page = pageNumber;
+            ${className}_pageSpan.textContent = pageNumber;
+        };
+
+        function ${className}_init () {
+            ${className}_toPage(1);
+        }
+
     </script>
 </div>
