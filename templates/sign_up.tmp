@@ -3,35 +3,45 @@
     <fieldset>
         <div class="pure-control-group">
             <label localizable for="username">Username</label>
-            <input id="username" name="username" type="text" placeholder="Username" required>
+            <input id="username" name="username" type="text"
+                placeholder="Username" required>
         </div>
 
         <div class="pure-control-group">
             <label localizable for="password">Password</label>
-            <input id="password" name="password" type="password" placeholder="Password" required>
+            <input id="password" name="password" type="password"
+                placeholder="Password" required>
         </div>
 
         <div class="pure-control-group">
             <label localizable for="password-repeat">Repeat Password</label>
-            <input id="password-repeat" name="password-repeat" type="password" placeholder="Password" required>
+            <input id="password-repeat" name="password-repeat" type="password"
+                placeholder="Password" required>
         </div>
 
         <div class="pure-control-group">
             <label localizable for="email">Email address</label>
-            <input id="email" name="email" type="email" placeholder="Email address" required>
+            <input id="email" name="email" type="email"
+                placeholder="Email address" required>
         </div>
 
         <div class="pure-control-group">
             <label localizable for="email">Repeat email address</label>
-            <input id="email-repeat" name="email-repeat" type="email" placeholder="Email address" required>
+            <input id="email-repeat" name="email-repeat" type="email"
+                placeholder="Email address" required>
         </div>
 
         <div class="pure-controls">
             <label for="tos" class="pure-checkbox">
-                <input id="tos" name="tos" type="checkbox" required> <span localizable>I have read and agree to the <a target="_blank" href="tos">Terms of Service</a> and the <a target="_blank" href="privacy">Privacy Agreement</a></span>.
+                <input id="tos" name="tos" type="checkbox" required> 
+                    <span localizable>I have read and agree to the 
+                        <a target="_blank" href="tos">Terms of Service</a> 
+                        and the <a target="_blank" href="privacy">
+                            Privacy Agreement</a></span>.
             </label>
 
-            <button localizable type="submit" class="pure-button red-button">Sign up</button>
+            <button localizable type="submit"
+                class="pure-button red-button">Sign up</button>
         </div>
     </fieldset>
 </form>
@@ -39,43 +49,46 @@
 <script>
     setTitle(localizer.localize('Sign Up') + ' - Snap! Build Your Own Blocks');
 
-    document.querySelector('form#signup').addEventListener('submit', function (event) {
-        var username = this.elements['username'].value,
-            password = this.elements['password'].value,
-            passwordRepeat = this.elements['password-repeat'].value,
-            email = this.elements['email'].value,
-            emailRepeat = this.elements['email-repeat'].value,
-            agreed = this.elements['tos'].checked;
+    document.querySelector('form#signup').addEventListener(
+        'submit',
+        function (event) {
+            var username = this.elements['username'].value,
+                password = this.elements['password'].value,
+                passwordRepeat = this.elements['password-repeat'].value,
+                email = this.elements['email'].value,
+                emailRepeat = this.elements['email-repeat'].value,
+                agreed = this.elements['tos'].checked;
 
-        event.preventDefault();
+            event.preventDefault();
 
-        if (email !== emailRepeat) {
-            genericError(
-                'Please make sure that you have entered your<br>email twice and that both emails match.',
-                'Emails do not match'
-            );
-        } else {
-            SnapCloud.signup(
-                username,
-                password,
-                passwordRepeat,
-                email,
-                function (value) { 
-                    alert(
-                        'User created.<br/>You can now log in.',
-                        function() {
-                            window.location.href = 'login';
-                        },
-                        { title: 'Account Created'}
-                    );
-                },
-                function (response) {
-                    genericError(
-                        'Could not create account: ' + response,
-                        'Sign Up Failed'
-                    );
-                }
-            );
-        }
-    });
+            if (email !== emailRepeat) {
+                genericError(
+                    'Please make sure that you have entered your<br>' + 
+                        'email twice and that both emails match.',
+                    'Emails do not match'
+                );
+            } else {
+                SnapCloud.signup(
+                    username,
+                    password,
+                    passwordRepeat,
+                    email,
+                    function (value) { 
+                        alert(
+                            'User created.<br/>You can now log in.',
+                            function() {
+                                window.location.href = 'login';
+                            },
+                            { title: 'Account Created'}
+                        );
+                    },
+                    function (response) {
+                        genericError(
+                            'Could not create account: ' + response,
+                            'Sign Up Failed'
+                        );
+                    }
+                );
+            }
+        });
 </script>

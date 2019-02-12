@@ -4,32 +4,36 @@
         <title>Snap! Build Your Own Blocks</title>
         <meta name="description" content="The Snap! social platform">
         <meta name="author" content="Bernat Romagosa">
-        <meta name="snap-cloud-domain" location="https://staging.snap.berkeley.edu">
+        <meta name="snap-cloud-domain"
+            location="https://cloud.snap.berkeley.edu">
         <link rel="icon" href="favicon.png">
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <!-- External libs, both stylesheets and JS -->
         <link rel="stylesheet" href="libs/reset.css">
         <link rel="stylesheet" href="libs/pure-min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+            crossorigin="anonymous">
         <link rel="stylesheet" href="libs/custom-alert.css">
         <script type="text/javascript" src="libs/FileSaver.min.js"></script>
-
+        <!-- Stylesheets -->
         <link rel="stylesheet" href="style/elements.css">
         <link rel="stylesheet" href="style/classes.css">
         <link rel="stylesheet" href="style/layout.css">
+        <!-- JS -->
         <script type="text/javascript" src="js/locale.js"></script>
         <script type="text/javascript" src="js/base.js"></script>
-
         <script type="text/javascript" src="libs/cloud.js"></script>
         <script type="text/javascript">SnapCloud = new Cloud();</script>
-        <script type="text/javascript" src="https://rawgit.com/bromagosa/Snap/gh-pages/sha512.js"></script>
+        <script type="text/javascript" src="libs/sha512.js"></script>
     </head>
     <body>
         <script type="text/javascript" src="libs/custom-alert.min.js"></script>
         <script>new customAlert();</script>
-        <div id="loading"><i class="fas fa-spinner fa-spin fa-3x" aria-hidden="true"></i></div>
+        <div id="loading">
+            <i class="fas fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+        </div>
         @include=navigation_bar
         <div id="wrapper">
             @content
@@ -57,8 +61,9 @@
             document.querySelector('li.join').hidden = true;
             document.querySelector('li.sign-in').hidden = true;
             document.querySelector('li.user-menu').hidden = false;
-            document.querySelector('a.my-public-projects').href = 'user?user=' + username;
-            if (['admin', 'moderator', 'reviewer'].indexOf(sessionStorage.role) > -1) {
+            document.querySelector('a.my-public-projects').href =
+                'user?user=' + username;
+            if (hasAnyOfRoles(['admin', 'moderator', 'reviewer'])) {
                 document.querySelector('.admin').hidden = false;
             }
             fillVisitorFields();

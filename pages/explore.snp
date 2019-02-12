@@ -1,10 +1,2 @@
 base
 explore
-@param user="null"
-@param title='"Explore - Snap! Build Your Own Blocks"'
-@param pageSize=15
-@param query=getPublishedProjectList
-@param className=latest
-@param extraParam='null,'
-project_grid
-@param extraParam=''

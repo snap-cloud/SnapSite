@@ -10,7 +10,10 @@
         <link rel="icon" href="favicon.png">
         <link rel="stylesheet" href="libs/reset.css">
         <link rel="stylesheet" href="libs/pure-min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+            crossorigin="anonymous">
         <link rel="stylesheet" href="style/project.css">
         <link rel="stylesheet" href="style/embed.css">
     </head>
@@ -18,8 +21,10 @@
         <div class="project big embed">
             <div class="controlbar">
                 <span class="title"></span>
-                <i class="start-button fas fa-flag clickable" onclick="runProject(event);"></i>
-                <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
+                <i class="start-button fas fa-flag clickable"
+                    onclick="runProject(event);"></i>
+                <i class="stop-button fas fa-stop clickable"
+                    onclick="stopProject();"></i>
             </div>
         </div>
         <script type="text/javascript">
@@ -27,14 +32,16 @@
             setTitle(pageProject());
 
             var iframe = document.createElement('iframe');
-            iframe.src = projectURL(pageUser(), pageProject()) + '&embedMode&noExitWarning&noRun';
+            iframe.src = projectURL(pageUser(), pageProject()) +
+                '&embedMode&noExitWarning&noRun';
             document.querySelector('.project.embed').append(iframe);
 
             if (getUrlParameter('editButton')) {
                 var editButton = document.createElement('a'),
                     icon = document.createElement('i');
                 editButton.classList.add('edit');
-                editButton.href = projectURL(pageUser(), pageProject()) + '&editMode&noRun';
+                editButton.href = projectURL(pageUser(), pageProject()) +
+                    '&editMode&noRun';
                 editButton.target = '_blank';
                 icon.classList.add('far');
                 icon.classList.add('fa-eye');

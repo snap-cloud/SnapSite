@@ -1,56 +1,60 @@
-<h2 class="${className} header" localizable>$header</h2>
+<h2 class="${widgetName} header" localizable>$header</h2>
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 @include=paginator
-<div class="${className} projects pure-g"></div>
+<div class="${widgetName} projects pure-g"></div>
 <script>
-    var ${className}_projectsDiv = document.querySelector('.${className}.projects'),
-        ${className}_pageSpan = document.querySelector('.${className}.paginator .page'),
-        ${className}_totalPagesSpan = document.querySelector('.${className}.paginator .total-pages'),
-        ${className}_page = 1,
-        ${className}_totalPages = 1,
+    var ${widgetName}_projectsDiv =
+            document.querySelector('.${widgetName}.projects'),
+        ${widgetName}_pageSpan =
+            document.querySelector('.${widgetName}.paginator .page'),
+        ${widgetName}_totalPagesSpan =
+            document.querySelector('.${widgetName}.paginator .total-pages'),
+        ${widgetName}_page = 1,
+        ${widgetName}_totalPages = 1,
         // hack so this works with empty gridSize or pageSize. [][0] || 5 → 5
-        ${className}_gridSize = [${gridSize}][0] || 5,
-        ${className}_pageSize = [${pageSize}][0] || 15;
+        ${widgetName}_gridSize = [${gridSize}][0] || 5,
+        ${widgetName}_pageSize = [${pageSize}][0] || 15;
 
     if (getUrlParameter('user') == 'snapcloud' &&
             getUrlParameter('collection') == 'Flagged') {
-        ${className}_gridSize = 5;
-        ${className}_pageSize = 15;
+        ${widgetName}_gridSize = 5;
+        ${widgetName}_pageSize = 15;
     }
 
-    ${className}_toPage(1);
+    ${widgetName}_toPage(1);
 
     if (!['$header'][0]) {
-        document.querySelector('.${className}.header').remove();
+        document.querySelector('.${widgetName}.header').remove();
     }
 
-    function ${className}_toPage (pageNumber) {
-        ${className}_projectsDiv.innerHTML = '';
-        beganLoading('.${className}.projects');
+    function ${widgetName}_toPage (pageNumber) {
+        ${widgetName}_projectsDiv.innerHTML = '';
+        beganLoading('.${widgetName}.projects');
         SnapCloud.${query}(
             $user,
             pageNumber,
-            ${className}_pageSize,
+            ${widgetName}_pageSize,
             ${extraParam} // used for search terms, collection names, etc
             function (response) {
                 setTitle($title);
 
-                ${className}_totalPages = response.pages;
-                if (${className}_totalPages == 1) {
-                    document.querySelector('.${className}.paginator').remove();
+                ${widgetName}_totalPages = response.pages;
+                if (${widgetName}_totalPages == 1) {
+                    document.querySelector('.${widgetName}.paginator').remove();
                 } else {
-                    ${className}_totalPagesSpan.textContent = ${className}_totalPages;
+                    ${widgetName}_totalPagesSpan.textContent =
+                        ${widgetName}_totalPages;
                 }
 
                 if (response.projects[0]) {
                     response.projects.forEach(function (project) {
-                        ${className}_projectsDiv.append(
+                        ${widgetName}_projectsDiv.append(
                                 newProjectDiv(
                                 project,
                                 {
                                     size: 'small',
-                                    gridSize: ${className}_gridSize || 5,
+                                    gridSize: ${widgetName}_gridSize || 5,
                                     extraFields: {
                                         author: 'username'
                                     },
@@ -58,17 +62,17 @@
                                 }));
                     });
                 } else {
-                    // collection is empty, so let's remove the carousel altogether
-                    document.querySelector('.${className}').remove();
+                    // Collection is empty. Let's remove the carousel altogether
+                    document.querySelector('.${widgetName}').remove();
                 }
-                doneLoading('.${className}.projects');
+                doneLoading('.${widgetName}.projects');
             },
             function (error) {
                 genericError(error);
             },
             true // withThumbnail
         );
-        ${className}_page = pageNumber;
-        ${className}_pageSpan.textContent = pageNumber;
+        ${widgetName}_page = pageNumber;
+        ${widgetName}_pageSpan.textContent = pageNumber;
     };
 </script>

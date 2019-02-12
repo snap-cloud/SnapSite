@@ -21,6 +21,12 @@ function pageProject () {
     return getUrlParameter('project');
 };
 
+// Permissions
+
+function hasAnyOfRoles (roleList) {
+    return roleList.indexOf(sessionStorage.role) > -1
+};
+
 // Data insertion
 
 function fillVisitorFields () {

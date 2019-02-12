@@ -2,15 +2,20 @@
 <p>You can contact the development team at:</p>
 
 <div class="indent v-spaced">
-   <p><a href="mailto:snap-support@bjc.berkeley.edu">snap-support@bjc.berkeley.edu</a></p>
+   <p><a href=
+       "mailto:snap-support@bjc.berkeley.edu">snap-support@bjc.berkeley.edu</a>
+   </p>
 </div>
 
-<p>For bugs and suggestions related to this site, please refer to our GitHub issue tracker:</p>
+<p>For bugs and suggestions related to this site, please refer to our GitHub
+issue tracker:</p>
 
 <div class="indent v-spaced">
-   <p><a target="_blank" href="https://github.com/bromagosa/SnapSite/issues">https://github.com/bromagosa/SnapSite/issues</a></p>
+   <p><a target="_blank" href= "https://github.com/bromagosa/SnapSite/issues">
+       https://github.com/bromagosa/SnapSite/issues</a></p>
 </div>
 
 <script>
-    setTitle(localizer.localize('Contact Us') + ' - Snap! Build Your Own Blocks');
+    setTitle(localizer.localize('Contact Us') +
+        ' - Snap! Build Your Own Blocks');
 </script>

@@ -5,16 +5,21 @@
     <fieldset>
         <div class="pure-control-group">
             <label localizable for="password">Password</label>
-            <input id="password" name="password" type="password" placeholder="Password">
+            <input id="password" name="password" type="password"
+                placeholder="Password">
         </div>
         <div class="pure-controls">
-            <button localizable type="submit" class="pure-button pure-button-warning">Confirm and delete account</button>
+            <button localizable type="submit"
+                class="pure-button pure-button-warning">
+                Confirm and delete account
+            </button>
         </div>
     </fieldset>
 </form>
 
 <script>
-    setTitle(localizer.localize('Delete your Account') + ' - Snap! Build Your Own Blocks');
+    setTitle(localizer.localize('Delete your Account') +
+        ' - Snap! Build Your Own Blocks');
 
     function redirectPath() {
         var defaultPath = 'index';
@@ -22,40 +27,44 @@
         return redirect_to || defaultPath;
     };
 
-    document.querySelector('form#confirm-password').addEventListener('submit', function (event) {
-        var password = this.elements['password'].value;
-        event.preventDefault();
-        SnapCloud.login(
-            SnapCloud.username,
-            password,
-            false, // What's the point of persisting the session of a user you're deleting?
-            function (username) {
-                SnapCloud.withCredentialsRequest(
-                    'DELETE',
-                    '/users/' + encodeURIComponent(username),
-                    function (response) {
-                        alert(
-                            response,
-                            function () {
-                                SnapCloud.logout(
-                                    function () {
-                                        sessionStorage.clear();
-                                        location.href = redirectPath();
-                                    }
-                                );
-                            }
-                        );
-                    },
-                    genericError,
-                    'Could not delete user'
-                );
-            },
-            function (response) {
-                genericError(
-                    localizer.localize('User account could not be removed:') + '<br>' + response,
-                    'Could not delete user'
-                );
-            }
-        );
-    });
+    document.querySelector('form#confirm-password').addEventListener(
+        'submit',
+        function (event) {
+            var password = this.elements['password'].value;
+            event.preventDefault();
+            SnapCloud.login(
+                SnapCloud.username,
+                password,
+                false, // No need to persist session for a user you're deleting
+                function (username) {
+                    SnapCloud.withCredentialsRequest(
+                        'DELETE',
+                        '/users/' + encodeURIComponent(username),
+                        function (response) {
+                            alert(
+                                response,
+                                function () {
+                                    SnapCloud.logout(
+                                        function () {
+                                            sessionStorage.clear();
+                                            location.href = redirectPath();
+                                        }
+                                    );
+                                }
+                            );
+                        },
+                        genericError,
+                        'Could not delete user'
+                    );
+                },
+                function (response) {
+                    genericError(
+                        localizer.localize(
+                            'User account could not be removed:') +
+                            '<br>' + response,
+                        'Could not delete user'
+                    );
+                }
+            );
+        });
 </script>

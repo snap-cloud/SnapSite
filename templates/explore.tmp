@@ -1,2 +1,9 @@
 <h1 localizable>Explore</h1>
-@content
+@param user="null"
+@param title='"Explore - Snap! Build Your Own Blocks"'
+@param pageSize=15
+@param query=getPublishedProjectList
+@param widgetName=explore
+@param extraParam='null,'
+@include=project_grid
+@param extraParam=''

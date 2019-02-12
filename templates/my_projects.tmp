@@ -1,10 +1,9 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Projects</h1>
-@param actionPage=my_projects
 @include=search_bar
 <script>
-    ${className}_loadPage =
+    ${widgetName}_loadPage =
         function (term, pageSize, pageNumber, onSuccess) {
             SnapCloud.withCredentialsRequest(
                 'GET',
@@ -17,7 +16,7 @@
             );
         };
 
-    ${className}_onLoadPage =
+    ${widgetName}_onLoadPage =
         function (response, targetElement) {
             response.projects.forEach(function (project) {
                 targetElement.append(
@@ -36,5 +35,5 @@
             });
         };
 
-    ${className}_initSearch();
+    ${widgetName}_initSearch();
 </script>

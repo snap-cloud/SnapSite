@@ -5,5 +5,10 @@
 <div class="blog"></div>
 
 <script>
-    var blog = new DiscourseBlog('https://forum.snap.berkeley.edu', 'meta/blog', document.querySelector('.blog'));
+    var blog =
+        new DiscourseBlog(
+            'https://forum.snap.berkeley.edu',
+            'meta/blog',
+            document.querySelector('.blog')
+        );
 </script>

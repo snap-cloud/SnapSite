@@ -1,4 +1,4 @@
 base
 @param pageSize=15
-@param className=my_collections
+@param widgetName=my_collections
 my_collections

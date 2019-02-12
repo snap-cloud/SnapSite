@@ -41,7 +41,7 @@
         <div class="pure-u-2-3 projects">
 @param pageSize=12
 @param query="getCollectionProjects"
-@param className="collection_projects"
+@param widgetName="collection_projects"
 @param user="getUrlParameter('user')"
 @param extraParam="getUrlParameter('collection'),"
 @param title="collectionName + ' - Snap! Build Your Own Blocks'"

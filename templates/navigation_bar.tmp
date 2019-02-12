@@ -1,10 +1,16 @@
 <div id="top-bar">
     <div class="pure-menu-horizontal pure-menu">
         <ul class="pure-g pure-menu-list">
-            <a class="pure-u-1-12" href="index"><img src="img/topbar-logo.png" class="logo clickable"/></a>
+            <a class="pure-u-1-12" href="index">
+                <img src="img/topbar-logo.png" class="logo clickable"/>
+            </a>
             <span class="pure-u-1-4">
-                <li class="pure-menu-item"><a localizable class="pure-menu-link run" target="_blank">Run Snap<em>!</em></a></li>
-                <li class="pure-menu-item"><a localizable class="pure-menu-link" href="explore">Explore</a></li>
+                <li class="pure-menu-item">
+                    <a localizable class="pure-menu-link run"
+                        target="_blank">Run Snap<em>!</em></a></li>
+                <li class="pure-menu-item">
+                    <a localizable class="pure-menu-link"
+                        href="explore">Explore</a></li>
             </span>
             <i class="pure-u-1-6"></i>
             <div class="search pure-u-1-6">
@@ -14,27 +20,54 @@
                 </form>
             </div>
             <i class="pure-u-3-24"></i>
-            <li hidden="true" class="join pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="sign_up">Join</a></li>
-            <li hidden="true" class="sign-in pure-menu-item pure-u-1-12"><a localizable class="pure-menu-link" href="login">Log In</a></li>
-            <li hidden="true" class="pure-menu-item pure-u-1-6 pure-menu-has-children pure-menu-allow-hover user-menu">
+            <li hidden="true" class="join pure-menu-item pure-u-1-12">
+                <a localizable class="pure-menu-link" 
+                    href="sign_up">Join</a></li>
+            <li hidden="true" class="sign-in pure-menu-item pure-u-1-12">
+                <a localizable class="pure-menu-link" 
+                               href="login">Log In</a></li>
+            <li hidden="true" class="pure-menu-item pure-u-1-6 
+                pure-menu-has-children pure-menu-allow-hover user-menu">
                 <a href="#" id="menuLink1" class="pure-menu-link visitor"></a>
                 <ul class="pure-menu-children">
-                    <li class="pure-menu-item"><a localizable class="pure-menu-link my-projects" href="my_projects">My Projects</a></li>
-                    <li class="pure-menu-item"><a localizable class="pure-menu-link my-collections" href="my_collections">My Collections</a></li>
-                    <li class="pure-menu-item"><a localizable class="pure-menu-link my-public-projects" href="">My Public Page</a></li>
-                    <li class="pure-menu-item"><a localizable class="pure-menu-link my-profile" href="profile">My Profile</a></li>
-                    <li hidden="true" class="pure-menu-item admin"><a localizable class="pure-menu-link" href="admin">Administration</a></li>
+                    <li class="pure-menu-item">
+                        <a localizable class="pure-menu-link my-projects" 
+                            href="my_projects">My Projects</a></li>
+                    <li class="pure-menu-item">
+                        <a localizable class="pure-menu-link my-collections" 
+                            href="my_collections">My Collections</a></li>
+                    <li class="pure-menu-item">
+                        <a localizable class="pure-menu-link my-public-projects" 
+                           href="">My Public Page</a></li>
+                    <li class="pure-menu-item">
+                        <a localizable class="pure-menu-link my-profile"
+                            href="profile">My Profile</a></li>
+                    <li hidden="true" class="pure-menu-item admin">
+                        <a localizable class="pure-menu-link"
+                            href="admin">Administration</a></li>
                     <hr>
-                    <li class="pure-menu-item"><a localizable class="pure-menu-link" href="#" onclick="SnapCloud.logout(function () { sessionStorage.clear(); location.href = 'index'; });">Log Out</a></li>
+                    <li class="pure-menu-item">
+                        <a localizable class="pure-menu-link" href="#"
+                            onclick="SnapCloud.logout(function () {
+                                sessionStorage.clear();
+                                location.href = 'index';
+                            });">Log Out</a></li>
                 </ul>
             </li>
-            <li class="pure-menu-item pure-u-1-24 pure-menu-has-children pure-menu-allow-hover language-select">
-                <a class="pure-menu-link" href="#"><i class="fas fa-globe"></i></a>
+            <li class="pure-menu-item pure-u-1-24 pure-menu-has-children
+                pure-menu-allow-hover language-select">
+                <a class="pure-menu-link" href="#">
+                    <i class="fas fa-globe"></i>
+                </a>
                 <ul class="pure-menu-children languages">
-                    <a class="pure-menu-link" href="" onclick="localizer.setLanguage('es');">Castellano</a>
-                    <a class="pure-menu-link" href="" onclick="localizer.setLanguage('ca');">Català</a>
-                    <a class="pure-menu-link" href="" onclick="localizer.setLanguage('de');">Deutsch</a>
-                    <a class="pure-menu-link" href="" onclick="localizer.setLanguage('en');">English</a>
+                    <a class="pure-menu-link clickable"
+                        onclick="localizer.setLanguage('es');">Castellano</a>
+                    <a class="pure-menu-link clickable"
+                        onclick="localizer.setLanguage('ca');">Català</a>
+                    <a class="pure-menu-link clickable"
+                        onclick="localizer.setLanguage('de');">Deutsch</a>
+                    <a class="pure-menu-link clickable"
+                        onclick="localizer.setLanguage('en');">English</a>
                 </ul>
             </li>
         </ul>

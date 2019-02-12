@@ -6,11 +6,11 @@
 @param pageSize=15
 @param query=getPublishedProjectList
 @param extraParam='getUrlParameter("term") || null,'
-@param className=project_results
+@param widgetName=project_results
 @param header=Projects
 @include=project_grid
 @param pageSize=51
-@param className=user_results
+@param widgetName=user_results
 @param header=Users
 @include=user_grid
 @param header=''

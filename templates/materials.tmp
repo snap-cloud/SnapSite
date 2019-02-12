@@ -2,9 +2,17 @@
 <div class="materials"></div>
 <h2>MOOCS and Online Courses</h2>
 <ul>
-    <li><a href="https://open.sap.com/courses/snap1">Get Coding with Snap!</a> at OpenSAP</li>
-    <li><a href="bjc">The Beauty and Joy of Coumputing</a></li>
-    <li><a href="https://tealsk12.gitbook.io/intro-cs/">Introduction to Computer Science</a> at TEALS</li>
+    <li>
+        <a href="https://open.sap.com/courses/snap1">
+            Get Coding with Snap!</a> at OpenSAP
+    </li>
+    <li>
+        <a href="bjc">The Beauty and Joy of Coumputing</a>
+    </li>
+    <li>
+        <a href="https://tealsk12.gitbook.io/intro-cs/">
+            Introduction to Computer Science</a> at TEALS
+    </li>
 </ul>
 <h2>Manuals and documentation</h2>
 <ul>
@@ -12,7 +20,17 @@
 </ul>
 <h2>Books</h2>
 <ul>
-    <li><a href="http://codiertekunst.joachim-wedekind.de/">Codierte Kunst</a>, by Joachim Wedekind (in German)</li>
-    <li><a href="https://www.hinkler.com.au/the-coding-book">The Coding Book</a>, by Virginia King, Lee Ryall and Invent the World</li>
-    <li><a href="http://ddi-mod.uni-goettingen.de/ComputerScienceWithSnap.pdf">Computer Science with Snap<em>!</em></a>, by Eckart Modrow</li>
+    <li>
+        <a href="http://codiertekunst.joachim-wedekind.de/">
+            Codierte Kunst</a>, by Joachim Wedekind (in German)
+    </li>
+    <li>
+        <a href="https://www.hinkler.com.au/the-coding-book">
+            The Coding Book</a>
+        , by Virginia King, Lee Ryall and Invent the World
+    </li>
+    <li>
+        <a href="http://ddi-mod.uni-goettingen.de/ComputerScienceWithSnap.pdf">
+            Computer Science with Snap<em>!</em></a>, by Eckart Modrow
+    </li>
 </ul>

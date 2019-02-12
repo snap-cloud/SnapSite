@@ -1,4 +1,4 @@
 base
 @param pageSize=150
-@param className=users
+@param widgetName=users
 user_admin

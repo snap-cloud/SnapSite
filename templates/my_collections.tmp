@@ -2,13 +2,12 @@
 <script src="js/dialog.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Collections</h1>
-@param actionPage=my_collections
 @include=search_bar
 <div class="buttons">
     <a class="pure-button new-collection">New Collection</a>
 </div>
 <script>
-    ${className}_loadPage =
+    ${widgetName}_loadPage =
         function (term, pageSize, pageNumber, onSuccess) {
             SnapCloud.getUserCollections(
                 null, // username is implicit
@@ -21,7 +20,7 @@
             );
         };
         
-    ${className}_onLoadPage =
+    ${widgetName}_onLoadPage =
         function (response, targetElement) {
             response.collections.forEach(function (collection) {
                 targetElement.append(
@@ -40,7 +39,7 @@
             }); 
         };
 
-    ${className}_initSearch();
+    ${widgetName}_initSearch();
 
     document.querySelector('.new-collection').onclick = function () {
         prompt(
