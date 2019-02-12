@@ -1,7 +1,7 @@
 <script>
 SnapCloud.getCurrentUser(function (user) {
     // Only admins and moderators can access this page
-    if (['admin', 'moderator', 'reviewer'].indexOf(user.role) == -1) {
+    if (!hasAnyOfRoles(['admin', 'moderator', 'reviewer']) {
         location.href = 'index';
     }
 });
@@ -12,7 +12,7 @@ SnapCloud.getCurrentUser(function (user) {
 <a localizable class="pure-button"
     href="collection?user=snapcloud&collection=Flagged">Flagged Projects</a>
 <script>
-    if (['admin', 'moderator'].indexOf(sessionStorage.role) > -1) {
+    if (hasAnyOfRoles(['admin', 'moderator']) {
         document.querySelector('.user-admin').hidden = false;
     }
 </script>
