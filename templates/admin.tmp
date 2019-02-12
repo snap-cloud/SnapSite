@@ -12,7 +12,7 @@ SnapCloud.getCurrentUser(function (user) {
 <a localizable class="pure-button"
     href="collection?user=snapcloud&collection=Flagged">Flagged Projects</a>
 <script>
-    if (hasAnyOfRoles(['admin', 'moderator']) {
+    if (hasAnyOfRoles(['admin', 'moderator'])) {
         document.querySelector('.user-admin').hidden = false;
     }
 </script>
