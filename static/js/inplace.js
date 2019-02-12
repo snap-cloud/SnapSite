@@ -1,13 +1,15 @@
 // In-place editor
 
-function InPlaceEditor (element, action) {
-    this.init(element, action);
+function InPlaceEditor (element, action, defaultText) {
+    this.init(element, action, defaultText);
 };
 
-InPlaceEditor.prototype.init = function (element, action) {
+InPlaceEditor.prototype.init = function (element, action, defaultText) {
     var myself = this,
         hiddenDiv = document.createElement('div');
     this.element = element;
+
+    this.defaultText = defaultText || 'This project has no notes';
 
     this.element.classList.add('in-place');
     this.element.contentEditable = true;
@@ -28,13 +30,14 @@ InPlaceEditor.prototype.init = function (element, action) {
 InPlaceEditor.prototype.checkKey = function (event) {
     var code = (event.keyCode ? event.keyCode : event.which);
     if (code == 13 && !event.shiftKey) {
+        this.element.blur();
         this.fakeInput.focus();
     }
 };
 
 InPlaceEditor.prototype.startEditing = function () {
     this.element.classList.remove('flash');
-    if (this.element.textContent == localizer.localize('This project has no notes')) {
+    if (this.element.textContent == localizer.localize(this.defaultText)) {
         this.element.textContent = '';
     }
 };

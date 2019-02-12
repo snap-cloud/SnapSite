@@ -69,7 +69,9 @@
                                 },
                                 genericError
                             );
-                        })
+                        },
+                        '' // no default text
+                    )
                 }
 
             document.querySelector('.collection-thumbnail').src = collection.thumbnail;
@@ -116,7 +118,8 @@
                             },
                             genericError
                         );
-                    }
+                    },
+                    'This collection has no description'
                 );
             }
             doneLoading('#wrapper');
