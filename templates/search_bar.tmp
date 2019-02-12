@@ -1,18 +1,47 @@
+<!--
+    Any template that uses me needs to specify the following functions:
+    
+    // Defines how to retrieve a particular page from the DB
+    ${className}_loadPage (
+        term,       // search term
+        pageSize,   // amount of elements per page
+        pageNumber, // current page being requested
+        onSuccess   // callback called when response comes back. Just leave as
+                    // `onSuccess` unless doing something very specific, as
+                    // this callback is defined by the search bar itself.
+    )
+
+    // Defines how to load a particular page
+    ${className}_onLoadPage (
+        response,      // response from the server
+        targetElement  // HTML element where response should be rendered
+    )
+
+    Once these functions have been defined, just call:
+
+    ${className}_initSearch();
+-->
+
 <div class="${className} search">
     <form action="${actionPage}">
         <input type="text" name="query">
         <i class="fas fa-search"></i>
     </form>
     <script>
-        document.querySelector('.${className} form input').value = getUrlParameter('query');
+        var ${className}_page = 1,
+            ${className}_totalPages = 1,
+            ${className}_pageSize = ${pageSize} || 150;
+
+        document.querySelector('.${className} form input').value =
+            getUrlParameter('query');
         
         function ${className}_toPage (pageNumber) {
             var ${className}_div = document.querySelector('.${className}.list'),
-                ${className}_pageSpan = document.querySelector('.${className}.paginator .page'),
-                ${className}_totalPagesSpan = document.querySelector('.${className}.paginator .total-pages'),
-                ${className}_page = 1,
-                ${className}_totalPages = 1,
-                ${className}_pageSize = ${pageSize} || 150;
+                ${className}_pageSpan =
+                    document.querySelector('.${className}.paginator .page'),
+                ${className}_totalPagesSpan =
+                    document.querySelector(
+                        '.${className}.paginator .total-pages');
 
             ${className}_div.innerHTML = '';
             beganLoading('.${className}.list');
@@ -24,12 +53,14 @@
                 function (response) {
                     ${className}_totalPages = response.pages;
                     if (${className}_totalPages == 1) {
-                        document.querySelector('.${className}.paginator').remove();
+                        document.querySelector(
+                            '.${className}.paginator').remove();
                     } else if (${className}_totalPages == 0) {
                         ${className}_div.remove();
                         return;
                     } else {
-                        ${className}_totalPagesSpan.textContent = ${className}_totalPages;
+                        ${className}_totalPagesSpan.textContent =
+                            ${className}_totalPages;
                     }
 
                     ${className}_onLoadPage(response, ${className}_div);
@@ -42,7 +73,7 @@
             ${className}_pageSpan.textContent = pageNumber;
         };
 
-        function ${className}_init () {
+        function ${className}_initSearch () {
             ${className}_toPage(1);
         }
 

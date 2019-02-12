@@ -15,7 +15,7 @@
 @include=search_bar
 @include=paginator
 </div>
-<div class="users list pure-g"></div>
+<div class="${className} list pure-g"></div>
 <script>
     ${className}_loadPage =
         function (term, pageSize, pageNumber, onSuccess) {
@@ -39,6 +39,5 @@
             });
         };
 
-    ${className}_init();
+    ${className}_initSearch();
 </script>
-    

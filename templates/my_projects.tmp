@@ -6,56 +6,39 @@
 @include=search_bar
 @include=paginator
 </div>
-<div class="projects list pure-g"></div>
+<div class="${className} list pure-g"></div>
 <script>
-    var projectsDiv = document.querySelector('.projects'),
-        my_projects_pageSpan = document.querySelector('.my_projects.paginator .page'),
-        my_projects_totalPagesSpan = document.querySelector('.my_projects.paginator .total-pages'),
-        my_projects_page = 1,
-        my_projects_totalPages = 1,
-        my_projects_pageSize = ${pageSize} || 15;
+    ${className}_loadPage =
+        function (term, pageSize, pageNumber, onSuccess) {
+            SnapCloud.withCredentialsRequest(
+                'GET',
+                '/projects/%username?updatingnotes=true&pagesize=' + pageSize +
+                '&page=' + pageNumber + '&withthumbnail=true&matchtext=' +
+                (term ? term : ''),
+                onSuccess,
+                genericError,
+                'Could not fetch project list'
+            );
+        };
 
-    my_projects_toPage(1);
+    ${className}_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project, 
+                        { 
+                            size: 'small', 
+                            gridSize: 5, 
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished'
+                            }
+                        }
+                    )
+                );
+            });
+        };
 
-    function my_projects_toPage (pageNumber) {
-        query = getUrlParameter('query');
-        projectsDiv.innerHTML = '';
-        beganLoading('.projects.list');
-        SnapCloud.withCredentialsRequest(
-            'GET',
-            '/projects/%username?updatingnotes=true&pagesize=' + my_projects_pageSize +
-                '&page=' + pageNumber + '&withthumbnail=true&matchtext=' + (query ? query : '') ,
-            function (response) {
-                my_projects_totalPages = response.pages;
-                if (my_projects_totalPages == 1) {
-                    document.querySelector('.my_projects.paginator').remove();
-                } else {
-                    my_projects_totalPagesSpan.textContent = my_projects_totalPages;
-                }
-                if (response.projects[0]) {
-                    response.projects.forEach(function (project) {
-                        projectsDiv.append(
-                            newProjectDiv(
-                                project, 
-                                { 
-                                    size: 'small', 
-                                    gridSize: 5, 
-                                    extraFields: {
-                                        isPublic: 'ispublic',
-                                        isPublished: 'ispublished'
-                                    }
-                                }
-                            )
-                        );
-                    });
-                } else {
-                    document.querySelector('.projects').remove();
-                }
-                doneLoading('.projects.list');
-            }
-        );
-
-        my_projects_page = pageNumber;
-        my_projects_pageSpan.textContent = pageNumber;
-    };
+    ${className}_initSearch();
 </script>
