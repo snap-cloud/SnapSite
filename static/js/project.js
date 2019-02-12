@@ -460,53 +460,58 @@ function confirmFlagProject (project) {
     );
 };
 
-function ownsProject (project) {
-    return sessionStorage.username == project.username;
+function promptAddEditor (collection) {
 };
 
-function ownsProjectOrIsAdmin (project) {
+function owns (item) {
+    return sessionStorage.username == item.username || item.creator.username;
+};
+
+function ownsOrIsAdmin (item) {
     // Not to worry. Actual secure permission check is performed in the backend.
-    return ownsProject(project) || sessionStorage.role === 'admin';
+    return owns(item) || sessionStorage.role === 'admin';
 };
 
-function canShare (project) {
-    return ownsProjectOrIsAdmin(project);
+function canShare (item) {
+    return ownsOrIsAdmin(item);
 };
 
-function canPublish (project) {
-    return ownsProjectOrIsAdmin(project);
+function canPublish (item) {
+    return ownsOrIsAdmin(item);
 };
 
-function canRename (project) {
-    return ownsProjectOrIsAdmin(project);
+function canRename (item) {
+    return ownsOrIsAdmin(item);
 };
 
-function canEditNotes (project) {
-    return ownsProjectOrIsAdmin(project);
+function canEditNotes (item) {
+    return ownsOrIsAdmin(item);
 };
 
 function canEditDescription (collection) {
-    return ownsProjectOrIsAdmin(collection);
+    return ownsOrIsAdmin(collection);
 };
-function canUnpublish (project) {
-    return (sessionStorage.username == project.username) ||
+function canUnpublish (item) {
+    return (sessionStorage.username == item.username || item.creator.username) ||
         [ 'admin', 'moderator', 'reviewer' ].indexOf(sessionStorage.role) > -1;
 };
 
-function canDelete (project) {
-    return (sessionStorage.username == project.username) ||
+function canDelete (item) {
+    return (sessionStorage.username == item.username || item.creator.username) ||
         [ 'admin', 'moderator' ].indexOf(sessionStorage.role) > -1;
 };
 
-function reasonDialog (project, onSuccess) {
-    var form = document.createElement('form'),
+function reasonDialog (item, onSuccess) {
+    var itemType = item.owner ? 'collection' : 'project',
+        itemName = item.owner ? item.name : item.projectname,
+        form = document.createElement('form'),
         reasons = {
-            hack: 'Your project <strong>' + project.projectname + '</strong>' +
+            hack: 'Your ' + itemType + ' <strong>' + itemName + '</strong>' +
                     ' was trying to exploit a security vulnerability.',
-            coc: 'Your project <strong>' + project.projectname + '</strong>' +
+            coc: 'Your ' + itemType + ' <strong>' + itemName + '</strong>' +
                     ' has been found to violate the <a href="' + baseURL + '/coc">Code of Conduct</a>' +
                     ' of the Snap<em>!</em> community website.',
-            dmca: 'Your project <strong>' + project.projectname + '</strong>' +
+            dmca: 'Your ' + itemType + ' <strong>' + itemName + '</strong>' +
                     ' has been found to violate the <a href="' + baseURL + '/dmca">DMCA policy</a>' +
                     ' of the Snap<em>!</em> community website.'
         };
@@ -569,7 +574,7 @@ function embedDialog (project) {
     dialog('Embed Options', form);
 };
 
-function collect (project) {
+function collectProject (project) {
     // Add this project to a user's collection
     // TODO get all collections where user has write permission
 
@@ -631,7 +636,7 @@ function collect (project) {
 
 };
 
-function toggleFullScreen() {
+function toggleFullScreen () {
     var embed = document.querySelector('.embed'),
         iframe = document.querySelector('.embed iframe');
     if (embed.fullScreen) {
@@ -654,7 +659,7 @@ function toggleFullScreen() {
     embed.focus();
 };
 
-function runProject(event) {
+function runProject (event) {
     var iframe = document.querySelector('.embed iframe'),
         startButton = document.querySelector('.start-button'),
         ide = iframe.contentWindow.world.children[0];
@@ -674,7 +679,7 @@ function runProject(event) {
     }
 };
 
-function stopProject() {
+function stopProject () {
     var iframe = document.querySelector('.embed iframe'),
         ide = iframe.contentWindow.world.children[0];
     ide.stopAllScripts();

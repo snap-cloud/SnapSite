@@ -122,8 +122,8 @@
             document.querySelector('.buttons .unpublish').hidden = (!project.ispublic || !project.ispublished) ||
                                                                     !canUnpublish(project);
             document.querySelector('.embed-button').hidden = !project.ispublic;
-            document.querySelector('.buttons .collect').hidden = !project.ispublished || !ownsProjectOrIsAdmin(project);
-            document.querySelector('.buttons .flag').hidden = ownsProject(project); // why whould you want to flag your own project?
+            document.querySelector('.buttons .collect').hidden = !project.ispublished || !ownsOrIsAdmin(project);
+            document.querySelector('.buttons .flag').hidden = owns(project); // why whould you want to flag your own project?
             document.querySelector('.buttons .delete').hidden = !canDelete(project);
 
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';

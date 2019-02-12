@@ -8,15 +8,25 @@
     <div class="contents pure-g">
         <div class="pure-u-7-24 info">
             <div class="pure-g">
+
                 <div class="pure-u-1-2 thumbnail-container"><img class="collection-thumbnail"/></div>
+
                 <span class="pure-u-1-2 dates">
                     <span localizable class="created">Created on </span>.
                     <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
                     <span localizable class="is-public">This collection is </span><span localizable class="is-published"></span>.
                 </span>
             </div>
+
             <pre class="description"></pre>
-            
+
+            <div class="editors">
+                <ul class="editor-list">
+                    <li></li>
+                    <a class="clickable add-editor"><i class="fas fa-plus-circle"></i></a>
+                </ul>
+            </div>
+
             <div class="buttons">
                 <a localizable class="pure-button share" target="_blank">Share</a>
                 <a localizable class="pure-button unshare" target="_blank">Unshare</a>
@@ -24,6 +34,7 @@
                 <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
                 <a localizable class="pure-button pure-button-warning delete" target="_blank">Delete</a>
             </div>
+
         </div>
         <!-- just a separator -->
         <i class="pure-u-1-24"></i>
@@ -117,12 +128,18 @@
                     !canPublish(collection) || sessionStorage.role === 'banned';
                 document.querySelector('.buttons .unpublish').hidden = (!collection.shared || !collection.published) ||
                     !canUnpublish(collection);
+                document.querySelector('.add-editor').hidden = !owns(collection);
 
                 document.querySelector('.buttons .share').onclick = function () { confirmShareCollection(collection); };
                 document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareCollection(collection); };
                 document.querySelector('.buttons .publish').onclick = function () { confirmPublishCollection(collection); };
                 document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublishCollection(collection); }
                 document.querySelector('.buttons .delete').onclick = function () { confirmDeleteCollection(collection); }
+                document.querySelector('.add-editor').onclick = function () { promptAddEditor(collection); }
+                document.querySelector('.add-editor').title = localizer.localize('Add an editor to this collection');
+                document.querySelector('.editor-list').title = localizer.localize('Users who can edit this collection');
+
+                document.querySelector('.editor-list li').append(userAnchor(collectionUsername));
 
                 var description = document.querySelector('.description');
                 if (canEditDescription(collection)) {
