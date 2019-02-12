@@ -130,12 +130,12 @@
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
             document.querySelector('.buttons .share').onclick = function () { confirmShareProject(project); };
             document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareProject(project); };
-            document.querySelector('.buttons .publish').onclick = function () { confirmPublish(project); };
-            document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublish(project); }
+            document.querySelector('.buttons .publish').onclick = function () { confirmPublishProject(project); };
+            document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublishProject(project); }
             document.querySelector('.buttons .embed-button').onclick = function () { embedDialog(project); }
-            document.querySelector('.buttons .collect').onclick = function () { collect(project); }
-            document.querySelector('.buttons .flag').onclick = function () { confirmFlag(project); }
-            document.querySelector('.buttons .delete').onclick = function () { confirmDelete(project); }
+            document.querySelector('.buttons .collect').onclick = function () { collectProject(project); }
+            document.querySelector('.buttons .flag').onclick = function () { confirmFlagProject(project); }
+            document.querySelector('.buttons .delete').onclick = function () { confirmDeleteProject(project); }
 
             // In-place notes editor
             var notes = document.querySelector('.notes');

@@ -117,8 +117,7 @@ function confirmShareProject (project) {
                     function () {
                         alert(
                             localizer.localize('You can now access this project at:') +
-                            '<br><a href="' + projectURL(project.username, project.projectname) + '">' +
-                            projectURL(project.username, project.projectname) + '</a>',
+                                '<br><a href="' + location.href + '">' + location.href + '</a>',
                             { title: localizer.localize('Project shared') },
                             function () { location.reload(); }
                         );
@@ -128,6 +127,28 @@ function confirmShareProject (project) {
             }
         },
         confirmTitle('Share project')
+    );
+};
+
+function confirmShareCollection (collection) {
+    confirm(
+        localizer.localize('Are you sure you want to share this collection?'),
+        function (ok) {
+            SnapCloud.shareCollection(
+                collection.creator.username,
+                collection.name,
+                function () {
+                    alert(
+                        localizer.localize('This collection can now be accessed at:') +
+                        '<br><a href="' + location.href + '">' + location.href + '</a>',
+                        { title: localizer.localize('Collection shared') },
+                        function () { location.reload(); }
+                    ); 
+                },
+                genericError
+            );
+        },
+        confirmTitle('Share collection')
     );
 };
 
@@ -154,7 +175,30 @@ function confirmUnshareProject (project) {
     );
 };
 
-function confirmPublish (project) {
+function confirmUnshareCollection (collection) {
+    confirm(
+        localizer.localize('Are you sure you want to stop sharing this collection?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.unshareCollection(
+                    collection.creator.username,
+                    collection.name,
+                    function () {
+                        alert(
+                            localizer.localize('This collection is now private.'),
+                            { title: localizer.localize('Collection unshared') },
+                            function () { location.reload() }
+                        );
+                    },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Unshare collection')
+    );
+};
+
+function confirmPublishProject (project) {
     confirm(
         localizer.localize('Are you sure you want to publish this project<br>' +
             'and make it visible in the Snap<em>!</em> website?'),
@@ -178,7 +222,31 @@ function confirmPublish (project) {
     );
 };
 
-function confirmUnpublish (project) {
+function confirmPublishCollection (collection) {
+    confirm(
+        localizer.localize('Are you sure you want to publish this collection<br>' +
+            'and make it visible in the Snap<em>!</em> website?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.publishCollection(
+                    collection.creator.username,
+                    collection.name,
+                    function () {
+                        alert(
+                            localizer.localize('This collection is now listed in the Snap<em>!</em> site.'),
+                            { title: localizer.localize('Collection published') },
+                            function () { location.reload() }
+                        );
+                    },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Publish collection')
+    );
+};
+
+function confirmUnpublishProject (project) {
     function done () {
         alert(
             localizer.localize('This project is not listed in the Snap<em>!</em> site anymore.'),
@@ -221,7 +289,50 @@ function confirmUnpublish (project) {
     );
 };
 
-function confirmDelete (project) {
+function confirmUnpublishCollection (collection) {
+    function done () {
+        alert(
+            localizer.localize('This collection is not listed in the Snap<em>!</em> site anymore.'),
+            { title: localizer.localize('Collection unpublished') },
+            function () { location.reload(); }
+        );
+    };
+
+    confirm(
+        localizer.localize('Are you sure you want to unpublish this collection<br>' +
+            'and hide it from the Snap<em>!</em> website?'),
+        function (ok) {
+            if (ok) {
+                if (sessionStorage.username !== collection.creator.username) {
+                    reasonDialog(
+                        collection,
+                        function (reason) {
+                            SnapCloud.withCredentialsRequest(
+                                'POST',
+                                '/users/' + encodeURIComponent(collection.creator.username) +
+                                '/collections/' + encodeURIComponent(collection.name) +
+                                '/metadata?ispublished=false&reason=' + encodeURIComponent(reason),
+                                done,
+                                genericError,
+                                'Could not unpublish collection'
+                            );
+                        }
+                    );
+                } else {
+                    SnapCloud.unpublishCollection(
+                        collection.creator.username,
+                        project.name,
+                        done,
+                        genericError
+                    );
+                }
+            }
+        },
+        confirmTitle('Unpublish collection')
+    );
+};
+
+function confirmDeleteProject (project) {
     function done () {
         alert(
             localizer.localize('This project has been deleted.'),
@@ -271,7 +382,57 @@ function confirmDelete (project) {
     );
 };
 
-function confirmFlag (project) {
+function confirmDeleteCollection (collection) {
+    function done () {
+        alert(
+            localizer.localize('This collection has been deleted.'),
+            { title: localizer.localize('Collection deleted') },
+            function () {
+                location.href =
+                    (sessionStorage.username !== collection.creator.username)
+                        ? 'index'
+                        : 'my_collections';
+            }
+        );
+    };
+
+    confirm(
+        localizer.localize('Are you sure you want to delete this collection?') + '<br>' +
+        '<i class="warning fa fa-exclamation-triangle"></i> ' +
+        localizer.localize('WARNING! This action cannot be undone!') +
+        ' <i class="warning fa fa-exclamation-triangle"></i>',
+        function (ok) {
+            if (ok) {
+                if (sessionStorage.username !== collection.creator.username) {
+                    reasonDialog(
+                        collection,
+                        function (reason) {
+                            SnapCloud.withCredentialsRequest(
+                                'DELETE',
+                                '/users/' + encodeURIComponent(collection.creator.username) +
+                                '/collections/' + encodeURIComponent(collection.name) +
+                                '?reason=' + encodeURIComponent(reason),
+                                done,
+                                genericError,
+                                'Could not delete collection'
+                            );
+                        }
+                    );
+                } else {
+                    SnapCloud.deleteCollection(
+                        collection.creator.username,
+                        collection.name,
+                        done,
+                        genericError
+                    );
+                }
+            }
+        },
+        confirmTitle('Delete collection')
+    );
+};
+
+function confirmFlagProject (project) {
     confirm(
         localizer.localize('Are you sure you want to flag this project as inappropriate?'),
         function (ok) {

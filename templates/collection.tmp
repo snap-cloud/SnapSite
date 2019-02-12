@@ -102,6 +102,12 @@
             document.querySelector('.buttons .unpublish').hidden = (!collection.shared || !collection.published) ||
                 !canUnpublish(collection);
 
+            document.querySelector('.buttons .share').onclick = function () { confirmShareCollection(collection); };
+            document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareCollection(collection); };
+            document.querySelector('.buttons .publish').onclick = function () { confirmPublishCollection(collection); };
+            document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublishCollection(collection); }
+            document.querySelector('.buttons .delete').onclick = function () { confirmDeleteCollection(collection); }
+
             var description = document.querySelector('.description');
             if (canEditDescription(collection)) {
                 new InPlaceEditor(
