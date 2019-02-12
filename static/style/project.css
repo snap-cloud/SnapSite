@@ -14,7 +14,6 @@
 }
 
 .collection img.thumbnail,
-img.collection-thumbnail,
 .project img.thumbnail,
 .project iframe {
     border: 2px solid #2c3e50;
@@ -23,14 +22,33 @@ img.collection-thumbnail,
 
 .project.small .no-image,
 .collection.small .no-image {
-    position: absolute;
     left: 88px;
-    font-size: 40px; 
     top: 38px;
+}
+
+.project.small .no-image,
+.collection.small .no-image,
+.collection .info .no-image {
+    position: absolute;
+    font-size: 40px; 
     opacity: 0.2;
 }
 
-.collection-thumbnail {
+.thumbnail-container {
+    position: relative;
+    border-radius: 5px;
+    min-height: 120px;
+    border: 2px solid #2c3e50;
+    box-sizing: border-box;
+}
+
+.collection .info .no-image {
+    left: 59px;
+    top: 34px;
+}
+
+img.collection-thumbnail {
+    width: 100%;
     border-radius: 5px;
 }
 
@@ -54,6 +72,11 @@ img.collection-thumbnail,
     position: absolute;
     top: 2px;
     right: 12px;
+}
+
+.flagged .collection-controls {
+    right: 31px;
+    width: 15px;
 }
 
 .collection-controls:hover {

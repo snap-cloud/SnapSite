@@ -8,7 +8,7 @@
     <div class="contents pure-g">
         <div class="pure-u-7-24 info">
             <div class="pure-g">
-                <img class="pure-u-1-2 collection-thumbnail"/>
+                <div class="pure-u-1-2 thumbnail-container"><img class="collection-thumbnail"/></div>
                 <span class="pure-u-1-2 dates">
                     <span localizable class="created">Created on </span>.
                     <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
@@ -53,9 +53,17 @@
         collectionUsername,
         collectionName,
         function (collection) {
-            window.collection = collection;
+            if (collection.id == 0) {
+                // "Flagged" collection
+                document.querySelector('.info').remove();
+                document.querySelector('.contents').classList.remove('pure-g');
+                document.querySelector('.projects').classList.remove('pure-u-2-3');
+                document.querySelector('.collection').classList.add('flagged');
+            }
 
             title.innerHTML = collectionName;
+
+            if (collection.id !== 0) {
                 if (canRename(collection)) {
                     new InPlaceEditor(
                         title,
@@ -74,59 +82,68 @@
                     )
                 }
 
-            document.querySelector('.collection-thumbnail').src = collection.thumbnail;
-
-            document.querySelector('.title').appendChild(authorSpan(collection.creator.username));
-            document.querySelector('.description').innerHTML = collection.description || '<small>' + localizer.localize('This collection has no description') + '</small>';
-
-            document.querySelector('.created').append(formatDate(collection.created_at));
-            document.querySelector('.updated').append(formatDate(collection.updated_at));
-
-            if (collection.shared) {
-                document.querySelector('.shared').append(formatDate(collection.shared_at));
-                document.querySelector('.is-published').innerHTML += (collection.published ? ' and listed' : ' but unlisted');
-                if (collection.published) {
-                    document.querySelector('.published').innerHTML = localizer.localize(', published on ') + formatDate(collection.firstpublished);
+                var thumbnail = document.querySelector('.collection-thumbnail');
+                thumbnail.src = collection.thumbnail || '';
+                if (!collection.thumbnail) {
+                    var i = document.createElement('i');
+                    i.classList.add('no-image');
+                    i.classList.add('fas');
+                    i.classList.add('fa-briefcase');
+                    thumbnail.parentNode.appendChild(i);
                 }
-                document.querySelector('.is-public').innerHTML += ('public');
-            } else {
-                document.querySelector('.shared').hidden = true;
-                document.querySelector('.is-public').append('private');
-            }
 
-            // Set up all buttons
-            document.querySelector('.buttons .share').hidden = collection.shared || !canShare(collection);
-            document.querySelector('.buttons .unshare').hidden = !collection.shared || !canShare(collection);
-            document.querySelector('.buttons .publish').hidden = (!collection.shared || collection.published) ||
-                !canPublish(collection) || sessionStorage.role === 'banned';
-            document.querySelector('.buttons .unpublish').hidden = (!collection.shared || !collection.published) ||
-                !canUnpublish(collection);
+                document.querySelector('.title').appendChild(authorSpan(collection.creator.username));
+                document.querySelector('.description').innerHTML = collection.description || '<small>' + localizer.localize('This collection has no description') + '</small>';
 
-            document.querySelector('.buttons .share').onclick = function () { confirmShareCollection(collection); };
-            document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareCollection(collection); };
-            document.querySelector('.buttons .publish').onclick = function () { confirmPublishCollection(collection); };
-            document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublishCollection(collection); }
-            document.querySelector('.buttons .delete').onclick = function () { confirmDeleteCollection(collection); }
+                document.querySelector('.created').append(formatDate(collection.created_at));
+                document.querySelector('.updated').append(formatDate(collection.updated_at));
 
-            var description = document.querySelector('.description');
-            if (canEditDescription(collection)) {
-                new InPlaceEditor(
-                    description,
-                    function () {
-                        SnapCloud.updateCollectionDescription(
-                            collectionUsername,
-                            collectionName,
-                            description.textContent,
-                            function () {
-                                if (description.textContent == '') {
-                                    description.innerHTML = '<small>' + localizer.localize('This collection has no description') + '</small>';
-                                }
-                            },
-                            genericError
-                        );
-                    },
-                    'This collection has no description'
-                );
+                if (collection.shared) {
+                    document.querySelector('.shared').append(formatDate(collection.shared_at));
+                    document.querySelector('.is-published').innerHTML += (collection.published ? ' and listed' : ' but unlisted');
+                    if (collection.published) {
+                        document.querySelector('.published').innerHTML = localizer.localize(', published on ') + formatDate(collection.firstpublished);
+                    }
+                    document.querySelector('.is-public').innerHTML += ('public');
+                } else {
+                    document.querySelector('.shared').hidden = true;
+                    document.querySelector('.is-public').append('private');
+                }
+
+                // Set up all buttons
+                document.querySelector('.buttons .share').hidden = collection.shared || !canShare(collection);
+                document.querySelector('.buttons .unshare').hidden = !collection.shared || !canShare(collection);
+                document.querySelector('.buttons .publish').hidden = (!collection.shared || collection.published) ||
+                    !canPublish(collection) || sessionStorage.role === 'banned';
+                document.querySelector('.buttons .unpublish').hidden = (!collection.shared || !collection.published) ||
+                    !canUnpublish(collection);
+
+                document.querySelector('.buttons .share').onclick = function () { confirmShareCollection(collection); };
+                document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareCollection(collection); };
+                document.querySelector('.buttons .publish').onclick = function () { confirmPublishCollection(collection); };
+                document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublishCollection(collection); }
+                document.querySelector('.buttons .delete').onclick = function () { confirmDeleteCollection(collection); }
+
+                var description = document.querySelector('.description');
+                if (canEditDescription(collection)) {
+                    new InPlaceEditor(
+                        description,
+                        function () {
+                            SnapCloud.updateCollectionDescription(
+                                collectionUsername,
+                                collectionName,
+                                description.textContent,
+                                function () {
+                                    if (description.textContent == '') {
+                                        description.innerHTML = '<small>' + localizer.localize('This collection has no description') + '</small>';
+                                    }
+                                },
+                                genericError
+                            );
+                        },
+                        'This collection has no description'
+                    );
+                }
             }
             doneLoading('#wrapper');
             document.querySelector('.collection').hidden = false;

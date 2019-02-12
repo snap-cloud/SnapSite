@@ -55,10 +55,14 @@ function collectionControls (project) {
     removeAnchor.onclick = function () { confirmRemoveFromCollection(project); };
     controls.appendChild(removeAnchor);
 
-    thumbnailAnchor.classList.add('clickable');
-    thumbnailAnchor.innerHTML = '<i class="fas fa-image"></i>';
-    thumbnailAnchor.onclick = function () { chooseAsThumbnailForCollection(project); };
-    controls.appendChild(thumbnailAnchor);
+    if (!(getUrlParameter('collection') == 'Flagged' &&
+            getUrlParameter('user') == 'snapcloud')) {
+        // Flagged collection doesn't have a thumbnail
+        thumbnailAnchor.classList.add('clickable');
+        thumbnailAnchor.innerHTML = '<i class="fas fa-image"></i>';
+        thumbnailAnchor.onclick = function () { chooseAsThumbnailForCollection(project); };
+        controls.appendChild(thumbnailAnchor);
+    }
 
     return controls;
 };
@@ -321,7 +325,7 @@ function confirmUnpublishCollection (collection) {
                 } else {
                     SnapCloud.unpublishCollection(
                         collection.creator.username,
-                        project.name,
+                        collection.name,
                         done,
                         genericError
                     );
