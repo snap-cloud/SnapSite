@@ -49,7 +49,9 @@
                 SnapCloud.newCollection(
                     collectionName,
                     function (collection) {
-                        location.replace(collectionURL(SnapCloud.username, collectionName));
+                        location.replace(
+                            collectionURL(SnapCloud.username, collectionName)
+                        );
                     },
                     genericError
                 ); 

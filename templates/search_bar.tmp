@@ -37,7 +37,8 @@
                 getUrlParameter('query');
             
             function ${className}_toPage (pageNumber) {
-                var ${className}_div = document.querySelector('.${className}.list'),
+                var ${className}_div =
+                        document.querySelector('.${className}.list'),
                     ${className}_pageSpan =
                         document.querySelector('.${className}.paginator .page'),
                     ${className}_totalPagesSpan =
