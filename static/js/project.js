@@ -19,7 +19,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
     div.innerHTML +=
         '<a href="' + itemType + '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) + '&' + itemType + '=' +
         encodeURIComponent(item[nameField]) + '"><img class="thumbnail" alt="' + (item.thumbnail ? escapeHtml(item[nameField]) : '') +
-        '" title="' + escapeHtml(item[descriptionField]) + '" src="' + (item.thumbnail ? item.thumbnail : '') +
+        '" title="' + escapeHtml(item[descriptionField]) + (item.thumbnail ? '" src="' + item.thumbnail  + '"' : '') +
         '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) + '</span></a>';
 
     if (extraFields) {
