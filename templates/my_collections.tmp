@@ -3,43 +3,36 @@
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Collections</h1>
 <div class="bar">
-    <div class="mycollections search">
-        <form action="my_collections">
-            <input type="text" name="query">
-            <i class="fas fa-search"></i>
-        </form>
-        <script>
-            document.querySelector('.mycollections form input').value = getUrlParameter('query');
-        </script>
-    </div>
+    @param actionPage="my_collections"
+    @include=search_bar
     @include=paginator
 </div>
 <div class="collections list pure-g"></div>
 <script>
     var collectionsDiv = document.querySelector('.collections'),
-        mycollections_pageSpan = document.querySelector('.mycollections.paginator .page'),
-        mycollections_totalPagesSpan = document.querySelector('.mycollections.paginator .total-pages'),
-        mycollections_page = 1,
-        mycollections_totalPages = 1,
-        mycollections_pageSize = ${pageSize} || 15;
+        my_collections_pageSpan = document.querySelector('.my_collections.paginator .page'),
+        my_collections_totalPagesSpan = document.querySelector('.my_collections.paginator .total-pages'),
+        my_collections_page = 1,
+        my_collections_totalPages = 1,
+        my_collections_pageSize = ${pageSize} || 15;
 
-    mycollections_toPage(1);
+    my_collections_toPage(1);
 
-    function mycollections_toPage (pageNumber) {
+    function my_collections_toPage (pageNumber) {
         query = getUrlParameter('query') || '';
         collectionsDiv.innerHTML = '';
         beganLoading('.collections.list');
         SnapCloud.getUserCollections(
             null, // username is implicit
-            mycollections_page,
-            mycollections_pageSize,
+            my_collections_page,
+            my_collections_pageSize,
             query,
             function (response) {
-                mycollections_totalPages = response.pages;
-                if (mycollections_totalPages == 1) {
-                    document.querySelector('.mycollections.paginator').remove();
+                my_collections_totalPages = response.pages;
+                if (my_collections_totalPages == 1) {
+                    document.querySelector('.my_collections.paginator').remove();
                 } else {
-                    mycollections_totalPagesSpan.textContent = mycollections_totalPages;
+                    my_collections_totalPagesSpan.textContent = my_collections_totalPages;
                 }
                 if (response.collections[0]) {
                     response.collections.forEach(function (collection) {
@@ -65,8 +58,8 @@
             genericError
         );
 
-        mycollections_page = pageNumber;
-        mycollections_pageSpan.textContent = pageNumber;
+        my_collections_page = pageNumber;
+        my_collections_pageSpan.textContent = pageNumber;
     };
 </script>
 <div class="buttons">

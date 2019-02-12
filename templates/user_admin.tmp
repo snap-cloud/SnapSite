@@ -11,15 +11,8 @@ SnapCloud.getCurrentUser(function (user) {
 <link rel="stylesheet" href="style/admin.css">
 <h1 localizable>User Administration</h1>
 <div class="bar">
-    <div class="user search">
-        <form action="user_admin">
-            <input type="text" name="query">
-            <i class="fas fa-search"></i>
-        </form>
-        <script>
-            document.querySelector('.user form input').value = getUrlParameter('query');
-        </script>
-    </div>
+    @param actionPage="user_admin"
+    @include=search_bar
     @include=paginator
 </div>
 <div class="users list pure-g"></div>

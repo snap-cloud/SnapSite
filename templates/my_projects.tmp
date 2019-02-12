@@ -2,42 +2,35 @@
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Projects</h1>
 <div class="bar">
-    <div class="myprojects search">
-        <form action="my_projects">
-            <input type="text" name="query">
-            <i class="fas fa-search"></i>
-        </form>
-        <script>
-            document.querySelector('.myprojects form input').value = getUrlParameter('query');
-        </script>
-    </div>
+    @param actionPage="my_projects"
+    @include=search_bar
     @include=paginator
 </div>
 <div class="projects list pure-g"></div>
 <script>
     var projectsDiv = document.querySelector('.projects'),
-        myprojects_pageSpan = document.querySelector('.myprojects.paginator .page'),
-        myprojects_totalPagesSpan = document.querySelector('.myprojects.paginator .total-pages'),
-        myprojects_page = 1,
-        myprojects_totalPages = 1,
-        myprojects_pageSize = ${pageSize} || 15;
+        my_projects_pageSpan = document.querySelector('.my_projects.paginator .page'),
+        my_projects_totalPagesSpan = document.querySelector('.my_projects.paginator .total-pages'),
+        my_projects_page = 1,
+        my_projects_totalPages = 1,
+        my_projects_pageSize = ${pageSize} || 15;
 
-    myprojects_toPage(1);
+    my_projects_toPage(1);
 
-    function myprojects_toPage (pageNumber) {
+    function my_projects_toPage (pageNumber) {
         query = getUrlParameter('query');
         projectsDiv.innerHTML = '';
         beganLoading('.projects.list');
         SnapCloud.withCredentialsRequest(
             'GET',
-            '/projects/%username?updatingnotes=true&pagesize=' + myprojects_pageSize +
+            '/projects/%username?updatingnotes=true&pagesize=' + my_projects_pageSize +
                 '&page=' + pageNumber + '&withthumbnail=true&matchtext=' + (query ? query : '') ,
             function (response) {
-                myprojects_totalPages = response.pages;
-                if (myprojects_totalPages == 1) {
-                    document.querySelector('.myprojects.paginator').remove();
+                my_projects_totalPages = response.pages;
+                if (my_projects_totalPages == 1) {
+                    document.querySelector('.my_projects.paginator').remove();
                 } else {
-                    myprojects_totalPagesSpan.textContent = myprojects_totalPages;
+                    my_projects_totalPagesSpan.textContent = my_projects_totalPages;
                 }
                 if (response.projects[0]) {
                     response.projects.forEach(function (project) {
@@ -62,7 +55,7 @@
             }
         );
 
-        myprojects_page = pageNumber;
-        myprojects_pageSpan.textContent = pageNumber;
+        my_projects_page = pageNumber;
+        my_projects_pageSpan.textContent = pageNumber;
     };
 </script>

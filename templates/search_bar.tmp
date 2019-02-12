@@ -1,0 +1,9 @@
+<div class="${className} search">
+    <form action="${actionPage}">
+        <input type="text" name="query">
+        <i class="fas fa-search"></i>
+    </form>
+    <script>
+        document.querySelector('.${className} form input').value = getUrlParameter('query');
+    </script>
+</div>
