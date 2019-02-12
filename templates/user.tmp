@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style/admin.css">
 <script>
     var profileDiv = document.querySelector('.profile');
-    if (hasAnyOfRoles(['admin', 'moderator']) {
+    if (hasAnyOfRoles(['admin', 'moderator'])) {
         profileDiv.hidden = false;
         beganLoading('.profile');
         SnapCloud.withCredentialsRequest(
