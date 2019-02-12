@@ -65,8 +65,8 @@ function userAnchor (username, newTab) {
 function isPublicSpan (isPublic) {
     var span = document.createElement('span'),
         tooltip = isPublic ?
-            'This project can be shared via URL' :
-            'This project is private',
+            'This item can be shared via URL' :
+            'This item is private',
         faClass = isPublic ? 'fa-lock-open' : 'fa-lock';
     span.classList.add('is-public');
     span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
@@ -77,8 +77,8 @@ function isPublicSpan (isPublic) {
 function isPublishedSpan (isPublished) {
     var span = document.createElement('span'),
         tooltip = isPublished ?
-            'This project is publicly listed' :
-            'This project is unlisted',
+            'This item is publicly listed' :
+            'This item is unlisted',
         faClass = isPublished ? 'fa-eye' : 'fa-user-secret';
 
     span.classList.add('is-published');

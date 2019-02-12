@@ -50,8 +50,8 @@
                                     size: 'small', 
                                     gridSize: 5, 
                                     extraFields: {
-                                        isPublic: 'ispublic',
-                                        isPublished: 'ispublished'
+                                        isPublic: 'shared',
+                                        isPublished: 'published'
                                     }
                                 }
                             )

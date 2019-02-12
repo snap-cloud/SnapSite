@@ -128,6 +128,7 @@
                     !canPublish(collection) || sessionStorage.role === 'banned';
                 document.querySelector('.buttons .unpublish').hidden = (!collection.shared || !collection.published) ||
                     !canUnpublish(collection);
+                document.querySelector('.buttons .delete').hidden = !canDelete(collection);
                 document.querySelector('.add-editor').hidden = !owns(collection);
 
                 document.querySelector('.buttons .share').onclick = function () { confirmShareCollection(collection); };

@@ -35,7 +35,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
         div.classList.add('pure-u-1-' + options['gridSize']);
     };
 
-    if (options['withCollectionControls']) {
+    if (options['withCollectionControls'] && ownsOrIsAdmin(item)) {
         // Adds controls to remove this project from a collection or choose it as a thumbnail
         div.appendChild(collectionControls(item));
     }
@@ -464,7 +464,7 @@ function promptAddEditor (collection) {
 };
 
 function owns (item) {
-    return sessionStorage.username == item.username || item.creator.username;
+    return sessionStorage.username == (item.username || item.creator.username);
 };
 
 function ownsOrIsAdmin (item) {
@@ -492,12 +492,12 @@ function canEditDescription (collection) {
     return ownsOrIsAdmin(collection);
 };
 function canUnpublish (item) {
-    return (sessionStorage.username == item.username || item.creator.username) ||
+    return (sessionStorage.username == (item.username || item.creator.username)) ||
         [ 'admin', 'moderator', 'reviewer' ].indexOf(sessionStorage.role) > -1;
 };
 
 function canDelete (item) {
-    return (sessionStorage.username == item.username || item.creator.username) ||
+    return (sessionStorage.username == (item.username || item.creator.username)) ||
         [ 'admin', 'moderator' ].indexOf(sessionStorage.role) > -1;
 };
 

@@ -37,7 +37,7 @@
 .thumbnail-container {
     position: relative;
     border-radius: 5px;
-    min-height: 120px;
+    height: 120px;
     border: 2px solid #2c3e50;
     box-sizing: border-box;
 }
