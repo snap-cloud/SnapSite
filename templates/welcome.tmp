@@ -34,4 +34,11 @@
 @param header='Latest Projects'
 @param extraParam='null,'
 @include=project_grid
+@param pageSize=5
+@param query=getCollectionProjects
+@param user="'snapcloud'"
+@param extraParam="'Featured',"
+@param widgetName=featured
+@param header='Featured Projects'
+@include=project_grid
 @param header=''
