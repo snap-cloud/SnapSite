@@ -21,7 +21,7 @@
             <pre class="description"></pre>
 
             <div class="editors">
-                <ul class="editor-list"><li></li></ul>
+                <ul class="editor-list"></ul>
                 <a class="clickable add-editor"><i class="fas fa-plus-circle"></i></a>
                 <input hidden class="new-editor"></input>
             </div>
@@ -153,11 +153,10 @@
                                 collectionName,
                                 newEditorInput.value,
                                 function () {
-                                    var li = document.createElement('li');
+                                    var li = newEditorLi(newEditorInput.value);
                                     newEditorInput.hidden = true;
                                     newEditorInput.classList.remove('flash');
                                     addEditorAnchor.hidden = false;
-                                    li.append(userAnchor(newEditorInput.value));
                                     document.querySelector('.editor-list').append(li);
                                     li.classList.add('flash');
                                 },
@@ -181,13 +180,47 @@
                 document.querySelector('.add-editor').title = localizer.localize('Add an editor to this collection');
                 document.querySelector('.editor-list').title = localizer.localize('Users who can edit this collection');
 
-                document.querySelector('.editor-list li').append(userAnchor(collectionUsername));
+                document.querySelector('.editor-list').append(newEditorLi(collectionUsername));
+
+                function newEditorLi (username) {
+                    var editorLi = document.createElement('li'),
+                        removeAnchor = document.createElement('a'),
+                        icon = document.createElement('i');
+
+                    editorLi.classList.add('editor');
+                    editorLi.append(userAnchor(username));
+
+                    if (owns(collection) && username !== collectionUsername) {
+                        icon.classList.add('fas');
+                        icon.classList.add('fa-times-circle');
+                        removeAnchor.classList.add('remove-editor');
+                        removeAnchor.classList.add('clickable');
+                        removeAnchor.append(icon);
+                        removeAnchor.onclick = function () {
+                            SnapCloud.removeEditorFromCollection(
+                                collectionUsername,
+                                collectionName,
+                                username,
+                                function () {
+                                    editorLi.classList.add('warning-flash');
+                                    setTimeout(
+                                        function () {
+                                            editorLi.remove();
+                                        },
+                                        1000
+                                    );
+                                },
+                                genericError
+                            ); 
+                        };
+                        editorLi.append(removeAnchor);
+                    }
+                    return editorLi;
+                };
 
                 if (collection.editors) {
                     collection.editors.forEach(function (editor) {
-                        var li = document.createElement('li');
-                        li.append(userAnchor(editor.username));
-                        document.querySelector('.editor-list').append(li);
+                        document.querySelector('.editor-list').append(newEditorLi(editor.username));
                     });
                 }
 
