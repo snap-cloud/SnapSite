@@ -460,9 +460,6 @@ function confirmFlagProject (project) {
     );
 };
 
-function promptAddEditor (collection) {
-};
-
 function owns (item) {
     return sessionStorage.username == (item.username || item.creator.username);
 };

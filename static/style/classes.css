@@ -60,6 +60,20 @@ pre.in-place {
     }
 }
 
+.warning-flash {
+    animation: warning-flasher 1s linear;
+}
+
+@keyframes warning-flasher {  
+    0% { background: tomato; border: red; }
+    50% { opacity: 0.0; }
+    100% {
+        background: auto;
+        border: auto;
+        opacity: 1;
+    }
+}
+
 .bubble {
     position: relative;
     background: rgba(255,255,255,0.3);

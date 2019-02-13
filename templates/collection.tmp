@@ -21,10 +21,9 @@
             <pre class="description"></pre>
 
             <div class="editors">
-                <ul class="editor-list">
-                    <li></li>
-                    <a class="clickable add-editor"><i class="fas fa-plus-circle"></i></a>
-                </ul>
+                <ul class="editor-list"><li></li></ul>
+                <a class="clickable add-editor"><i class="fas fa-plus-circle"></i></a>
+                <input hidden class="new-editor"></input>
             </div>
 
             <div class="buttons">
@@ -136,11 +135,61 @@
                 document.querySelector('.buttons .publish').onclick = function () { confirmPublishCollection(collection); };
                 document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublishCollection(collection); }
                 document.querySelector('.buttons .delete').onclick = function () { confirmDeleteCollection(collection); }
-                document.querySelector('.add-editor').onclick = function () { promptAddEditor(collection); }
+
+                document.querySelector('.add-editor').onclick = function () {
+                    var newEditorInput = document.querySelector('.new-editor'),
+                        addEditorAnchor = this;
+                    this.hidden = true;
+                    newEditorInput.placeholder = localizer.localize('Username');
+                    newEditorInput.value = '';
+                    newEditorInput.hidden = false;
+                    newEditorInput.classList.add('flash');
+                    newEditorInput.focus();
+                    newEditorInput.onkeypress = function (event) {
+                        var code = (event.keyCode ? event.keyCode : event.which);
+                        if (code == 13 && !event.shiftKey) {
+                            SnapCloud.addEditorToCollection(
+                                collectionUsername,
+                                collectionName,
+                                newEditorInput.value,
+                                function () {
+                                    var li = document.createElement('li');
+                                    newEditorInput.hidden = true;
+                                    newEditorInput.classList.remove('flash');
+                                    addEditorAnchor.hidden = false;
+                                    li.append(userAnchor(newEditorInput.value));
+                                    document.querySelector('.editor-list').append(li);
+                                    li.classList.add('flash');
+                                },
+                                function () {
+                                    newEditorInput.value = '';
+                                    newEditorInput.classList.remove('flash');
+                                    newEditorInput.classList.remove('warning-flash');
+                                    setTimeout(
+                                        function () {
+                                            newEditorInput.classList.add('warning-flash');
+                                        },
+                                        10
+                                    );
+                                    newEditorInput.focus();
+                                }
+                            );
+                        }
+                    };
+                }
+
                 document.querySelector('.add-editor').title = localizer.localize('Add an editor to this collection');
                 document.querySelector('.editor-list').title = localizer.localize('Users who can edit this collection');
 
                 document.querySelector('.editor-list li').append(userAnchor(collectionUsername));
+
+                if (collection.editors) {
+                    collection.editors.forEach(function (editor) {
+                        var li = document.createElement('li');
+                        li.append(userAnchor(editor.username));
+                        document.querySelector('.editor-list').append(li);
+                    });
+                }
 
                 var description = document.querySelector('.description');
                 if (canEditDescription(collection)) {
