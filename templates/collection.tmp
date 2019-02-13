@@ -218,7 +218,7 @@
                     return editorLi;
                 };
 
-                if (collection.editors) {
+                if (collection.editors && collection.editors[0]) {
                     collection.editors.forEach(function (editor) {
                         document.querySelector('.editor-list').append(newEditorLi(editor.username));
                     });
