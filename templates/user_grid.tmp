@@ -1,4 +1,4 @@
-<h2 class="$widgetName header" localizable>${header}</h2>
+<h2 class="$widgetName header" localizable></h2>
 <link rel="stylesheet" href="style/usergrid.css">
 @include=paginator
 <div class="${widgetName} users pure-g"></div>
@@ -14,6 +14,13 @@
         ${widgetName}_pageSize = ${pageSize} || 15;
 
     ${widgetName}_toPage(1);
+
+    if (![${header}][0]) {
+        document.querySelector('.${widgetName}.header').remove();
+    } else {
+        document.querySelector('.${widgetName}.header').innerHTML =
+            [${header}][0];
+    }
 
     function ${widgetName}_toPage (pageNumber) {
         ${widgetName}_usersDiv.innerHTML = '';

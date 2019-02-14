@@ -31,14 +31,31 @@
 @param pageSize=5
 @param query=getPublishedProjectList
 @param widgetName=latest
-@param header='Latest Projects'
+@param header="'Latest Projects'"
 @param extraParam='null,'
 @include=project_grid
+
 @param pageSize=5
 @param query=getCollectionProjects
 @param user="'snapcloud'"
 @param extraParam="'Featured',"
 @param widgetName=featured
-@param header='Featured Projects'
+@param header="'Featured Projects'"
+@include=project_grid
+
+<script>
+    // pick a random curated collection
+    var collection =
+        [ 'Science Projects',
+            'Art Projects',
+            'Fractals',
+            'Games' ][Math.floor(Math.random()*4)];
+</script>
+@param pageSize=5
+@param query=getCollectionProjects
+@param user="'snapcloud'"
+@param extraParam="collection,"
+@param widgetName=curated
+@param header="'Curated ' + collection"
 @include=project_grid
 @param header=''

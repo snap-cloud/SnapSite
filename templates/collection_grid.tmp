@@ -1,4 +1,4 @@
-<h2 class="${widgetName} header" localizable>$header</h2>
+<h2 class="${widgetName} header" localizable></h2>
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 @include=paginator
@@ -18,8 +18,11 @@
 
     ${widgetName}_toPage(1);
 
-    if (!['$header'][0]) {
+    if (![${header}][0]) {
         document.querySelector('.${widgetName}.header').remove();
+    } else {
+        document.querySelector('.${widgetName}.header').innerHTML =
+            [${header}][0];
     }
 
     function ${widgetName}_toPage (pageNumber) {

@@ -7,7 +7,7 @@
 @param query=getPublishedProjectList
 @param extraParam='getUrlParameter("term") || null,'
 @param widgetName=project_results
-@param header=Projects
+@param header="'Projects'"
 @include=project_grid
 
 @param user='null'
@@ -15,12 +15,12 @@
 @param query=getCollections
 @param extraParam='getUrlParameter("term") || null,'
 @param widgetName=collection_results
-@param header=Collections
+@param header="'Collections'"
 @include=collection_grid
 
 @param pageSize=51
 @param widgetName=user_results
-@param header=Users
+@param header="'Users'"
 @include=user_grid
 
 @param header=''

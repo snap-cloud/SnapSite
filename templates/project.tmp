@@ -53,7 +53,7 @@
 @param pageSize=5
 @param query=getRemixes
 @param widgetName=remix_carousel
-@param header='Remixes'
+@param header="'Remixes'"
 @param user='pageUser()'
 @param extraParam='pageProject(),'
 @include=project_grid
@@ -63,7 +63,7 @@
 @param pageSize=5
 @param query=getCollectionsContainingProject
 @param widgetName=collection_carousel
-@param header='Collections containing this project'
+@param header="'Collections containing this project'"
 @param user='pageUser()'
 @param extraParam='pageProject(),'
 @include=collection_grid
