@@ -1,4 +1,4 @@
-<h2 localizable>${header}</h2>
+<h2 class="$widgetName header" localizable>${header}</h2>
 <link rel="stylesheet" href="style/usergrid.css">
 @include=paginator
 <div class="${widgetName} users pure-g"></div>
@@ -18,7 +18,7 @@
     function ${widgetName}_toPage (pageNumber) {
         ${widgetName}_usersDiv.innerHTML = '';
         beganLoading('.${widgetName}.users');
-        SnapCloud.withCredentialsRequest(
+        SnapCloud.request(
             'GET',
             '/users?matchtext=' + encodeURIComponent(${extraParam}) +
                 '&pagesize=' + ${widgetName}_pageSize + '&page=' + pageNumber,
@@ -41,7 +41,9 @@
                     });
                 } else {
                     // collection is empty, so let's remove the carousel altogether
-                    document.querySelector('.${widgetName}').remove();
+                    document.querySelectorAll('.${widgetName}').forEach(
+                        function (each) { each.remove(); }
+                    );
                 }
                 doneLoading('.${widgetName}.users');
             },

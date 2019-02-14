@@ -23,53 +23,65 @@
     }
 
     function ${widgetName}_toPage (pageNumber) {
+        function responseCallback (response) {
+            setTitle($title);
+
+            ${widgetName}_totalPages = response.pages;
+            if (${widgetName}_totalPages == 1) {
+                document.querySelector('.${widgetName}.paginator').remove();
+            } else {
+                ${widgetName}_totalPagesSpan.textContent =
+                    ${widgetName}_totalPages;
+            }
+
+            if (response.collections[0]) {
+                response.collections.forEach(function (collection) {
+                    ${widgetName}_collectionsDiv.append(
+                        newCollectionDiv(
+                            collection,
+                            {
+                                size: 'small',
+                                gridSize: 5,
+                                extraFields: {
+                                    author: 'creator.username',
+                                    isPublic: 'shared',
+                                    isPublished: 'published'
+                                }
+                            }
+                        )
+                    );
+                });
+            } else {
+                // Collection is empty. Let's remove the carousel altogether
+                document.querySelectorAll('.${widgetName}').forEach(
+                    function (each) { each.remove(); }
+                );
+            }
+            doneLoading('.${widgetName}.items');
+        };
+
         ${widgetName}_collectionsDiv.innerHTML = '';
         beganLoading('.${widgetName}.items');
-        SnapCloud.${query}(
-            $user,
-            pageNumber,
-            ${widgetName}_pageSize,
-            ${extraParam} // used for search terms, collection names, etc
-            function (response) {
-                setTitle($title);
 
-                ${widgetName}_totalPages = response.pages;
-                if (${widgetName}_totalPages == 1) {
-                    document.querySelector('.${widgetName}.paginator').remove();
-                } else {
-                    ${widgetName}_totalPagesSpan.textContent =
-                        ${widgetName}_totalPages;
-                }
+        if ([$user][0]) {
+            SnapCloud.${query}(
+                $user,
+                pageNumber,
+                ${widgetName}_pageSize,
+                ${extraParam} // used for search terms, collection names, etc
+                responseCallback,
+                genericError
+            );
+        } else {
+            SnapCloud.${query}(
+                pageNumber,
+                ${widgetName}_pageSize,
+                ${extraParam} // used for search terms, collection names, etc
+                responseCallback,
+                genericError
+            );
+        }
 
-                if (response.collections[0]) {
-                    response.collections.forEach(function (collection) {
-                        ${widgetName}_collectionsDiv.append(
-                            newCollectionDiv(
-                                collection, 
-                                { 
-                                    size: 'small', 
-                                    gridSize: 5, 
-                                    extraFields: {
-                                        author: 'username',
-                                        isPublic: 'shared',
-                                        isPublished: 'published'
-                                    }
-                                }
-                            )
-                        );
-                    });
-                } else {
-                    // Collection is empty. Let's remove the carousel altogether
-                    document.querySelectorAll('.${widgetName}').forEach(
-                        function (each) { each.remove(); }
-                    );
-                }
-                doneLoading('.${widgetName}.items');
-            },
-            function (error) {
-                genericError(error);
-            }
-        );
         ${widgetName}_page = pageNumber;
         ${widgetName}_pageSpan.textContent = pageNumber;
     };

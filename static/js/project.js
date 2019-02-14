@@ -25,7 +25,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {
             var attribute = extraFields[fieldName];
-            div.appendChild(window[fieldName + 'Span'](item[attribute]));
+            div.appendChild(window[fieldName + 'Span'](eval('item.' + attribute)));
         });
     }
 
@@ -147,7 +147,7 @@ function confirmShareCollection (collection) {
                         '<br><a href="' + location.href + '">' + location.href + '</a>',
                         { title: localizer.localize('Collection shared') },
                         function () { location.reload(); }
-                    ); 
+                    );
                 },
                 genericError
             );
