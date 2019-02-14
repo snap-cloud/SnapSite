@@ -28,7 +28,7 @@
                                href="login">Log In</a></li>
             <li hidden="true" class="pure-menu-item pure-u-1-6 
                 pure-menu-has-children pure-menu-allow-hover user-menu">
-                <a href="#" id="menuLink1" class="pure-menu-link visitor"></a>
+                <a id="menuLink1" class="pure-menu-link visitor clickable"></a>
                 <ul class="pure-menu-children">
                     <li class="pure-menu-item">
                         <a localizable class="pure-menu-link my-projects" 
@@ -47,7 +47,7 @@
                             href="admin">Administration</a></li>
                     <hr>
                     <li class="pure-menu-item">
-                        <a localizable class="pure-menu-link" href="#"
+                        <a localizable class="pure-menu-link clickable"
                             onclick="SnapCloud.logout(function () {
                                 sessionStorage.clear();
                                 location.href = 'index';
@@ -56,7 +56,7 @@
             </li>
             <li class="pure-menu-item pure-u-1-24 pure-menu-has-children
                 pure-menu-allow-hover language-select">
-                <a class="pure-menu-link" href="#">
+                <a class="pure-menu-link clickable">
                     <i class="fas fa-globe"></i>
                 </a>
                 <ul class="pure-menu-children languages">
