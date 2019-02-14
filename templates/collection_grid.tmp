@@ -4,7 +4,7 @@
 @include=paginator
 <div class="${widgetName} items pure-g"></div>
 <script>
-    var ${widgetName}_projectsDiv =
+    var ${widgetName}_collectionsDiv =
             document.querySelector('.${widgetName}.items'),
         ${widgetName}_pageSpan =
             document.querySelector('.${widgetName}.paginator .page'),
@@ -16,12 +16,6 @@
         ${widgetName}_gridSize = [${gridSize}][0] || 5,
         ${widgetName}_pageSize = [${pageSize}][0] || 15;
 
-    if (getUrlParameter('user') == 'snapcloud' &&
-            getUrlParameter('collection') == 'Flagged') {
-        ${widgetName}_gridSize = 5;
-        ${widgetName}_pageSize = 15;
-    }
-
     ${widgetName}_toPage(1);
 
     if (!['$header'][0]) {
@@ -29,7 +23,7 @@
     }
 
     function ${widgetName}_toPage (pageNumber) {
-        ${widgetName}_projectsDiv.innerHTML = '';
+        ${widgetName}_collectionsDiv.innerHTML = '';
         beganLoading('.${widgetName}.items');
         SnapCloud.${query}(
             $user,
@@ -47,19 +41,21 @@
                         ${widgetName}_totalPages;
                 }
 
-                if (response.projects[0]) {
-                    response.projects.forEach(function (project) {
-                        ${widgetName}_projectsDiv.append(
-                                newProjectDiv(
-                                project,
-                                {
-                                    size: 'small',
-                                    gridSize: ${widgetName}_gridSize || 5,
+                if (response.collections[0]) {
+                    response.collections.forEach(function (collection) {
+                        ${widgetName}_collectionsDiv.append(
+                            newCollectionDiv(
+                                collection, 
+                                { 
+                                    size: 'small', 
+                                    gridSize: 5, 
                                     extraFields: {
-                                        author: 'username'
-                                    },
-                                    ${extraOptions}
-                                }));
+                                        isPublic: 'shared',
+                                        isPublished: 'published'
+                                    }
+                                }
+                            )
+                        );
                     });
                 } else {
                     // Collection is empty. Let's remove the carousel altogether
@@ -71,8 +67,7 @@
             },
             function (error) {
                 genericError(error);
-            },
-            true // withThumbnail
+            }
         );
         ${widgetName}_page = pageNumber;
         ${widgetName}_pageSpan.textContent = pageNumber;

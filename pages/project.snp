@@ -1,11 +1,2 @@
 base
-project
-@param pageSize=5
-@param query=getRemixes
-@param widgetName=remixes
-@param header='Remixes'
-@param user='pageUser()'
-@param extraParam='pageProject(),'
-project_grid
-@param header=''
-@param extraParam=''
+project 
