@@ -54,6 +54,7 @@ img.collection-thumbnail {
     border-radius: 5px;
 }
 
+.collection.small .author,
 .project.small .author {
     display: block;
 }

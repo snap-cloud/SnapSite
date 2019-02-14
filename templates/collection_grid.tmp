@@ -50,6 +50,7 @@
                                     size: 'small', 
                                     gridSize: 5, 
                                     extraFields: {
+                                        author: 'username',
                                         isPublic: 'shared',
                                         isPublished: 'published'
                                     }
