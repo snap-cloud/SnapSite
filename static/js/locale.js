@@ -44,4 +44,5 @@ Localizer.prototype.localize = function (aString) {
 
 Localizer.prototype.setLanguage = function (lang) {
     localStorage['locale'] = lang;
+    location.reload();
 };
