@@ -307,10 +307,7 @@ function confirmShareCollection (collection, buttonsDiv, datesDiv) {
                             location.href + '</a>',
                         { title: localizer.localize('Collection shared') },
                         function () {
-                            collection.ispublic = true;
-                            setCollectionButtonVisibility(collection,
-                                    buttonsDiv);
-                            fillCollectionDates(collection, datesDiv);
+                            location.reload();
                         }
                     );
                 },
@@ -368,11 +365,7 @@ function confirmUnshareCollection (collection, buttonsDiv, datesDiv) {
                                     localizer.localize('Collection unshared')
                             },
                             function () {
-                                collection.ispublic = false;
-                                collection.ispublished = false;
-                                setCollectionButtonVisibility(collection,
-                                    buttonsDiv);
-                                fillCollectionDates(collection, datesDiv);
+                                location.reload();
                             }
                         );
                     },
@@ -432,10 +425,7 @@ function confirmPublishCollection (collection, buttonsDiv, datesDiv) {
                             { title:
                                 localizer.localize('Collection published') },
                             function () {
-                                collection.ispublished = true;
-                                setCollectionButtonVisibility(collection,
-                                    buttonsDiv);
-                                fillCollectionDates(collection, datesDiv);
+                                location.reload();
                             }
                         );
                     },
@@ -507,9 +497,7 @@ function confirmUnpublishCollection (collection, buttonsDiv, datesDiv) {
                     'Snap<em>!</em> site anymore.'),
             { title: localizer.localize('Collection unpublished') },
             function () {
-                collection.ispublished = false;
-                setCollectionButtonVisibility(collection, buttonsDiv);
-                fillCollectionDates(collection, datesDiv);
+                location.reload();
             }
         );
     };
