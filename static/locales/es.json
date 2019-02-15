@@ -298,5 +298,39 @@
     "User is not verified":
         "El usuario no está verificado",
     "Verify":
-        "Verifica"
+        "Verifica",
+    "Add to Collection":
+        "Añadir a colección",
+    "Admin tools":
+        "Herramientas de administración",
+    "Collections":
+        "Colecciones",
+    "Collections containing this project":
+        "Colecciones que contienen este proyecto",
+    "Curated Art Projects":
+        "Proyectos de arte seleccionados",
+    "Curated Fractals":
+        "Fractales seleccionados",
+    "Curated Games":
+        "Juegos seleccionados",
+    "Curated Science Projects":
+        "Proyectos de ciencia seleccionados",
+    "Featured Projects":
+        "Proyectos destacados",
+    "Flagged Projects":
+        "Proyectos denunciados",
+    "My Collections":
+        "Mis colecciones",
+    "Offline Version":
+        "Versión sin conexión",
+    "Projects":
+        "Proyectos",
+    "Remixes":
+        "Reinvenciones",
+    "Report":
+        "Denunciar",
+    "Research":
+        "Investigación",
+    "Users":
+        "Usuarios"
 }
