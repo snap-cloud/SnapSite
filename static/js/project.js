@@ -1,26 +1,35 @@
 function newProjectDiv (project, options) {
-    return itemDiv(project, 'project', 'username', 'projectname', 'notes', options)
+    return itemDiv(
+        project, 'project', 'username', 'projectname', 'notes', options)
 };
 
 function newCollectionDiv (collection, options) {
-    return itemDiv(collection, 'collection', 'creator.username', 'name', 'description', options)
+    return itemDiv(
+        collection, 'collection', 'creator.username', 'name', 'description',
+        options)
 };
 
-function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField, options) {
+function itemDiv (item, itemType, ownerUsernamePath, nameField,
+        descriptionField, options) {
     var extraFields = options['extraFields'],
         div = document.createElement('div');
 
     if (!item.thumbnail) {
         div.innerHTML = '<i class="no-image fas ' +
-            (itemType == 'collection' ?  'fa-briefcase' : 'fa-question-circle') +
+            (itemType == 'collection' ? 'fa-briefcase' : 'fa-question-circle') +
             '"></i>'
     }
 
     div.innerHTML +=
-        '<a href="' + itemType + '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) + '&' + itemType + '=' +
-        encodeURIComponent(item[nameField]) + '"><img class="thumbnail" alt="' + (item.thumbnail ? escapeHtml(item[nameField]) : '') +
-        '" title="' + escapeHtml(item[descriptionField]) + (item.thumbnail ? '" src="' + item.thumbnail  + '"' : '') +
-        '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) + '</span></a>';
+        '<a href="' + itemType +
+        '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) +
+        '&' + itemType + '=' + encodeURIComponent(item[nameField]) +
+        '"><img class="thumbnail" alt="' +
+        (item.thumbnail ? escapeHtml(item[nameField]) : '') +
+        '" title="' + escapeHtml(item[descriptionField]) +
+        (item.thumbnail ? '" src="' + item.thumbnail  + '"' : '') +
+        '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) +
+        '</span></a>';
 
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {
@@ -36,7 +45,8 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
     };
 
     if (options['withCollectionControls'] && ownsOrIsAdmin(item)) {
-        // Adds controls to remove this project from a collection or choose it as a thumbnail
+        // Adds controls to remove this project from a collection or choose it
+        // as a thumbnail
         div.appendChild(collectionControls(item));
     }
 
@@ -139,7 +149,8 @@ function loadProjectFrame (project, placeholder) {
     function doLoadIt () {
         var iframe = document.createElement('iframe');
         iframe.height = 406;
-        iframe.src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
+        iframe.src = projectURL(project.username, project.projectname) +
+            '&embedMode&noExitWarning&noRun';
         placeholder.parentNode.replaceChild(iframe, placeholder);
     }
     if (document.visibilityState == 'visible') {
@@ -169,7 +180,9 @@ function collectionControls (project) {
         // Flagged collection doesn't have a thumbnail
         thumbnailAnchor.classList.add('clickable');
         thumbnailAnchor.innerHTML = '<i class="fas fa-image"></i>';
-        thumbnailAnchor.onclick = function () { chooseAsThumbnailForCollection(project); };
+        thumbnailAnchor.onclick = function () {
+            chooseAsThumbnailForCollection(project);
+        };
         controls.appendChild(thumbnailAnchor);
     }
 
@@ -203,7 +216,9 @@ function chooseAsThumbnailForCollection (project) {
 // Could probably refactor these. Not sure it's worth the hassle though.
 function confirmRemoveFromCollection (project) {
     confirm(
-        localizer.localize('Are you sure you want to remove this project from the collection?'),
+        localizer.localize(
+            'Are you sure you want to remove this project from the collection?'
+        ),
         function (ok) {
             if (ok) {
                 SnapCloud.removeProjectFromCollection(
@@ -229,8 +244,10 @@ function confirmShareProject (project) {
                     project.username,
                     function () {
                         alert(
-                            localizer.localize('You can now access this project at:') +
-                                '<br><a href="' + location.href + '">' + location.href + '</a>',
+                            localizer.localize(
+                                'You can now access this project at:') +
+                                '<br><a href="' + location.href + '">' +
+                                location.href + '</a>',
                             { title: localizer.localize('Project shared') },
                             function () { location.reload(); }
                         );
@@ -252,8 +269,10 @@ function confirmShareCollection (collection) {
                 collection.name,
                 function () {
                     alert(
-                        localizer.localize('This collection can now be accessed at:') +
-                        '<br><a href="' + location.href + '">' + location.href + '</a>',
+                        localizer.localize(
+                            'This collection can now be accessed at:') +
+                            '<br><a href="' + location.href + '">' +
+                            location.href + '</a>',
                         { title: localizer.localize('Collection shared') },
                         function () { location.reload(); }
                     );
@@ -267,7 +286,8 @@ function confirmShareCollection (collection) {
 
 function confirmUnshareProject (project) {
     confirm(
-        localizer.localize('Are you sure you want to stop sharing this project?'),
+        localizer.localize(
+            'Are you sure you want to stop sharing this project?'),
         function (ok) {
             if (ok) {
                 SnapCloud.unshareProject(
@@ -290,7 +310,8 @@ function confirmUnshareProject (project) {
 
 function confirmUnshareCollection (collection) {
     confirm(
-        localizer.localize('Are you sure you want to stop sharing this collection?'),
+        localizer.localize(
+            'Are you sure you want to stop sharing this collection?'),
         function (ok) {
             if (ok) {
                 SnapCloud.unshareCollection(
@@ -298,8 +319,12 @@ function confirmUnshareCollection (collection) {
                     collection.name,
                     function () {
                         alert(
-                            localizer.localize('This collection is now private.'),
-                            { title: localizer.localize('Collection unshared') },
+                            localizer.localize(
+                                'This collection is now private.'),
+                            {
+                                title:
+                                    localizer.localize('Collection unshared')
+                            },
                             function () { location.reload() }
                         );
                     },
@@ -322,7 +347,9 @@ function confirmPublishProject (project) {
                     project.username,
                     function () {
                         alert(
-                            localizer.localize('This project is now listed in the Snap<em>!</em> site.'),
+                            localizer.localize(
+                                'This project is now listed in the ' +
+                                    'Snap<em>!</em> site.'),
                             { title: localizer.localize('Project published') },
                             function () { location.reload() }
                         );
@@ -337,7 +364,8 @@ function confirmPublishProject (project) {
 
 function confirmPublishCollection (collection) {
     confirm(
-        localizer.localize('Are you sure you want to publish this collection<br>' +
+        localizer.localize(
+            'Are you sure you want to publish this collection<br>' +
             'and make it visible in the Snap<em>!</em> website?'),
         function (ok) {
             if (ok) {
@@ -346,8 +374,11 @@ function confirmPublishCollection (collection) {
                     collection.name,
                     function () {
                         alert(
-                            localizer.localize('This collection is now listed in the Snap<em>!</em> site.'),
-                            { title: localizer.localize('Collection published') },
+                            localizer.localize(
+                                'This collection is now listed in the ' +
+                                    'Snap<em>!</em> site.'),
+                            { title:
+                                localizer.localize('Collection published') },
                             function () { location.reload() }
                         );
                     },
@@ -362,14 +393,17 @@ function confirmPublishCollection (collection) {
 function confirmUnpublishProject (project) {
     function done () {
         alert(
-            localizer.localize('This project is not listed in the Snap<em>!</em> site anymore.'),
+            localizer.localize(
+                'This project is not listed in the Snap<em>!</em> site anymore.'
+            ),
             { title: localizer.localize('Project unpublished') },
             function () { location.reload(); }
         );
     };
 
     confirm(
-        localizer.localize('Are you sure you want to unpublish this project<br>' +
+        localizer.localize(
+            'Are you sure you want to unpublish this project<br>' +
             'and hide it from the Snap<em>!</em> website?'),
         function (ok) {
             if (ok) {
@@ -379,9 +413,11 @@ function confirmUnpublishProject (project) {
                         function (reason) {
                             SnapCloud.withCredentialsRequest(
                                 'POST',
-                                '/projects/' + encodeURIComponent(project.username) +
-                                '/' + encodeURIComponent(project.projectname) +
-                                '/metadata?ispublished=false&reason=' + encodeURIComponent(reason),
+                                '/projects/' +
+                                    encodeURIComponent(project.username) + '/' +
+                                    encodeURIComponent(project.projectname) +
+                                    '/metadata?ispublished=false&reason=' +
+                                    encodeURIComponent(reason),
                                 done,
                                 genericError,
                                 'Could not unpublish project'
@@ -405,14 +441,17 @@ function confirmUnpublishProject (project) {
 function confirmUnpublishCollection (collection) {
     function done () {
         alert(
-            localizer.localize('This collection is not listed in the Snap<em>!</em> site anymore.'),
+            localizer.localize(
+                'This collection is not listed in the ' +
+                    'Snap<em>!</em> site anymore.'),
             { title: localizer.localize('Collection unpublished') },
             function () { location.reload(); }
         );
     };
 
     confirm(
-        localizer.localize('Are you sure you want to unpublish this collection<br>' +
+        localizer.localize(
+            'Are you sure you want to unpublish this collection<br>' +
             'and hide it from the Snap<em>!</em> website?'),
         function (ok) {
             if (ok) {
@@ -422,9 +461,13 @@ function confirmUnpublishCollection (collection) {
                         function (reason) {
                             SnapCloud.withCredentialsRequest(
                                 'POST',
-                                '/users/' + encodeURIComponent(collection.creator.username) +
-                                '/collections/' + encodeURIComponent(collection.name) +
-                                '/metadata?ispublished=false&reason=' + encodeURIComponent(reason),
+                                '/users/' +
+                                    encodeURIComponent(
+                                        collection.creator.username) +
+                                    '/collections/' +
+                                    encodeURIComponent(collection.name) +
+                                    '/metadata?ispublished=false&reason=' +
+                                    encodeURIComponent(reason),
                                 done,
                                 genericError,
                                 'Could not unpublish collection'
@@ -460,8 +503,8 @@ function confirmDeleteProject (project) {
     };
 
     confirm(
-        localizer.localize('Are you sure you want to delete this project?') + '<br>' +
-        '<i class="warning fa fa-exclamation-triangle"></i> ' +
+        localizer.localize('Are you sure you want to delete this project?') +
+        '<br>' + '<i class="warning fa fa-exclamation-triangle"></i> ' +
         localizer.localize('WARNING! This action cannot be undone!') +
         ' <i class="warning fa fa-exclamation-triangle"></i>',
         function (ok) {
@@ -472,9 +515,10 @@ function confirmDeleteProject (project) {
                         function (reason) {
                             SnapCloud.withCredentialsRequest(
                                 'DELETE',
-                                '/projects/' + encodeURIComponent(project.username) +
-                                '/' + encodeURIComponent(project.projectname) +
-                                '?reason=' + encodeURIComponent(reason),
+                                '/projects/' +
+                                    encodeURIComponent(project.username) + '/'
+                                    + encodeURIComponent(project.projectname) +
+                                    '?reason=' + encodeURIComponent(reason),
                                 done,
                                 genericError,
                                 'Could not delete project'
@@ -510,7 +554,8 @@ function confirmDeleteCollection (collection) {
     };
 
     confirm(
-        localizer.localize('Are you sure you want to delete this collection?') + '<br>' +
+        localizer.localize('Are you sure you want to delete this collection?')
+        + '<br>' +
         '<i class="warning fa fa-exclamation-triangle"></i> ' +
         localizer.localize('WARNING! This action cannot be undone!') +
         ' <i class="warning fa fa-exclamation-triangle"></i>',
@@ -522,9 +567,12 @@ function confirmDeleteCollection (collection) {
                         function (reason) {
                             SnapCloud.withCredentialsRequest(
                                 'DELETE',
-                                '/users/' + encodeURIComponent(collection.creator.username) +
-                                '/collections/' + encodeURIComponent(collection.name) +
-                                '?reason=' + encodeURIComponent(reason),
+                                '/users/' +
+                                    encodeURIComponent(
+                                        collection.creator.username) +
+                                    '/collections/' +
+                                    encodeURIComponent(collection.name) +
+                                    '?reason=' + encodeURIComponent(reason),
                                 done,
                                 genericError,
                                 'Could not delete collection'
@@ -547,7 +595,8 @@ function confirmDeleteCollection (collection) {
 
 function confirmFlagProject (project) {
     confirm(
-        localizer.localize('Are you sure you want to flag this project as inappropriate?'),
+        localizer.localize(
+            'Are you sure you want to flag this project as inappropriate?'),
         function (ok) {
             if (ok) {
                 SnapCloud.addProjectToCollection(
@@ -557,7 +606,8 @@ function confirmFlagProject (project) {
                     project.projectname,
                     function () {
                         alert(
-                            localizer.localize('This project has been flagged.'),
+                            localizer.localize(
+                                'This project has been flagged.'),
                             { title: localizer.localize('Project flagged') }
                         );
                     },
@@ -598,12 +648,14 @@ function canEditDescription (collection) {
     return ownsOrIsAdmin(collection);
 };
 function canUnpublish (item) {
-    return (sessionStorage.username == (item.username || item.creator.username)) ||
+    return (sessionStorage.username ==
+        (item.username || item.creator.username)) ||
         [ 'admin', 'moderator', 'reviewer' ].indexOf(sessionStorage.role) > -1;
 };
 
 function canDelete (item) {
-    return (sessionStorage.username == (item.username || item.creator.username)) ||
+    return (sessionStorage.username ==
+        (item.username || item.creator.username)) ||
         [ 'admin', 'moderator' ].indexOf(sessionStorage.role) > -1;
 };
 
@@ -615,10 +667,12 @@ function reasonDialog (item, onSuccess) {
             hack: 'Your ' + itemType + ' <strong>' + itemName + '</strong>' +
                     ' was trying to exploit a security vulnerability.',
             coc: 'Your ' + itemType + ' <strong>' + itemName + '</strong>' +
-                    ' has been found to violate the <a href="' + baseURL + '/coc">Code of Conduct</a>' +
+                    ' has been found to violate the <a href="' + baseURL +
+                    '/coc">Code of Conduct</a>' +
                     ' of the Snap<em>!</em> community website.',
             dmca: 'Your ' + itemType + ' <strong>' + itemName + '</strong>' +
-                    ' has been found to violate the <a href="' + baseURL + '/dmca">DMCA policy</a>' +
+                    ' has been found to violate the <a href="' + baseURL +
+                    '/dmca">DMCA policy</a>' +
                     ' of the Snap<em>!</em> community website.'
         };
     form.classList.add('reasons');
@@ -627,8 +681,9 @@ function reasonDialog (item, onSuccess) {
         [ 'coc', localizer.localize('Code of Conduct violation') ],
         [ 'dmca', localizer.localize('DMCA violation') ]
     ]).forEach(function (value, key) {
-        form.innerHTML += '<span class="option"><input type="radio" name="reason" value="' + key +
-            '"><label for="' + key +'">' + value + '</label></span>';
+        form.innerHTML +=
+            '<span class="option"><input type="radio" name="reason" value="' +
+            key + '"><label for="' + key +'">' + value + '</label></span>';
     });
     dialog(
         'Please choose a reason',
@@ -636,7 +691,8 @@ function reasonDialog (item, onSuccess) {
         function () {
             onSuccess.call(
                 this,
-                reasons[form.querySelector('input[name="reason"]:checked').value]
+                reasons[
+                    form.querySelector('input[name="reason"]:checked').value]
             );
         }
     );
@@ -648,16 +704,18 @@ function embedDialog (project) {
 
     form.classList.add('embed-options');
     form.innerHTML =
-            '<span class="info">' + localizer.localize('Please select the elements you wish ' +
-            'to include in the embedded project viewer:') + '</span>';
+            '<span class="info">' + localizer.localize(
+                'Please select the elements you wish to include in the '+
+                'embedded project viewer:') + '</span>';
 
     new Map([
         [ 'title', localizer.localize('Project title') ],
         [ 'author', localizer.localize('Project author') ],
         [ 'edit-button', localizer.localize('Edit button') ]
     ]).forEach(function (value, key) {
-        form.innerHTML += '<span class="option"><input type="checkbox" name="' + key + '" value="' + key +
-            '" checked><label for="' + key +'">' + value + '</label></span>';
+        form.innerHTML += '<span class="option"><input type="checkbox" name="' +
+            key + '" value="' + key + '" checked><label for="' + key +'">' +
+            value + '</label></span>';
     });
     form.appendChild(codeArea);
 
@@ -689,7 +747,8 @@ function collectProject (project) {
 
     form.classList.add('collect-form');
     form.innerHTML =
-        '<p class="info">' + localizer.localize('Please select the collection to which you want ' +
+        '<p class="info">' +
+        localizer.localize('Please select the collection to which you want ' +
         'to add this project:') + '</p>';
 
     SnapCloud.getUserCollections(
@@ -701,11 +760,15 @@ function collectProject (project) {
             collections = response.collections;
             if (collections[0]) {
                 collections.forEach(function (collection) {
-                    form.innerHTML += '<p class="option"><input type="radio" name="collection" value="' + collection.name +
+                    form.innerHTML +=
+                        '<p class="option"><input type="radio" ' +
+                        'name="collection" value="' + collection.name +
                         '"><label> ' + collection.name + '</label></p>';
                 });
             } else {
-                form.innerHTML = '<p>' + localizer.localize('You do not have any collections.') + '</p>';
+                form.innerHTML = '<p>' +
+                    localizer.localize('You do not have any collections.') +
+                    '</p>';
             }
             doneLoading('.collect-form');
         },
@@ -719,7 +782,8 @@ function collectProject (project) {
             var collection = collections.find(
                     function(collection) {
                         return collection.name ===
-                            form.querySelector('input[name="collection"]:checked').value;
+                            form.querySelector(
+                                'input[name="collection"]:checked').value;
                     }
             );
             SnapCloud.addProjectToCollection(
@@ -730,7 +794,8 @@ function collectProject (project) {
                 function () {
                     alert(
                         localizer.localize('Project added to collection') + '.',
-                        { title: localizer.localize('Project added to collection') }
+                        { title:
+                            localizer.localize('Project added to collection') }
                     );
                 },
                 genericError
