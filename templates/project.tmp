@@ -3,7 +3,7 @@
 <script src="js/inplace.js"></script>
 <link rel="stylesheet" href="style/project.css">
 
-<div hidden class="project big">
+<div class="project big">
     <div class="title">
         <h1></h1>
         <span class="remixed-from"></span>
@@ -98,11 +98,22 @@
             }
             document.querySelector('.title').append(authorSpan(project.username));
 
-            var iframe = document.createElement('iframe'),
-                placeholder = document.querySelector('.iframe-placeholder');
-            iframe.height = 406;
-            iframe.src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
-            placeholder.parentNode.replaceChild(iframe, placeholder);
+            loadIframe = function () {
+                var iframe = document.createElement('iframe'),
+                    placeholder = document.querySelector('.iframe-placeholder');
+                iframe.height = 406;
+                iframe.src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
+                placeholder.parentNode.replaceChild(iframe, placeholder);
+            }
+
+            if (document.visibilityState == 'visible') {
+                loadIframe();
+            } else {
+                document.addEventListener('visibilitychange', function() {
+                    loadIframe();
+                    document.removeEventListener('visibilitychange');
+                });
+            }
 
             document.querySelector('.notes').innerHTML = project.notes || '<small>' + localizer.localize('This project has no notes') + '</small>';
             document.querySelector('.created').append(formatDate(project.created));
