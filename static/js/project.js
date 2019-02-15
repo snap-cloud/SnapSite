@@ -182,10 +182,10 @@ function loadProjectFrame (project, placeholder) {
     if (document.visibilityState == 'visible') {
         doLoadIt();
     } else {
-        document.addEventListener('visibilitychange', function() {
+        document.onvisibilitychange = function() {
             doLoadIt();
-            document.removeEventListener('visibilitychange');
-        });
+            document.onvisibilitychange = nop;
+        };
     }
 };
 
@@ -862,16 +862,24 @@ function collectProject (project) {
 
 function toggleFullScreen () {
     var embed = document.querySelector('.embed'),
-        iframe = document.querySelector('.embed iframe');
+        iframe = document.querySelector('.embed iframe'),
+        controlBar = document.querySelector('.controlbar'),
+        buttons = document.querySelector('.buttons');
     if (embed.fullScreen) {
         embed.fullScreen = false;
         embed.style = embed.oldStyle;
         iframe.style = iframe.oldStyle;
+        buttons.style = buttons.oldStyle;
         document.body.style.overflow = 'auto';
+        buttons.style = buttons.oldStyle;
+        controlBar.style.position = 'inherit';
+        controlBar.querySelector('.start-button').style.display = 'auto';
+        controlBar.querySelector('.stop-button').style.display = 'auto';
     } else {
         embed.fullScreen = true;
         embed.oldStyle = embed.style;
         iframe.oldStyle = iframe.style;
+        buttons.oldStyle = buttons.style
         embed.style.position = 'fixed';
         embed.style.left = 0;
         embed.style.top = 0;
@@ -879,6 +887,8 @@ function toggleFullScreen () {
         embed.style.height = '100vh';
         iframe.style.height = '100%';
         document.body.style.overflow = 'hidden';
+        buttons.style.display = 'none';
+
     }
     embed.focus();
 };
@@ -911,4 +921,22 @@ function stopProject () {
         ide.embedOverlay.destroy();
         ide.embedPlayButton.destroy();
     }
+};
+
+function editProject () {
+    var embed = document.querySelector('.embed'),
+        iframe = document.querySelector('.embed iframe'),
+        controlBar = document.querySelector('.controlbar');
+        ide = iframe.contentWindow.world.children[0];
+    toggleFullScreen();
+    ide.isEmbedMode = false;
+    ide.toggleAppMode(false);
+    ide.controlBar.show();
+    if (ide.embedOverlay) {
+        ide.embedOverlay.destroy();
+        ide.embedPlayButton.destroy();
+    }
+    controlBar.style.position = 'fixed';
+    controlBar.querySelector('.start-button').style.display = 'none';
+    controlBar.querySelector('.stop-button').style.display = 'none';
 };
