@@ -90,7 +90,6 @@
         } else if (event.key == 'sessionStorage' && !sessionStorage.length) {
             var data = JSON.parse(event.newValue), value;
             for (key in data) { sessionStorage.setItem(key, data[key]); }
-            showSessionStorage();
         }
     });
     </script>
