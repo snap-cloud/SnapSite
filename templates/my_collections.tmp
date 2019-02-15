@@ -4,7 +4,7 @@
 <h1 localizable>My Collections</h1>
 @include=search_bar
 <div class="buttons">
-    <a class="pure-button new-collection">New Collection</a>
+    <a localizable class="pure-button new-collection">New Collection</a>
 </div>
 <script>
     ${widgetName}_loadPage =

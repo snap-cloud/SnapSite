@@ -1,5 +1,6 @@
 userButton = function (user, label, action, extraClass) {
     var button = document.createElement('a');
+    button.setAttribute('localizable', true);
     button.classList.add('pure-button');
     button.classList.add(label.toLowerCase().replace(/\s/g,''));
     if (extraClass) {

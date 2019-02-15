@@ -49,7 +49,7 @@ Localizer.prototype.setLanguage = function (lang) {
     location.reload();
 };
 
-Localizer.missingStrings = function (lang) {
+Localizer.findMissingStrings = function (lang) {
     var localizer = new Localizer(lang);
 
     if (!sessionStorage['missing-strings-' + lang]) {
@@ -63,18 +63,23 @@ Localizer.missingStrings = function (lang) {
             var string = element.innerHTML;
             if (!(localizer.translations[string])) {
                 missing[string] = '';
-                element.style.border = '2px dashed red';
+                element.style.outline = '2px dashed red';
+            } else {
+                element.style.outline = '2px solid green';
             }
         }
     );
 
     sessionStorage['missing-strings-' + lang] = JSON.stringify(missing);
+    return missing;
+};
 
-    if (Object.keys(missing)[0]) {
-        console.log(
-            'This page contains missing strings.\n' +
-            'They have been added to sessionStorage["missing-strings-' +
-            lang + '"] as stringified JSON.'
-        );
-    }
+Localizer.showMissingStrings = function (lang) {
+    Localizer.findMissingStrings(lang);
+    var win = window.open('data:application/json,' +
+            encodeURIComponent(sessionStorage['missing-strings-' + lang ]),
+        'Missing ' + lang + ' Strings',
+            'toolbar=no,location=no,directories=no,status=no,menubar=no' +
+            ',scrollbars=yes,resizable=yes,width=780,height=200,top=' +
+            (screen.height-400) + ',left='+(screen.width-840));
 };

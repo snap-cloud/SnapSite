@@ -1,7 +1,7 @@
 <h1><span class="username"></span><span localizable>'s public page</span></h1>
 @content
 <div hidden="true" class="profile">
-    <h2>Admin tools</h2>
+    <h2 localizable>Admin tools</h2>
 </div>
 <script src="js/dialog.js"></script>
 <script src="js/admin.js"></script>

@@ -227,14 +227,14 @@
         "Herramientas",
     "Blog":
         "Blog",
-    "I have read and agree to the <a target=\"_blank\" href=\"tos.html\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy.html\">Privacy Agreement</a>":
-        "He leído y acepto las <a target=\"_blank\" href=\"tos.html\">Condiciones del servicio</a> y el <a target=\"_blank\" href=\"privacy.html\">Acuerdo de privacidad</a>",
+    "I have read and agree to the <a target=\"_blank\" href=\"tos\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy\">Privacy Agreement</a>":
+        "He leído y acepto las <a target=\"_blank\" href=\"tos\">Condiciones del servicio</a> y el <a target=\"_blank\" href=\"privacy\">Acuerdo de privacidad</a>",
     "Materials":
         "Materiales",
     "Partners, sponsors and collaborators":
         "Socios, patrocinadores y colaboradores",
-    "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "Echa un vistazo a los <a href=\"examples.html\">ejemplos</a> o consulta el <a href=\"manual.html\">manual de referencia</a> para aprender más sobre el lenguaje, ¡o dirígete directamente al <a href=\"https://snap.berkeley.edu/run\">editor</a> y empieza a programar!",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"manual\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Echa un vistazo a los <a href=\"examples\">ejemplos</a> o consulta el <a href=\"manual\">manual de referencia</a> para aprender más sobre el lenguaje, ¡o dirígete directamente al <a href=\"https://snap.berkeley.edu/run\">editor</a> y empieza a programar!",
     "Discuss this in the forum":
         "Comenta esta entrada en el foro",
     "Edit button":
