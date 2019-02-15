@@ -46,8 +46,8 @@
             <!-- Dates and project meta -->
             <span class="dates">
                 <span localizable class="created"></span>.
-                <span localizable class="updated"></span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
-                <span localizable class="is-public">This project is </span><span localizable class="is-published"></span>.
+                <span localizable class="updated"></span><span localizable class="shared"></span><span localizable class="published"></span>.
+                <span localizable class="is-public"></span><span localizable class="is-published"></span>.
             </span>
         </div>
     </div>
@@ -82,33 +82,27 @@
         pageProject(),
         pageUser(),
         function (project) {
+            var datesDiv = document.querySelector('.dates'),
+                buttonsDiv = document.querySelector('.buttons');
             setTitle(pageProject() + localizer.localize(' by ') + pageUser() + ' - Snap! Build Your Own Blocks');
 
             // Fill up all fields
             fillProjectTitle(project, document.querySelector('.title'));
             loadProjectFrame(project, document.querySelector('.iframe-placeholder'));
             fillProjectNotes(project, document.querySelector('.notes'));
-            fillProjectDates(project, document.querySelector('.dates'));
+            fillProjectDates(project, datesDiv);
             fillRemixInfo(project, document.querySelector('.remixed-from'));
 
-            // Set up all buttons
-            document.querySelector('.buttons .share').hidden = project.ispublic || !canShare(project);
-            document.querySelector('.buttons .unshare').hidden = !project.ispublic || !canShare(project);
-            document.querySelector('.buttons .publish').hidden = (!project.ispublic || project.ispublished) ||
-                                                                    !canPublish(project) || sessionStorage.role === 'banned';
-            document.querySelector('.buttons .unpublish').hidden = (!project.ispublic || !project.ispublished) ||
-                                                                    !canUnpublish(project);
-            document.querySelector('.embed-button').hidden = !project.ispublic;
-            document.querySelector('.buttons .collect').hidden = !project.ispublished || !ownsOrIsAdmin(project);
-            document.querySelector('.buttons .flag').hidden = owns(project); // why whould you want to flag your own project?
-            document.querySelector('.buttons .delete').hidden = !canDelete(project);
+            // Set up button visibility according to user permissions and project visibility state
+            setProjectButtonVisibility(project, buttonsDiv)
 
+            // Set up button functionality
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
-            document.querySelector('.buttons .share').onclick = function () { confirmShareProject(project); };
-            document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareProject(project); };
-            document.querySelector('.buttons .publish').onclick = function () { confirmPublishProject(project); };
-            document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublishProject(project); }
+            document.querySelector('.buttons .share').onclick = function () { confirmShareProject(project, buttonsDiv, datesDiv); };
+            document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareProject(project, buttonsDiv, datesDiv); };
+            document.querySelector('.buttons .publish').onclick = function () { confirmPublishProject(project, buttonsDiv, datesDiv); };
+            document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublishProject(project, buttonsDiv, datesDiv); }
             document.querySelector('.buttons .embed-button').onclick = function () { embedDialog(project); }
             document.querySelector('.buttons .collect').onclick = function () { collectProject(project); }
             document.querySelector('.buttons .flag').onclick = function () { confirmFlagProject(project); }
@@ -119,5 +113,4 @@
         },
         genericError
     );
-
 </script>

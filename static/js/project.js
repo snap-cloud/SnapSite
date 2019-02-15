@@ -34,7 +34,8 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {
             var attribute = extraFields[fieldName];
-            div.appendChild(window[fieldName + 'Span'](eval('item.' + attribute)));
+            div.appendChild(
+                window[fieldName + 'Span'](eval('item.' + attribute)));
         });
     }
 
@@ -112,20 +113,26 @@ function fillProjectDates (project, datesElement) {
             ' ' + formatDate(project.lastupdated);
 
     if (project.ispublic) {
+        document.querySelector('.shared').hidden = false;
         document.querySelector('.shared').innerHTML =
             localizer.localize(', shared on') + ' ' +
             formatDate(project.lastshared);
-        document.querySelector('.is-published').innerHTML +=
-            (project.ispublished ? ' and listed' : ' but unlisted');
         if (project.ispublished) {
+            document.querySelector('.published').hidden = false;
             document.querySelector('.published').innerHTML =
                 localizer.localize(', published on') + ' ' +
                 formatDate(project.firstpublished);
+        } else {
+            document.querySelector('.published').hidden = true;
         }
-        document.querySelector('.is-public').innerHTML += 'public';
+        document.querySelector('.is-public').innerHTML =
+            'This project is public' +
+            (project.ispublished ? ' and listed' : ' but unlisted');
     } else {
         document.querySelector('.shared').hidden = true;
-        document.querySelector('.is-public').append('private');
+        document.querySelector('.published').hidden = true;
+        document.querySelector('.is-public').innerHTML =
+            'This project is private';
     }
 };
 
@@ -143,6 +150,25 @@ function fillRemixInfo (project, infoElement) {
         }
         infoElement.innerHTML += ')';
     }
+};
+
+function setProjectButtonVisibility (project, buttonsElement) {
+    buttonsElement.querySelector('.buttons .share').hidden =
+        project.ispublic || !canShare(project);
+    buttonsElement.querySelector('.buttons .unshare').hidden =
+        !project.ispublic || !canShare(project);
+    buttonsElement.querySelector('.buttons .publish').hidden =
+        (!project.ispublic || project.ispublished) ||
+            !canPublish(project) || sessionStorage.role === 'banned';
+    buttonsElement.querySelector('.buttons .unpublish').hidden =
+        (!project.ispublic || !project.ispublished) || !canUnpublish(project);
+    buttonsElement.querySelector('.embed-button').hidden = !project.ispublic;
+    buttonsElement.querySelector('.buttons .collect').hidden =
+        !project.ispublished || !ownsOrIsAdmin(project);
+    // why whould you want to flag your own project?
+    buttonsElement.querySelector('.buttons .flag').hidden = owns(project);
+    buttonsElement.querySelector('.buttons .delete').hidden =
+        !canDelete(project);
 };
 
 function loadProjectFrame (project, placeholder) {
@@ -172,7 +198,9 @@ function collectionControls (project) {
 
     removeAnchor.classList.add('clickable');
     removeAnchor.innerHTML = '<i class="fas fa-times-circle"></i>';
-    removeAnchor.onclick = function () { confirmRemoveFromCollection(project); };
+    removeAnchor.onclick = function () {
+        confirmRemoveFromCollection(project);
+    };
     controls.appendChild(removeAnchor);
 
     if (!(getUrlParameter('collection') == 'Flagged' &&
@@ -234,7 +262,7 @@ function confirmRemoveFromCollection (project) {
     );
 };
 
-function confirmShareProject (project) {
+function confirmShareProject (project, buttonsDiv, datesDiv) {
     confirm(
         localizer.localize('Are you sure you want to share this project?'),
         function (ok) {
@@ -249,7 +277,11 @@ function confirmShareProject (project) {
                                 '<br><a href="' + location.href + '">' +
                                 location.href + '</a>',
                             { title: localizer.localize('Project shared') },
-                            function () { location.reload(); }
+                            function () {
+                                project.ispublic = true;
+                                setProjectButtonVisibility(project, buttonsDiv);
+                                fillProjectDates(project, datesDiv);
+                            }
                         );
                     },
                     genericError
@@ -260,7 +292,7 @@ function confirmShareProject (project) {
     );
 };
 
-function confirmShareCollection (collection) {
+function confirmShareCollection (collection, buttonsDiv, datesDiv) {
     confirm(
         localizer.localize('Are you sure you want to share this collection?'),
         function (ok) {
@@ -274,7 +306,12 @@ function confirmShareCollection (collection) {
                             '<br><a href="' + location.href + '">' +
                             location.href + '</a>',
                         { title: localizer.localize('Collection shared') },
-                        function () { location.reload(); }
+                        function () {
+                            collection.ispublic = true;
+                            setCollectionButtonVisibility(collection,
+                                    buttonsDiv);
+                            fillCollectionDates(collection, datesDiv);
+                        }
                     );
                 },
                 genericError
@@ -284,7 +321,7 @@ function confirmShareCollection (collection) {
     );
 };
 
-function confirmUnshareProject (project) {
+function confirmUnshareProject (project, buttonsDiv, datesDiv) {
     confirm(
         localizer.localize(
             'Are you sure you want to stop sharing this project?'),
@@ -297,7 +334,12 @@ function confirmUnshareProject (project) {
                         alert(
                             localizer.localize('This project is now private.'),
                             { title: localizer.localize('Project unshared') },
-                            function () { location.reload() }
+                            function () {
+                                project.ispublic = false;
+                                project.ispublished = false;
+                                setProjectButtonVisibility(project, buttonsDiv);
+                                fillProjectDates(project, datesDiv);
+                            }
                         );
                     },
                     genericError
@@ -308,7 +350,7 @@ function confirmUnshareProject (project) {
     );
 };
 
-function confirmUnshareCollection (collection) {
+function confirmUnshareCollection (collection, buttonsDiv, datesDiv) {
     confirm(
         localizer.localize(
             'Are you sure you want to stop sharing this collection?'),
@@ -325,7 +367,13 @@ function confirmUnshareCollection (collection) {
                                 title:
                                     localizer.localize('Collection unshared')
                             },
-                            function () { location.reload() }
+                            function () {
+                                collection.ispublic = false;
+                                collection.ispublished = false;
+                                setCollectionButtonVisibility(collection,
+                                    buttonsDiv);
+                                fillCollectionDates(collection, datesDiv);
+                            }
                         );
                     },
                     genericError
@@ -336,7 +384,7 @@ function confirmUnshareCollection (collection) {
     );
 };
 
-function confirmPublishProject (project) {
+function confirmPublishProject (project, buttonsDiv, datesDiv) {
     confirm(
         localizer.localize('Are you sure you want to publish this project<br>' +
             'and make it visible in the Snap<em>!</em> website?'),
@@ -351,7 +399,11 @@ function confirmPublishProject (project) {
                                 'This project is now listed in the ' +
                                     'Snap<em>!</em> site.'),
                             { title: localizer.localize('Project published') },
-                            function () { location.reload() }
+                            function () {
+                                project.ispublished = true;
+                                setProjectButtonVisibility(project, buttonsDiv);
+                                fillProjectDates(project, datesDiv);
+                            }
                         );
                     },
                     genericError
@@ -362,7 +414,7 @@ function confirmPublishProject (project) {
     );
 };
 
-function confirmPublishCollection (collection) {
+function confirmPublishCollection (collection, buttonsDiv, datesDiv) {
     confirm(
         localizer.localize(
             'Are you sure you want to publish this collection<br>' +
@@ -379,7 +431,12 @@ function confirmPublishCollection (collection) {
                                     'Snap<em>!</em> site.'),
                             { title:
                                 localizer.localize('Collection published') },
-                            function () { location.reload() }
+                            function () {
+                                collection.ispublished = true;
+                                setCollectionButtonVisibility(collection,
+                                    buttonsDiv);
+                                fillCollectionDates(collection, datesDiv);
+                            }
                         );
                     },
                     genericError
@@ -390,14 +447,18 @@ function confirmPublishCollection (collection) {
     );
 };
 
-function confirmUnpublishProject (project) {
+function confirmUnpublishProject (project, buttonsDiv, datesDiv) {
     function done () {
         alert(
             localizer.localize(
                 'This project is not listed in the Snap<em>!</em> site anymore.'
             ),
             { title: localizer.localize('Project unpublished') },
-            function () { location.reload(); }
+            function () {
+                project.ispublished = false;
+                setProjectButtonVisibility(project, buttonsDiv);
+                fillProjectDates(project, datesDiv);
+            }
         );
     };
 
@@ -438,14 +499,18 @@ function confirmUnpublishProject (project) {
     );
 };
 
-function confirmUnpublishCollection (collection) {
+function confirmUnpublishCollection (collection, buttonsDiv, datesDiv) {
     function done () {
         alert(
             localizer.localize(
                 'This collection is not listed in the ' +
                     'Snap<em>!</em> site anymore.'),
             { title: localizer.localize('Collection unpublished') },
-            function () { location.reload(); }
+            function () {
+                collection.ispublished = false;
+                setCollectionButtonVisibility(collection, buttonsDiv);
+                fillCollectionDates(collection, datesDiv);
+            }
         );
     };
 
