@@ -35,11 +35,11 @@
         "Mein Passwort ändern",
     "Unknown error":
         "Unbekannter Fehler",
-    "Created on ":
-        "Erstellt am ",
-    "last updated on ":
-        "aktualisiert am ",
-    "shared on ":
+    "Created on":
+        "Erstellt am",
+    "last updated on":
+        "aktualisiert am",
+    "shared on":
         "geteilt am",
     "Edit":
         "Bearbeiten",
@@ -99,10 +99,10 @@
         " aber nicht gelistet ",
     "'s public page":
         "s öffentliche Seite",
-    "Last updated on ":
-        "Aktualisiert am ",
-    ", shared on ":
-        ", geteilt am ",
+    "Last updated on":
+        "Aktualisiert am",
+    ", shared on":
+        ", geteilt am",
     "This project can be shared via URL":
         "Dieses Projekt kann mit der Projekt-URL geteilt werden.",
     "This project is publicly listed":

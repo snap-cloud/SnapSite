@@ -15,10 +15,16 @@
 
 .collection img.thumbnail,
 .project img.thumbnail,
-.project iframe {
+.project iframe,
+.project .iframe-placeholder {
     background: rgba(255,255,255,0.5);
     border: 2px solid #2c3e50;
     box-sizing: border-box;
+}
+
+.project .iframe-placeholder {
+    display: block;
+    height: 406px;
 }
 
 .project.small .no-image,
@@ -118,7 +124,8 @@ img.collection-thumbnail {
     display: inline;
 }
 
-.project iframe {
+.project iframe,
+.project .iframe-placeholder {
     z-index: 2;
     border-radius: 0 0 5px 5px;
     width: 100%;

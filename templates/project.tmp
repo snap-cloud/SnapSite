@@ -3,7 +3,7 @@
 <script src="js/inplace.js"></script>
 <link rel="stylesheet" href="style/project.css">
 
-<div class="project big">
+<div hidden class="project big">
     <div class="title">
         <h1></h1>
         <span class="remixed-from"></span>
@@ -45,8 +45,8 @@
             <pre class="notes"> </pre>
             <!-- Dates and project meta -->
             <span class="dates">
-                <span localizable class="created">Created on </span>.
-                <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
+                <span localizable class="created"></span>.
+                <span localizable class="updated"></span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
                 <span localizable class="is-public">This project is </span><span localizable class="is-published"></span>.
             </span>
         </div>
@@ -85,67 +85,11 @@
             setTitle(pageProject() + localizer.localize(' by ') + pageUser() + ' - Snap! Build Your Own Blocks');
 
             // Fill up all fields
-            var title = document.querySelector('.title h1');
-
-            title.innerHTML = project.projectname;
-            if (canRename(project)) {
-                new InPlaceEditor(
-                    title,
-                    function () {
-                        SnapCloud.updateProjectName(
-                            pageProject(),
-                            title.textContent,
-                            function () { location.href = 'project.html?user=' + pageUser() + '&project=' + title.textContent; },
-                            genericError
-                        );
-                    })
-            }
-            document.querySelector('.title').append(authorSpan(project.username));
-
-            loadIframe = function () {
-                var iframe = document.createElement('iframe'),
-                    placeholder = document.querySelector('.iframe-placeholder');
-                iframe.height = 406;
-                iframe.src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
-                placeholder.parentNode.replaceChild(iframe, placeholder);
-            }
-
-            if (document.visibilityState == 'visible') {
-                loadIframe();
-            } else {
-                document.addEventListener('visibilitychange', function() {
-                    loadIframe();
-                    document.removeEventListener('visibilitychange');
-                });
-            }
-
-            document.querySelector('.notes').innerHTML = project.notes || '<small>' + localizer.localize('This project has no notes') + '</small>';
-            document.querySelector('.created').append(formatDate(project.created));
-            document.querySelector('.updated').append(formatDate(project.lastupdated));
-
-            if (project.ispublic) {
-                document.querySelector('.shared').append(formatDate(project.lastshared));
-                document.querySelector('.is-published').innerHTML += (project.ispublished ? ' and listed' : ' but unlisted');
-                if (project.ispublished) {
-                    document.querySelector('.published').innerHTML = localizer.localize(', published on ') + formatDate(project.firstpublished);
-                }
-                document.querySelector('.is-public').innerHTML += ('public');
-            } else {
-                document.querySelector('.shared').hidden = true;
-                document.querySelector('.is-public').append('private');
-            }
-
-            if (project.remixedfrom) {
-                var div = document.querySelector('.remixed-from');
-                div.innerHTML = localizer.localize('(remixed from ');
-                if (project.remixedfrom.projectname) {
-                    div.append(projectSpan(project.remixedfrom.username, project.remixedfrom.projectname));
-                    div.append(authorSpan(project.remixedfrom.username));
-                } else {
-                    div.append('a project that no longer exists');
-                }
-                div.innerHTML += ')';
-            }
+            fillProjectTitle(project, document.querySelector('.title'));
+            loadProjectFrame(project, document.querySelector('.iframe-placeholder'));
+            fillProjectNotes(project, document.querySelector('.notes'));
+            fillProjectDates(project, document.querySelector('.dates'));
+            fillRemixInfo(project, document.querySelector('.remixed-from'));
 
             // Set up all buttons
             document.querySelector('.buttons .share').hidden = project.ispublic || !canShare(project);
@@ -169,26 +113,6 @@
             document.querySelector('.buttons .collect').onclick = function () { collectProject(project); }
             document.querySelector('.buttons .flag').onclick = function () { confirmFlagProject(project); }
             document.querySelector('.buttons .delete').onclick = function () { confirmDeleteProject(project); }
-
-            // In-place notes editor
-            var notes = document.querySelector('.notes');
-            if (canEditNotes(project)) {
-                new InPlaceEditor(
-                    notes,
-                    function () {
-                        SnapCloud.updateNotes(
-                            pageProject(),
-                            notes.textContent,
-                            function () {
-                                if (notes.textContent == '') {
-                                    notes.innerHTML = '<small>' + localizer.localize('This project has no notes') + '</small>';
-                                }
-                            },
-                            genericError
-                        );
-                    }
-                );
-            }
 
             doneLoading('#wrapper');
             document.querySelector('.project').hidden = false;

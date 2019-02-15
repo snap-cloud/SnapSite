@@ -41,12 +41,12 @@
         "Cambiar mi contraseña",
     "Unknown error":
         "Error desconocido",
-    "Created on ":
-        "Creado el día ",
-    "last updated on ":
-        "actualizado el día ",
-    "shared on ":
-        "compartido el día ",
+    "Created on":
+        "Creado el día",
+    "last updated on":
+        "actualizado el día",
+    "shared on":
+        "compartido el día",
     "Edit":
         "Edita",
     "Download":
@@ -121,10 +121,10 @@
         " pero no está publicado en la web",
     "'s public page":
         ": página pública",
-    "Last updated on ":
-        "Actualizado por última vez en ",
-    ", shared on ":
-        ", compartido en ",
+    "Last updated on":
+        "Actualizado por última vez en",
+    ", shared on":
+        ", compartido en",
     "This project is public":
         "Este proyecto es público",
     " and listed":

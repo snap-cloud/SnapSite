@@ -43,6 +43,115 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField, descriptionField
     return div;
 };
 
+function fillProjectTitle(project, titleElement) {
+    var h1 = titleElement.querySelector('h1');
+    h1.innerHTML = project.projectname;
+    if (canRename(project)) {
+        new InPlaceEditor(
+            h1,
+            function () {
+                SnapCloud.updateProjectName(
+                    pageProject(),
+                    h1.textContent,
+                    function () {
+                        location.href = 'project.html?user=' +
+                            project.username + '&project=' +
+                            h1.textContent
+                    },
+                    genericError
+                );
+            })
+    }
+    titleElement.append(authorSpan(project.username));
+};
+
+function fillProjectNotes (project, notesElement) {
+    notesElement.innerHTML =
+        project.notes ||
+            '<small>' +
+                localizer.localize('This project has no notes') +
+                '</small>';
+
+    // In-place notes editor
+    if (canEditNotes(project)) {
+        new InPlaceEditor(
+            notesElement,
+            function () {
+                SnapCloud.updateNotes(
+                    pageProject(),
+                    notesElement.textContent,
+                    function () {
+                        if (notesElement.textContent == '') {
+                            notesElement.innerHTML = '<small>' +
+                                localizer.localize(
+                                    'This project has no notes') + '</small>';
+                        }
+                    },
+                    genericError
+                );
+            }
+        );
+    }
+};
+
+function fillProjectDates (project, datesElement) {
+    document.querySelector('.created').innerHTML =
+        localizer.localize('Created on') + ' ' + formatDate(project.created);
+    document.querySelector('.updated').innerHTML =
+        localizer.localize('Last updated on') +
+            ' ' + formatDate(project.lastupdated);
+
+    if (project.ispublic) {
+        document.querySelector('.shared').innerHTML =
+            localizer.localize(', shared on') + ' ' +
+            formatDate(project.lastshared);
+        document.querySelector('.is-published').innerHTML +=
+            (project.ispublished ? ' and listed' : ' but unlisted');
+        if (project.ispublished) {
+            document.querySelector('.published').innerHTML =
+                localizer.localize(', published on') + ' ' +
+                formatDate(project.firstpublished);
+        }
+        document.querySelector('.is-public').innerHTML += 'public';
+    } else {
+        document.querySelector('.shared').hidden = true;
+        document.querySelector('.is-public').append('private');
+    }
+};
+
+function fillRemixInfo (project, infoElement) {
+    if (project.remixedfrom) {
+        infoElement.innerHTML = localizer.localize('(remixed from ');
+        if (project.remixedfrom.projectname) {
+            infoElement.append(
+                projectSpan(
+                    project.remixedfrom.username,
+                    project.remixedfrom.projectname));
+            infoElement.append(authorSpan(project.remixedfrom.username));
+        } else {
+            infoElement.append('a project that no longer exists');
+        }
+        infoElement.innerHTML += ')';
+    }
+};
+
+function loadProjectFrame (project, placeholder) {
+    function doLoadIt () {
+        var iframe = document.createElement('iframe');
+        iframe.height = 406;
+        iframe.src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
+        placeholder.parentNode.replaceChild(iframe, placeholder);
+    }
+    if (document.visibilityState == 'visible') {
+        doLoadIt();
+    } else {
+        document.addEventListener('visibilitychange', function() {
+            doLoadIt();
+            document.removeEventListener('visibilitychange');
+        });
+    }
+};
+
 function collectionControls (project) {
     var controls = document.createElement('div'),
         removeAnchor = document.createElement('a'),

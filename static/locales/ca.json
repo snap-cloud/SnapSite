@@ -41,12 +41,12 @@
         "Canvia la meva contrasenya",
     "Unknown error":
         "Error desconegut",
-    "Created on ":
-        "Creat el dia ",
-    "last updated on ":
-        "actualitzat el dia ",
-    "shared on ":
-        "compartit el dia ",
+    "Created on":
+        "Creat el dia",
+    "last updated on":
+        "actualitzat el dia",
+    "shared on":
+        "compartit el dia",
     "Edit":
         "Edita",
     "Download":
@@ -121,12 +121,12 @@
         " però no està publicat al web",
     "'s public page":
         ": pàgina pública",
-    "Last updated on ":
-        "Actualizat per darrer cop el ",
-    ", shared on ":
-        ", compartit el ",
-    ", published on ":
-        ", publicat el ",
+    "Last updated on":
+        "Actualizat per darrer cop el",
+    ", shared on":
+        ", compartit el",
+    ", published on":
+        ", publicat el",
     "This project is public":
         "Aquest projecte és públic",
     " and listed":
