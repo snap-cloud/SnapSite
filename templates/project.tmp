@@ -52,28 +52,13 @@
         </div>
     </div>
 
-    <!-- Carousel of remixes -->
-    <div class="remixes">
-@param pageSize=5
-@param query=getRemixes
-@param widgetName=remix_carousel
-@param header="'Remixes'"
-@param user='pageUser()'
-@param extraParam='pageProject(),'
-@include=project_grid
-    </div>
-    <!-- Carousel of collections -->
-    <div class="collections">
-@param pageSize=5
-@param query=getCollectionsContainingProject
-@param widgetName=collection_carousel
-@param header="'Collections containing this project'"
-@param user='pageUser()'
-@param extraParam='pageProject(),'
-@include=collection_grid
-@param header=''
-@param extraParam=''
-    </div>
+<!-- Carousel of remixes -->
+@param widgetName=project_remixes
+@include=project_remixes
+<!-- Carousel of collections -->
+@param widgetName=project_collections
+@include=project_collections
+
 </div>
 
 <script>

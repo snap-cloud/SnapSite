@@ -1,0 +1,110 @@
+<!--
+    Any template that uses me needs to specify the following functions:
+    
+    // Defines how to retrieve a particular page from the DB
+    ${widgetName}_loadPage (
+        term,       // search term
+        pageSize,   // amount of elements per page
+        pageNumber, // current page being requested
+        onSuccess   // callback called when response comes back. Just leave as
+                    // `onSuccess` unless doing something very specific, as
+                    // this callback is defined by the search bar itself.
+    )
+
+    // Defines how to load a particular page
+    ${widgetName}_onLoadPage (
+        response,      // response from the server
+        targetElement  // HTML element where response should be rendered
+    )
+
+    Once these functions have been defined, just call:
+
+    ${widgetName}_initGrid();
+-->
+<div class="${widgetName} container">
+    <h2 class="${widgetName} header" localizable></h2>
+    <div class="bar">
+        <div hidden class="${widgetName} search">
+            <form action="${widgetName}">
+                <input type="text" name="query">
+                <i class="fas fa-search"></i>
+            </form>
+            <script>
+                var ${widgetName}_page = 1,
+                    ${widgetName}_totalPages = 1,
+                    ${widgetName}_pageSize = ${pageSize} || 150;
+
+                if (![${header}][0]) {
+                    document.querySelector('.${widgetName}.header').remove();
+                } else {
+                    document.querySelector('.${widgetName}.header').innerHTML =
+                        [${header}][0];
+                }
+
+                if ([${withSearch}][0]) {
+                    document.querySelector("${widgetName}.search").hidden =
+                        false;
+                };
+
+                document.querySelector('.${widgetName} form input').value =
+                    getUrlParameter('query');
+                
+                function ${widgetName}_toPage (pageNumber) {
+                    var ${widgetName}_div =
+                            document.querySelector('.${widgetName}.container'),
+                        ${widgetName}_listDiv =
+                            document.querySelector('.${widgetName}.list'),
+                        ${widgetName}_pageSpan =
+                            document.querySelector(
+                                '.${widgetName}.paginator .page'),
+                        ${widgetName}_totalPagesSpan =
+                            document.querySelector(
+                                '.${widgetName}.paginator .total-pages');
+
+                    ${widgetName}_listDiv.innerHTML = '';
+                    beganLoading('.${widgetName}.list');
+
+                    ${widgetName}_loadPage(
+                        getUrlParameter('query'),
+                        ${widgetName}_pageSize,
+                        pageNumber,
+                        function (response) {
+                            ${widgetName}_totalPages = response.pages;
+                            if (${widgetName}_totalPages == 0 ||
+                                (response.projects && !response.projects[0]) ||
+                                (response.collections &&
+                                    !response.collections[0]) ||
+                                (response.users && !response.users[0])
+                                // Until we fix the API this will do
+                            ) {
+                                ${widgetName}_div.remove();
+                                return;
+                            } else if (${widgetName}_totalPages == 1) {
+                                document.querySelector(
+                                    '.${widgetName}.paginator').remove();
+                            } else {
+                                ${widgetName}_totalPagesSpan.textContent =
+                                    ${widgetName}_totalPages;
+                            }
+
+                            ${widgetName}_onLoadPage(response,
+                                ${widgetName}_listDiv);
+
+                            doneLoading('.${widgetName}.list');
+                        }
+                    );
+
+                    ${widgetName}_page = pageNumber;
+                    ${widgetName}_pageSpan.textContent = pageNumber;
+                };
+
+                function ${widgetName}_initGrid () {
+                    ${widgetName}_toPage(1);
+                }
+
+            </script>
+        </div>
+    @include=paginator
+    </div>
+    <div class="${widgetName} list pure-g"></div>
+</div>

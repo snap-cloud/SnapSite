@@ -1,20 +1,15 @@
-<script src="js/project.js"></script>
-<script src="js/dialog.js"></script>
-<link rel="stylesheet" href="style/project.css">
-<h1 localizable>My Collections</h1>
-@param withSearch=true
+@param pageSize=5
+@param withSearch=false
+@param header="'Collections containing this project'"
 @include=grid
-<div class="buttons">
-    <a localizable class="pure-button new-collection">New Collection</a>
-</div>
 <script>
     ${widgetName}_loadPage =
         function (term, pageSize, pageNumber, onSuccess) {
-            SnapCloud.getUserCollections(
-                null, // username is implicit
+            SnapCloud.getCollectionsContainingProject(
+                pageUser(), // username is implicit
+                pageProject(),
                 pageNumber,
                 pageSize,
-                term,
                 onSuccess,
                 genericError,
                 'Could not fetch collection list'
@@ -23,6 +18,7 @@
         
     ${widgetName}_onLoadPage =
         function (response, targetElement) {
+            if (!response.collections[0]) { return; }
             response.collections.forEach(function (collection) {
                 targetElement.append(
                     newCollectionDiv(
@@ -42,22 +38,4 @@
         };
 
     ${widgetName}_initGrid();
-
-    document.querySelector('.new-collection').onclick = function () {
-        prompt(
-            localizer.localize('Collection name?'),
-            function (collectionName) {
-                SnapCloud.newCollection(
-                    collectionName,
-                    function (collection) {
-                        location.replace(
-                            collectionURL(SnapCloud.username, collectionName)
-                        );
-                    },
-                    genericError
-                ); 
-            },
-            nop
-        );
-    };
 </script>
