@@ -97,8 +97,7 @@
             setProjectButtonVisibility(project, buttonsDiv)
 
             // Set up button functionality
-            document.querySelector('.buttons .open').onclick = function () { editProject(project); };
-            //projectURL(project.username, project.projectname) + '&editMode&noRun';
+            document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
             document.querySelector('.buttons .share').onclick = function () { confirmShareProject(project, buttonsDiv, datesDiv); };
             document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareProject(project, buttonsDiv, datesDiv); };

@@ -863,7 +863,6 @@ function collectProject (project) {
 function toggleFullScreen () {
     var embed = document.querySelector('.embed'),
         iframe = document.querySelector('.embed iframe'),
-        controlBar = document.querySelector('.controlbar'),
         buttons = document.querySelector('.buttons');
     if (embed.fullScreen) {
         embed.fullScreen = false;
@@ -872,9 +871,6 @@ function toggleFullScreen () {
         buttons.style = buttons.oldStyle;
         document.body.style.overflow = 'auto';
         buttons.style = buttons.oldStyle;
-        controlBar.style.position = 'inherit';
-        controlBar.querySelector('.start-button').style.display = 'auto';
-        controlBar.querySelector('.stop-button').style.display = 'auto';
     } else {
         embed.fullScreen = true;
         embed.oldStyle = embed.style;
@@ -923,20 +919,10 @@ function stopProject () {
     }
 };
 
-function editProject () {
-    var embed = document.querySelector('.embed'),
-        iframe = document.querySelector('.embed iframe'),
-        controlBar = document.querySelector('.controlbar');
+function editProject (project) {
+    // an attempt to prevent reloading the project from the server when clicking
+    // on the edit button. It works but it loses the remixID information.
+    var iframe = document.querySelector('.embed iframe'),
         ide = iframe.contentWindow.world.children[0];
-    toggleFullScreen();
-    ide.isEmbedMode = false;
-    ide.toggleAppMode(false);
-    ide.controlBar.show();
-    if (ide.embedOverlay) {
-        ide.embedOverlay.destroy();
-        ide.embedPlayButton.destroy();
-    }
-    controlBar.style.position = 'fixed';
-    controlBar.querySelector('.start-button').style.display = 'none';
-    controlBar.querySelector('.stop-button').style.display = 'none';
+    window.open(snapURL + '#open:' + ide.serializer.serialize(ide.stage));
 };
