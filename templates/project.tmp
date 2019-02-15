@@ -11,6 +11,10 @@
     <div class="viewer pure-g">
         <!-- Project viewer -->
         <div class="embed pure-u-1-2">
+            <!-- Spinner shown while iframe hasn't been loaded -->
+            <i class="project-loader fas fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+
+            <!-- Project control bar -->
             <div class="controlbar">
                 <i class="present-button fas fa-expand clickable" onclick="toggleFullScreen();"></i>
                 <i class="start-button fas fa-flag clickable" onclick="runProject(event);"></i>

@@ -119,6 +119,7 @@ img.collection-thumbnail {
 }
 
 .project iframe {
+    z-index: 2;
     border-radius: 0 0 5px 5px;
     width: 100%;
 }
@@ -191,6 +192,16 @@ img.collection-thumbnail {
     flex-direction: column;
     align-items: stretch;
     margin-bottom: 0.5em;
+    position: relative;
+}
+
+.project.big .embed .project-loader {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    display: block;
+    width: 100%;
+    top: 200px;
 }
 
 .project.big .controlbar {
