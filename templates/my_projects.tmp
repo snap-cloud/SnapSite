@@ -1,15 +1,17 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Projects</h1>
-@include=search_bar
+@param withSearch=true
+@param widgetName=my_projects
+@include=grid
 <script>
     ${widgetName}_loadPage =
-        function (term, pageSize, pageNumber, onSuccess) {
+        function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.withCredentialsRequest(
                 'GET',
                 '/projects/%username?updatingnotes=true&pagesize=' + pageSize +
                 '&page=' + pageNumber + '&withthumbnail=true&matchtext=' +
-                (term ? term : ''),
+                (query ? query : ''),
                 onSuccess,
                 genericError,
                 'Could not fetch project list'
@@ -35,5 +37,5 @@
             });
         };
 
-    ${widgetName}_initSearch();
+    ${widgetName}_initGrid();
 </script>

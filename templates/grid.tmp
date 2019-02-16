@@ -3,7 +3,7 @@
     
     // Defines how to retrieve a particular page from the DB
     ${widgetName}_loadPage (
-        term,       // search term
+        query,      // search query
         pageSize,   // amount of elements per page
         pageNumber, // current page being requested
         onSuccess   // callback called when response comes back. Just leave as
@@ -42,7 +42,7 @@
                 }
 
                 if ([${withSearch}][0]) {
-                    document.querySelector("${widgetName}.search").hidden =
+                    document.querySelector(".${widgetName}.search").hidden =
                         false;
                 };
 

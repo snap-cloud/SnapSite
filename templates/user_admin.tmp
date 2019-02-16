@@ -8,16 +8,17 @@
 <script src="js/admin.js"></script>
 <link rel="stylesheet" href="style/admin.css">
 <h1 localizable>User Administration</h1>
-@include=search_bar
+@param withSearch=true
+@param widgetName=user_admin
+@include=grid
 <script>
     ${widgetName}_loadPage =
-        function (term, pageSize, pageNumber, onSuccess) {
+        function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.withCredentialsRequest(
                 'GET',
                 '/users?' +
-                    (term ?
-                        'matchtext=' + encodeURIComponent(term) + '&'
-                        : '' ) +
+                    (query ?
+                        'matchtext=' + encodeURIComponent(query) + '&' : '' ) +
                     'pagesize=' + pageSize + '&page=' + pageNumber,
                 onSuccess,
                 genericError,
@@ -32,5 +33,5 @@
             });
         };
 
-    ${widgetName}_initSearch();
+    ${widgetName}_initGrid();
 </script>
