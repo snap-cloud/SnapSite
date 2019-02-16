@@ -11,14 +11,12 @@
                 pageNumber,
                 pageSize,
                 onSuccess,
-                genericError,
-                'Could not fetch remixes'
+                genericError
             );
         };
         
     ${widgetName}_onLoadPage =
         function (response, targetElement) {
-            if (!response.projects[0]) { return; }
             response.projects.forEach(function (project) {
                 targetElement.append(
                     newProjectDiv(

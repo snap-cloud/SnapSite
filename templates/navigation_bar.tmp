@@ -15,7 +15,7 @@
             <i class="pure-u-1-6"></i>
             <div class="search pure-u-1-6">
                 <form action="search">
-                    <input type="text" name="term">
+                    <input type="text" name="query">
                     <i class="fas fa-search"></i>
                 </form>
             </div>

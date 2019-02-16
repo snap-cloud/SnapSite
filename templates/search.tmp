@@ -1,27 +1,121 @@
-<h1><span localizable>Search Results:</span> <span class="term"></span></h1>
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+<h1><span localizable>Search Results:</span> <span class="query"></span></h1>
 <script>
-    var term = getUrlParameter('term');
-    document.querySelector('.term').append(term);
+    document.querySelector('.query').append(getUrlParameter('query'));
 </script>
 @param pageSize=15
-@param query=getPublishedProjectList
-@param extraParam='getUrlParameter("term") || null,'
-@param widgetName=project_results
+@param withSearch=false
 @param header="'Projects'"
-@include=project_grid
+@param widgetName=project_results
+@include=grid
+<script>
+    project_results_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getPublishedProjectList(
+                null, // no username
+                pageNumber,
+                pageSize,
+                query,
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
 
-@param user='null'
-@param pageSize=15
-@param query=getCollections
-@param extraParam='getUrlParameter("term") || null,'
-@param widgetName=collection_results
+    project_results_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project, 
+                        { 
+                            size: 'small', 
+                            gridSize: 5, 
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            }); 
+        };
+
+    project_results_initGrid();
+</script>
+
 @param header="'Collections'"
-@include=collection_grid
+@param widgetName=collection_results
+@include=grid
+<script>
+    collection_results_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollections(
+                pageNumber,
+                pageSize,
+                query,
+                onSuccess,
+                genericError
+            );
+
+        };
+
+    collection_results_onLoadPage =
+        function (response, targetElement) {
+            response.collections.forEach(function (collection) {
+                targetElement.append(
+                    newCollectionDiv(
+                        collection, 
+                        { 
+                            size: 'small', 
+                            gridSize: 5, 
+                            extraFields: {
+                                isPublic: 'shared',
+                                isPublished: 'published',
+                                author: 'creator.username'
+                            }
+                        }
+                    )
+                );
+            }); 
+        };
+
+    collection_results_initGrid();
+</script>
 
 @param pageSize=51
-@param widgetName=user_results
 @param header="'Users'"
-@include=user_grid
+@param widgetName=user_results
+@include=grid
+<script>
+    user_results_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.request(
+                'GET',
+                '/users?pagesize=' + pageSize +
+                    '&page=' + pageNumber +
+                    '&matchtext=' + encodeURIComponent(query),
+                onSuccess,
+                genericError,
+                'Could not fetch user list'
+            );
+
+        };
+
+    user_results_onLoadPage =
+        function (response, targetElement) {
+            response.users.forEach(function (user) {
+                var div = document.createElement('div');
+                div.classList.add('pure-u-1-3');
+                div.classList.add('user');
+                div.appendChild(userAnchor(user.username));
+                targetElement.append(div);
+            }); 
+        };
+
+    user_results_initGrid();
+</script>
 
 @param header=''
-@param extraParam=''
