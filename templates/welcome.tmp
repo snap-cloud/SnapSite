@@ -41,6 +41,6 @@
 @param user="'snapcloud'"
 @param extraParam="collection,"
 @param widgetName=curated
-@param header="'Curated ' + collection"
+@param header="collection"
 @include=project_grid
 @param header=''
