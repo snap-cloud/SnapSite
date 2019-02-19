@@ -1,296 +1,338 @@
 {
+    "Welcome to Snap<em>!</em>":
+        "欢迎使用Snap!",
+    "Run Snap<em>!</em>":
+        "运行Snap!",
+    "Explore":
+        "探索",
+    "Forum":
+        "论坛",
+    "Join":
+        "加入",
+    "Log In":
+        "登录",
+    "Language":
+        "语言",
+    "My Projects":
+        "我的项目",
+    "My Public Page":
+        "我的展示页",
+    "My Profile":
+        "我的资料",
+    "Joined in ":
+        "已加入",
+    "Email: ":
+        "电邮: ",
+    "Change Your Password":
+        "更改您的密码",
+    "Current Password":
+        "当前密码",
+    "New Password":
+        "设置新密码",
+    "Repeat New Password":
+        "再次输入新密码",
+    "Change My Password":
+        "更改密码",
+    "Unknown error":
+        "未知错误",
+    "Created on":
+        "创建于",
+    "last updated on":
+        "最后更新于",
+    "shared on":
+        "分享于",
+    "Edit":
+        "编辑",
+    "Download":
+        "下载",
+    "Share":
+        "分享",
+    "Publish":
+        "发布",
+    "Unpublish":
+        "取消发布",
+    "Delete":
+        "删除",
+    "Are you sure you want to share this project?":
+        "确认要分享这个项目么？",
+    "You can now access this project at:":
+        "您现在可以访问这个项目了，地址是:",
+    "Unshare project":
+        "取消分享项目",
+    "Are you sure you want to stop sharing this project?":
+        "确认不再分享这个项目了么？",
+    "Project unshared":
+        "项目已取消分享",
+    "This project is now private.":
+        "这个项目目前是私有的。",
+    "Publish project":
+        "发布项目",
+    "Are you sure you want to publish this project<br>and make it visible in the Snap<em>!</em> website?":
+        "确认要公开这个项目并显示在Snap!网站上么？",
+    "Project published":
+        "项目已发布",
+    "Unpublish project":
+        "取消发布项目",
+    "Are you sure you want to unpublish this project<br>and hide it from the Snap<em>!</em> website?":
+        "确认不再公开这个项目并且在Snap!网站上也不再可见么？",
+    "Project unpublished":
+        "项目已取消发布",
+    "This project is not listed in the Snap<em>!</em> site anymore.":
+        "这个项目已经不在Snap!社区的列表中了。",
+    "Delete project":
+        "删除项目",
+    "Are you sure you want to delete this project?":
+        "确认要删除这个项目么？",
+    "This project has been deleted.":
+        "项目已经被删除。",
+    "Project deleted":
+        "项目已删除",
+    "This project has no notes":
+        "这个项目没有说明",
+    " by ":
+        " 由 ",
+    "public":
+        "公开的",
+    "private":
+        "私有的",
+    " but unlisted":
+        "但未被列出",
+    "'s public page":
+        "的展示页",
+    "Last updated on":
+        "最后更新于",
+    ", shared on":
+        ", 分享于",
+    "This project can be shared via URL":
+        "这个项目可以通过URL链接进行分享",
+    "This project is publicly listed":
+        "这个项目被公开列出了",
+    "This project is unlisted":
+        "这个项目未被列出",
+    "Latest projects":
+        "最新项目",
+    "Search Results:":
+        "搜索结果",
+    "Reset Your Password":
+        "重设您的密码",
+    "Reset My Password":
+        "重设我的密码",
+    "Create a Snap<em>!</em> account":
+        "创建Snap!账号",
+    "Username":
+        "用户名称",
+    "Password":
+        "密码",
+    "Repeat Password":
+        "再次输入密码",
+    "Email address":
+        "邮件地址",
+    "Privacy Agreement":
+        "隐私协议",
+    "Sign up":
+        "注册",
+    "Log into Snap<em>!</em>":
+        "登录到Snap!",
+    "keep me logged in":
+        "保持登录状态",
+    "Log in":
+        "登录",
+    "* I forgot my password":
+        "忘记了密码",
+    "DMCA":
+        "DMCA",
+    "Privacy":
+        "隐私",
+    "Contact Us":
+        "联系我们",
+    "Change Password":
+        "更改密码",
+    "Log Out":
+        "退出登录",
+    "OK":
+        "确定",
+    "Project shared":
+        "项目已分享",
+    "This project is now listed in the Snap<em>!</em> site.":
+        "这个项目已经在Snap!社区中列出了。",
+    "WARNING! This action cannot be undone!":
+        "注意！这个操作无法被撤销！",
+    "Terms of Service":
+        "服务条款",
+    "Welcome to Snap":
+        "欢迎使用Snap!",
+    " and listed":
+        "并且被列出",
+    "Cancel":
+        "取消",
+    "Ok":
+        "确定",
+    "Sign Up":
+        "注册",
+    "This project is private":
+        "这个项目是私有的。",
+    "This project is public":
+        "这个项目是公开的",
+    "Administration":
+        "管理",
+    "Share project":
+        "分享项目",
+    "administrator":
+        "管理员",
+    "A link to reset your password has been<br>sent to your email account.":
+        "一个用来重设密码的链接已经被发送至您的邮箱。",
+    "Snap<em>!</em> is a broadly inviting programming language for kids and adults that's also a platform for serious study of computer science.":
+        "Snap!是一种对儿童和成人具有广泛吸引力的编程语言，同时也是重要的计算机科学学习平台",
+    "Unshare":
+        "取消分享",
     "About":
         "关于",
     "About Snap<em>!</em>":
         "关于Snap!",
-    "admin":
-        "管理",
-    "Administration":
-        "管理",
-    "administrator":
-        "管理员",
-    "Administrator":
-        "管理员",
-    "A link to reset your password has been<br>sent to your email account.":
-        "一个用来重设密码的链接已经被发送至您的邮箱。",
-    " and listed":
-        "并且被列出",
-    "Are you sure you want to delete this project?":
-        "确认要删除这个项目么？",
-    "Are you sure you want to delete user":
-        "确认要删除这个用户么？",
-    "Are you sure you want to delete your user account?":
-        "确认要删除您的用户账号么？",
-    "Are you sure you want to publish this project<br>and make it visible in the Snap<em>!</em> website?":
-        "确认要公开这个项目并显示在Snap!网站上么？",
-    "Are you sure you want to share this project?":
-        "确认要分享这个项目么？",
-    "Are you sure you want to stop sharing this project?":
-        "确认不再分享这个项目了么？",
-    "Are you sure you want to unpublish this project<br>and hide it from the Snap<em>!</em> website?":
-        "确认不再公开这个项目并且在Snap!网站上也不再可见么？",
-    "Ban":
-        "禁止",
-    "banned":
-        "被禁止",
-    "Become":
-        "成为",
-    "Blog":
-        "博客",
-    " but unlisted":
-        "但未被列出",
-    " by ":
-        " 由 ",
-    "Cancel":
-        "取消",
-    "Change Email":
-        "更改邮箱",
-    "Change My Email":
-        "更改我的邮箱",
-    "Change My Password":
-        "更改密码",
-    "Change Password":
-        "更改密码",
-    "Change Your Password":
-        "更改您的密码",
-    "Contact Us":
-        "联系我们",
-    "Create a Snap<em>!</em> account":
-        "创建Snap!账号",
-    "Created on ":
-        "创建于",
     "Credits":
         "积分",
-    "Current Password":
-        "当前密码",
-    "Delete":
-        "删除",
-    "Delete my Account":
-        "删除我的账号",
-    "Delete project":
-        "删除项目",
-    "Delete user":
-        "删除用户",
-    "Delete your Account":
-        "删除您的账号",
-    "Discuss this in the forum":
-        "在论坛中讨论此项",
-    "DMCA":
-        "DMCA",
-    "Download":
-        "下载",
-    "Edit":
-        "编辑",
-    "Edit button":
-        "编辑按钮",
-    "Email: ":
-        "电邮: ",
-    "Email address":
-        "邮件地址",
-    "Emails do not match":
-        "邮箱不匹配",
-    "Embed":
-        "嵌入",
-    "Embed Options":
-        "嵌入选项",
     "Enjoy the preview, and thank you for your understanding!":
         "请享受预览，感谢您的支持！",
     "Examples":
         "示例",
-    "Explore":
-        "探索",
     "Extensions":
         "扩展",
-    "Forum":
-        "论坛",
-    "* I forgot my password":
-        "忘记了密码",
-    "I have read and agree to the <a target=\"_blank\" href=\"tos.html\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy.html\">Privacy Agreement</a>":
-        "我已经阅读并同意 <a target=\"_blank\" href=\"tos.html\">服务条款</a> 和 <a target=\"_blank\" href=\"privacy.html\">隐私协议</a>",
-    "Join":
-        "加入",
-    "Joined in ":
-        "已加入",
-    "keep me logged in":
-        "保持登录状态",
-    "Language":
-        "语言",
-    "last updated on ":
-        "上次更新时间 ",
-    "Last updated on ":
-        "上次更新时间 ",
-    "Latest projects":
-        "最新项目",
     "Latest Projects":
         "最新项目",
     "Learning":
         "学习",
     "Legal":
         "合法的",
-    "Log in":
-        "登录",
-    "Log In":
-        "登录",
-    "Log into Snap<em>!</em>":
-        "登录到Snap!",
-    "Log Out":
-        "退出登录",
-    "Materials":
-        "素材",
     "Mirrors":
         "镜像",
-    "moderator":
-        "版主",
-    "My Profile":
-        "我的资料",
-    "My Projects":
-        "我的项目",
-    "My Public Page":
-        "我的展示页",
-    "New Email":
-        "新邮件",
-    "New Password":
-        "设置新密码",
-    "Ok":
-        "确定",
-    "OK":
-        "确定",
     "Partners":
         "合作伙伴",
+    ", published on ":
+        "发布于 ",
+    "Reference Manual":
+        "参考手册",
+    "Source Code":
+        "源代码",
+    "Support":
+        "支持",
+    "Technical Requirements":
+        "技术需求",
+    "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
+        "这是即将发布的Snap!社区的预览版，请了解本网站正在建设中并将在未来几个月持续更新。更多的功能正在开发中。",
+    "Tools":
+        "工具",
+    "Login failed":
+        "登录失败",
+    "Could not login: No user with this username exists":
+        "登录失败: 该用户不存在",
+    "Could not login: wrong password":
+        "登录失败: 密码错误",
+    "I have read and agree to the <a target="_blank" href="tos">Terms of Service</a> and the <a target="_blank" href="privacy">Privacy Agreement</a>":
+        "我已经阅读并同意 <a target="_blank" href="tos">服务条款</a> 和 <a target="_blank" href="privacy">隐私协议</a>",
+    "Take a look at some <a href="examples">examples</a> or check out the <a href="manual">reference manual</a> to learn more about it, or head straight into the <a href="https://snap.berkeley.edu/run">editor</a> and start programming right away!":
+        "请观看一些  <a href="examples">例子</a> 或参考 <a href="manual">帮助文档</a> 以了解更多, 或者直接运行 <a href="https://snap.berkeley.edu/run">Snap!</a> 立即开始编程!",
+    "Blog":
+        "博客",
+    "Materials":
+        "素材",
     "Partners, sponsors and collaborators":
         "合作伙伴，赞助商和协作单位",
-    "Password":
-        "密码",
+    "Discuss this in the forum":
+        "在论坛中讨论此项",
+    "Edit button":
+        "编辑按钮",
+    "Emails do not match":
+        "邮箱不匹配",
+    "Embed":
+        "嵌入",
+    "Embed Options":
+        "嵌入选项",
     "Please make sure that you have entered your<br>email twice and that both emails match.":
         "请确认您已经输入了两次邮件地址并且它们是相同的。",
     "Please select the elements you wish to include in the embedded project viewer:":
         "请选择您想在嵌入式项目浏览器中包含的组件:",
-    "Privacy":
-        "隐私",
-    "private":
-        "私有的",
     "Project author":
         "项目作者",
-    "Project deleted":
-        "项目已删除",
-    "Project published":
-        "项目已发布",
-    "Project shared":
-        "项目已分享",
     "Project title":
         "项目标题",
-    "Project unpublished":
-        "项目已取消发布",
-    "Project unshared":
-        "项目已取消分享",
-    "public":
-        "公开的",
-    "Publish":
-        "发布",
-    ", published on ":
-        "发布于 ",
-    "Publish project":
-        "发布项目",
-    "Reference Manual":
-        "参考手册",
     "Repeat email address":
         "再次输入邮件地址",
+    "Add to Collection":
+        "添加至作品集",
+    "admin":
+        "管理",
+    "Administrator":
+        "管理员",
+    "Admin tools":
+        "管理工具",
+    "Are you sure you want to delete user":
+        "确认要删除这个用户么？",
+    "Are you sure you want to delete your user account?":
+        "确认要删除您的用户账号么？",
+    "Ban":
+        "禁止",
+    "banned":
+        "被禁止",
+    "Become":
+        "成为",
+    "Change Email":
+        "更改邮箱",
+    "Change My Email":
+        "更改我的邮箱",
+    "Collections":
+        "作品集",
+    "Collections containing this project":
+        "作品集包含了这个项目",
+    "Curated Art Projects":
+        "精选艺术项目",
+    "Curated Fractals":
+        "精选分型项目",
+    "Curated Games":
+        "精选游戏",
+    "Curated Science Projects":
+        "精选科学项目",
+    "Delete my Account":
+        "删除我的账号",
+    "Delete user":
+        "删除用户",
+    "Delete your Account":
+        "删除您的账号",
+    "Featured Projects":
+        "经典项目",
+    "Flagged Projects":
+        "星标项目",
+    "moderator":
+        "版主",
+    "My Collections":
+        "",
+    "New Email":
+        "新邮件",
+    "Offline Version":
+        "离线版本",
+    "Projects":
+        "项目",
+    "Remixes":
+        "改编",
     "Repeat New Email":
         "再次输入新的邮件地址",
-    "Repeat New Password":
-        "再次输入新密码",
-    "Repeat Password":
-        "再次输入密码",
-    "Reset My Password":
-        "重设我的密码",
-    "Reset Your Password":
-        "重设您的密码",
+    "Report":
+        "报告",
+    "Research":
+        "探索",
     "reviewer":
         "浏览者",
     "Role":
         "角色",
-    "Run Snap<em>!</em>":
-        "运行Snap!",
-    "Search Results:":
-        "搜索结果",
     "Send a message":
         "发送消息",
-    "Share":
-        "分享",
-    ", shared on ":
-        ", 分享于 ",
-    "shared on ":
-        "分享于",
-    "Share project":
-        "分享项目",
-    "Sign up":
-        "注册",
-    "Sign Up":
-        "注册",
-    "Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.":
-        "Snap!是一种对儿童和成人具有广泛吸引力的编程语言，同时也是重要的计算机科学学习平台",
-    "Source Code":
-        "源代码",
-    "'s public page":
-        "的展示页",
     "standard":
         "标准的",
-    "Support":
-        "支持",
-    "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "请观看一些  <a href=\"examples.html\">例子</a> 或参考 <a href=\"manual.html\">帮助文档</a> 以了解更多, 或者直接运行 <a href=\"https://snap.berkeley.edu/run\">Snap!</a> 立即开始编程!",
-    "Technical Requirements":
-        "技术需求",
-    "Terms of Service":
-        "服务条款",
-    "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
-        "这是即将发布的Snap!社区的预览版，请了解本网站正在建设中并将在未来几个月持续更新。更多的功能正在开发中。",
-    "This project can be shared via URL":
-        "这个项目可以通过URL链接进行分享",
-    "This project has been deleted.":
-        "项目已经被删除。",
-    "This project has no notes":
-        "这个项目没有说明",
-    "This project is not listed in the Snap<em>!</em> site anymore.":
-        "这个项目已经不在Snap!社区的列表中了。",
-    "This project is now listed in the Snap<em>!</em> site.":
-        "这个项目已经在Snap!社区中列出了。",
-    "This project is now private.":
-        "这个项目目前是私有的。",
-    "This project is private":
-        "这个项目是私有的。",
-    "This project is public":
-        "这个项目是公开的",
-    "This project is publicly listed":
-        "这个项目被公开列出了",
-    "This project is unlisted":
-        "这个项目未被列出",
-    "Tools":
-        "工具",
-    "Unknown error":
-        "未知错误",
-    "Unpublish":
-        "取消发布",
-    "Unpublish project":
-        "取消发布项目",
-    "Unshare":
-        "取消分享",
-    "Unshare project":
-        "取消分享项目",
     "User Administration":
         "用户管理",
     "User is not verified":
         "用户未验证",
-    "Username":
-        "用户名称",
+    "Users":
+        "用户",
     "Verify":
         "验证",
-    "WARNING! This action cannot be undone!":
-        "注意！这个操作无法被撤销！",
-    "Welcome to Snap":
-        "欢迎使用Snap!",
-    "Welcome to Snap<em>!</em>":
-        "欢迎使用Snap!",
-    "You can now access this project at:":
-        "您现在可以访问这个项目了，地址是:"
 }
