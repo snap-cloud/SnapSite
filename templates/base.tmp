@@ -6,7 +6,7 @@
         <meta name="author" content="Bernat Romagosa">
         <meta name="snap-cloud-domain"
             location="https://cloud.snap.berkeley.edu">
-        <link rel="icon" href="favicon.png">
+        <link rel="icon" href="favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- External libs, both stylesheets and JS -->
         <link rel="stylesheet" href="libs/reset.css">
