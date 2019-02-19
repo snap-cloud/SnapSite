@@ -4,9 +4,30 @@
     target="_blank">Scratch</a> and written by Jens Mönig and Brian Harvey.</p>
 <p>© <span class="year"></span> by Jens Mönig and Brian Harvey.</p>
 
+<h3>Contributors</h3>
+<ul class="indent not-v-spaced">
+    <li>Nathan Dinsmore: Saving/Loading, Snap-Logo Design,
+ countless bugfixes and optimizations</li>
+    <li>Kartik Chandra: Paint Editor</li>
+    <li>Michael Ball: Time/Date UI, Library Import Dialog,
+ countless bugfixes and optimizations</li>
+    <li>Bartosz Leper: Retina Display Support</li>
+    <li>Bernat Romagosa: Countless contributions</li>
+    <li>Carles Paredes: Initial Vector Paint Editor</li>
+    <li>"Ava" Yuan Yuan, Dylan Servilla: Graphic Effects</li>
+    <li>Kyle Hotchkiss: Block search design</li>
+    <li>Brian Broll: Many bugfixes and optimizations</li>
+    <li>Ian Reynolds: UI Design, Event Bindings, Sound primitives</li>
+    <li>Ivan Motyashov: Initial Squeak Porting</li>
+    <li>Lucas Karahadian: Piano Keyboard Design</li>
+    <li>Davide Della Casa: Morphic Optimizations</li>
+    <li>Achal Dave: Web Audio</li>
+    <li>Joe Otto: Morphic Testing and Debugging</li>
+</ul>
+
 <h2>Snap<em>!</em> Cloud</h2>
 <p>The Snap<em>!</em> <a href="https://cloud.snap.berkeley.edu/static"
-    target="_blank">cloud</a> is written by Bernat Romagosa and Michael Ball.
+     target="_blank">cloud</a> is written by Bernat Romagosa and Michael Ball.
 </p>
 <p>© <span class="year"></span> by Bernat Romagosa and Michael Ball.</p>
 
