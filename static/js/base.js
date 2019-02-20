@@ -3,7 +3,8 @@ var snapURL = location.origin + '/snap/snap.html',
     modules = [], // compatibility with cloud.js
     nop = function () {},
     localizer = new Localizer(),
-    buttonDefaults = { done: { text: 'Ok', default: true }, cancel: { text: 'Cancel' } };
+    buttonDefaults =
+        { done: { text: 'Ok', default: true }, cancel: { text: 'Cancel' } };
 
 function getUrlParameter (param) {
     var regex = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)'),
@@ -73,9 +74,10 @@ function isPublicSpan (isPublic) {
         tooltip = isPublic ?
             'This item can be shared via URL' :
             'This item is private',
-        faClass = isPublic ? 'fa-lock-open' : 'fa-lock';
+        faClass = isPublic ? 'fa-link' : 'fa-unlink';
     span.classList.add('is-public');
-    span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
+    span.innerHTML = '<small><i class="fas ' + faClass +
+        '" aria-hidden="true"></i></small>';
     span.title = localizer.localize(tooltip);
     return span;
 };
@@ -83,12 +85,13 @@ function isPublicSpan (isPublic) {
 function isPublishedSpan (isPublished) {
     var span = document.createElement('span'),
         tooltip = isPublished ?
-            'This item is publicly listed' :
-            'This item is unlisted',
-        faClass = isPublished ? 'fa-eye' : 'fa-user-secret';
+            'This item is published' :
+            'This item is unpublished',
+        faClass = isPublished ? 'fa-eye' : 'fa-eye-slash';
 
     span.classList.add('is-published');
-    span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
+    span.innerHTML = '<small><i class="fas ' + faClass +
+        '" aria-hidden="true"></i></small>';
     span.title = localizer.localize(tooltip);
     return span;
 };
@@ -134,13 +137,17 @@ function beganLoading (selector) {
     if (selector) {
         loader = document.createElement('div');
         loader.className = 'loader';
-        loader.innerHTML = '<i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>';
+        loader.innerHTML =
+            '<i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>';
         document.querySelector(selector).append(loader);
     }
 };
 
 function doneLoading (selector) {
-    var element = document.querySelector(selector ? (selector + '> .loader') : '#loading');
+    var element = document.querySelector(
+            selector ?
+                (selector + '> .loader') :
+            '#loading');
     localizer.localizePage();
     if (element) {
         element.hidden = true;
