@@ -8,9 +8,8 @@
             <p><a localizable href="requirements">Technical Requirements</a></p>
             <p><a localizable href="partners">Partners</a></p>
             <p><a localizable target="_blank"
-                href="https://github.com/jmoenig/Snap--Build-Your-Own-Blocks">
-                Source Code
-            </a></p>
+                href="https://github.com/jmoenig/Snap--Build-Your-Own-Blocks"
+                >Source Code</a></p>
         </div>
         <div class="pure-u-1-5">
             <p><h4 localizable>Learning</h4></p>

@@ -229,8 +229,8 @@
         "登录失败: 密码错误",
     "I have read and agree to the <a target=\"_blank\" href=\"tos\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy\">Privacy Agreement</a>":
         "我已经阅读并同意 <a target=\"_blank\" href=\"tos\">服务条款</a> 和 <a target=\"_blank\" href=\"privacy\">隐私协议</a>",
-    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"manual\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "请观看一些  <a href=\"examples\">例子</a> 或参考 <a href=\"manual\">帮助文档</a> 以了解更多, 或者直接运行 <a href=\"https://snap.berkeley.edu/run\">Snap!</a> 立即开始编程!",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "请观看一些  <a href=\"examples\">例子</a> 或参考 <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">帮助文档</a> 以了解更多, 或者直接运行 <a href=\"https://snap.berkeley.edu/run\">Snap!</a> 立即开始编程!",
     "Blog":
         "博客",
     "Materials":

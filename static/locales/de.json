@@ -229,8 +229,8 @@
         "Anmeldung fehlgeschlagen: falsches Passwort",
     "I have read and agree to the <a target=\"_blank\" href=\"tos\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy\">Privacy Agreement</a>":
         "Ich habe die <a target=\"_blank\" href=\"tos\">Nutzungsbedingungen</a> und die <a target=\"_blank\" href=\"privacy\">Datenschutzerklärung</a> gelesen und stimme ihnen zu",
-    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"manual\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "Schaue dir einige <a href=\"examples\">Beispiele</a> an, wirf einen Blick in das <a href=\"manual\">Reference Manual</a>, um mehr über Snap<em>!</em> zu lernen, oder lege im <a href=\"https://snap.berkeley.edu/run\">Editor</a> direkt mit dem Programmieren los!",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Schaue dir einige <a href=\"examples\">Beispiele</a> an, wirf einen Blick in das <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">Reference Manual</a>, um mehr über Snap<em>!</em> zu lernen, oder lege im <a href=\"https://snap.berkeley.edu/run\">Editor</a> direkt mit dem Programmieren los!",
     "Blog":
         "",
     "Materials":

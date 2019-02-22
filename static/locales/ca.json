@@ -185,8 +185,8 @@
         "Benvinguts a Snap",
     "Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.":
         "Snap<em>!</em> és un llenguatge àmpliament acollidor tant per a nens i nenes com per a adults, així com una plataforma per a un estudi rigorós de les ciències de la computació.",
-    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"manual\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "Fes una ullada als <a href=\"examples\">exemples</a> o consulta el <a href=\"manual\">manual de referència</a> per iniciar-t'hi, o accedeix directament a l'<a href=\"https://snap.berkeley.edu/run\">editor</a> i posa't a programar!",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Fes una ullada als <a href=\"examples\">exemples</a> o consulta el <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">manual de referència</a> per iniciar-t'hi, o accedeix directament a l'<a href=\"https://snap.berkeley.edu/run\">editor</a> i posa't a programar!",
     "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
         "Això és una versió preliminar del web social d'Snap<em>!</em>. Tingues en compte que aquesta pàgina es troba actualment en construcció i anirà canviant durant aquests propers mesos. La majoria de funcionalitats encara es troben en desenvolupament.",
     "Enjoy the preview, and thank you for your understanding!":
@@ -311,14 +311,14 @@
         "Projectes denunciats",
     "Featured Projects":
         "Projectes destacats",
-    "Curated Fractals":
-        "Fractals seleccionats",
-    "Curated Games":
-        "Jocs seleccionats",
-    "Curated Art Projects":
-        "Projectes artístics seleccionats",
-    "Curated Science Projects":
-        "Projectes científics seleccionats",
+    "Fractals":
+        "Fractals",
+    "Games":
+        "Jocs",
+    "Art Projects":
+        "Projectes artístics",
+    "Science Projects":
+        "Projectes científics",
     "Collections containing this project":
         "Col·leccions que contenen aquest projecte",
     "Projects":
@@ -326,5 +326,11 @@
     "Users":
         "Usuaris",
     "Collections":
-        "Col·leccions"
+        "Col·leccions",
+    "The Beauty and Joy of Computing":
+        "The Beauty and Joy of Computing",
+    "New Collection":
+        "Nova col·lecció",
+    "This collection is public":
+        "Aquesta col·lecció és pública"
 }
