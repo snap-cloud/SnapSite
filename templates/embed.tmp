@@ -19,6 +19,7 @@
     </head>
     <body>
         <div class="project big embed">
+            <i class="project-loader fas fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
             <div class="controlbar">
                 <span class="title"></span>
                 <i class="start-button fas fa-flag clickable"
@@ -26,15 +27,20 @@
                 <i class="stop-button fas fa-stop clickable"
                     onclick="stopProject();"></i>
             </div>
+            <i class="iframe-placeholder"></i>
         </div>
         <script type="text/javascript">
             var controlBar = document.querySelector('.controlbar');
+            document.body.style.overflow = 'hidden';
             setTitle(pageProject());
 
-            var iframe = document.createElement('iframe');
-            iframe.src = projectURL(pageUser(), pageProject()) +
-                '&embedMode&noExitWarning&noRun';
-            document.querySelector('.project.embed').append(iframe);
+            loadProjectFrame(
+                {
+                    username: pageUser(),
+                    projectname: pageProject()
+                },
+                document.querySelector('.iframe-placeholder')
+            );
 
             if (getUrlParameter('editButton')) {
                 var editButton = document.createElement('a'),
