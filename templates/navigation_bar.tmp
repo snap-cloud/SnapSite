@@ -65,11 +65,13 @@
                     <a class="pure-menu-link clickable"
                         onclick="localizer.setLanguage('ca');">Català</a>
                     <a class="pure-menu-link clickable"
+                        onclick="localizer.setLanguage('zh');">简体中文</a>
+                    <a class="pure-menu-link clickable"
                         onclick="localizer.setLanguage('de');">Deutsch</a>
                     <a class="pure-menu-link clickable"
                         onclick="localizer.setLanguage('en');">English</a>
                     <a class="pure-menu-link clickable"
-                        onclick="localizer.setLanguage('zh');">简体中文</a>
+                        onclick="localizer.setLanguage('pt');">Português</a>
                 </ul>
             </li>
         </ul>
