@@ -1,6 +1,6 @@
 # Snap Social Platform
 
-The social website for the Snap! programming language/environment
+The social website for the [Snap! programming language/environment](https://github.com/jmoenig/Snap)
 
 ## Build System
 
