@@ -886,7 +886,7 @@ function toggleFullScreen () {
         buttons.style.display = 'none';
 
     }
-    embed.focus();
+    iframe.focus();
 };
 
 function runProject (event) {
@@ -907,6 +907,7 @@ function runProject (event) {
             ide.embedPlayButton.destroy();
         }
     }
+    iframe.focus();
 };
 
 function stopProject () {
