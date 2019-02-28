@@ -863,6 +863,7 @@ function collectProject (project) {
 function toggleFullScreen () {
     var embed = document.querySelector('.embed'),
         iframe = document.querySelector('.embed iframe'),
+        world = iframe.contentWindow.world,
         buttons = document.querySelector('.buttons');
     if (embed.fullScreen) {
         embed.fullScreen = false;
@@ -886,13 +887,14 @@ function toggleFullScreen () {
         buttons.style.display = 'none';
 
     }
-    iframe.focus();
+    world.worldCanvas.focus();
 };
 
 function runProject (event) {
     var iframe = document.querySelector('.embed iframe'),
         startButton = document.querySelector('.start-button'),
-        ide = iframe.contentWindow.world.children[0];
+        world = iframe.contentWindow.world,
+        ide = world.children[0];
     if (event.shiftKey) {
         ide.toggleFastTracking();
         if (startButton.classList.contains('fa-flag')) {
@@ -907,7 +909,7 @@ function runProject (event) {
             ide.embedPlayButton.destroy();
         }
     }
-    iframe.focus();
+    world.worldCanvas.focus();
 };
 
 function stopProject () {
