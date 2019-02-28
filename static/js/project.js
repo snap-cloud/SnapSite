@@ -171,13 +171,14 @@ function setProjectButtonVisibility (project, buttonsElement) {
         !canDelete(project);
 };
 
-function loadProjectFrame (project, placeholder) {
+function loadProjectViewer (project, placeholder) {
     function doLoadIt () {
-        var iframe = document.createElement('iframe');
-        iframe.height = 406;
-        iframe.src = projectURL(project.username, project.projectname) +
+        var object = document.createElement('object');
+        object.height = 406;
+        object.data = projectURL(project.username, project.projectname) +
             '&embedMode&noExitWarning&noRun';
-        placeholder.parentNode.replaceChild(iframe, placeholder);
+        object.type = 'text/html';
+        placeholder.parentNode.replaceChild(object, placeholder);
     }
     if (document.visibilityState == 'visible') {
         doLoadIt();
@@ -862,27 +863,27 @@ function collectProject (project) {
 
 function toggleFullScreen () {
     var embed = document.querySelector('.embed'),
-        iframe = document.querySelector('.embed iframe'),
-        world = iframe.contentWindow.world,
+        object = document.querySelector('.embed object'),
+        world = object.contentWindow.world,
         buttons = document.querySelector('.buttons');
     if (embed.fullScreen) {
         embed.fullScreen = false;
         embed.style = embed.oldStyle;
-        iframe.style = iframe.oldStyle;
+        object.style = object.oldStyle;
         buttons.style = buttons.oldStyle;
         document.body.style.overflow = 'auto';
         buttons.style = buttons.oldStyle;
     } else {
         embed.fullScreen = true;
         embed.oldStyle = embed.style;
-        iframe.oldStyle = iframe.style;
+        object.oldStyle = object.style;
         buttons.oldStyle = buttons.style
         embed.style.position = 'fixed';
         embed.style.left = 0;
         embed.style.top = 0;
         embed.style.width = '100vw';
         embed.style.height = '100vh';
-        iframe.style.height = '100%';
+        object.style.height = '100%';
         document.body.style.overflow = 'hidden';
         buttons.style.display = 'none';
 
@@ -891,9 +892,9 @@ function toggleFullScreen () {
 };
 
 function runProject (event) {
-    var iframe = document.querySelector('.embed iframe'),
+    var object = document.querySelector('.embed object'),
         startButton = document.querySelector('.start-button'),
-        world = iframe.contentWindow.world,
+        world = object.contentWindow.world,
         ide = world.children[0];
     if (event.shiftKey) {
         ide.toggleFastTracking();
@@ -913,8 +914,8 @@ function runProject (event) {
 };
 
 function stopProject () {
-    var iframe = document.querySelector('.embed iframe'),
-        ide = iframe.contentWindow.world.children[0];
+    var object = document.querySelector('.embed object'),
+        ide = object.contentWindow.world.children[0];
     ide.stopAllScripts();
     if (ide.embedOverlay) {
         ide.embedOverlay.destroy();
@@ -925,7 +926,7 @@ function stopProject () {
 function editProject (project) {
     // an attempt to prevent reloading the project from the server when clicking
     // on the edit button. It works but it loses the remixID information.
-    var iframe = document.querySelector('.embed iframe'),
-        ide = iframe.contentWindow.world.children[0];
+    var object = document.querySelector('.embed object'),
+        ide = object.contentWindow.world.children[0];
     window.open(snapURL + '#open:' + ide.serializer.serialize(ide.stage));
 };

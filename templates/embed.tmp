@@ -27,19 +27,19 @@
                 <i class="stop-button fas fa-stop clickable"
                     onclick="stopProject();"></i>
             </div>
-            <i class="iframe-placeholder"></i>
+            <i class="embed-placeholder"></i>
         </div>
         <script type="text/javascript">
             var controlBar = document.querySelector('.controlbar');
             document.body.style.overflow = 'hidden';
             setTitle(pageProject());
 
-            loadProjectFrame(
+            loadProjectViewer(
                 {
                     username: pageUser(),
                     projectname: pageProject()
                 },
-                document.querySelector('.iframe-placeholder')
+                document.querySelector('.embed-placeholder')
             );
 
             if (getUrlParameter('editButton')) {

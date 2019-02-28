@@ -11,7 +11,7 @@
     <div class="viewer pure-g">
         <!-- Project viewer -->
         <div class="embed pure-u-1-2">
-            <!-- Spinner shown while iframe hasn't been loaded -->
+            <!-- Spinner shown while embed hasn't been loaded -->
             <i class="project-loader fas fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
 
             <!-- Project control bar -->
@@ -21,8 +21,8 @@
                 <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
             </div>
 
-            <!-- Project iframe placeholder -->
-            <i class="iframe-placeholder"></i>
+            <!-- Project embed placeholder -->
+            <i class="embed-placeholder"></i>
 
             <!-- Project Action Buttons -->
             <div class="buttons">
@@ -73,7 +73,7 @@
 
             // Fill up all fields
             fillProjectTitle(project, document.querySelector('.title'));
-            loadProjectFrame(project, document.querySelector('.iframe-placeholder'));
+            loadProjectViewer(project, document.querySelector('.embed-placeholder'));
             fillProjectNotes(project, document.querySelector('.notes'));
             fillProjectDates(project, datesDiv);
             fillRemixInfo(project, document.querySelector('.remixed-from'));
