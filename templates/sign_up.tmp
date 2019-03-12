@@ -56,10 +56,11 @@
         <div class="pure-controls">
             <label for="tos" class="pure-checkbox">
                 <input id="tos" name="tos" type="checkbox" required> 
-                    <span localizable>I have read and agree to the 
-                        <a target="_blank" href="tos">Terms of Service</a> 
-                        and the <a target="_blank" href="privacy">
-                            Privacy Agreement</a></span>.
+                    <span localizable>I have read and agree to the <a
+                            target="_blank"
+                            href="tos">Terms of Service</a> and the <a
+                            target="_blank"
+                            href="privacy">Privacy Agreement</a>.</span>
             </label>
 
             <button localizable type="submit"
