@@ -36,7 +36,7 @@
 
 .in-place:hover {
     padding: 0 2px;
-    border: 2px dashed #4f5d75;
+    border: 2px dashed #2d3142;
 }
 
 pre.proto-in-place,
@@ -52,7 +52,7 @@ pre.in-place {
 }
 
 @keyframes flasher {  
-    0% { background: #4f5d75; }
+    0% { background: #2d3142; }
     50% { opacity: 0.0; }
     100% {
         background: auto;

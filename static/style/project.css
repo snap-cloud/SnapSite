@@ -18,7 +18,7 @@
 .project object,
 .project .embed-placeholder {
     background: rgba(0, 0, 0, 0.2);
-    border: 2px solid #4f5d75;
+    border: 2px solid #2d3142;
     box-sizing: border-box;
 }
 
@@ -45,7 +45,7 @@
     position: relative;
     border-radius: 5px;
     height: 120px;
-    border: 2px solid #4f5d75;
+    border: 2px solid #2d3142;
     box-sizing: border-box;
 }
 
@@ -217,7 +217,7 @@ img.collection-thumbnail {
 .project.big .controlbar {
     box-sizing: border-box;
     z-index: 200;
-    background: #4f5d75;
+    background: #2d3142;
     padding: 0.4em 0.5em;
     border-radius: 5px 5px 0 0;
     text-align: right;
