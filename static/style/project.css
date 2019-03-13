@@ -17,7 +17,7 @@
 .project img.thumbnail,
 .project object,
 .project .embed-placeholder {
-    background: rgba(255,255,255,0.5);
+    background: rgba(0, 0, 0, 0.2);
     border: 2px solid #2c3e50;
     box-sizing: border-box;
 }
@@ -71,7 +71,7 @@ img.collection-thumbnail {
 }
 
 .collection-controls {
-    background: rgba(255,255,255,.5);
+    background: rgba(255, 255, 255, .5);
     border-radius: 3px;
     padding: 3px;
     width: 50px;
@@ -89,7 +89,7 @@ img.collection-thumbnail {
 }
 
 .collection-controls:hover {
-    background: rgba(255,255,255,.8);
+    background: rgba(255, 255, 255, .8);
 }
 
 .new-editor {
@@ -108,7 +108,7 @@ img.collection-thumbnail {
     display: inline-block;
     margin: 0.2em;
     padding: 0.2em 0.5em;
-    background: rgba(255,255,255,0.5);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
@@ -228,7 +228,7 @@ img.collection-thumbnail {
 }
 
 .project.big .controlbar .present-button {
-    color: #e2e3db;
+    color: #ffffff;
 }
 
 .project.big .controlbar .start-button {

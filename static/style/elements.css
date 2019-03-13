@@ -4,7 +4,7 @@ html {
 
 body {
     color: #101040;
-    background: #e2e3db;
+    background: #ffffff;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -55,5 +55,5 @@ hr {
     margin: 0;
     border: 0;
     height: 1px;
-    background: #e2e3db;
+    background: #ffffff;
 }

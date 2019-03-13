@@ -76,7 +76,7 @@ pre.in-place {
 
 .bubble {
     position: relative;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 201, 62, 0.2);
     border-radius: 2em;
     padding: 1em 1.5em;
 }
@@ -89,7 +89,7 @@ pre.in-place {
     width: 0;
     height: 0;
     border: 44px solid transparent;
-    border-right-color: rgba(255,255,255,0.3);
+    border-right-color: rgba(255, 201, 62, 0.2);
     border-left: 0;
     border-bottom: 0;
     margin-top: -22px;

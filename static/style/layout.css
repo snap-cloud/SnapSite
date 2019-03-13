@@ -16,11 +16,11 @@
 #top-bar {
     background: #2c3e50;
     height: 48px;
-    color: #e2e3db;
+    color: #ffffff;
 }
 
 #top-bar a {
-    color: #e2e3db;
+    color: #ffffff;
 }
 
 #top-bar .logo {
@@ -85,7 +85,7 @@
 }
 
 #top-bar .pure-menu-children {
-    border: 1px solid #e2e3db;
+    border: 1px solid #ffffff;
 }
 
 #top-bar .pure-menu-children .pure-menu-link {
@@ -121,9 +121,9 @@
     transform: translateY(-50%);
     height: 24px;
     width: 100%;
-    border: 2px solid #e2e3db;
+    border: 2px solid #ffffff;
     border-radius: 14px;
-    background: #e2e3db;
+    background: #ffffff;
     color: #2c3e50;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -137,7 +137,7 @@
 #footer {
     background: #2c3e50;
     padding: 1em;
-    color: #e2e3db;
+    color: #ffffff;
     margin-top: 3em;
     flex-shrink: 0;
     font-size: 0.75em;
@@ -154,7 +154,7 @@
 }
 
 #footer a {
-    color: #e2e3db;
+    color: #ffffff;
     text-decoration: underline;
 }
 
@@ -170,7 +170,7 @@
 .customalert .header {
     font-size: 1em;
     background: #2c3e50;
-    color: #e2e3db;
+    color: #ffffff;
     padding: 5px 0 8px 0;
     font-weight: bold;
     text-align: center;
@@ -179,7 +179,7 @@
 
 .customalert .body, 
 .customalert .footer {
-    background: #e2e3db;
+    background: #ffffff;
     text-align: center;
     padding: 0.5em;
     line-height: 1.5em;
