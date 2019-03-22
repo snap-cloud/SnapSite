@@ -283,3 +283,51 @@ userDiv = function (user) {
     userWrapperDiv.appendChild(userDiv);
     return userWrapperDiv;
 }
+
+function verifiedFilter (callback) {
+    var verifiedFilter = document.createElement('div'),
+        select = document.createElement('select');
+
+    verifiedFilter.innerHTML = 'Verified:';
+    verifiedFilter.classList.add('filter');
+    verifiedFilter.classList.add('verification');
+    select.name = 'verified';
+
+    select.innerHTML = '<option value="">Any</option>';
+    select.innerHTML += '<option value="true">Verified</option>';
+    select.innerHTML += '<option value="false">Unverified</option>';
+
+    select.onchange = function () {
+        callback(this.value);
+    };
+
+    verifiedFilter.appendChild(select);
+    return verifiedFilter;
+};
+
+function roleFilter (callback) {
+    var roleFilter = document.createElement('div'),
+        select = document.createElement('select');
+
+    roleFilter.innerHTML = 'Role:';
+    roleFilter.classList.add('filter');
+    roleFilter.classList.add('role');
+    select.name = 'role';
+
+    select.innerHTML = '<option value="">Any</option>';
+
+    ['Standard', 'Reviewer', 'Moderator', 'Admin', 'Banned'].forEach(
+        function (each) {
+            select.innerHTML +=
+                '<option value="' + each.toLowerCase() + '">'
+                    + each + '</option>';
+        }
+    );
+
+    select.onchange = function () {
+        callback(this.value);
+    };
+
+    roleFilter.appendChild(select);
+    return roleFilter;
+};

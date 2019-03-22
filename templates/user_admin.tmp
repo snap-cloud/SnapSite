@@ -9,9 +9,13 @@
 <link rel="stylesheet" href="style/admin.css">
 <h1 localizable>User Administration</h1>
 @param withSearch=true
+@param keepIfEmpty=true
 @param widgetName=user_admin
 @include=grid
+@param keepIfEmpty=false
 <script>
+    var role = '',
+        verified = '';
     ${widgetName}_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.withCredentialsRequest(
@@ -19,7 +23,13 @@
                 '/users?' +
                     (query ?
                         'matchtext=' + encodeURIComponent(query) + '&' : '' ) +
-                    'pagesize=' + pageSize + '&page=' + pageNumber,
+                    'pagesize=' + pageSize + '&page=' + pageNumber +
+                    (role !== '' ?
+                        '&role=' + role
+                        : '') +
+                    (verified !== '' ?
+                        '&verified=' + verified
+                        : ''),
                 onSuccess,
                 genericError,
                 'Could not fetch user list'
@@ -33,5 +43,24 @@
             });
         };
 
-    ${widgetName}_initGrid();
+    ${widgetName}_initGrid(function(){
+        var bar = document.querySelector('.container .bar'),
+            paginator = bar.querySelector('.paginator');
+        bar.insertBefore(
+            verifiedFilter(
+                function (value) {
+                    verified = value;
+                    ${widgetName}_toPage(1);
+                }
+            ),
+            paginator);
+        bar.insertBefore(
+            roleFilter(
+                function (value) {
+                    role = value;
+                    ${widgetName}_toPage(1);
+                }
+            ),
+            paginator);
+    });
 </script>
