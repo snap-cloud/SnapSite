@@ -811,12 +811,15 @@ function collectProject (project) {
         function (response) {
             collections = response.collections;
             if (collections[0]) {
+                var select = document.createElement('select');
                 collections.forEach(function (collection) {
-                    form.innerHTML +=
-                        '<p class="option"><input type="radio" ' +
-                        'name="collection" value="' + collection.name +
-                        '"><label> ' + collection.name + '</label></p>';
+                    var option = document.createElement('option')
+                    option.value = collection.name;
+                    option.name = 'collection';
+                    option.innerHTML = escapeHtml(collection.name);
+                    select.appendChild(option);
                 });
+                form.appendChild(select);
             } else {
                 form.innerHTML = '<p>' +
                     localizer.localize('You do not have any collections.') +
@@ -834,8 +837,7 @@ function collectProject (project) {
             var collection = collections.find(
                     function(collection) {
                         return collection.name ===
-                            form.querySelector(
-                                'input[name="collection"]:checked').value;
+                            form.querySelector('select').value;
                     }
             );
             SnapCloud.addProjectToCollection(
