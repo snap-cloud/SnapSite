@@ -871,27 +871,27 @@ function collectProject (project) {
 
 function toggleFullScreen () {
     var embed = document.querySelector('.embed'),
-        object = document.querySelector('.embed object'),
-        world = object.contentWindow.world,
+        iframe = document.querySelector('.embed iframe'),
+        world = iframe.contentWindow.world,
         buttons = document.querySelector('.buttons');
     if (embed.fullScreen) {
         embed.fullScreen = false;
         embed.style = embed.oldStyle;
-        object.style = object.oldStyle;
+        iframe.style = iframe.oldStyle;
         buttons.style = buttons.oldStyle;
         document.body.style.overflow = 'auto';
         buttons.style = buttons.oldStyle;
     } else {
         embed.fullScreen = true;
         embed.oldStyle = embed.style;
-        object.oldStyle = object.style;
+        iframe.oldStyle = iframe.style;
         buttons.oldStyle = buttons.style
         embed.style.position = 'fixed';
         embed.style.left = 0;
         embed.style.top = 0;
         embed.style.width = '100vw';
         embed.style.height = '100vh';
-        object.style.height = '100%';
+        iframe.style.height = '100%';
         document.body.style.overflow = 'hidden';
         buttons.style.display = 'none';
 
@@ -900,9 +900,9 @@ function toggleFullScreen () {
 };
 
 function runProject (event) {
-    var object = document.querySelector('.embed object'),
+    var iframe = document.querySelector('.embed iframe'),
         startButton = document.querySelector('.start-button'),
-        world = object.contentWindow.world,
+        world = iframe.contentWindow.world,
         ide = world.children[0];
     if (event.shiftKey) {
         ide.toggleFastTracking();
@@ -922,8 +922,8 @@ function runProject (event) {
 };
 
 function stopProject () {
-    var object = document.querySelector('.embed object'),
-        ide = object.contentWindow.world.children[0];
+    var iframe = document.querySelector('.embed iframe'),
+        ide = iframe.contentWindow.world.children[0];
     ide.stopAllScripts();
     if (ide.embedOverlay) {
         ide.embedOverlay.destroy();
@@ -934,7 +934,7 @@ function stopProject () {
 function editProject (project) {
     // an attempt to prevent reloading the project from the server when clicking
     // on the edit button. It works but it loses the remixID information.
-    var object = document.querySelector('.embed object'),
-        ide = object.contentWindow.world.children[0];
+    var iframe = document.querySelector('.embed iframe'),
+        ide = iframe.contentWindow.world.children[0];
     window.open(snapURL + '#open:' + ide.serializer.serialize(ide.stage));
 };
