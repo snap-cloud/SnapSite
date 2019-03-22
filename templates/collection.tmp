@@ -93,13 +93,15 @@
                 }
 
                 var thumbnail = document.querySelector('.collection-thumbnail');
-                thumbnail.src = collection.thumbnail || '';
-                if (!collection.thumbnail) {
+                if (collection.thumbnail) {
+                    thumbnail.src = collection.thumbnail || '';
+                } else {
                     var i = document.createElement('i');
                     i.classList.add('no-image');
                     i.classList.add('fas');
                     i.classList.add('fa-briefcase');
                     thumbnail.parentNode.appendChild(i);
+                    thumbnail.remove();
                 }
 
                 document.querySelector('.title').appendChild(authorSpan(collection.creator.username));

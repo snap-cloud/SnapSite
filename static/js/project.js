@@ -163,8 +163,6 @@ function setProjectButtonVisibility (project, buttonsElement) {
     buttonsElement.querySelector('.buttons .unpublish').hidden =
         (!project.ispublic || !project.ispublished) || !canUnpublish(project);
     buttonsElement.querySelector('.embed-button').hidden = !project.ispublic;
-    buttonsElement.querySelector('.buttons .collect').hidden =
-        !project.ispublished || !ownsOrIsAdmin(project);
     // why whould you want to flag your own project?
     buttonsElement.querySelector('.buttons .flag').hidden = owns(project);
     buttonsElement.querySelector('.buttons .delete').hidden =
