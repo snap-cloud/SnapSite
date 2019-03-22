@@ -7,13 +7,10 @@
    </p>
 </div>
 
-<p>For bugs and suggestions related to this site, please refer to our GitHub
-issue tracker:</p>
-
-<div class="indent v-spaced">
-   <p><a target="_blank" href= "https://github.com/bromagosa/SnapSite/issues">
-       https://github.com/bromagosa/SnapSite/issues</a></p>
-</div>
+<p>For bugs and suggestions related to either Snap<em
+     >!</em>, or its community website, please refer to <a
+     href="https://forum.snap.berkeley.edu/c/requests"
+     >this forum thread</a>.</p>
 
 <script>
     setTitle(localizer.localize('Contact Us') +
