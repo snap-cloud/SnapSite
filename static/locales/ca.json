@@ -41,14 +41,12 @@
         "Canvia la meva contrasenya",
     "Unknown error":
         "Error desconegut",
-    "Created on":
-        "Creat el dia",
-    "last updated on":
-        "actualitzat el dia",
-    "shared on":
-        "compartit el dia",
+    "Created:":
+        "Creat:",
     "Edit":
         "Edita",
+    "See Code":
+        "Examina",
     "Download":
         "Descarrega",
     "Share":
@@ -113,32 +111,16 @@
         "Aquest projecte no té notes",
     " by ":
         " per ",
-    "public":
-        "públic",
-    "private":
-        "privat",
-    " but unlisted":
-        " però no està publicat al web",
     "'s public page":
         ": pàgina pública",
-    "Last updated on":
-        "Actualizat per darrer cop el",
-    ", shared on":
-        ", compartit el",
-    ", published on":
-        ", publicat el",
-    "This project is public":
-        "Aquest projecte és públic",
-    " and listed":
-        " i està publicat",
-    "This project can be shared via URL":
-        "Aquest projecte es pot compartir via URL",
+    "Last updated:":
+        "Última actualització:",
+    "Shared:":
+        "Compartit:",
+    "Published:":
+        "Publicat:",
     "This project is private":
         "Aquest projecte és privat",
-    "This project is publicly listed":
-        "Aquest projecte està publicat",
-    "This project is unlisted":
-        "Aquest projecte no està publicat",
     "Latest projects":
         "Últims projectes",
     "Search Results:":

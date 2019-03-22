@@ -112,18 +112,20 @@ function fillProjectDates (project, datesElement) {
         formatDate(project.lastupdated);
 
     if (project.ispublic) {
-        document.querySelector('.shared').hidden = false;
-        document.querySelector('.shared span').innerHTML =
-            formatDate(project.lastshared);
         if (project.ispublished) {
+            document.querySelector('.shared').hidden = true;
             document.querySelector('.published').hidden = false;
             document.querySelector('.published span').innerHTML =
                 formatDate(project.firstpublished);
         } else {
+            document.querySelector('.shared').hidden = false;
+            document.querySelector('.shared span').innerHTML =
+                formatDate(project.lastshared);
             document.querySelector('.published').hidden = true;
         }
     } else {
-        document.querySelector('.shared').hidden = true;
+        document.querySelector('.shared').innerHTML = 
+            localizer.localize('This project is private') + '.';
         document.querySelector('.published').hidden = true;
     }
 };
@@ -144,22 +146,25 @@ function fillRemixInfo (project, infoElement) {
     }
 };
 
-function setProjectButtonVisibility (project, buttonsElement) {
-    buttonsElement.querySelector('.buttons .share').hidden =
-        project.ispublic || !canShare(project);
-    buttonsElement.querySelector('.buttons .unshare').hidden =
-        !project.ispublic || !canShare(project);
-    buttonsElement.querySelector('.buttons .publish').hidden =
-        (!project.ispublic || project.ispublished) ||
-            !canPublish(project) || sessionStorage.role === 'banned';
-    buttonsElement.querySelector('.buttons .unpublish').hidden =
-        (!project.ispublic || !project.ispublished) || !canUnpublish(project);
+function setProjectControlButtonVisibility (project, buttonsElement) {
     buttonsElement.querySelector('.embed-button').hidden = !project.ispublic;
     // why whould you want to flag your own project?
-    buttonsElement.querySelector('.buttons .flag').hidden = owns(project);
-    buttonsElement.querySelector('.buttons .delete').hidden =
-        !canDelete(project);
+    buttonsElement.querySelector('.flag').hidden = owns(project);
+    buttonsElement.querySelector('.delete').hidden = !canDelete(project);
 };
+
+function setProjectShareButtonsVisibility (project, buttonsElement) {
+    buttonsElement.querySelector('.share').hidden =
+        project.ispublic || !canShare(project);
+    buttonsElement.querySelector('.unshare').hidden =
+        !project.ispublic || !canShare(project);
+    buttonsElement.querySelector('.publish').hidden =
+        (!project.ispublic || project.ispublished) ||
+            !canPublish(project) || sessionStorage.role === 'banned';
+    buttonsElement.querySelector('.unpublish').hidden =
+        (!project.ispublic || !project.ispublished) || !canUnpublish(project);
+};
+
 
 function loadProjectViewer (project, placeholder) {
     function doLoadIt () {

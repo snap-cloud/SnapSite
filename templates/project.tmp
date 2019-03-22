@@ -26,12 +26,8 @@
 
             <!-- Project Action Buttons -->
             <div class="buttons">
-                <a localizable class="pure-button open" target="_blank">Edit</a>
+                <a localizable class="pure-button open" target="_blank">See Code</a>
                 <a localizable class="pure-button download" target="_blank">Download</a>
-                <a localizable class="pure-button share" target="_blank">Share</a>
-                <a localizable class="pure-button unshare" target="_blank">Unshare</a>
-                <a localizable class="pure-button publish" target="_blank">Publish</a>
-                <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
                 <a localizable class="pure-button embed-button" target="_blank">Embed</a>
                 <a localizable class="pure-button collect" target="_blank">Add to Collection</a>
                 <a localizable class="pure-button pure-button-warning flag" target="_blank">Report</a>
@@ -49,6 +45,10 @@
                 <p class="updated"><strong localizable>Last updated:</strong><span></span></p>
                 <p class="shared"><strong localizable>Shared:</strong><span></span></p>
                 <p class="published"><strong localizable>Published:</strong><span></span></p>
+                <a localizable class="pure-button share" target="_blank">Share</a>
+                <a localizable class="pure-button unshare" target="_blank">Unshare</a>
+                <a localizable class="pure-button publish" target="_blank">Publish</a>
+                <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
             </div>
         </div>
     </div>
@@ -80,19 +80,25 @@
             fillRemixInfo(project, document.querySelector('.remixed-from'));
 
             // Set up button visibility according to user permissions and project visibility state
-            setProjectButtonVisibility(project, buttonsDiv)
+            setProjectControlButtonVisibility(project, buttonsDiv);
+            setProjectShareButtonsVisibility(project, datesDiv);
+
+            if (owns(project)) {
+                document.querySelector('.buttons .open').innerHTML = localizer.localize('Edit');
+            }
 
             // Set up button functionality
             document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
             document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
-            document.querySelector('.buttons .share').onclick = function () { confirmShareProject(project, buttonsDiv, datesDiv); };
-            document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareProject(project, buttonsDiv, datesDiv); };
-            document.querySelector('.buttons .publish').onclick = function () { confirmPublishProject(project, buttonsDiv, datesDiv); };
-            document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublishProject(project, buttonsDiv, datesDiv); }
             document.querySelector('.buttons .embed-button').onclick = function () { embedDialog(project); }
             document.querySelector('.buttons .collect').onclick = function () { collectProject(project); }
             document.querySelector('.buttons .flag').onclick = function () { confirmFlagProject(project); }
             document.querySelector('.buttons .delete').onclick = function () { confirmDeleteProject(project); }
+
+            document.querySelector('.dates .share').onclick = function () { confirmShareProject(project, buttonsDiv, datesDiv); };
+            document.querySelector('.dates .unshare').onclick = function () { confirmUnshareProject(project, buttonsDiv, datesDiv); };
+            document.querySelector('.dates .publish').onclick = function () { confirmPublishProject(project, buttonsDiv, datesDiv); };
+            document.querySelector('.dates .unpublish').onclick = function () { confirmUnpublishProject(project, buttonsDiv, datesDiv); }
 
             doneLoading('#wrapper');
             document.querySelector('.project').hidden = false;
