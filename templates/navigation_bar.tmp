@@ -9,8 +9,11 @@
                     <a localizable class="pure-menu-link run"
                         target="_blank">Run Snap<em>!</em></a></li>
                 <li class="pure-menu-item">
-                    <a localizable class="pure-menu-link"
+                    <a localizable class="pure-menu-link explore"
                         href="explore">Explore</a></li>
+                <li class="pure-menu-item">
+                    <a localizable class="pure-menu-link forum"
+                        href="https://forum.snap.berkeley.edu/">Forum</a></li>
             </span>
             <i class="pure-u-1-6"></i>
             <div class="search pure-u-1-6">

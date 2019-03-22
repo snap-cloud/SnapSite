@@ -31,7 +31,8 @@
     filter: brightness(1.5);
 }
 
-#top-bar .run {
+#top-bar .run,
+#top-bar .explore {
     margin-right: 1em;
 }
 
