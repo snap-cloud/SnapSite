@@ -163,12 +163,11 @@ function setProjectButtonVisibility (project, buttonsElement) {
 
 function loadProjectViewer (project, placeholder) {
     function doLoadIt () {
-        var object = document.createElement('object');
-        object.height = 406;
-        object.data = projectURL(project.username, project.projectname) +
+        var iframe = document.createElement('iframe');
+        iframe.height = 406;
+        iframe.src = projectURL(project.username, project.projectname) +
             '&embedMode&noExitWarning&noRun';
-        object.type = 'text/html';
-        placeholder.parentNode.replaceChild(object, placeholder);
+        placeholder.parentNode.replaceChild(iframe, placeholder);
     }
     if (document.visibilityState == 'visible') {
         doLoadIt();
