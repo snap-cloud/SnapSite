@@ -159,7 +159,7 @@ function doneLoading (selector) {
 function formatDate (dateString) {
     return (new Date(dateString + ':00')).toLocaleString(
         localizer.locale || 'en-us',
-        { month: 'long', day: '2-digit', year: 'numeric' }
+        { month: 'long', day: 'numeric', year: 'numeric' }
     );
 };
 

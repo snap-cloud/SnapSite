@@ -44,11 +44,12 @@
             <!-- Notes -->
             <pre class="notes"> </pre>
             <!-- Dates and project meta -->
-            <span class="dates">
-                <span localizable class="created"></span>.
-                <span localizable class="updated"></span><span localizable class="shared"></span><span localizable class="published"></span>.
-                <span localizable class="is-public"></span><span localizable class="is-published"></span>.
-            </span>
+            <div class="dates">
+                <p class="created"><strong localizable>Created:</strong><span></span></p>
+                <p class="updated"><strong localizable>Last updated:</strong><span></span></p>
+                <p class="shared"><strong localizable>Shared:</strong><span></span></p>
+                <p class="published"><strong localizable>Published:</strong><span></span></p>
+            </div>
         </div>
     </div>
 

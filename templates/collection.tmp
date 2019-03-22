@@ -11,11 +11,12 @@
 
                 <div class="pure-u-1-2 thumbnail-container"><img class="collection-thumbnail"/></div>
 
-                <span class="pure-u-1-2 dates">
-                    <span localizable class="created">Created on </span>.
-                    <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
-                    <span localizable class="is-public">This collection is </span><span localizable class="is-published"></span>.
-                </span>
+                <div class="pure-u-1-2 dates">
+                    <p class="created"><strong localizable>Created:</strong><span></span></p>
+                    <p class="updated"><strong localizable>Last updated:</strong><span></span></p>
+                    <p class="shared"><strong localizable>Shared:</strong><span></span></p>
+                    <p class="published"><strong localizable>Published:</strong><span></span></p>
+                </div>
             </div>
 
             <pre class="description"></pre>
@@ -107,19 +108,19 @@
                 document.querySelector('.title').appendChild(authorSpan(collection.creator.username));
                 document.querySelector('.description').innerHTML = collection.description || '<small>' + localizer.localize('This collection has no description') + '</small>';
 
-                document.querySelector('.created').append(formatDate(collection.created_at));
-                document.querySelector('.updated').append(formatDate(collection.updated_at));
+                document.querySelector('.created span').innerHTML = formatDate(collection.created_at);
+                document.querySelector('.updated span').innerHTML = formatDate(collection.updated_at);
 
                 if (collection.shared) {
-                    document.querySelector('.shared').append(formatDate(collection.shared_at));
-                    document.querySelector('.is-published').innerHTML += (collection.published ? ' and listed' : ' but unlisted');
+                    document.querySelector('.shared span').innerHTML = formatDate(collection.shared_at);
                     if (collection.published) {
-                        document.querySelector('.published').innerHTML = localizer.localize(', published on ') + formatDate(collection.firstpublished);
+                        document.querySelector('.published span').innerHTML = formatDate(collection.firstpublished);
+                    } else {
+                        document.querySelector('.published').hidden = true;
                     }
-                    document.querySelector('.is-public').innerHTML += ('public');
                 } else {
                     document.querySelector('.shared').hidden = true;
-                    document.querySelector('.is-public').append('private');
+                    document.querySelector('.published').hidden = true;
                 }
 
                 // Set up all buttons

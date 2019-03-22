@@ -281,17 +281,24 @@ img.collection-thumbnail {
     opacity: 0.5;
 }
 
-.project.big .dates span {
+.project.big .dates p {
     font-size: 0.8em;
+    line-height: 0.8em;
+    margin-top: 0;
+    margin-bottom: 0.8em;
 }
 
-.collection .dates span {
+.dates strong {
+    margin-right: 0.5em;
+}
+
+.collection .dates p {
     font-size: 0.7em;
-}
-
-.collection .dates {
     padding-left: .5em;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    line-height: 1em;
+    margin-top: 0;
+    margin-bottom: 0.7em;
 }
 
 /* Embed dialog */

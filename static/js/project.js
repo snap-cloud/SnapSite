@@ -106,33 +106,25 @@ function fillProjectNotes (project, notesElement) {
 };
 
 function fillProjectDates (project, datesElement) {
-    document.querySelector('.created').innerHTML =
-        localizer.localize('Created on') + ' ' + formatDate(project.created);
-    document.querySelector('.updated').innerHTML =
-        localizer.localize('Last updated on') +
-            ' ' + formatDate(project.lastupdated);
+    document.querySelector('.created span').innerHTML =
+        formatDate(project.created);
+    document.querySelector('.updated span').innerHTML =
+        formatDate(project.lastupdated);
 
     if (project.ispublic) {
         document.querySelector('.shared').hidden = false;
-        document.querySelector('.shared').innerHTML =
-            localizer.localize(', shared on') + ' ' +
+        document.querySelector('.shared span').innerHTML =
             formatDate(project.lastshared);
         if (project.ispublished) {
             document.querySelector('.published').hidden = false;
-            document.querySelector('.published').innerHTML =
-                localizer.localize(', published on') + ' ' +
+            document.querySelector('.published span').innerHTML =
                 formatDate(project.firstpublished);
         } else {
             document.querySelector('.published').hidden = true;
         }
-        document.querySelector('.is-public').innerHTML =
-            'This project is public' +
-            (project.ispublished ? ' and listed' : ' but unlisted');
     } else {
         document.querySelector('.shared').hidden = true;
         document.querySelector('.published').hidden = true;
-        document.querySelector('.is-public').innerHTML =
-            'This project is private';
     }
 };
 
