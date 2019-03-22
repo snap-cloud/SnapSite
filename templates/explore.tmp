@@ -1,9 +1,42 @@
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
 <h1 localizable>Explore</h1>
-@param user="null"
 @param title='"Explore - Snap! Build Your Own Blocks"'
 @param pageSize=15
-@param query=getPublishedProjectList
+@param withSearch=false
 @param widgetName=explore
-@param extraParam='null,'
-@include=project_grid
-@param extraParam=''
+@include=grid
+<script>
+    ${widgetName}_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getPublishedProjectList(
+                null,
+                pageNumber,
+                pageSize,
+                null, // query
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            ); 
+        };
+
+    ${widgetName}_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project, 
+                        { 
+                            size: 'small', 
+                            gridSize: 5, 
+                            extraFields: {
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            }); 
+        };
+
+    ${widgetName}_initGrid();
+</script>
