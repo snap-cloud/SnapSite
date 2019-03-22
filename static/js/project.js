@@ -274,7 +274,10 @@ function confirmShareProject (project, buttonsDiv, datesDiv) {
                             { title: localizer.localize('Project shared') },
                             function () {
                                 project.ispublic = true;
-                                setProjectButtonVisibility(project, buttonsDiv);
+                                setProjectShareButtonVisibility(
+                                    project,
+                                    datesDiv
+                                );
                                 fillProjectDates(project, datesDiv);
                             }
                         );
@@ -329,7 +332,10 @@ function confirmUnshareProject (project, buttonsDiv, datesDiv) {
                             function () {
                                 project.ispublic = false;
                                 project.ispublished = false;
-                                setProjectButtonVisibility(project, buttonsDiv);
+                                setProjectShareButtonVisibility(
+                                    project,
+                                    datesDiv
+                                );
                                 fillProjectDates(project, datesDiv);
                             }
                         );
@@ -389,7 +395,10 @@ function confirmPublishProject (project, buttonsDiv, datesDiv) {
                             { title: localizer.localize('Project published') },
                             function () {
                                 project.ispublished = true;
-                                setProjectButtonVisibility(project, buttonsDiv);
+                                setProjectShareButtonVisibility(
+                                    project,
+                                    datesDiv
+                                );
                                 fillProjectDates(project, datesDiv);
                             }
                         );
@@ -441,7 +450,10 @@ function confirmUnpublishProject (project, buttonsDiv, datesDiv) {
             { title: localizer.localize('Project unpublished') },
             function () {
                 project.ispublished = false;
-                setProjectButtonVisibility(project, buttonsDiv);
+                setProjectShareButtonVisibility(
+                    project,
+                    datesDiv
+                );
                 fillProjectDates(project, datesDiv);
             }
         );
