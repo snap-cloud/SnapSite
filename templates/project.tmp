@@ -80,7 +80,7 @@
             fillRemixInfo(project, document.querySelector('.remixed-from'));
 
             // Set up button visibility according to user permissions and project visibility state
-            setProjectControlButtonVisibility(project, buttonsDiv);
+            setProjectControlButtonsVisibility(project, buttonsDiv);
             setProjectShareButtonsVisibility(project, datesDiv);
 
             if (owns(project)) {

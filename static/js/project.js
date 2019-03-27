@@ -146,7 +146,7 @@ function fillRemixInfo (project, infoElement) {
     }
 };
 
-function setProjectControlButtonVisibility (project, buttonsElement) {
+function setProjectControlButtonsVisibility (project, buttonsElement) {
     buttonsElement.querySelector('.embed-button').hidden = !project.ispublic;
     // why whould you want to flag your own project?
     buttonsElement.querySelector('.flag').hidden = owns(project);
@@ -274,7 +274,7 @@ function confirmShareProject (project, buttonsDiv, datesDiv) {
                             { title: localizer.localize('Project shared') },
                             function () {
                                 project.ispublic = true;
-                                setProjectShareButtonVisibility(
+                                setProjectShareButtonsVisibility(
                                     project,
                                     datesDiv
                                 );
@@ -332,7 +332,7 @@ function confirmUnshareProject (project, buttonsDiv, datesDiv) {
                             function () {
                                 project.ispublic = false;
                                 project.ispublished = false;
-                                setProjectShareButtonVisibility(
+                                setProjectShareButtonsVisibility(
                                     project,
                                     datesDiv
                                 );
@@ -395,7 +395,7 @@ function confirmPublishProject (project, buttonsDiv, datesDiv) {
                             { title: localizer.localize('Project published') },
                             function () {
                                 project.ispublished = true;
-                                setProjectShareButtonVisibility(
+                                setProjectShareButtonsVisibility(
                                     project,
                                     datesDiv
                                 );
@@ -450,7 +450,7 @@ function confirmUnpublishProject (project, buttonsDiv, datesDiv) {
             { title: localizer.localize('Project unpublished') },
             function () {
                 project.ispublished = false;
-                setProjectShareButtonVisibility(
+                setProjectShareButtonsVisibility(
                     project,
                     datesDiv
                 );
