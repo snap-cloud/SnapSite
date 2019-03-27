@@ -41,12 +41,6 @@
         "Cambiar mi contraseña",
     "Unknown error":
         "Error desconocido",
-    "Created on":
-        "Creado el día",
-    "last updated on":
-        "actualizado el día",
-    "shared on":
-        "compartido el día",
     "Edit":
         "Edita",
     "Download":
@@ -117,26 +111,16 @@
         "público",
     "private":
         "privado",
-    " but unlisted":
-        " pero no está publicado en la web",
     "'s public page":
         ": página pública",
-    "Last updated on":
-        "Actualizado por última vez en",
-    ", shared on":
-        ", compartido en",
-    "This project is public":
-        "Este proyecto es público",
-    " and listed":
-        " y está publicado",
-    "This project can be shared via URL":
-        "Este proyecto se puede compartir via URL",
-    "This project is private":
-        "Este proyecto es privado",
-    "This project is publicly listed":
-        "Este proyecto está publicado",
-    "This project is unlisted":
-        "Este proyecto no está publicado",
+    "This item can be shared via URL":
+        "Este elemento se puede compartir via URL",
+    "This item is private":
+        "Este elemento es privado",
+    "This item is published":
+        "Este elemento está publicado",
+    "This item is unpublished":
+        "Este elemento no está publicado",
     "Latest projects":
         "Últimos proyectos",
     "Search Results:":
@@ -307,14 +291,14 @@
         "Colecciones",
     "Collections containing this project":
         "Colecciones que contienen este proyecto",
-    "Curated Art Projects":
-        "Proyectos de arte seleccionados",
-    "Curated Fractals":
-        "Fractales seleccionados",
-    "Curated Games":
-        "Juegos seleccionados",
-    "Curated Science Projects":
-        "Proyectos de ciencia seleccionados",
+    "Art Projects":
+        "Proyectos de arte",
+    "Fractals":
+        "Fractales",
+    "Games":
+        "Juegos",
+    "Science Projects":
+        "Proyectos de ciencia",
     "Featured Projects":
         "Proyectos destacados",
     "Flagged Projects":
@@ -332,5 +316,65 @@
     "Research":
         "Investigación",
     "Users":
-        "Usuarios"
+        "Usuarios",
+    "The Beauty and Joy of Computing":
+        "The Beauty and Joy of Computing",
+    "New Collection":
+        "Nueva colección",
+    "This collection is public":
+        "Esta colección es pública",
+    "Report this project":
+        "Denuncia este proyecto",
+    "Are you sure you want to flag this project as inappropriate?":
+        "¿Seguro que quieres denunciar este proyecto como inapropiado?",
+    "Flag project":
+        "Denuncia proyecto",
+    "This project has been flagged.":
+        "Este provecto ha sido denunciado",
+    "Project flagged":
+        "Proyecto denunciado",
+    "Add project to collection":
+        "Añadir proyecto a colección",
+    "Please select the collection to which you want to add this project:":
+        "Selecciona la colección a qué quieres añadir este proyecto",
+    "April":
+        "Abril",
+    "August":
+        "Agosto",
+    "Created:":
+        "Creado:",
+    "December":
+        "Diciembre",
+    "Email address of parent or guardian":
+        "Correo electrónico de la madre, padre o tutor legal",
+    "February":
+        "Febrero",
+    "January":
+        "Enero",
+    "July":
+        "Julio",
+    "June":
+        "Junio",
+    "Last updated:":
+        "Actualizado por última vez:",
+    "March":
+        "Marzo",
+    "May":
+        "Mayo",
+    "Month of Birth":
+        "Mes de nacimiento",
+    "November":
+        "Noviembre",
+    "October":
+        "Octubre",
+    " or before":
+        " o antes",
+    "Published:":
+        "Publicado:",
+    "See Code":
+        "Examinar",
+    "September":
+        "Septiembre",
+    "Shared:":
+        "Compartido:"
 }

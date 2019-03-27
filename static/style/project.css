@@ -257,6 +257,21 @@ img.collection-thumbnail {
     flex-grow: 0.20; /* 20% max growth */
 }
 
+.collection a.flag,
+.project.big a.flag {
+    text-align: right;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+
+.collection a.flag:hover,
+.project.big a.flag:hover {
+    filter: brightness(0.5) !important;
+}
+
 .collection .description,
 .project.big .notes {
     padding: .5em;

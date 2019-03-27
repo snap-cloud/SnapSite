@@ -119,8 +119,14 @@
         "Compartit:",
     "Published:":
         "Publicat:",
-    "This project is private":
-        "Aquest projecte és privat",
+    "This item can be shared via URL":
+        "Aquest element es pot compartir via URL",
+    "This item is private":
+        "Aquest element és privat",
+    "This item is published":
+        "Aquest element està publicat",
+    "This item is unpublished":
+        "Aquest element no està publicat",
     "Latest projects":
         "Últims projectes",
     "Search Results:":
@@ -344,5 +350,19 @@
     "New Collection":
         "Nova col·lecció",
     "This collection is public":
-        "Aquesta col·lecció és pública"
+        "Aquesta col·lecció és pública",
+    "Report this project":
+        "Denuncia aquest projecte",
+    "Are you sure you want to flag this project as inappropriate?":
+        "Segur que vols denunciar aquest projecte com a inapropiat?",
+    "Flag project":
+        "Denuncia projecte",
+    "This project has been flagged.":
+        "Aquest projecte ha estat denunciat",
+    "Project flagged":
+        "Projecte denunciat",
+    "Add project to collection":
+        "Afegeix projecte a col·lecció",
+    "Please select the collection to which you want to add this project:":
+        "Selecciona la col·lecció a què vols afegir aquest projecte"
 }
