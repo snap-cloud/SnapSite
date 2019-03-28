@@ -106,7 +106,9 @@
 
                 function ${widgetName}_initGrid (callback) {
                     ${widgetName}_toPage(1);
-                    callback.call(this);
+                    if (callback) {
+                        callback.call(this);
+                    }
                 };
 
             </script>
