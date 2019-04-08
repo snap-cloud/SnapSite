@@ -61,7 +61,7 @@
                         ${widgetName}_totalPagesSpan =
                             document.querySelector(
                                 '.${widgetName}.paginator .total-pages'),
-                        height = ${widgetName}_projectsDiv.clientHeight;
+                        height = ${widgetName}_listDiv.clientHeight;
 
                     // Forces grid to keep previous height when emptied out
                     if (height > 0) {
