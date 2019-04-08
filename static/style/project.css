@@ -150,6 +150,9 @@ img.collection-thumbnail {
 .collection.small span.collection-name,
 .project.small span.project-name {
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .collection.small span.is-public,
