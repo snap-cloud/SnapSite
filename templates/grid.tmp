@@ -62,6 +62,10 @@
                             document.querySelector(
                                 '.${widgetName}.paginator .total-pages');
 
+                    // Forces grid to keep previous height when emptied out
+                    ${widgetName}_listDiv.style.height =
+                        ${widgetName}_listDiv.clientHeight;
+
                     ${widgetName}_listDiv.innerHTML = '';
                     beganLoading('.${widgetName}.list');
 
