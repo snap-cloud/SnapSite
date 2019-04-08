@@ -60,11 +60,13 @@
                                 '.${widgetName}.paginator .page'),
                         ${widgetName}_totalPagesSpan =
                             document.querySelector(
-                                '.${widgetName}.paginator .total-pages');
+                                '.${widgetName}.paginator .total-pages'),
+                        height = ${widgetName}_projectsDiv.clientHeight;
 
                     // Forces grid to keep previous height when emptied out
-                    ${widgetName}_listDiv.style.height =
-                        ${widgetName}_listDiv.clientHeight;
+                    if (height > 0) {
+                        ${widgetName}_listDiv.style.height = height;
+                    }
 
                     ${widgetName}_listDiv.innerHTML = '';
                     beganLoading('.${widgetName}.list');

@@ -32,6 +32,13 @@
     }
 
     function ${widgetName}_toPage (pageNumber) {
+        // Forces grid to keep previous height when emptied out
+        var height = ${widgetName}_projectsDiv.clientHeight;
+
+        if (height > 0) {
+            ${widgetName}_projectsDiv.style.height = height;
+        }
+
         ${widgetName}_projectsDiv.innerHTML = '';
         beganLoading('.${widgetName}.items');
         SnapCloud.${query}(
