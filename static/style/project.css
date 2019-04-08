@@ -18,7 +18,7 @@
 .project iframe,
 .project .embed-placeholder {
     background: rgba(0, 0, 0, 0.2);
-    border: 2px solid #2d3142;
+    border: 1px solid #2d3142;
     box-sizing: border-box;
 }
 
@@ -45,7 +45,7 @@
     position: relative;
     border-radius: 5px;
     height: 120px;
-    border: 2px solid #2d3142;
+    border: 1px solid #2d3142;
     box-sizing: border-box;
 }
 
