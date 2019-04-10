@@ -1,6 +1,8 @@
+@param title="collectionName + ' - Snap! Build Your Own Blocks'"
 <script src="js/dialog.js"></script>
 <script src="js/project.js"></script>
 <script src="js/inplace.js"></script>
+<link rel="stylesheet" href="style/project.css">
 <div hidden class="collection">
     <div class="title">
         <h1></h1>
@@ -39,17 +41,50 @@
         <!-- just a separator -->
         <i class="pure-u-1-24"></i>
         <div class="pure-u-2-3 projects">
+
 @param pageSize=12
-@param query="getCollectionProjects"
 @param widgetName="collection_projects"
-@param user="getUrlParameter('user')"
-@param extraParam="getUrlParameter('collection'),"
-@param title="collectionName + ' - Snap! Build Your Own Blocks'"
-@param extraOptions="extraFields: { author: 'username', isPublic: 'ispublic', isPublished: 'ispublished' }, withCollectionControls: true"
-@param gridSize=4
-@include=project_grid
+@include=grid
+        <script>
+            collection_projects_loadPage =
+                function (query, pageSize, pageNumber, onSuccess) {
+                    SnapCloud.getCollectionProjects(
+                        getUrlParameter('user'),
+                        pageNumber,
+                        pageSize,
+                        getUrlParameter('collection'),
+                        onSuccess,
+                        genericError,
+                        true // withThumbnail
+                    );
+                };
+
+            collection_projects_onLoadPage =
+                function (response, targetElement) {
+                    response.projects.forEach(function (project) {
+                        targetElement.append(
+                            newProjectDiv(
+                                project, 
+                                { 
+                                    size: 'small', 
+                                    gridSize: 4, 
+                                    extraFields: {
+                                        isPublic: 'ispublic',
+                                        isPublished: 'ispublished',
+                                        author: 'username'
+                                    },
+                                    withCollectionControls: true
+                                }
+                            )
+                        );
+                    }); 
+                };
+
+            collection_projects_initGrid();
+        </script>
 @param extraOptions=''
 @param gridSize=''
+
         </div>
     </div>
 </div>
