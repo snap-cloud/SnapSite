@@ -1,5 +1,10 @@
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
 <h1><span class="username"></span><span localizable>'s public page</span></h1>
-@content
+@param pageSize=15
+@param widgetName="user_projects"
+@param withSearch=false
+@include=grid
 <div hidden="true" class="profile">
     <h2 localizable>Admin tools</h2>
 </div>
@@ -7,7 +12,7 @@
 <script src="js/admin.js"></script>
 <link rel="stylesheet" href="style/admin.css">
 <script>
-    var profileDiv = document.querySelector('.profile');
+var profileDiv = document.querySelector('.profile');
     if (hasAnyOfRoles(['admin', 'moderator'])) {
         profileDiv.hidden = false;
         beganLoading('.profile');
@@ -22,4 +27,34 @@
             'Could not fetch user data'
         );
     }
+
+    user_projects_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getPublishedProjectList(
+                getUrlParameter('user'),
+                pageNumber,
+                pageSize,
+                null, // no search query
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    user_projects_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project, 
+                        { 
+                            size: 'small', 
+                            gridSize: 5 
+                        }
+                    )
+                );
+            }); 
+        };
+
+    user_projects_initGrid();
 </script>
