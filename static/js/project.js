@@ -912,6 +912,7 @@ function runProject (event) {
             startButton.classList.replace('fa-bolt', 'fa-flag');
         }
     } else {
+        ide.stage.threads.pauseCustomHatBlocks = false;
         ide.runScripts();
         if (ide.embedOverlay) {
             ide.embedOverlay.destroy();
