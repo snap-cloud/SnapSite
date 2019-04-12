@@ -903,6 +903,7 @@ function toggleFullScreen () {
 
 function runProject (button, event) {
     var iframe = document.querySelector('.embed iframe'),
+        button = document.querySelector('.start-button'),
         world = iframe.contentWindow.world,
         ide = world.children[0];
     if (event.shiftKey) {
@@ -921,19 +922,25 @@ function runProject (button, event) {
         }
     }
     world.worldCanvas.focus();
+    refreshPauseButton(ide);
 };
 
-function togglePauseProject (element) {
+function togglePauseProject () {
     var iframe = document.querySelector('.embed iframe'),
         world = iframe.contentWindow.world,
         ide = world.children[0];
     ide.togglePauseResume();
+    refreshPauseButton(ide);
+};
+
+function refreshPauseButton (ide) {
+    var button = document.querySelector('.pause-button');
     if (ide.stage.threads.isPaused()) {
-        element.classList.remove('fa-pause');
-        element.classList.add('fa-play');
+        button.classList.remove('fa-pause');
+        button.classList.add('fa-play');
     } else {
-        element.classList.add('fa-pause');
-        element.classList.remove('fa-play');
+        button.classList.add('fa-pause');
+        button.classList.remove('fa-play');
     }
 };
 
@@ -945,6 +952,7 @@ function stopProject () {
         ide.embedOverlay.destroy();
         ide.embedPlayButton.destroy();
     }
+    refreshPauseButton(ide);
 };
 
 function editProject (project) {

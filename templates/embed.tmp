@@ -24,9 +24,9 @@
             <div class="controlbar">
                 <span class="title"></span>
                 <i class="start-button fas fa-flag clickable"
-                    onclick="runProject(this, event);"></i>
+                    onclick="runProject(event);"></i>
                 <i class="pause-button fas fa-pause clickable" hidden
-                    onclick="togglePauseProject(this);"></i>
+                    onclick="togglePauseProject();"></i>
                 <i class="stop-button fas fa-stop clickable"
                     onclick="stopProject();"></i>
             </div>
