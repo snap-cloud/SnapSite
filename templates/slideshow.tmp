@@ -24,11 +24,22 @@
 <br>
 
 <script>
-    var slideIndex = 1;
+    var slideIndex = 1,
+        interval = startInterval();
+
+    function startInterval () {
+        return setInterval(
+            function () { plusSlides(1); },
+            8000
+        );
+    };
+
     showSlide(slideIndex);
 
     function plusSlides (n) {
         showSlide(slideIndex += n);
+        clearInterval(interval);
+        interval = startInterval();
     };
 
     function currentSlide (n) {
@@ -45,10 +56,5 @@
         });
         slides[slideIndex-1].style.display = 'block';
     };
-
-    setInterval(
-        function () { plusSlides(1); },
-        8000
-    );
 
 </script>
