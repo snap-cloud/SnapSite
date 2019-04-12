@@ -903,16 +903,10 @@ function toggleFullScreen () {
 
 function runProject (button, event) {
     var iframe = document.querySelector('.embed iframe'),
-        button = document.querySelector('.start-button'),
         world = iframe.contentWindow.world,
         ide = world.children[0];
     if (event.shiftKey) {
         ide.toggleFastTracking();
-        if (button.classList.contains('fa-flag')) {
-            button.classList.replace('fa-flag', 'fa-bolt');
-        } else {
-            button.classList.replace('fa-bolt', 'fa-flag');
-        }
     } else {
         ide.stage.threads.pauseCustomHatBlocks = false;
         ide.runScripts();
@@ -922,7 +916,18 @@ function runProject (button, event) {
         }
     }
     world.worldCanvas.focus();
+    refreshFlagButton(ide);
     refreshPauseButton(ide);
+    refreshStopButton(ide);
+};
+
+function refreshFlagButton (ide) {
+    var button = document.querySelector('.start-button');
+    if (ide.stage.isFastTracked) {
+        button.classList.replace('fa-flag', 'fa-bolt');
+    } else {
+        button.classList.replace('fa-bolt', 'fa-flag');
+    }
 };
 
 function togglePauseProject () {
@@ -936,11 +941,9 @@ function togglePauseProject () {
 function refreshPauseButton (ide) {
     var button = document.querySelector('.pause-button');
     if (ide.stage.threads.isPaused()) {
-        button.classList.remove('fa-pause');
-        button.classList.add('fa-play');
+        button.classList.replace('fa-pause', 'fa-play');
     } else {
-        button.classList.add('fa-pause');
-        button.classList.remove('fa-play');
+        button.classList.replace('fa-play', 'fa-pause');
     }
 };
 
@@ -952,7 +955,17 @@ function stopProject () {
         ide.embedOverlay.destroy();
         ide.embedPlayButton.destroy();
     }
+    refreshStopButton(ide);
     refreshPauseButton(ide);
+};
+
+function refreshStopButton (ide) {
+    var button = document.querySelector('.stop-button');
+    if (ide.stage.threads.pauseCustomHatBlocks) {
+        button.classList.replace('fa-octagon', 'fa-stop');
+    } else {
+        button.classList.replace('fa-stop', 'fa-octagon');
+    }
 };
 
 function editProject (project) {

@@ -129,4 +129,18 @@ pre.in-place {
     color: #505080;
 }
 
+/* img filler because we don't have octagon in FA free edition */
+.fa-octagon {
+    position: relative;
+}
 
+.fa-octagon:before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: -14px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: url('../img/octagon.png');
+}

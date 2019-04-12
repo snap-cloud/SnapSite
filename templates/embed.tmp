@@ -27,7 +27,7 @@
                     onclick="runProject(event);"></i>
                 <i class="pause-button fas fa-pause clickable" hidden
                     onclick="togglePauseProject();"></i>
-                <i class="stop-button fas fa-stop clickable"
+                <i class="stop-button fas fa-octagon clickable"
                     onclick="stopProject();"></i>
             </div>
             <i class="embed-placeholder"></i>

@@ -20,10 +20,10 @@
                 <i class="present-button fas fa-expand clickable"
                     onclick="toggleFullScreen();"></i>
                 <i class="start-button fas fa-flag clickable"
-                    onclick="runProject(this, event);"></i>
+                    onclick="runProject(event);"></i>
                 <i class="pause-button fas fa-pause clickable"
-                    onclick="togglePauseProject(this);"></i>
-                <i class="stop-button fas fa-stop clickable"
+                    onclick="togglePauseProject();"></i>
+                <i class="stop-button fas fa-octagon clickable"
                     onclick="stopProject();"></i>
             </div>
 
