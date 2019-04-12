@@ -901,7 +901,7 @@ function toggleFullScreen () {
     world.worldCanvas.focus();
 };
 
-function runProject (button, event) {
+function runProject (event) {
     var iframe = document.querySelector('.embed iframe'),
         world = iframe.contentWindow.world,
         ide = world.children[0];
