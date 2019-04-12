@@ -12,13 +12,19 @@
         <!-- Project viewer -->
         <div class="embed pure-u-1-2">
             <!-- Spinner shown while embed hasn't been loaded -->
-            <i class="project-loader fas fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+            <i class="project-loader fas fa-spinner fa-spin fa-3x"
+                aria-hidden="true"></i>
 
             <!-- Project control bar -->
             <div class="controlbar">
-                <i class="present-button fas fa-expand clickable" onclick="toggleFullScreen();"></i>
-                <i class="start-button fas fa-flag clickable" onclick="runProject(event);"></i>
-                <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
+                <i class="present-button fas fa-expand clickable"
+                    onclick="toggleFullScreen();"></i>
+                <i class="start-button fas fa-flag clickable"
+                    onclick="runProject(this, event);"></i>
+                <i class="pause-button fas fa-pause clickable"
+                    onclick="togglePauseProject(this);"></i>
+                <i class="stop-button fas fa-stop clickable"
+                    onclick="stopProject();"></i>
             </div>
 
             <!-- Project embed placeholder -->
@@ -26,12 +32,18 @@
 
             <!-- Project Action Buttons -->
             <div class="buttons">
-                <a localizable class="pure-button open" target="_blank">See Code</a>
-                <a localizable class="pure-button download" target="_blank">Download</a>
-                <a localizable class="pure-button embed-button" target="_blank">Embed</a>
-                <a localizable class="pure-button collect" target="_blank">Add to Collection</a>
-                <a localizable class="pure-button pure-button-warning delete" target="_blank">Delete</a>
-                <a localizable class="clickable warning flag" target="_blank">Report this project</a>
+                <a localizable class="pure-button open"
+                    target="_blank">See Code</a>
+                <a localizable class="pure-button download"
+                    target="_blank">Download</a>
+                <a localizable class="pure-button embed-button"
+                    target="_blank">Embed</a>
+                <a localizable class="pure-button collect"
+                    target="_blank">Add to Collection</a>
+                <a localizable class="pure-button pure-button-warning delete"
+                    target="_blank">Delete</a>
+                <a localizable class="clickable warning flag"
+                    target="_blank">Report this project</a>
             </div>
         </div>
         <!-- just a separator -->
@@ -41,14 +53,22 @@
             <pre class="notes"> </pre>
             <!-- Dates and project meta -->
             <div class="dates">
-                <p class="created"><strong localizable>Created:</strong><span></span></p>
-                <p class="updated"><strong localizable>Last updated:</strong><span></span></p>
-                <p class="shared"><strong localizable>Shared:</strong><span></span></p>
-                <p class="published"><strong localizable>Published:</strong><span></span></p>
-                <a localizable class="pure-button share" target="_blank">Share</a>
-                <a localizable class="pure-button unshare" target="_blank">Unshare</a>
-                <a localizable class="pure-button publish" target="_blank">Publish</a>
-                <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
+                <p class="created"><strong
+                    localizable>Created:</strong><span></span></p>
+                <p class="updated"><strong
+                    localizable>Last updated:</strong><span></span></p>
+                <p class="shared"><strong
+                    localizable>Shared:</strong><span></span></p>
+                <p class="published"><strong
+                    localizable>Published:</strong><span></span></p>
+                <a localizable class="pure-button share"
+                    target="_blank">Share</a>
+                <a localizable class="pure-button unshare"
+                    target="_blank">Unshare</a>
+                <a localizable class="pure-button publish"
+                    target="_blank">Publish</a>
+                <a localizable class="pure-button unpublish"
+                    target="_blank">Unpublish</a>
             </div>
         </div>
     </div>
@@ -70,35 +90,60 @@
         function (project) {
             var datesDiv = document.querySelector('.dates'),
                 buttonsDiv = document.querySelector('.buttons');
-            setTitle(pageProject() + localizer.localize(' by ') + pageUser() + ' - Snap! Build Your Own Blocks');
+            setTitle(pageProject() + localizer.localize(' by ') +
+                pageUser() + ' - Snap! Build Your Own Blocks');
 
             // Fill up all fields
             fillProjectTitle(project, document.querySelector('.title'));
-            loadProjectViewer(project, document.querySelector('.embed-placeholder'));
+            loadProjectViewer(
+                project,
+                document.querySelector('.embed-placeholder')
+            );
             fillProjectNotes(project, document.querySelector('.notes'));
             fillProjectDates(project, datesDiv);
             fillRemixInfo(project, document.querySelector('.remixed-from'));
 
-            // Set up button visibility according to user permissions and project visibility state
+            // Set up button visibility according to user permissions
+            // and project visibility state
             setProjectControlButtonsVisibility(project, buttonsDiv);
             setProjectShareButtonsVisibility(project, datesDiv);
 
             if (owns(project)) {
-                document.querySelector('.buttons .open').innerHTML = localizer.localize('Edit');
+                document.querySelector('.buttons .open').innerHTML =
+                    localizer.localize('Edit');
             }
 
             // Set up button functionality
-            document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
-            document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
-            document.querySelector('.buttons .embed-button').onclick = function () { embedDialog(project); }
-            document.querySelector('.buttons .collect').onclick = function () { collectProject(project); }
-            document.querySelector('.buttons .flag').onclick = function () { confirmFlagProject(project); }
-            document.querySelector('.buttons .delete').onclick = function () { confirmDeleteProject(project); }
+            document.querySelector('.buttons .open').href =
+                projectURL(project.username, project.projectname) +
+                    '&editMode&noRun';
+            document.querySelector('.buttons .download').onclick =
+                function () { downloadProject(project); };
+            document.querySelector('.buttons .embed-button').onclick =
+                function () { embedDialog(project); }
+            document.querySelector('.buttons .collect').onclick =
+                function () { collectProject(project); }
+            document.querySelector('.buttons .flag').onclick =
+                function () { confirmFlagProject(project); }
+            document.querySelector('.buttons .delete').onclick =
+                function () { confirmDeleteProject(project); }
 
-            document.querySelector('.dates .share').onclick = function () { confirmShareProject(project, buttonsDiv, datesDiv); };
-            document.querySelector('.dates .unshare').onclick = function () { confirmUnshareProject(project, buttonsDiv, datesDiv); };
-            document.querySelector('.dates .publish').onclick = function () { confirmPublishProject(project, buttonsDiv, datesDiv); };
-            document.querySelector('.dates .unpublish').onclick = function () { confirmUnpublishProject(project, buttonsDiv, datesDiv); }
+            document.querySelector('.dates .share').onclick =
+                function () {
+                    confirmShareProject(project, buttonsDiv, datesDiv)
+                };
+            document.querySelector('.dates .unshare').onclick =
+                function () {
+                    confirmUnshareProject(project, buttonsDiv, datesDiv);
+                };
+            document.querySelector('.dates .publish').onclick =
+                function () {
+                    confirmPublishProject(project, buttonsDiv, datesDiv);
+                };
+            document.querySelector('.dates .unpublish').onclick =
+                function () {
+                    confirmUnpublishProject(project, buttonsDiv, datesDiv);
+                };
 
             doneLoading('#wrapper');
             document.querySelector('.project').hidden = false;

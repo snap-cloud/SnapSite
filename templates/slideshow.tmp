@@ -30,7 +30,7 @@
     function startInterval () {
         return setInterval(
             function () { plusSlides(1); },
-            8000
+            10000
         );
     };
 

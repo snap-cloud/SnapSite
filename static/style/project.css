@@ -238,6 +238,10 @@ img.collection-thumbnail {
     color: #66ee66;
 }
 
+.project.big .controlbar .pause-button {
+    color: #ffdc00;
+}
+
 .project.big .controlbar .stop-button {
     color: #ee6666;
 }

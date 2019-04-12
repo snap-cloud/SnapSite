@@ -771,7 +771,8 @@ function embedDialog (project) {
     new Map([
         [ 'title', localizer.localize('Project title') ],
         [ 'author', localizer.localize('Project author') ],
-        [ 'edit-button', localizer.localize('Edit button') ]
+        [ 'edit-button', localizer.localize('Edit button') ],
+        [ 'pause-button', localizer.localize('Pause button') ]
     ]).forEach(function (value, key) {
         form.innerHTML += '<span class="option"><input type="checkbox" name="' +
             key + '" value="' + key + '" checked><label for="' + key +'">' +
@@ -787,6 +788,7 @@ function embedDialog (project) {
             (form.elements['title'].checked ? '&showTitle=true' : '') +
             (form.elements['author'].checked ? '&showAuthor=true' : '') +
             (form.elements['edit-button'].checked ? '&editButton=true' : '') +
+            (form.elements['pause-button'].checked ? '&pauseButton=true' : '') +
             '" width="480" height="390"></iframe>';
     };
     codeArea.set();
@@ -899,17 +901,16 @@ function toggleFullScreen () {
     world.worldCanvas.focus();
 };
 
-function runProject (event) {
+function runProject (button, event) {
     var iframe = document.querySelector('.embed iframe'),
-        startButton = document.querySelector('.start-button'),
         world = iframe.contentWindow.world,
         ide = world.children[0];
     if (event.shiftKey) {
         ide.toggleFastTracking();
-        if (startButton.classList.contains('fa-flag')) {
-            startButton.classList.replace('fa-flag', 'fa-bolt');
+        if (button.classList.contains('fa-flag')) {
+            button.classList.replace('fa-flag', 'fa-bolt');
         } else {
-            startButton.classList.replace('fa-bolt', 'fa-flag');
+            button.classList.replace('fa-bolt', 'fa-flag');
         }
     } else {
         ide.stage.threads.pauseCustomHatBlocks = false;
@@ -920,6 +921,20 @@ function runProject (event) {
         }
     }
     world.worldCanvas.focus();
+};
+
+function togglePauseProject (element) {
+    var iframe = document.querySelector('.embed iframe'),
+        world = iframe.contentWindow.world,
+        ide = world.children[0];
+    ide.togglePauseResume();
+    if (ide.stage.threads.isPaused()) {
+        element.classList.remove('fa-pause');
+        element.classList.add('fa-play');
+    } else {
+        element.classList.add('fa-pause');
+        element.classList.remove('fa-play');
+    }
 };
 
 function stopProject () {
