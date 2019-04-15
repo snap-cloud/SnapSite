@@ -91,6 +91,7 @@
         [ 'Science Projects',
             'Art Projects',
             'Fractals',
+            'Animations',
             'Games' ][Math.floor(Math.random()*4)];
 </script>
 @param widgetName=curated
