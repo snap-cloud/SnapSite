@@ -109,38 +109,38 @@
             setProjectShareButtonsVisibility(project, datesDiv);
 
             if (owns(project)) {
-                document.querySelector('.buttons .open').innerHTML =
+                buttonsDiv.querySelector('.open').innerHTML =
                     localizer.localize('Edit');
             }
 
             // Set up button functionality
-            document.querySelector('.buttons .open').href =
+            buttonsDiv.querySelector('.open').href =
                 projectURL(project.username, project.projectname) +
                     '&editMode&noRun';
-            document.querySelector('.buttons .download').onclick =
+            buttonsDiv.querySelector('.download').onclick =
                 function () { downloadProject(project); };
-            document.querySelector('.buttons .embed-button').onclick =
+            buttonsDiv.querySelector('.embed-button').onclick =
                 function () { embedDialog(project); }
-            document.querySelector('.buttons .collect').onclick =
+            buttonsDiv.querySelector('.collect').onclick =
                 function () { collectProject(project); }
-            document.querySelector('.buttons .flag').onclick =
+            buttonsDiv.querySelector('.flag').onclick =
                 function () { confirmFlagProject(project); }
-            document.querySelector('.buttons .delete').onclick =
+            buttonsDiv.querySelector('.delete').onclick =
                 function () { confirmDeleteProject(project); }
 
-            document.querySelector('.dates .share').onclick =
+            datesDiv.querySelector('.share').onclick =
                 function () {
                     confirmShareProject(project, buttonsDiv, datesDiv)
                 };
-            document.querySelector('.dates .unshare').onclick =
+            datesDiv.querySelector('.unshare').onclick =
                 function () {
                     confirmUnshareProject(project, buttonsDiv, datesDiv);
                 };
-            document.querySelector('.dates .publish').onclick =
+            datesDiv.querySelector('.publish').onclick =
                 function () {
                     confirmPublishProject(project, buttonsDiv, datesDiv);
                 };
-            document.querySelector('.dates .unpublish').onclick =
+            datesDiv.querySelector('.unpublish').onclick =
                 function () {
                     confirmUnpublishProject(project, buttonsDiv, datesDiv);
                 };

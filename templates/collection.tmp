@@ -75,10 +75,10 @@
                     response.projects.forEach(function (project) {
                         targetElement.append(
                             newProjectDiv(
-                                project, 
-                                { 
-                                    size: 'small', 
-                                    gridSize: 4, 
+                                project,
+                                {
+                                    size: 'small',
+                                    gridSize: 4,
                                     extraFields: {
                                         isPublic: 'ispublic',
                                         isPublished: 'ispublished',
@@ -88,7 +88,7 @@
                                 }
                             )
                         );
-                    }); 
+                    });
                 };
 
             collection_projects_initGrid();
@@ -104,6 +104,9 @@
         pageUser(),
         '${collectionName}' || getUrlParameter('collection'),
         function (collection) {
+            var datesDiv = document.querySelector('.dates'),
+                buttonsDiv = document.querySelector('.buttons');
+
             if (collection.id == 0) {
                 // "Flagged" collection
                 document.querySelector('.info').remove();
@@ -113,12 +116,13 @@
                 document.querySelector('.collection').classList.add('flagged');
             }
 
+            // Fill up all fields
             fillCollectionTitle(
                     collection,
                     document.querySelector('.title')
                 );
 
-            if (collection.id !== 0) { 
+            if (collection.id !== 0) {
                 fillCollectionThumbnail(
                     collection,
                     document.querySelector('.collection-thumbnail')
@@ -129,148 +133,28 @@
                     document.querySelector('.description')
                 );
 
-                document.querySelector('.created span').innerHTML =
-                    formatDate(collection.created_at);
-                document.querySelector('.updated span').innerHTML =
-                    formatDate(collection.updated_at);
+                fillCollectionDates(collection, datesDiv);
 
-                if (collection.shared) {
-                    document.querySelector('.shared span').innerHTML =
-                        formatDate(collection.shared_at);
-                    if (collection.published) {
-                        document.querySelector('.published span').innerHTML =
-                            formatDate(collection.firstpublished);
-                    } else {
-                        document.querySelector('.published').hidden = true;
-                    }
-                } else {
-                    document.querySelector('.shared').hidden = true;
-                    document.querySelector('.published').hidden = true;
-                }
+                // Set up button visibility according to user permissions
+                // and collection visibility state
+                setCollectionButtonsVisibility(collection, buttonsDiv);
 
-                // Set up all buttons
-                document.querySelector('.buttons .share').hidden =
-                    collection.shared || !canShare(collection);
-                document.querySelector('.buttons .unshare').hidden =
-                    !collection.shared || !canShare(collection);
-                document.querySelector('.buttons .publish').hidden =
-                    (!collection.shared || collection.published) ||
-                    !canPublish(collection) || sessionStorage.role === 'banned';
-                document.querySelector('.buttons .unpublish').hidden =
-                    (!collection.shared || !collection.published) ||
-                    !canUnpublish(collection);
-                document.querySelector('.buttons .delete').hidden =
-                    !canDelete(collection);
-                document.querySelector('.add-editor').hidden =
-                    !owns(collection);
-
-                document.querySelector('.buttons .share').onclick =
+                // set up button functionality
+                buttonsDiv.querySelector('.share').onclick =
                     function () { confirmShareCollection(collection); };
-                document.querySelector('.buttons .unshare').onclick =
+                buttonsDiv.querySelector('.unshare').onclick =
                     function () { confirmUnshareCollection(collection); };
-                document.querySelector('.buttons .publish').onclick =
+                buttonsDiv.querySelector('.publish').onclick =
                     function () { confirmPublishCollection(collection); };
-                document.querySelector('.buttons .unpublish').onclick =
+                buttonsDiv.querySelector('.unpublish').onclick =
                     function () { confirmUnpublishCollection(collection); }
-                document.querySelector('.buttons .delete').onclick =
+                buttonsDiv.querySelector('.delete').onclick =
                     function () { confirmDeleteCollection(collection); }
 
-                document.querySelector('.add-editor').onclick = function () {
-                    var newEditorInput = document.querySelector('.new-editor'),
-                        addEditorAnchor = this;
-                    this.hidden = true;
-                    newEditorInput.placeholder = localizer.localize('Username');
-                    newEditorInput.value = '';
-                    newEditorInput.hidden = false;
-                    newEditorInput.classList.add('flash');
-                    newEditorInput.focus();
-                    newEditorInput.onkeypress = function (event) {
-                        var code =
-                            (event.keyCode ? event.keyCode : event.which);
-                        if (code == 13 && !event.shiftKey) {
-                            SnapCloud.addEditorToCollection(
-                                collection.creator.username,
-                                collection.name,
-                                newEditorInput.value,
-                                function () {
-                                    var li = newEditorLi(newEditorInput.value);
-                                    newEditorInput.hidden = true;
-                                    newEditorInput.classList.remove('flash');
-                                    addEditorAnchor.hidden = false;
-                                    document.querySelector('.editor-list')
-                                        .append(li);
-                                    li.classList.add('flash');
-                                },
-                                function () {
-                                    newEditorInput.value = '';
-                                    newEditorInput.classList.remove('flash');
-                                    newEditorInput.classList.remove(
-                                        'warning-flash');
-                                    setTimeout(
-                                        function () {
-                                            newEditorInput.classList.add(
-                                                'warning-flash');
-                                        },
-                                        10
-                                    );
-                                    newEditorInput.focus();
-                                }
-                            );
-                        }
-                    };
-                }
-
-                document.querySelector('.add-editor').title =
-                    localizer.localize('Add an editor to this collection');
-                document.querySelector('.editor-list').title =
-                    localizer.localize('Users who can edit this collection');
-
-                document.querySelector('.editor-list').append(
-                    newEditorLi(collection.creator.username));
-
-                function newEditorLi (username) {
-                    var editorLi = document.createElement('li'),
-                        removeAnchor = document.createElement('a'),
-                        icon = document.createElement('i');
-
-                    editorLi.classList.add('editor');
-                    editorLi.append(userAnchor(username));
-
-                    if (owns(collection) && username !==
-                            collection.creator.username) {
-                        icon.classList.add('fas');
-                        icon.classList.add('fa-times-circle');
-                        removeAnchor.classList.add('remove-editor');
-                        removeAnchor.classList.add('clickable');
-                        removeAnchor.append(icon);
-                        removeAnchor.onclick = function () {
-                            SnapCloud.removeEditorFromCollection(
-                                collection.creator.username,
-                                collection.name,
-                                username,
-                                function () {
-                                    editorLi.classList.add('warning-flash');
-                                    setTimeout(
-                                        function () {
-                                            editorLi.remove();
-                                        },
-                                        1000
-                                    );
-                                },
-                                genericError
-                            ); 
-                        };
-                        editorLi.append(removeAnchor);
-                    }
-                    return editorLi;
-                };
-
-                if (collection.editors && collection.editors[0]) {
-                    collection.editors.forEach(function (editor) {
-                        document.querySelector('.editor-list').append(
-                            newEditorLi(editor.username));
-                    });
-                }
+                setupCollectionEditorControls(
+                    collection,
+                    document.querySelector('.editors')
+                );
 
             }
             doneLoading('#wrapper');

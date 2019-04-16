@@ -124,7 +124,7 @@ function fillProjectDates (project, datesElement) {
             document.querySelector('.published').hidden = true;
         }
     } else {
-        document.querySelector('.shared').innerHTML = 
+        document.querySelector('.shared').innerHTML =
             localizer.localize('This project is private') + '.';
         document.querySelector('.published').hidden = true;
     }
@@ -247,6 +247,134 @@ function fillCollectionDescription (collection, descriptionElement) {
         );
     }
 };
+
+function fillCollectionDates (collection, datesDiv) {
+    datesDiv.querySelector('.created span').innerHTML =
+        formatDate(collection.created_at);
+    datesDiv.querySelector('.updated span').innerHTML =
+        formatDate(collection.updated_at);
+
+    if (collection.shared) {
+        datesDiv.querySelector('.shared span').innerHTML =
+            formatDate(collection.shared_at);
+        if (collection.published) {
+            datesDiv.querySelector('.published span').innerHTML =
+                formatDate(collection.firstpublished);
+        } else {
+            datesDiv.querySelector('.published').hidden = true;
+        }
+    } else {
+        datesDiv.querySelector('.shared').hidden = true;
+        datesDiv.querySelector('.published').hidden = true;
+    }
+};
+
+function setCollectionButtonsVisibility (collection, buttonsDiv) {
+    // Set up all buttons
+    buttonsDiv.querySelector('.share').hidden =
+        collection.shared || !canShare(collection);
+    buttonsDiv.querySelector('.unshare').hidden =
+        !collection.shared || !canShare(collection);
+    buttonsDiv.querySelector('.publish').hidden =
+        (!collection.shared || collection.published) ||
+        !canPublish(collection) || sessionStorage.role === 'banned';
+    buttonsDiv.querySelector('.unpublish').hidden =
+        (!collection.shared || !collection.published) ||
+        !canUnpublish(collection);
+    buttonsDiv.querySelector('.delete').hidden =
+        !canDelete(collection);
+};
+
+function setupCollectionEditorControls (collection, editorsElement) {
+    var addEditorAnchor = editorsElement.querySelector('.add-editor'),
+        editorListUl = editorsElement.querySelector('.editor-list');
+
+    // set up "add editor" anchor
+    addEditorAnchor.hidden = !owns(collection);
+    addEditorAnchor.onclick = function () {
+        var newEditorInput = editorsElement.querySelector('.new-editor');
+        this.hidden = true;
+        newEditorInput.placeholder = localizer.localize('Username');
+        newEditorInput.value = '';
+        newEditorInput.hidden = false;
+        newEditorInput.classList.add('flash');
+        newEditorInput.focus();
+        newEditorInput.onkeypress = function (event) {
+            var code = (event.keyCode ? event.keyCode : event.which);
+            if (code == 13 && !event.shiftKey) {
+                SnapCloud.addEditorToCollection(
+                    collection.creator.username,
+                    collection.name,
+                    newEditorInput.value,
+                    function () {
+                        var li = newEditorLi(newEditorInput.value);
+                        newEditorInput.hidden = true;
+                        newEditorInput.classList.remove('flash');
+                        addEditorAnchor.hidden = false;
+
+                        editorListUl.append(li);
+                        li.classList.add('flash');
+                    },
+                    function () {
+                        newEditorInput.value = '';
+                        newEditorInput.classList.remove('flash');
+                        newEditorInput.classList.remove('warning-flash');
+                        setTimeout(
+                            function () {
+                                newEditorInput.classList.add('warning-flash');
+                            },
+                            10
+                        );
+                        newEditorInput.focus();
+                    }
+                );
+            }
+        };
+    }
+
+    addEditorAnchor.title =
+        localizer.localize('Add an editor to this collection');
+    editorListUl.title =
+        localizer.localize('Users who can edit this collection');
+    editorListUl.append(newEditorLi(collection.creator.username));
+
+    function newEditorLi (username) {
+        var editorLi = document.createElement('li'),
+            removeAnchor = document.createElement('a'),
+            icon = document.createElement('i');
+
+        editorLi.classList.add('editor');
+        editorLi.append(userAnchor(username));
+
+        if (owns(collection) && username !== collection.creator.username) {
+            icon.classList.add('fas');
+            icon.classList.add('fa-times-circle');
+            removeAnchor.classList.add('remove-editor');
+            removeAnchor.classList.add('clickable');
+            removeAnchor.append(icon);
+            removeAnchor.onclick = function () {
+                SnapCloud.removeEditorFromCollection(
+                    collection.creator.username,
+                    collection.name,
+                    username,
+                    function () {
+                        editorLi.classList.add('warning-flash');
+                        setTimeout( function () { editorLi.remove(); }, 1000);
+                    },
+                    genericError
+                );
+            };
+            editorLi.append(removeAnchor);
+        }
+        return editorLi;
+    };
+
+    if (collection.editors && collection.editors[0]) {
+        collection.editors.forEach(function (editor) {
+            editorListUl.append(newEditorLi(editor.username));
+        });
+    }
+}
 
 function collectionControls (project) {
     var controls = document.createElement('div'),
