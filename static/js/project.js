@@ -54,7 +54,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
     return div;
 };
 
-function fillProjectTitle(project, titleElement) {
+function fillProjectTitle (project, titleElement) {
     var h1 = titleElement.querySelector('h1');
     h1.innerHTML = project.projectname;
     if (canRename(project)) {
@@ -62,7 +62,7 @@ function fillProjectTitle(project, titleElement) {
             h1,
             function () {
                 SnapCloud.updateProjectName(
-                    pageProject(),
+                    project.projectname,
                     h1.textContent,
                     function () {
                         location.href = 'project.html?user=' +
@@ -181,6 +181,70 @@ function loadProjectViewer (project, placeholder) {
             doLoadIt();
             document.onvisibilitychange = nop;
         };
+    }
+};
+
+function fillCollectionTitle (collection, titleElement) {
+    var h1 = titleElement.querySelector('h1');
+    h1.innerHTML = collection.name;
+    if (canRename(collection) && collection.id !== 0) {
+        new InPlaceEditor(
+            h1,
+            function () {
+                SnapCloud.updateCollectionName(
+                    collection.creator.username,
+                    collection.name,
+                    h1.textContent,
+                    function () {
+                        location.href = 'collection.html?user=' +
+                            collection.creator.ussername + '&collection=' +
+                            h1.textContent;
+                    },
+                    genericError
+                );
+            },
+            '' // no default text
+        )
+    }
+    titleElement.appendChild(authorSpan(collection.creator.username));
+};
+
+function fillCollectionThumbnail (collection, thumbnailElement) {
+    if (collection.thumbnail) {
+        thumbnailElement.src = collection.thumbnail || '';
+    } else {
+        var i = document.createElement('i');
+        i.classList.add('no-image');
+        i.classList.add('fas');
+        i.classList.add('fa-briefcase');
+        thumbnailElement.parentNode.appendChild(i);
+        thumbnailElement.remove();
+    }
+};
+
+function fillCollectionDescription (collection, descriptionElement) {
+    var noDescriptionHTML = '<small>' +
+            localizer.localize('This collection has no description') +
+            '</small>';
+    descriptionElement.innerHTML = collection.description || noDescriptionHTML;
+    if (canEditDescription(collection)) {
+        new InPlaceEditor(
+            descriptionElement,
+            function () {
+                SnapCloud.updateCollectionDescription(
+                    collection.creator.username,
+                    collection.name,
+                    descriptionElement.textContent,
+                    function () {
+                        if (descriptionElement.textContent == '') {
+                            descriptionElement.innerHTML = noDescriptionHTML;
+                        }
+                    },
+                    genericError
+                );
+            },
+            'This collection has no description'
+        );
     }
 };
 

@@ -98,15 +98,11 @@
     </div>
 </div>
 <script>
-    var collectionUsername = getUrlParameter('user'),
-        collectionName = '${collectionName}' || getUrlParameter('collection'),
-        title = document.querySelector('.title h1');
-
     beganLoading('#wrapper');
 
     SnapCloud.getCollectionMetadata(
-        collectionUsername,
-        collectionName,
+        pageUser(),
+        '${collectionName}' || getUrlParameter('collection'),
         function (collection) {
             if (collection.id == 0) {
                 // "Flagged" collection
@@ -117,47 +113,21 @@
                 document.querySelector('.collection').classList.add('flagged');
             }
 
-            title.innerHTML = collectionName;
+            fillCollectionTitle(
+                    collection,
+                    document.querySelector('.title')
+                );
 
-            if (collection.id !== 0) {
-                if (canRename(collection)) {
-                    new InPlaceEditor(
-                        title,
-                        function () {
-                            SnapCloud.updateCollectionName(
-                                collectionUsername,
-                                collectionName,
-                                title.textContent,
-                                function () {
-                                    location.href = 'collection.html?user=' +
-                                        collectionUsername + '&collection=' +
-                                        title.textContent;
-                                },
-                                genericError
-                            );
-                        },
-                        '' // no default text
-                    )
-                }
+            if (collection.id !== 0) { 
+                fillCollectionThumbnail(
+                    collection,
+                    document.querySelector('.collection-thumbnail')
+                );
 
-                var thumbnail = document.querySelector('.collection-thumbnail');
-                if (collection.thumbnail) {
-                    thumbnail.src = collection.thumbnail || '';
-                } else {
-                    var i = document.createElement('i');
-                    i.classList.add('no-image');
-                    i.classList.add('fas');
-                    i.classList.add('fa-briefcase');
-                    thumbnail.parentNode.appendChild(i);
-                    thumbnail.remove();
-                }
-
-                document.querySelector('.title').appendChild(
-                    authorSpan(collection.creator.username));
-                document.querySelector('.description').innerHTML =
-                    collection.description || '<small>' +
-                    localizer.localize('This collection has no description') +
-                    '</small>';
+                fillCollectionDescription(
+                    collection,
+                    document.querySelector('.description')
+                );
 
                 document.querySelector('.created span').innerHTML =
                     formatDate(collection.created_at);
@@ -219,8 +189,8 @@
                             (event.keyCode ? event.keyCode : event.which);
                         if (code == 13 && !event.shiftKey) {
                             SnapCloud.addEditorToCollection(
-                                collectionUsername,
-                                collectionName,
+                                collection.creator.username,
+                                collection.name,
                                 newEditorInput.value,
                                 function () {
                                     var li = newEditorLi(newEditorInput.value);
@@ -256,7 +226,7 @@
                     localizer.localize('Users who can edit this collection');
 
                 document.querySelector('.editor-list').append(
-                    newEditorLi(collectionUsername));
+                    newEditorLi(collection.creator.username));
 
                 function newEditorLi (username) {
                     var editorLi = document.createElement('li'),
@@ -266,7 +236,8 @@
                     editorLi.classList.add('editor');
                     editorLi.append(userAnchor(username));
 
-                    if (owns(collection) && username !== collectionUsername) {
+                    if (owns(collection) && username !==
+                            collection.creator.username) {
                         icon.classList.add('fas');
                         icon.classList.add('fa-times-circle');
                         removeAnchor.classList.add('remove-editor');
@@ -274,8 +245,8 @@
                         removeAnchor.append(icon);
                         removeAnchor.onclick = function () {
                             SnapCloud.removeEditorFromCollection(
-                                collectionUsername,
-                                collectionName,
+                                collection.creator.username,
+                                collection.name,
                                 username,
                                 function () {
                                     editorLi.classList.add('warning-flash');
@@ -301,29 +272,6 @@
                     });
                 }
 
-                var description = document.querySelector('.description');
-                if (canEditDescription(collection)) {
-                    new InPlaceEditor(
-                        description,
-                        function () {
-                            SnapCloud.updateCollectionDescription(
-                                collectionUsername,
-                                collectionName,
-                                description.textContent,
-                                function () {
-                                    if (description.textContent == '') {
-                                        description.innerHTML = '<small>' +
-                                            localizer.localize(
-                                                'This collection has no description') +
-                                            '</small>';
-                                    }
-                                },
-                                genericError
-                            );
-                        },
-                        'This collection has no description'
-                    );
-                }
             }
             doneLoading('#wrapper');
             document.querySelector('.collection').hidden = false;
