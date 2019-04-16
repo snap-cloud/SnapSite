@@ -3,7 +3,12 @@
 <h1><span class="username"></span><span localizable>'s public page</span></h1>
 @param pageSize=15
 @param widgetName="user_projects"
+@param header="'Public Projects'"
 @param withSearch=false
+@include=grid
+
+@param header="'Public Collections'"
+@param widgetName="user_collections"
 @include=grid
 <div hidden="true" class="profile">
     <h2 localizable>Admin tools</h2>
@@ -57,4 +62,36 @@ var profileDiv = document.querySelector('.profile');
         };
 
     user_projects_initGrid();
+
+    user_collections_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getUserCollections(
+                getUrlParameter('user'),
+                pageNumber,
+                pageSize,
+                null, // no search query
+                onSuccess,
+                genericError
+            );
+        };
+
+    user_collections_onLoadPage =
+        function (response, targetElement) {
+            response.collections.forEach(function (collection) {
+                targetElement.append(
+                    newCollectionDiv(
+                        collection, 
+                        { 
+                            size: 'small', 
+                            gridSize: 5, 
+                            extraFields: {
+                                author: 'creator.username'
+                            }
+                        }
+                    )
+                );
+            }); 
+        };
+
+    user_collections_initGrid();
 </script>
