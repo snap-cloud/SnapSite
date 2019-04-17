@@ -26,7 +26,9 @@
 
 @param header="'Latest Projects'"
 @param widgetName=latest
+@param maxPages=20
 @include=grid
+@param maxPages=0
 <script>
     latest_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {

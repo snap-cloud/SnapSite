@@ -32,6 +32,7 @@
             <script>
                 var ${widgetName}_page = 1,
                     ${widgetName}_totalPages = 1,
+                    ${widgetName}_maxPages = ${maxPages} || 0, // 0 = no limit
                     ${widgetName}_pageSize = ${pageSize} || 150,
                     ${widgetName}_keepIfEmpty = [${keepIfEmpty}][0];
 
@@ -76,7 +77,8 @@
                         ${widgetName}_pageSize,
                         pageNumber,
                         function (response) {
-                            ${widgetName}_totalPages = response.pages;
+                            ${widgetName}_totalPages =
+                                ${widgetName}_maxPages || response.pages;
                             ${widgetName}_totalPagesSpan.textContent =
                                 ${widgetName}_totalPages;
 
