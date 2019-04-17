@@ -82,6 +82,8 @@ function fillProjectNotes (project, notesElement) {
             '<small>' +
                 localizer.localize('This project has no notes') +
                 '</small>';
+    notesElement.title =
+        localizer.localize('Press Shift + Enter to enter a newline');
 
     // In-place notes editor
     if (canEditNotes(project)) {
@@ -90,9 +92,9 @@ function fillProjectNotes (project, notesElement) {
             function () {
                 SnapCloud.updateNotes(
                     pageProject(),
-                    notesElement.textContent,
+                    notesElement.innerText,
                     function () {
-                        if (notesElement.textContent == '') {
+                        if (notesElement.innerText == '') {
                             notesElement.innerHTML = '<small>' +
                                 localizer.localize(
                                     'This project has no notes') + '</small>';
@@ -227,6 +229,8 @@ function fillCollectionDescription (collection, descriptionElement) {
             localizer.localize('This collection has no description') +
             '</small>';
     descriptionElement.innerHTML = collection.description || noDescriptionHTML;
+    descriptionElement.title =
+        localizer.localize('Press Shift + Enter to enter a newline');
     if (canEditDescription(collection)) {
         new InPlaceEditor(
             descriptionElement,
@@ -234,9 +238,9 @@ function fillCollectionDescription (collection, descriptionElement) {
                 SnapCloud.updateCollectionDescription(
                     collection.creator.username,
                     collection.name,
-                    descriptionElement.textContent,
+                    descriptionElement.innerText,
                     function () {
-                        if (descriptionElement.textContent == '') {
+                        if (descriptionElement.innerText == '') {
                             descriptionElement.innerHTML = noDescriptionHTML;
                         }
                     },
