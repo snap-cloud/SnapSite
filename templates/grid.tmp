@@ -32,8 +32,8 @@
             <script>
                 var ${widgetName}_page = 1,
                     ${widgetName}_totalPages = 1,
-                    ${widgetName}_maxPages = ${maxPages} || 0, // 0 = no limit
-                    ${widgetName}_pageSize = ${pageSize} || 150,
+                    ${widgetName}_maxPages = [${maxPages}][0] || 0, // 0 = no limit
+                    ${widgetName}_pageSize = [${pageSize}][0] || 150,
                     ${widgetName}_keepIfEmpty = [${keepIfEmpty}][0];
 
                 if (![${header}][0]) {
