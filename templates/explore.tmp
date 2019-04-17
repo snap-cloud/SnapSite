@@ -18,7 +18,7 @@
                 onSuccess,
                 genericError,
                 true // withThumbnail
-            ); 
+            );
         };
 
     projects_onLoadPage =
@@ -26,17 +26,17 @@
             response.projects.forEach(function (project) {
                 targetElement.append(
                     newProjectDiv(
-                        project, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5, 
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
                             extraFields: {
                                 author: 'username'
                             }
                         }
                     )
                 );
-            }); 
+            });
         };
 
     projects_initGrid();
@@ -54,7 +54,7 @@
                 null, // query
                 onSuccess,
                 genericError
-            ); 
+            );
         };
 
     collections_onLoadPage =
@@ -62,17 +62,17 @@
             response.collections.forEach(function (collection) {
                 targetElement.append(
                     newCollectionDiv(
-                        collection, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5, 
+                        collection,
+                        {
+                            size: 'small',
+                            gridSize: 5,
                             extraFields: {
                                 author: 'creator.username'
                             }
                         }
                     )
                 );
-            }); 
+            });
         };
 
     collections_initGrid();

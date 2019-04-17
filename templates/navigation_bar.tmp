@@ -24,23 +24,23 @@
             </div>
             <i class="pure-u-3-24"></i>
             <li hidden="true" class="join pure-menu-item pure-u-1-12">
-                <a localizable class="pure-menu-link" 
+                <a localizable class="pure-menu-link"
                     href="sign_up">Join</a></li>
             <li hidden="true" class="sign-in pure-menu-item pure-u-1-12">
-                <a localizable class="pure-menu-link" 
+                <a localizable class="pure-menu-link"
                                href="login">Log In</a></li>
-            <li hidden="true" class="pure-menu-item pure-u-1-6 
+            <li hidden="true" class="pure-menu-item pure-u-1-6
                 pure-menu-has-children pure-menu-allow-hover user-menu">
                 <a id="menuLink1" class="pure-menu-link visitor clickable"></a>
                 <ul class="pure-menu-children">
                     <li class="pure-menu-item">
-                        <a localizable class="pure-menu-link my-projects" 
+                        <a localizable class="pure-menu-link my-projects"
                             href="my_projects">My Projects</a></li>
                     <li class="pure-menu-item">
-                        <a localizable class="pure-menu-link my-collections" 
+                        <a localizable class="pure-menu-link my-collections"
                             href="my_collections">My Collections</a></li>
                     <li class="pure-menu-item">
-                        <a localizable class="pure-menu-link my-public-projects" 
+                        <a localizable class="pure-menu-link my-public-projects"
                            href="">My Public Page</a></li>
                     <li class="pure-menu-item">
                         <a localizable class="pure-menu-link my-profile"

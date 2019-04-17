@@ -78,15 +78,18 @@ function fillProjectTitle (project, titleElement) {
 
 function fillProjectNotes (project, notesElement) {
     notesElement.innerHTML =
-        project.notes ||
-            '<small>' +
+        project.notes ?
+            project.notes.replace(
+                /(https?:\/\/[^\s,\(\)\[\]]+)/g, // good enough
+                '<a href="$1" target="_blank">$1</a>') :
+            ('<small>' +
                 localizer.localize('This project has no notes') +
-                '</small>';
+                '</small>');
     notesElement.title =
         localizer.localize('Press Shift + Enter to enter a newline');
 
     // In-place notes editor
-    if (canEditNotes(project)) {
+    if (owns(project)) {
         new InPlaceEditor(
             notesElement,
             function () {
@@ -228,7 +231,14 @@ function fillCollectionDescription (collection, descriptionElement) {
     var noDescriptionHTML = '<small>' +
             localizer.localize('This collection has no description') +
             '</small>';
-    descriptionElement.innerHTML = collection.description || noDescriptionHTML;
+
+    descriptionElement.innerHTML =
+        collection.description ?
+            collection.description.replace(
+                /(https?:\/\/[^\s,\(\)\[\]]+)/g, // good enough
+                '<a href="$1" target="_blank">$1</a>') :
+        noDescriptionHTML;
+
     descriptionElement.title =
         localizer.localize('Press Shift + Enter to enter a newline');
     if (canEditDescription(collection)) {

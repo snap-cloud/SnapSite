@@ -33,7 +33,7 @@
                 onSuccess,
                 genericError,
                 'Could not fetch user list'
-            ); 
+            );
         };
 
     ${widgetName}_onLoadPage =

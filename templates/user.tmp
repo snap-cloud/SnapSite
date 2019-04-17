@@ -51,14 +51,14 @@ var profileDiv = document.querySelector('.profile');
             response.projects.forEach(function (project) {
                 targetElement.append(
                     newProjectDiv(
-                        project, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5 
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5
                         }
                     )
                 );
-            }); 
+            });
         };
 
     user_projects_initGrid();
@@ -80,17 +80,17 @@ var profileDiv = document.querySelector('.profile');
             response.collections.forEach(function (collection) {
                 targetElement.append(
                     newCollectionDiv(
-                        collection, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5, 
+                        collection,
+                        {
+                            size: 'small',
+                            gridSize: 5,
                             extraFields: {
                                 author: 'creator.username'
                             }
                         }
                     )
                 );
-            }); 
+            });
         };
 
     user_collections_initGrid();

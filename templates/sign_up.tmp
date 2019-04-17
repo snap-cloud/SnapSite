@@ -55,7 +55,7 @@
 
         <div class="pure-controls">
             <label for="tos" class="pure-checkbox">
-                <input id="tos" name="tos" type="checkbox" required> 
+                <input id="tos" name="tos" type="checkbox" required>
                     <span localizable>I have read and agree to the <a
                             target="_blank"
                             href="tos">Terms of Service</a> and the <a
@@ -115,7 +115,7 @@
 
             if (email !== emailRepeat) {
                 genericError(
-                    'Please make sure that you have entered your<br>' + 
+                    'Please make sure that you have entered your<br>' +
                         'email twice and that both emails match.',
                     'Emails do not match'
                 );
@@ -125,7 +125,7 @@
                     password,
                     passwordRepeat,
                     email,
-                    function (value) { 
+                    function (value) {
                         alert(
                             'User created.<br/>You can now log in.',
                             function() {

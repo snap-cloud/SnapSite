@@ -12,7 +12,7 @@
             <strong localizable>Role</strong><strong>: </strong>
             <span class="role"></span>
         </span>
-    </div> 
+    </div>
     <div class="pure-u-1-2 buttons">
         <a localizable class="pure-button"
             href="change_password">Change Password</a>

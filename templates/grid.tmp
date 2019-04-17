@@ -1,6 +1,6 @@
 <!--
     Any template that uses me needs to specify the following functions:
-    
+
     // Defines how to retrieve a particular page from the DB
     ${widgetName}_loadPage (
         query,      // search query
@@ -50,7 +50,7 @@
 
                 document.querySelector('.${widgetName} form input').value =
                     getUrlParameter('query');
-                
+
                 function ${widgetName}_toPage (pageNumber) {
                     var ${widgetName}_div =
                             document.querySelector('.${widgetName}.container'),

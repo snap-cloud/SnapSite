@@ -56,7 +56,7 @@
                 icon.classList.add('fa-eye');
                 editButton.appendChild(icon);
                 controlBar.appendChild(editButton);
-            } 
+            }
             if (getUrlParameter('pauseButton')) {
                 controlBar.querySelector('.pause-button').hidden = false;
             } else {

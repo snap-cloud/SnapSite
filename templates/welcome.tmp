@@ -48,10 +48,10 @@
             response.projects.forEach(function (project) {
                 targetElement.append(
                     newProjectDiv(
-                        project, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5, 
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
                             extraFields: {
                                 isPublic: 'ispublic',
                                 isPublished: 'ispublished',
@@ -60,7 +60,7 @@
                         }
                     )
                 );
-            }); 
+            });
         };
 
     latest_initGrid();

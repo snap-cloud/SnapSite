@@ -28,10 +28,10 @@
             response.projects.forEach(function (project) {
                 targetElement.append(
                     newProjectDiv(
-                        project, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5, 
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
                             extraFields: {
                                 isPublic: 'ispublic',
                                 isPublished: 'ispublished',
@@ -40,7 +40,7 @@
                         }
                     )
                 );
-            }); 
+            });
         };
 
     project_results_initGrid();
@@ -67,10 +67,10 @@
             response.collections.forEach(function (collection) {
                 targetElement.append(
                     newCollectionDiv(
-                        collection, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5, 
+                        collection,
+                        {
+                            size: 'small',
+                            gridSize: 5,
                             extraFields: {
                                 isPublic: 'shared',
                                 isPublished: 'published',
@@ -79,7 +79,7 @@
                         }
                     )
                 );
-            }); 
+            });
         };
 
     collection_results_initGrid();
@@ -112,7 +112,7 @@
                 div.classList.add('user');
                 div.appendChild(userAnchor(user.username));
                 targetElement.append(div);
-            }); 
+            });
         };
 
     user_results_initGrid();

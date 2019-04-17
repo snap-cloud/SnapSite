@@ -76,9 +76,9 @@
         fillVisitorFields();
         doneLoading();
     }
-    
+
     // Share sessionStorage across tabs
-    // http://blog.guya.net/2015/06/12/sharing-sessionstorage-between-tabs-for-secure-multi-tab-authentication/ 
+    // http://blog.guya.net/2015/06/12/sharing-sessionstorage-between-tabs-for-secure-multi-tab-authentication/
     if (!sessionStorage.length) {
         localStorage.setItem('getSessionStorage', Date.now());
     };

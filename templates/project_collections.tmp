@@ -15,17 +15,17 @@
                 'Could not fetch collection list'
             );
         };
-        
+
     ${widgetName}_onLoadPage =
         function (response, targetElement) {
             if (!response.collections[0]) { return; }
             response.collections.forEach(function (collection) {
                 targetElement.append(
                     newCollectionDiv(
-                        collection, 
-                        { 
-                            size: 'small', 
-                            gridSize: 5, 
+                        collection,
+                        {
+                            size: 'small',
+                            gridSize: 5,
                             extraFields: {
                                 isPublic: 'shared',
                                 isPublished: 'published',
@@ -34,7 +34,7 @@
                         }
                     )
                 );
-            }); 
+            });
         };
 
     ${widgetName}_initGrid();

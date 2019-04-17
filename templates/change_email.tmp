@@ -51,7 +51,7 @@
                         function (username) {
                             SnapCloud.withCredentialsRequest(
                                 'POST',
-                                '/users/' + encodeURIComponent(username) + '?' + 
+                                '/users/' + encodeURIComponent(username) + '?' +
                                 SnapCloud.encodeDict({ email: email }),
                                 function (response) {
                                     alert(
@@ -75,7 +75,7 @@
                         function (response) {
                             genericError(
                                 localizer.localize(
-                                    'User profile could not be updated:') + 
+                                    'User profile could not be updated:') +
                                     '<br>' + response,
                                 'Could not update email'
                             );
