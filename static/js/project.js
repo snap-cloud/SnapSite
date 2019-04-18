@@ -397,6 +397,7 @@ function collectionControls (project) {
 
     controls.classList.add('collection-controls');
 
+    removeAnchor.title = localizer.localize('Remove from collection');
     removeAnchor.classList.add('clickable');
     removeAnchor.innerHTML = '<i class="fas fa-times-circle"></i>';
     removeAnchor.onclick = function () {
@@ -407,6 +408,8 @@ function collectionControls (project) {
     if (!(getUrlParameter('collection') == 'Flagged' &&
             getUrlParameter('user') == 'snapcloud')) {
         // Flagged collection doesn't have a thumbnail
+        thumbnailAnchor.title =
+            localizer.localize('Set as collection thumbnail');
         thumbnailAnchor.classList.add('clickable');
         thumbnailAnchor.innerHTML = '<i class="fas fa-image"></i>';
         thumbnailAnchor.onclick = function () {

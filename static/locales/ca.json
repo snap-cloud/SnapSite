@@ -372,5 +372,9 @@
     "Public Projects":
         "Projectes públics",
     "Public Collections":
-        "Col·leccions públiques"
+        "Col·leccions públiques",
+    "Remove from collection":
+        "Elimina de la col·lecció",
+    "Set as collection thumbnail":
+        "Tria per la imatge en miniatura de la col·lecció"
 }
