@@ -368,5 +368,9 @@
     "Please select the collection to which you want to add this project:":
         "Selecciona la col·lecció a què vols afegir aquest projecte",
     "Collection name?":
-        "Nom de la col·lecció?"
+        "Nom de la col·lecció?",
+    "Public Projects":
+        "Projectes públics",
+    "Public Collections":
+        "Col·leccions públiques"
 }
