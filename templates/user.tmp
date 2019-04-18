@@ -65,13 +65,19 @@ var profileDiv = document.querySelector('.profile');
 
     user_collections_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
-            SnapCloud.getUserCollections(
-                getUrlParameter('user'),
-                pageNumber,
-                pageSize,
-                null, // no search query
+            SnapCloud.request(
+                'GET',
+                '/users/' +
+                    encodeURIComponent(getUrlParameter('user')) +
+                    '/collections?' +
+                    SnapCloud.encodeDict({
+                        published: true,
+                        page: pageNumber,
+                        pageSize: pageSize
+                    }),
                 onSuccess,
-                genericError
+                genericError,
+                'Could not fetch collections'
             );
         };
 
