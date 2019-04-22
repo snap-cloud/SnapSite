@@ -1,6 +1,6 @@
-<h1 localizable>Privacy Policy</h1>
+<h1 localizable><img src="img/Logo5.png" alt="Snap!" height="30px"> Privacy Policy</h1>
 
-<p>Your privacy and safety online are very important to us. To protect your privacy, we limit what we collect and what we publish on the website. Although, as a nonprofit educational institution, we are technically exempt from the Children's Online Privacy Protection Act (COPPA), we are voluntarily following its rules about data collection from children under 13.</p>
+<p>Your privacy and safety online are very important to us. To protect your privacy, we limit what we collect and what we publish on the website. Although, as a nonprofit educational institution, we are technically exempt from the United States Children's Online Privacy Protection Act (COPPA), we are voluntarily following its rules about data collection from children under 13.  This policy also conforms to the European Union General Data Protection Regulation (GDPR).  We apply these protection policies to all users, wherever located.</p>
 
 <p>We follow industry standards to maintain the security of our web server. However, we cannot absolutely guarantee that malicious third parties will be unable to break into our database. This privacy policy explains how our authorized staff and contractors will use your information.</p>
 
@@ -8,11 +8,11 @@
 
 <h3>Using our software</h3>
 
-<p>You can <a href="http://snap.berkeley.edu/run">program in <img src="img/small-logo.png" alt="Snap!" height="20px"></a> without providing us with any personally identifiable information at all. We do not record any information about the programs you write unless you choose to save projects on our cloud server. (You can instead save projects only on your own computer). You can also, without providing any information, download our example projects, libraries, and other public media.</p>
+<p>You can <a href="http://snap.berkeley.edu/run">program in Snap<i>!</i></a> without providing us with any personally identifiable information at all. We do not record any information about the programs you write unless you choose to save projects on our cloud server. (You can instead save projects only on your own computer). You can also, without providing any information, download our example projects, libraries, and other public media.</p>
 
-<h3>Creating a <img src="img/Logo5.png" alt="Snap!" height="30px"> account</h3>
+<h3>Creating a Snap<i>!</i> account</h3>
 
-<p>If you wish to save the projects you create on our cloud server, then you must create an account on this site so that your storage is separate from other people's storage. When you create an account, we collect your email address or, if you are under 13, your parent's or guardian's email address. We use your address for three purposes:
+<p>If you wish to save the projects you create on our cloud server, then you must create an account on this site so that your storage is separate from other people's storage. When you create an account, we collect your email address or, if you are under 13, your parent's or guardian's email address. We use your address for four purposes:
 
 <ul class="indent bullets">
  <li>When you sign up for an account, we immediately send you a confirming email with a verification link.</li>
@@ -29,7 +29,9 @@
 
 <p>You can save projects on our server for your personal use, or you can explicitly choose to share a project with the other users of this site.</p>
 <p>We will never examine projects that you save privately on our site without your explicit permission (for example, if you report a bug that affects one of your projects). Again, the only exception is that we might be compelled to provide information to government agencies.</p>
-<p>Projects that you choose to share are available for anyone to examine. We may examine shared projects for research purposes. <i>We urge you strongly not to include personally identifying information in your shared projects!</i> For example, if you post a project that says "today is my birthday" you are telling the entire world your date of birth, which is a very important piece of personally identifying information.</p>
+<p>Projects that you choose to share are available for anyone to examine. We may examine shared projects for research purposes. <i>We urge you strongly not to include personally identifying information (PII) in your shared projects!</i> For example, if you post a project that says "today is my birthday" you are telling the entire world your date of birth, which is a very important piece of personally identifying information.</p>
+<p>There are two levels of public access to your project.  If you <em>share</em> a project, we provide you with a URL that can be used by anyone to whom you send that URL.  Anyone who knows your username and the name of the project can compute the URL; however, people in general won't even know that the project exists until you tell them.  But if you <em>publish</em> a project, it appears on our web site, searchable by username and by project name.  Anyone, even someone who does not have an account with us, can see the project, including its code as well as its behavior when run.</p>
+<p>Our users enjoy sharing their projects with other users, and we encourage you to publish <em>projects that don't include personally identifiable information.</em>  Your email address (or your parent's), the only piece of PII we knowingly associate with your account, is never visible to people outside our staff.  But we can't control PII that you include in a project.</p>
 <p>If we are notified by a third party that your shared project includes their copyrighted content (such as a musical performance), we are required by law to investigate, and may revoke the shared status of that project.</p>
 
 <h3>Communications that you initiate</h3>
@@ -42,7 +44,7 @@
 
 <p>This information is used to improve the technical quality of the site, and may be used for investigation of deliberate attempts to deny the use of our site to others. We do not log personally identifiable information, except that your IP address may indicate your Internet service provider and your general geographic area.</p>
 
-<p>The server for cloud storage of user accounts is maintained by us and follows the same privacy guidelines.</p>
+<p>The server for cloud storage of user accounts is maintained by us on a commercial cloud computing provider and follows the same privacy guidelines.</p>
 
 <h3>Google Analytics</h3>
 
