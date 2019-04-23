@@ -1,4 +1,4 @@
-userButton = function (user, label, action, extraClass) {
+function userButton (user, label, action, extraClass) {
     var button = document.createElement('a');
     button.setAttribute('localizable', true);
     button.classList.add('pure-button');
@@ -11,7 +11,7 @@ userButton = function (user, label, action, extraClass) {
     return button;
 }
 
-verifyButton = function (user) {
+function verifyButton (user) {
     return userButton(
         user,
         'Verify',
@@ -34,22 +34,31 @@ verifyButton = function (user) {
     );
 };
 
-banButton = function (user) {
+function banButton (user) {
     return userButton(
         user,
         user.role == 'banned' ? 'Unban' : 'Ban',
         function () {
             confirm(
-                localizer.localize('Are you sure you want to ' + (user.role == 'banned' ? 'unban' : 'ban') + ' user') + ' <strong>' + user.username + '</strong>?',
+                localizer.localize('Are you sure you want to ' +
+                    (user.role == 'banned' ? 'unban' : 'ban') + ' user') +
+                    ' <strong>' + user.username + '</strong>?',
                 function (ok) {
                     if (ok) {
                         SnapCloud.withCredentialsRequest(
                             'POST',
-                            '/users/' + encodeURIComponent(user.username) + '?' + 
-                                SnapCloud.encodeDict({ role: user.role == 'banned' ? 'standard' : 'banned' }),
+                            '/users/' + encodeURIComponent(user.username) +
+                                '?' + SnapCloud.encodeDict({
+                                    role: user.role == 'banned' ?
+                                        'standard' :
+                                        'banned'
+                                    }),
                             function (response) {
                                 alert(
-                                    localizer.localize('User has been ' + (user.role == 'banned' ? 'unbanned' : 'banned.')),
+                                    localizer.localize('User has been ' +
+                                        (user.role == 'banned' ?
+                                            'unbanned' :
+                                            'banned.')),
                                     function () { location.reload(); }
                                 );
                             },
@@ -65,13 +74,14 @@ banButton = function (user) {
     );
 };
 
-deleteButton = function (user) {
+function deleteButton (user) {
     return userButton(
         user,
         'Delete',
         function () {
             confirm(
-                localizer.localize('Are you sure you want to delete user') + ' <strong>' + user.username + '</strong>?<br>' +
+                localizer.localize('Are you sure you want to delete user') +
+                ' <strong>' + user.username + '</strong>?<br>' +
                 '<i class="warning fa fa-exclamation-triangle"></i> ' +
                 localizer.localize('WARNING! This action cannot be undone!') +
                 ' <i class="warning fa fa-exclamation-triangle"></i>',
@@ -98,7 +108,41 @@ deleteButton = function (user) {
     );
 };
 
-becomeButton = function (user) {
+function deleteZombieButton (user) {
+    return userButton(
+        user,
+        'Delete',
+        function () {
+            confirm(
+                localizer.localize('Are you sure you want to delete user') +
+                ' <strong>' + user.username + '</strong>?<br>' +
+                '<i class="warning fa fa-exclamation-triangle"></i> ' +
+                localizer.localize('WARNING! This action cannot be undone!') +
+                ' <i class="warning fa fa-exclamation-triangle"></i>',
+                function (ok) {
+                    if (ok) {
+                       SnapCloud.withCredentialsRequest(
+                           'DELETE',
+                           '/zombies/' + encodeURIComponent(user.username),
+                           function (response) {
+                               alert(
+                                   response,
+                                   function () { location.reload(); }
+                               );
+                           },
+                           genericError,
+                           'Could not delete user'
+                       );
+                    }
+                },
+                confirmTitle('Delete user')
+            );
+        },
+        'pure-button-warning'
+    );
+};
+
+function becomeButton (user) {
     return userButton(
         user,
         'Become',
@@ -123,7 +167,7 @@ becomeButton = function (user) {
     );
 };
 
-messageButton = function (user) {
+function messageButton (user) {
     return userButton(
         user,
         'Send a message',
@@ -134,9 +178,11 @@ messageButton = function (user) {
             form.classList.add('pure-form-aligned');
             form.innerHTML = 
                 '<fieldset>' +
-                '<div class="pure-control-group"><label localizable for="subject">Subject</label>' +
+                '<div class="pure-control-group">' +
+                '<label localizable for="subject">Subject</label>' +
                 '<input name="subject" type="text"></input></div>' +
-                '<div class="pure-control-group"><label localizable for="body">Email body</label>' +
+                '<div class="pure-control-group">' +
+                '<label localizable for="body">Email body</label>' +
                 '<textarea name="body"></textarea></div>' +
                 '</fieldset>';
 
@@ -166,7 +212,7 @@ messageButton = function (user) {
     );
 };
 
-canSetRole = function (currentRole, newRole) {
+function canSetRole (currentRole, newRole) {
     var canSet = {
         admin: {
             admin: { admin: true, moderator: true, reviewer: true, standard: true, banned: true },
@@ -198,33 +244,52 @@ canSetRole = function (currentRole, newRole) {
     return canSet[sessionStorage.role][currentRole][newRole] || false
 };
 
-setRole = function (user, role) {
+function setRole (user, role) {
     SnapCloud.withCredentialsRequest(
         'POST',
         '/users/' + encodeURIComponent(user.username) + '?' + 
             SnapCloud.encodeDict({ role: role }),
         function (response) {
-            alert(localizer.localize('User ' + user.username + ' is now ' + role + '.'));
+            alert(localizer.localize(
+                'User ' + user.username + ' is now ' + role + '.')
+            );
         },
         genericError,
         'Could not set user role'
     );
 };
 
-userDiv = function (user) {
+function basicUserDiv (user) {
     var userWrapperDiv = document.createElement('div'),
-        userDiv = document.createElement('div'),
+        detailsDiv = document.createElement('div'),
         usernameAnchor = userAnchor(user.username),
         emailSpan = document.createElement('span'),
         idSpan = document.createElement('span'),
-        joinedSpan = document.createElement('span'),
+        joinedSpan = document.createElement('span');
+
+    emailSpan.innerHTML = '<em><a target="_blank" href="mailto:' + user.email +
+        '">' + user.email + '</a></em>';
+    idSpan.innerHTML = '<strong>ID:</strong> ' + user.id;
+    joinedSpan.innerHTML = '<strong localizable>Joined in </strong>' +
+        formatDate(user.created);
+
+    [ usernameAnchor, emailSpan, idSpan, joinedSpan ].forEach(function (e) { detailsDiv.appendChild(e); });
+
+    userWrapperDiv.classList.add('user');
+    userWrapperDiv.classList.add('pure-u-1-2');
+    detailsDiv.classList.add('details');
+
+    userWrapperDiv.appendChild(detailsDiv);
+
+    return userWrapperDiv;
+};
+
+function userDiv (user) {
+    var userWrapperDiv = basicUserDiv(user);
+        detailsDiv = userWrapperDiv.querySelector('.details'),
         roleSpan = document.createElement('span'),
         roleSelect = document.createElement('select'),
         buttonsDiv = document.createElement('div');
-
-    emailSpan.innerHTML = '<em><a target="_blank" href="mailto:' + user.email + '">' + user.email + '</a></em>';
-    idSpan.innerHTML = '<strong>ID:</strong> ' + user.id;
-    joinedSpan.innerHTML = '<strong localizable>Joined in </strong>' + formatDate(user.created);
 
     roleSpan.innerHTML = '<strong localizable>Role</strong>:';
     ['standard', 'reviewer', 'moderator', 'admin', 'banned'].forEach(
@@ -244,26 +309,22 @@ userDiv = function (user) {
     roleSelect.onchange = function () { setRole(user, roleSelect.value) };
     roleSpan.appendChild(roleSelect);
 
-    userWrapperDiv.classList.add('user');
-    userWrapperDiv.classList.add('pure-u-1-2');
-    userDiv.classList.add('details');
-
     buttonsDiv.classList.add('buttons');
 
-    [usernameAnchor, emailSpan, idSpan, joinedSpan, roleSpan, buttonsDiv].forEach(function (e) { userDiv.appendChild(e); });
+    [ roleSpan, buttonsDiv ].forEach(function (e) { detailsDiv.appendChild(e); });
 
     if (user.role == 'admin') {
-        userDiv.classList.add('admin');
-        userDiv.title += localizer.localize('Administrator') + '\n';
+        detailsDiv.classList.add('admin');
+        detailsDiv.title += localizer.localize('Administrator') + '\n';
     } else if (user.role == 'banned') {
-        userDiv.classList.add('banned');
-        userDiv.title += localizer.localize('Banned') + '\n';
+        detailsDiv.classList.add('banned');
+        detailsDiv.title += localizer.localize('Banned') + '\n';
     }
 
     if (!user.verified) {
         buttonsDiv.appendChild(verifyButton(user));
-        userDiv.classList.add('unverified');
-        userDiv.title += localizer.localize('User is not verified');
+        detailsDiv.classList.add('unverified');
+        detailsDiv.title += localizer.localize('User is not verified');
     }
 
     if (sessionStorage.role == 'admin') {
@@ -280,9 +341,23 @@ userDiv = function (user) {
         buttonsDiv.appendChild(deleteButton(user));
     }
 
-    userWrapperDiv.appendChild(userDiv);
     return userWrapperDiv;
-}
+};
+
+function zombieDiv (user) {
+    var userWrapperDiv = basicUserDiv(user),
+        detailsDiv = userWrapperDiv.querySelector('.details'),
+        buttonsDiv = document.createElement('div');
+
+    detailsDiv.appendChild(buttonsDiv);
+
+    if (sessionStorage.role == 'admin') {
+        buttonsDiv.appendChild(messageButton(user));
+        buttonsDiv.appendChild(deleteZombieButton(user));
+    }
+
+    return userWrapperDiv;
+};
 
 function verifiedFilter (callback) {
     var verifiedFilter = document.createElement('div'),

@@ -7,7 +7,7 @@
 <script src="js/dialog.js"></script>
 <script src="js/admin.js"></script>
 <link rel="stylesheet" href="style/admin.css">
-<h1 localizable>User Administration</h1>
+<h1 localizable>Zombie Administration</h1>
 @param pageSize=150
 @param withSearch=true
 @param keepIfEmpty=true
@@ -17,11 +17,11 @@
 <script>
     var role = '',
         verified = '';
-    ${widgetName}_loadPage =
+    user_admin_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.withCredentialsRequest(
                 'GET',
-                '/users?' +
+                '/zombies?' +
                     (query ?
                         'matchtext=' + encodeURIComponent(query) + '&' : '' ) +
                     'pagesize=' + pageSize + '&page=' + pageNumber +
@@ -37,31 +37,12 @@
             );
         };
 
-    ${widgetName}_onLoadPage =
+    user_admin_onLoadPage =
         function (response, targetElement) {
             response.users.forEach(function (user) {
-                targetElement.appendChild(userDiv(user));
+                targetElement.appendChild(zombieDiv(user));
             });
         };
 
-    ${widgetName}_initGrid(function(){
-        var bar = document.querySelector('.container .bar'),
-            paginator = bar.querySelector('.paginator');
-        bar.insertBefore(
-            verifiedFilter(
-                function (value) {
-                    verified = value;
-                    ${widgetName}_toPage(1);
-                }
-            ),
-            paginator);
-        bar.insertBefore(
-            roleFilter(
-                function (value) {
-                    role = value;
-                    ${widgetName}_toPage(1);
-                }
-            ),
-            paginator);
-    });
+    user_admin_initGrid();
 </script>
