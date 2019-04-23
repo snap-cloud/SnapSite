@@ -18,12 +18,14 @@ function verifyButton (user) {
         function () {
             SnapCloud.withCredentialsRequest(
                 'GET',
-                '/users/' + encodeURIComponent(user.username) + '/verify_user/0', // token is irrelevant for admins
+                '/users/' + encodeURIComponent(user.username) +
+                    '/verify_user/0', // token is irrelevant for admins
                 function (response) {
                     alert(
                         response,
                         function () {
-                            location.href = 'user?user=' + encodeURIComponent(user.username);
+                            location.href = 'user?user=' +
+                                encodeURIComponent(user.username);
                         }
                     );
                 },
@@ -139,6 +141,41 @@ function deleteZombieButton (user) {
             );
         },
         'pure-button-warning'
+    );
+};
+
+function reviveZombieButton (user) {
+    return userButton(
+        user,
+        'Revive',
+        function () {
+            confirm(
+                localizer.localize('Are you sure you want to revive user') +
+                ' <strong>' + user.username + '</strong>?',
+                function (ok) {
+                    if (ok) {
+                       SnapCloud.withCredentialsRequest(
+                           'POST',
+                           '/zombies/' + encodeURIComponent(user.username) +
+                                '/revive',
+                           function (response) {
+                               alert(
+                                   response,
+                                   function () {
+                                       location.href = 'user?user=' +
+                                           encodeURIComponent(user.username);
+                                   }
+                               );
+                           },
+                           genericError,
+                           'Could not bring user back to life'
+                       );
+                    }
+                },
+                confirmTitle('Revive user')
+            );
+        },
+        'pure-button'
     );
 };
 
@@ -273,7 +310,9 @@ function basicUserDiv (user) {
     joinedSpan.innerHTML = '<strong localizable>Joined in </strong>' +
         formatDate(user.created);
 
-    [ usernameAnchor, emailSpan, idSpan, joinedSpan ].forEach(function (e) { detailsDiv.appendChild(e); });
+    [ usernameAnchor, emailSpan, idSpan, joinedSpan ].forEach(
+        function (e) { detailsDiv.appendChild(e); }
+    );
 
     userWrapperDiv.classList.add('user');
     userWrapperDiv.classList.add('pure-u-1-2');
@@ -311,7 +350,9 @@ function userDiv (user) {
 
     buttonsDiv.classList.add('buttons');
 
-    [ roleSpan, buttonsDiv ].forEach(function (e) { detailsDiv.appendChild(e); });
+    [ roleSpan, buttonsDiv ].forEach(
+        function (e) { detailsDiv.appendChild(e); }
+    );
 
     if (user.role == 'admin') {
         detailsDiv.classList.add('admin');
@@ -347,13 +388,20 @@ function userDiv (user) {
 function zombieDiv (user) {
     var userWrapperDiv = basicUserDiv(user),
         detailsDiv = userWrapperDiv.querySelector('.details'),
-        buttonsDiv = document.createElement('div');
+        buttonsDiv = document.createElement('div'),
+        deletedSpan = document.createElement('span');
 
-    detailsDiv.appendChild(buttonsDiv);
+    deletedSpan.innerHTML = '<strong localizable>Deleted in </strong>' +
+        formatDate(user.deleted);
+
+    [ deletedSpan, buttonsDiv ].forEach(function (e) {
+        detailsDiv.appendChild(e);
+    });
 
     if (sessionStorage.role == 'admin') {
         buttonsDiv.appendChild(messageButton(user));
         buttonsDiv.appendChild(deleteZombieButton(user));
+        buttonsDiv.appendChild(reviveZombieButton(user));
     }
 
     return userWrapperDiv;
