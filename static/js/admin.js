@@ -391,6 +391,8 @@ function zombieDiv (user) {
         buttonsDiv = document.createElement('div'),
         deletedSpan = document.createElement('span');
 
+    buttonsDiv.classList.add('buttons');
+
     deletedSpan.innerHTML = '<strong localizable>Deleted in </strong>' +
         formatDate(user.deleted);
 
