@@ -45,7 +45,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
         div.classList.add('pure-u-1-' + options['gridSize']);
     };
 
-    if (options['withCollectionControls'] && ownsOrIsAdmin(item)) {
+    if (options['withCollectionControls']) {
         // Adds controls to remove this project from a collection or choose it
         // as a thumbnail
         div.appendChild(collectionControls(item));
