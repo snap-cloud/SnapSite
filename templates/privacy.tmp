@@ -12,7 +12,11 @@
 
 <h3>Creating a Snap<i>!</i> account</h3>
 
+<<<<<<< HEAD
 <p>If you wish to save the projects you create on our cloud server, then you must create an account on this site so that your storage is separate from other people's storage. When you create an account, we collect your email address or, if you are under 13, your parent's or guardian's email address. We use your address for five purposes:
+=======
+<p>If you wish to save the projects you create on our cloud server, then you must create an account on this site so that your storage is separate from other people's storage. When you create an account, we collect your email address or, if you are under 13, your parent's or guardian's email address. We use your address for four purposes:
+>>>>>>> master
 
 <ul class="indent bullets">
  <li>When you sign up for an account, we immediately send you a confirming email with a verification link.</li>

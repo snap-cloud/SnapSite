@@ -376,5 +376,11 @@
     "Remove from collection":
         "Elimina de la col·lecció",
     "Set as collection thumbnail":
-        "Tria per la imatge en miniatura de la col·lecció"
+        "Tria per la imatge en miniatura de la col·lecció",
+    "Zombie Administration":
+        "Administració de zombies",
+    "Revive":
+        "Ressuscita",
+    "Deleted in":
+        "Eliminat el"
 }
