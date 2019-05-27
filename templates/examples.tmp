@@ -1,63 +1,129 @@
+<script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>Examples</h1>
-<div class="projects pure-g">
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=tree%20animation">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/animated-tree.gif">
-            <span class="project-name">Animated tree</span></a></div>
+<script>
+    /*
+            'Animations',
+            'Games'
+</script>
+@param pageSize=5
+@param withSearch=false
 
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=PathFinder">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/pathfinder.png">
-            <span class="project-name">Path Finder</span></a></div>
+@param widgetName=art
+@param header="'Art Projects'"
+@include=grid
+<script>
+    art_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Art Projects',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    art_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+    art_initGrid();
+</script>
 
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=Space%20Invaders">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/invaders.png">
-            <span class="project-name">Space Invaders</span></a></div>
+@param widgetName=science
+@param header="'Science Projects'"
+@include=grid
+<script>
+    science_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Science Projects',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    science_onLoadPage = art_onLoadPage;
+    science_initGrid();
+</script>
 
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=Snake">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/snake.png">
-            <span class="project-name">Snake</span></a></div>
+@param widgetName=fractals
+@param header="'Fractals'"
+@include=grid
+<script>
+    fractals_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Fractals',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    fractals_onLoadPage = art_onLoadPage;
+    fractals_initGrid();
+</script>
 
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=Menuet">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/menuet.png">
-            <span class="project-name">Menuet</span></a></div>
+@param widgetName=animations
+@param header="'Animations'"
+@include=grid
+<script>
+    animations_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Animations',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    animations_onLoadPage = art_onLoadPage;
+    animations_initGrid();
+</script>
 
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=bh&amp;ProjectName=Tree">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/tree.gif">
-            <span class="project-name">Interactive tree</span></a></div>
-
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=swimmer">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/swim.gif">
-            <span class="project-name">Swimmer</span></a></div>
-
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=bh&amp;ProjectName=count%20change">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/count-change.png">
-            <span class="project-name">Count change</span></a></div>
-
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=y%20combinator">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/Y.png">
-            <span class="project-name">Y combinator</span></a></div>
-
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=bh&amp;ProjectName=animal%20game">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/animal.png">
-            <span class="project-name">Animal game</span></a></div>
-
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=joke_self">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/knock-knock.png">
-            <span class="project-name">Joke</span></a></div>
-
-    <div class="project small pure-u-1-5">
-        <a href="https://snap.berkeley.edu/snapsource/snap.html#present:Username=jens&amp;ProjectName=Roman">
-            <img class="thumbnail" src="https://snap.berkeley.edu/snap-web/roman.png">
-            <span class="project-name">Roman numerals</span></a></div>
-</div>
+@param widgetName=games
+@param header="'Games'"
+@include=grid
+<script>
+    games_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Games',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    games_onLoadPage = art_onLoadPage;
+    games_initGrid();
+</script>
+@param header=''

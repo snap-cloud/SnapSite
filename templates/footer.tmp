@@ -15,18 +15,15 @@
             <p><a localizable href="https://snap.berkeley.edu/SnapManual.pdf"
                 >Reference Manual</a></p>
             <p><a localizable href="materials">Materials</a></p>
-            <p><a localizable href="https://bjc.berkeley.edu/"
-                >The Beauty and Joy of Computing</a></p>
+            <p><a localizable href="bjc">The Beauty and Joy of Computing</a></p>
             <p><a localizable href="research">Research</a></p>
         </div>
         <div class="pure-u-1-5">
             <p><h4 localizable>Tools</h4></p>
             <p><a localizable href="offline">Offline Version</a></p>
             <p><a localizable href="extensions">Extensions</a></p>
-            <p><a target="_blank"
-                href="http://snapp.citilab.eu">Snapp<em>!</em></a></p>
-            <p><a target="_blank"
-                href="https://djsrv.github.io/Snapin8r2/">Snapin8r2</a></p>
+            <p><a href="snapp">Snapp<em>!</em></a></p>
+            <p><a href="snapin8r2">Snapin8r2</a></p>
         </div>
         <div class="pure-u-1-5">
             <p><h4 localizable>Support</h4></p>

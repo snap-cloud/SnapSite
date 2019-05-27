@@ -5,7 +5,7 @@
 
 <p><img src="https://snap.berkeley.edu/comp09/forbanner.png"/></p>
 
-<p>Snap<em>!</em> runs in your browser. It is implemented using Javascript, which is designed to limit the ability of browser-based software to affect your computer, so it’s safe to run even other people’s projects, even if you don’t trust our competence or good intentions.</p> <p>Snap<em>!</em> is presented by the University of California at Berkeley. It was developed by Jens Mönig at MioSoft Corporation (now at SAP), with design input and documentation by Brian Harvey at Berkeley, and contributions by students at Berkeley and elsewhere.</p>
+<p>Snap<em>!</em> runs in your browser. It is implemented using Javascript, which is designed to limit the ability of browser-based software to affect your computer, so it’s safe to run even other people’s projects, even if you don’t trust our competence or good intentions.</p> <p>Snap<em>!</em> is presented by the University of California at Berkeley. It is developed by Jens Mönig at SAP, with design input and documentation by Brian Harvey at UC Berkeley, and contributions by students at UC Berkeley and elsewhere.</p>
 
 
 <h2>First Class Data Types</h2>
