@@ -79,7 +79,7 @@ function fillProjectTitle (project, titleElement) {
 function fillProjectNotes (project, notesElement) {
     notesElement.innerHTML =
         project.notes ?
-            project.notes.replace(
+            escapeHtml(project.notes).replace(
                 /(https?:\/\/[^\s,\(\)\[\]]+)/g, // good enough
                 '<a href="$1" target="_blank">$1</a>') :
             ('<small>' +
