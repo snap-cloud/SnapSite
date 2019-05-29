@@ -34,6 +34,20 @@
     text-align: center;
 }
 
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-start;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.flex > * {
+    margin: 1.1em;
+}
+
 .in-place:hover {
     padding: 0 2px;
     border: 2px dashed #2d3142;
