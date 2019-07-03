@@ -174,6 +174,8 @@ function setProjectShareButtonsVisibility (project, buttonsElement) {
 function loadProjectViewer (project, placeholder) {
     function doLoadIt () {
         var iframe = document.createElement('iframe');
+        iframe.allowfullscreen = true;
+        iframe.setAttribute('allow', 'geolocation; microphone; camera');
         iframe.height = 406;
         iframe.src = projectURL(project.username, project.projectname) +
             '&embedMode&noExitWarning&noRun';
@@ -992,7 +994,8 @@ function embedDialog (project) {
     codeArea.classList.add('embed-code');
     codeArea.set = function () {
         codeArea.value =
-            '<iframe frameBorder=0 src="' + baseURL + '/embed?project=' +
+            '<iframe allowfullscreen allow="geolocation; microphone; camera" ' +
+            'frameBorder=0 src="' + baseURL + '/embed?project=' +
             project.projectname + '&user=' + project.username +
             (form.elements['title'].checked ? '&showTitle=true' : '') +
             (form.elements['author'].checked ? '&showAuthor=true' : '') +
