@@ -175,19 +175,6 @@ function escapeHtml (text) {
     return text ? text.replace(/[&<>"']/g, function (m) { return map[m]; }) : ''
 };
 
-function preventScroll () {
-    window.addEventListener(
-        'keydown',
-        function (event) {
-            // space and arrow keys
-            if ([32, 37, 38, 39, 40].includes(event.keyCode)) {
-                event.preventDefault();
-            }
-        },
-        false
-    );
-};
-
 // JS additions
 
 Array.prototype.sortBy = function (parameter, reverse) {

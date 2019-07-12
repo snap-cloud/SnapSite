@@ -84,7 +84,6 @@
 
 <script>
     beganLoading('#wrapper');
-    preventScroll();
     SnapCloud.getProjectMetadata(
         pageProject(),
         pageUser(),
