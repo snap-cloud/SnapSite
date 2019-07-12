@@ -179,11 +179,11 @@ function loadProjectViewer (project, placeholder) {
         iframe.height = 406;
         iframe.src = projectURL(project.username, project.projectname) +
             '&embedMode&noExitWarning&noRun';
+        placeholder.parentNode.replaceChild(iframe, placeholder);
         iframe.contentWindow.addEventListener(
             'keydown',
             function(e) { e.preventDefault(); }
         );
-        placeholder.parentNode.replaceChild(iframe, placeholder);
     }
     if (document.visibilityState == 'visible') {
         doLoadIt();
