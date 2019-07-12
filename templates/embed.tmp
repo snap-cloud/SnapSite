@@ -37,6 +37,7 @@
             var controlBar = document.querySelector('.controlbar');
             document.body.style.overflow = 'hidden';
             setTitle(pageProject());
+            preventScroll();
 
             loadProjectViewer(
                 {
