@@ -1,11 +1,11 @@
 <h1 localizable>About Snap<em>!</em></h1>
-<p>Snap<em>!</em> (formerly BYOB) is a visual, drag-and-drop programming language. It is an extended reimplementation of <a href="https://scratch.mit.edu/">Scratch</a> (a project of the <a href="https://llk.media.mit.edu/">Lifelong Kindergarten Group</a> at the <a href="https://media.mit.edu/">MIT Media Lab</a>) that allows you to Build Your Own Blocks. It also features first class<sup><a href="#firstclass">[1]</a></sup> lists, first class procedures, and continuations<sup><a href="#continuations">[2]</a></sup>. These added capabilities make it suitable for a serious introduction to computer science for high school or college students.</p>
+<p>Snap<em>!</em> (formerly BYOB) is a visual, drag-and-drop programming language. It is an extended reimplementation of <a href="https://scratch.mit.edu/">Scratch</a> (a project of the <a href="https://llk.media.mit.edu/">Lifelong Kindergarten Group</a> at the <a href="https://media.mit.edu/">MIT Media Lab</a>) that allows you to Build Your Own Blocks. It also features first class<sup><a href="#firstclass">[1]</a></sup> lists, first class procedures, and first class continuations<sup><a href="#continuations">[2]</a></sup>. These added capabilities make it suitable for a serious introduction to computer science for high school or college students.</p>
 
 <p>In the example below, a Snap<em>!</em> user can create new control structures, such as a <code>for</code> loop, by writing a script as shown at the left. Once the <code>for</code> block is created, it can be used even to make nested loops, as shown in the center. A sprite carries out that script at the right.</p> </section>
 
 <p><img src="https://snap.berkeley.edu/comp09/forbanner.png"/></p>
 
-<p>Snap<em>!</em> runs in your browser. It is implemented using Javascript, which is designed to limit the ability of browser-based software to affect your computer, so it’s safe to run even other people’s projects, even if you don’t trust our competence or good intentions.</p> <p>Snap<em>!</em> is presented by the University of California at Berkeley. It is developed by Jens Mönig at SAP, with design input and documentation by Brian Harvey at UC Berkeley, and contributions by students at UC Berkeley and elsewhere.</p>
+<p>Snap<em>!</em> runs in your browser. It is implemented using Javascript, which is designed to limit the ability of browser-based software to affect your computer outside of Snap<i>!</i> itself, so it’s safe to run even other people’s projects, even if you don’t trust our competence or good intentions.</p> <p>Snap<em>!</em> is presented by the University of California at Berkeley. It is developed by Jens Mönig at SAP, with design input and documentation by Brian Harvey at UC Berkeley, and contributions by students at UC Berkeley and elsewhere.</p>
 
 
 <h2>First Class Data Types</h2>
@@ -28,7 +28,7 @@ implemented as lists of lists.</p>
 
 <p>A less obvious limitation, because it is shared by many “adult” programming languages, is that procedures (blocks) are not first class. Making blocks first class in Snap<em>!</em> allows us to create <strong>control structures</strong>, such as the <code>for</code> block above, as user-defined Snap<em>!</em> code.  In particular, users can write the higher order list functions that are essential in the functional programming style.</p>
 
-<p>Without<a name="continuations">&nbsp;</a>being doctrinaire about it, we believe that in general, anything that’s in a language at all should be first class in that language. The Snap<em>!</em> object system, coming in version 4.1, introduces first class sprites, first class costumes, first class sounds, and first class colors.</p>
+<p>Without<a name="continuations">&nbsp;</a>being doctrinaire about it, we believe that in general, anything that’s in a language at all should be first class in that language. The Snap<em>!</em> object system introduces first class sprites, first class costumes, and first class sounds.</p>
 
 
 <h2>Continuations</h2>
