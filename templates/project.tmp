@@ -84,6 +84,14 @@
 
 <script>
     beganLoading('#wrapper');
+
+    // Prevent scrolling when focus is in the iframe
+    document.onscroll = function (event) {
+        if (document.activeElement.tagName === 'IFRAME') {
+            window.scrollTo(0, 0);
+        }
+    };
+
     SnapCloud.getProjectMetadata(
         pageProject(),
         pageUser(),

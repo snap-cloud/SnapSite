@@ -180,10 +180,6 @@ function loadProjectViewer (project, placeholder) {
         iframe.src = projectURL(project.username, project.projectname) +
             '&embedMode&noExitWarning&noRun';
         placeholder.parentNode.replaceChild(iframe, placeholder);
-        iframe.contentWindow.addEventListener(
-            'keydown',
-            function(e) { e.preventDefault(); }
-        );
     }
     if (document.visibilityState == 'visible') {
         doLoadIt();
