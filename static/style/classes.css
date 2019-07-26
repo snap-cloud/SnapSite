@@ -158,3 +158,8 @@ pre.in-place {
     display: inline-block;
     background: url('../img/octagon.png');
 }
+
+/* Hide Discourse's meta info on images */
+.lightbox > .meta {
+    display: none;
+}
