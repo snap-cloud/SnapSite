@@ -49,6 +49,7 @@
             if (getUrlParameter('editButton')) {
                 var editButton = document.createElement('a'),
                     icon = document.createElement('i');
+                editButton.title = localizer.localize('See source code');
                 editButton.classList.add('edit');
                 editButton.href = projectURL(pageUser(), pageProject()) +
                     '&editMode&noRun';
