@@ -17,7 +17,7 @@
 <h1><span localizable>Welcome to Snap</span><em>!</em></h1>
 
 <div class="indent bigger" localizable>Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.</div>
-<div class="indent bigger less-v-spaced" localizable>Take a look at some <a href="examples">examples</a> or check out the <a href="https://snap.berkeley.edu/SnapManual.pdf">reference manual</a> to learn more about it, or head straight into the <a href="https://snap.berkeley.edu/run">editor</a> and start programming right away!</div>
+<div class="indent bigger less-v-spaced" localizable>Take a look at some <a href="examples">examples</a> or check out the <a href="snapsource/help/SnapManual.pdf">reference manual</a> to learn more about it, or head straight into the <a href="https://snap.berkeley.edu/run">editor</a> and start programming right away!</div>
 <br class="v-spaced">
 @param title='"Snap! Build Your Own Blocks"'
 

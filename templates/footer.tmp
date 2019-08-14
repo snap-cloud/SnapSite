@@ -12,7 +12,7 @@
         <div class="pure-u-1-5">
             <p><h4 localizable>Learning</h4></p>
             <p><a localizable href="examples">Examples</a></p>
-            <p><a localizable href="https://snap.berkeley.edu/SnapManual.pdf"
+            <p><a localizable href="snapsource/help/SnapManual.pdf"
                 >Reference Manual</a></p>
             <p><a localizable href="materials">Materials</a></p>
             <p><a localizable href="bjc">The Beauty and Joy of Computing</a></p>
