@@ -91,7 +91,7 @@ var profileDiv = document.querySelector('.profile');
                             size: 'small',
                             gridSize: 5,
                             extraFields: {
-                                author: 'creator.username'
+                                author: 'username'
                             }
                         }
                     )

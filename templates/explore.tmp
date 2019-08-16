@@ -67,7 +67,7 @@
                             size: 'small',
                             gridSize: 5,
                             extraFields: {
-                                author: 'creator.username'
+                                author: 'username'
                             }
                         }
                     )

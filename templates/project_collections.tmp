@@ -29,7 +29,7 @@
                             extraFields: {
                                 isPublic: 'shared',
                                 isPublished: 'published',
-                                author: 'creator.username'
+                                author: 'username'
                             }
                         }
                     )

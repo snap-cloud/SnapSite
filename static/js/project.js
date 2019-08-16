@@ -5,7 +5,7 @@ function newProjectDiv (project, options) {
 
 function newCollectionDiv (collection, options) {
     return itemDiv(
-        collection, 'collection', 'creator.username', 'name', 'description',
+        collection, 'collection', 'username', 'name', 'description',
         options)
 };
 
@@ -199,12 +199,12 @@ function fillCollectionTitle (collection, titleElement) {
             h1,
             function () {
                 SnapCloud.updateCollectionName(
-                    collection.creator.username,
+                    collection.username,
                     collection.name,
                     h1.textContent,
                     function () {
                         location.href = 'collection.html?user=' +
-                            collection.creator.ussername + '&collection=' +
+                            collection.username + '&collection=' +
                             h1.textContent;
                     },
                     genericError
@@ -213,7 +213,7 @@ function fillCollectionTitle (collection, titleElement) {
             '' // no default text
         )
     }
-    titleElement.appendChild(authorSpan(collection.creator.username));
+    titleElement.appendChild(authorSpan(collection.username));
 };
 
 function fillCollectionThumbnail (collection, thumbnailElement) {
@@ -248,7 +248,7 @@ function fillCollectionDescription (collection, descriptionElement) {
             descriptionElement,
             function () {
                 SnapCloud.updateCollectionDescription(
-                    collection.creator.username,
+                    collection.username,
                     collection.name,
                     descriptionElement.innerText,
                     function () {
@@ -319,7 +319,7 @@ function setupCollectionEditorControls (collection, editorsElement) {
             var code = (event.keyCode ? event.keyCode : event.which);
             if (code == 13 && !event.shiftKey) {
                 SnapCloud.addEditorToCollection(
-                    collection.creator.username,
+                    collection.username,
                     collection.name,
                     newEditorInput.value,
                     function () {
@@ -352,7 +352,7 @@ function setupCollectionEditorControls (collection, editorsElement) {
         localizer.localize('Add an editor to this collection');
     editorListUl.title =
         localizer.localize('Users who can edit this collection');
-    editorListUl.append(newEditorLi(collection.creator.username));
+    editorListUl.append(newEditorLi(collection.username));
 
     function newEditorLi (username) {
         var editorLi = document.createElement('li'),
@@ -362,7 +362,7 @@ function setupCollectionEditorControls (collection, editorsElement) {
         editorLi.classList.add('editor');
         editorLi.append(userAnchor(username));
 
-        if (owns(collection) && username !== collection.creator.username) {
+        if (owns(collection) && username !== collection.username) {
             icon.classList.add('fas');
             icon.classList.add('fa-times-circle');
             removeAnchor.classList.add('remove-editor');
@@ -370,7 +370,7 @@ function setupCollectionEditorControls (collection, editorsElement) {
             removeAnchor.append(icon);
             removeAnchor.onclick = function () {
                 SnapCloud.removeEditorFromCollection(
-                    collection.creator.username,
+                    collection.username,
                     collection.name,
                     username,
                     function () {
@@ -506,7 +506,7 @@ function confirmShareCollection (collection, buttonsDiv, datesDiv) {
         localizer.localize('Are you sure you want to share this collection?'),
         function (ok) {
             SnapCloud.shareCollection(
-                collection.creator.username,
+                collection.username,
                 collection.name,
                 function () {
                     alert(
@@ -566,7 +566,7 @@ function confirmUnshareCollection (collection, buttonsDiv, datesDiv) {
         function (ok) {
             if (ok) {
                 SnapCloud.unshareCollection(
-                    collection.creator.username,
+                    collection.username,
                     collection.name,
                     function () {
                         alert(
@@ -630,7 +630,7 @@ function confirmPublishCollection (collection, buttonsDiv, datesDiv) {
         function (ok) {
             if (ok) {
                 SnapCloud.publishCollection(
-                    collection.creator.username,
+                    collection.username,
                     collection.name,
                     function () {
                         alert(
@@ -726,7 +726,7 @@ function confirmUnpublishCollection (collection, buttonsDiv, datesDiv) {
             'and hide it from the Snap<em>!</em> website?'),
         function (ok) {
             if (ok) {
-                if (sessionStorage.username !== collection.creator.username) {
+                if (sessionStorage.username !== collection.username) {
                     reasonDialog(
                         collection,
                         function (reason) {
@@ -734,7 +734,7 @@ function confirmUnpublishCollection (collection, buttonsDiv, datesDiv) {
                                 'POST',
                                 '/users/' +
                                     encodeURIComponent(
-                                        collection.creator.username) +
+                                        collection.username) +
                                     '/collections/' +
                                     encodeURIComponent(collection.name) +
                                     '/metadata?ispublished=false&reason=' +
@@ -747,7 +747,7 @@ function confirmUnpublishCollection (collection, buttonsDiv, datesDiv) {
                     );
                 } else {
                     SnapCloud.unpublishCollection(
-                        collection.creator.username,
+                        collection.username,
                         collection.name,
                         done,
                         genericError
@@ -817,7 +817,7 @@ function confirmDeleteCollection (collection) {
             { title: localizer.localize('Collection deleted') },
             function () {
                 location.href =
-                    (sessionStorage.username !== collection.creator.username)
+                    (sessionStorage.username !== collection.username)
                         ? 'index'
                         : 'my_collections';
             }
@@ -832,7 +832,7 @@ function confirmDeleteCollection (collection) {
         ' <i class="warning fa fa-exclamation-triangle"></i>',
         function (ok) {
             if (ok) {
-                if (sessionStorage.username !== collection.creator.username) {
+                if (sessionStorage.username !== collection.username) {
                     reasonDialog(
                         collection,
                         function (reason) {
@@ -840,7 +840,7 @@ function confirmDeleteCollection (collection) {
                                 'DELETE',
                                 '/users/' +
                                     encodeURIComponent(
-                                        collection.creator.username) +
+                                        collection.username) +
                                     '/collections/' +
                                     encodeURIComponent(collection.name) +
                                     '?reason=' + encodeURIComponent(reason),
@@ -852,7 +852,7 @@ function confirmDeleteCollection (collection) {
                     );
                 } else {
                     SnapCloud.deleteCollection(
-                        collection.creator.username,
+                        collection.username,
                         collection.name,
                         done,
                         genericError
@@ -891,7 +891,7 @@ function confirmFlagProject (project) {
 };
 
 function owns (item) {
-    return sessionStorage.username == (item.username || item.creator.username);
+    return sessionStorage.username == item.username
 };
 
 function ownsOrIsAdmin (item) {
@@ -919,14 +919,12 @@ function canEditDescription (collection) {
     return ownsOrIsAdmin(collection);
 };
 function canUnpublish (item) {
-    return (sessionStorage.username ==
-        (item.username || item.creator.username)) ||
+    return (sessionStorage.username == item.username) ||
         [ 'admin', 'moderator', 'reviewer' ].indexOf(sessionStorage.role) > -1;
 };
 
 function canDelete (item) {
-    return (sessionStorage.username ==
-        (item.username || item.creator.username)) ||
+    return (sessionStorage.username == item.username) ||
         [ 'admin', 'moderator' ].indexOf(sessionStorage.role) > -1;
 };
 
@@ -1063,7 +1061,7 @@ function collectProject (project) {
                     }
             );
             SnapCloud.addProjectToCollection(
-                collection.creator.username,
+                collection.username,
                 collection.name,
                 project.username,
                 project.projectname,
