@@ -275,7 +275,7 @@ function fillCollectionDates (collection, datesDiv) {
             formatDate(collection.shared_at);
         if (collection.published) {
             datesDiv.querySelector('.published span').innerHTML =
-                formatDate(collection.firstpublished);
+                formatDate(collection.published_at);
         } else {
             datesDiv.querySelector('.published').hidden = true;
         }
