@@ -42,8 +42,10 @@
                     target="_blank">Add to Collection</a>
                 <a localizable class="pure-button pure-button-warning delete"
                     target="_blank">Delete</a>
-                <a localizable class="clickable warning flag"
-                    target="_blank">Report this project</a>
+                <span class="flag-container">
+                    <a localizable class="clickable warning flag"
+                        target="_blank">Report this project</a>
+                </span>
             </div>
         </div>
         <!-- just a separator -->

@@ -265,12 +265,16 @@ img.collection-thumbnail {
 }
 
 .collection a.flag,
-.project.big a.flag {
+.project.big span.flag-container {
     text-align: right;
     font-size: 0.8em;
     margin-top: 0.5em;
     display: block;
     width: 100%;
+    padding: 0;
+}
+
+.project.big a.flag {
     padding: 0;
 }
 
