@@ -87,6 +87,28 @@
     featured_initGrid();
 </script>
 
+@param widgetName=snapcon
+@param header="'Snap!Con 2019 Projects'"
+@include=grid
+<script>
+    snapcon_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Con 2019',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    snapcon_onLoadPage = latest_onLoadPage;
+    snapcon_initGrid();
+</script>
+
+
 <script>
     // pick a random curated collection
     var collection =
