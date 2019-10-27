@@ -9,8 +9,8 @@
 
 <p>For bugs and suggestions related to either Snap<em
      >!</em>, or its community website, please refer to <a
-     href="https://forum.snap.berkeley.edu/c/requests"
-     >this forum thread</a>.</p>
+     href="https://forum.snap.berkeley.edu"
+     >the Snap<em>!</em> forum</a>.</p>
 
 <script>
     setTitle(localizer.localize('Contact Us') +
