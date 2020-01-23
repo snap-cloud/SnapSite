@@ -57,6 +57,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
 function fillProjectTitle (project, titleElement) {
     var h1 = titleElement.querySelector('h1');
     h1.innerHTML = project.projectname;
+    /*
     if (canRename(project)) {
         new InPlaceEditor(
             h1,
@@ -73,6 +74,7 @@ function fillProjectTitle (project, titleElement) {
                 );
             })
     }
+    */
     titleElement.append(authorSpan(project.username));
 };
 
