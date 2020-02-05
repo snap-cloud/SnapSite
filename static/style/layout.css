@@ -1,5 +1,4 @@
 /* WRAPPER */
-
 #wrapper {
     padding-top: 2em;
     width: 1080px;
@@ -27,6 +26,7 @@
     padding-top: 8px;
 }
 
+#top-bar .logo:focus,
 #top-bar .logo:hover {
     filter: brightness(1.5);
 }
@@ -48,6 +48,7 @@
     content: '';
 }
 
+#top-bar .language-select:focus,
 #top-bar .language-select:hover {
     color: white;
 }
@@ -66,10 +67,11 @@
 }
 
 #top-bar .pure-menu-link {
-    padding: 0;
+    padding: 0 2ch;
     text-align: center;
 }
 
+#top-bar .pure-menu-link:focus,
 #top-bar .pure-menu-link:hover {
     color: #2c3e50;
 }
@@ -132,6 +134,21 @@
     font-weight: bold;
 }
 
+/* Designed to be the last element in a section / nav
+/ Makes a little "puzzle piece" connector. */
+.trapezoid {
+    position: relative;
+    margin-left: 60px;
+    border-top: 14px solid;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    height: 0;
+    width: 64px;
+    margin-top: -14px;
+    top: 14px;
+    z-index: 1000;
+}
+
 /* FOOTER */
 
 #footer {
@@ -177,7 +194,7 @@
     border-radius: 5px 5px 0 0;
 }
 
-.customalert .body, 
+.customalert .body,
 .customalert .footer {
     background: #e2e3db;
     text-align: center;
