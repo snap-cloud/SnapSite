@@ -6,32 +6,29 @@
     flex: 1 0 auto;
 }
 
+#wrapper a:focus,
 #wrapper a:hover {
-    filter: brightness(1.5);
+    filter: brightness(1.2);
 }
 
 /* TOP BAR */
 
 #top-bar {
-    background: #2c3e50;
+    background: #2d3142;
     height: 48px;
-    color: #e2e3db;
+    color: #ffffff;
 }
 
 #top-bar a {
-    color: #e2e3db;
+    color: #ffffff;
 }
 
 #top-bar .logo {
     padding-top: 8px;
 }
 
-#top-bar .logo:focus,
-#top-bar .logo:hover {
-    filter: brightness(1.5);
-}
-
-#top-bar .run {
+#top-bar .run,
+#top-bar .explore {
     margin-right: 1em;
 }
 
@@ -73,7 +70,7 @@
 
 #top-bar .pure-menu-link:focus,
 #top-bar .pure-menu-link:hover {
-    color: #2c3e50;
+    color: #2d3142;
 }
 
 #top-bar .pure-menu ul.pure-menu-list .pure-menu-item {
@@ -83,11 +80,11 @@
 #top-bar .pure-menu-horizontal .pure-menu-children {
     width: auto;
     min-width: 100%;
-    background: #2c3e50;
+    background: #2d3142;
 }
 
 #top-bar .pure-menu-children {
-    border: 1px solid #e2e3db;
+    border: 1px solid #ffffff;
 }
 
 #top-bar .pure-menu-children .pure-menu-link {
@@ -113,7 +110,7 @@
 #top-bar .search i {
     position: absolute;
     left: 5px;
-    color: #2c3e50;
+    color: #2d3142;
     line-height: 48px;
 }
 
@@ -123,10 +120,10 @@
     transform: translateY(-50%);
     height: 24px;
     width: 100%;
-    border: 2px solid #e2e3db;
+    border: 2px solid #ffffff;
     border-radius: 14px;
-    background: #e2e3db;
-    color: #2c3e50;
+    background: #ffffff;
+    color: #2d3142;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -152,9 +149,9 @@
 /* FOOTER */
 
 #footer {
-    background: #2c3e50;
+    background: #2d3142;
     padding: 1em;
-    color: #e2e3db;
+    color: #ffffff;
     margin-top: 3em;
     flex-shrink: 0;
     font-size: 0.75em;
@@ -171,7 +168,7 @@
 }
 
 #footer a {
-    color: #e2e3db;
+    color: #ffffff;
     text-decoration: underline;
 }
 
@@ -179,15 +176,15 @@
 
 .customalert {
     padding: 5px;
-    background: #2c3e50;
+    background: #2d3142;
     width: auto;
     min-width: 500px;
 }
 
 .customalert .header {
     font-size: 1em;
-    background: #2c3e50;
-    color: #e2e3db;
+    background: #2d3142;
+    color: #ffffff;
     padding: 5px 0 8px 0;
     font-weight: bold;
     text-align: center;
@@ -196,7 +193,7 @@
 
 .customalert .body,
 .customalert .footer {
-    background: #e2e3db;
+    background: #ffffff;
     text-align: center;
     padding: 0.5em;
     line-height: 1.5em;
@@ -208,7 +205,7 @@
 }
 
 #customAlert {
-    background: #2c3e50;
+    background: #2d3142;
 }
 
 /* LOADING */

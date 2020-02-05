@@ -1,4 +1,4 @@
 base
 @param user=null
-@param title='term + " search results - Snap! Build Your Own Blocks"'
+@param title='query + " search results - Snap! Build Your Own Blocks"'
 search 

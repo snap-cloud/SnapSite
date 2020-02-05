@@ -1,0 +1,48 @@
+<script>
+    // Only admins and moderators can access this page
+    if (!hasAnyOfRoles(['admin', 'moderator'])) {
+        location.href = 'index';
+    }
+</script>
+<script src="js/dialog.js"></script>
+<script src="js/admin.js"></script>
+<link rel="stylesheet" href="style/admin.css">
+<h1 localizable>Zombie Administration</h1>
+@param pageSize=150
+@param withSearch=true
+@param keepIfEmpty=true
+@param widgetName=user_admin
+@include=grid
+@param keepIfEmpty=false
+<script>
+    var role = '',
+        verified = '';
+    user_admin_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.withCredentialsRequest(
+                'GET',
+                '/zombies?' +
+                    (query ?
+                        'matchtext=' + encodeURIComponent(query) + '&' : '' ) +
+                    'pagesize=' + pageSize + '&page=' + pageNumber +
+                    (role !== '' ?
+                        '&role=' + role
+                        : '') +
+                    (verified !== '' ?
+                        '&verified=' + verified
+                        : ''),
+                onSuccess,
+                genericError,
+                'Could not fetch user list'
+            );
+        };
+
+    user_admin_onLoadPage =
+        function (response, targetElement) {
+            response.users.forEach(function (user) {
+                targetElement.appendChild(zombieDiv(user));
+            });
+        };
+
+    user_admin_initGrid();
+</script>

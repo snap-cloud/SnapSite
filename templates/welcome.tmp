@@ -1,20 +1,142 @@
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+
+@include=slideshow
+
+<!--
 <div class="bubble-wrap pure-g" style="margin-bottom: 2em">
-    <div class="pure-u-1-5" style="text-align: center"><img src="img/alonzo.svg"/></div>
+    <div class="pure-u-1-5" style="text-align: center">
+        <img src="img/alonzo.svg"/>
+    </div>
     <div class="bubble pure-u-3-5">
         <p localizable>This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.</p>
         <p localizable>Enjoy the preview, and thank you for your understanding!</p>
     </div>
 </div>
+-->
 <h1><span localizable>Welcome to Snap</span><em>!</em></h1>
+
 <div class="indent bigger" localizable>Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.</div>
-<div class="indent bigger less-v-spaced" localizable>Take a look at some <a href="examples">examples</a> or check out the <a href="manual">reference manual</a> to learn more about it, or head straight into the <a href="https://snap.berkeley.edu/run">editor</a> and start programming right away!</div>
+<div class="indent bigger less-v-spaced" localizable>Take a look at some <a href="examples">examples</a> or check out the <a href="snapsource/help/SnapManual.pdf">reference manual</a> to learn more about it, or head straight into the <a href="https://snap.berkeley.edu/run">editor</a> and start programming right away!</div>
 <br class="v-spaced">
-@param user=null
 @param title='"Snap! Build Your Own Blocks"'
+
 @param pageSize=5
-@param query=getPublishedProjectList
-@param className=latest
-@param header='Latest Projects'
-@param extraParam='null,'
-@include=project_grid
+@param withSearch=false
+
+@param header="'Latest Projects'"
+@param widgetName=latest
+@param maxPages=20
+@include=grid
+@param maxPages=0
+<script>
+    latest_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getPublishedProjectList(
+                null, // no username
+                pageNumber,
+                pageSize,
+                query,
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    latest_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+
+    latest_initGrid();
+</script>
+
+@param widgetName=featured
+@param header="'Featured Projects'"
+@include=grid
+<script>
+    featured_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Featured',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    featured_onLoadPage = latest_onLoadPage;
+    featured_initGrid();
+</script>
+
+@param widgetName=snapcon
+@param header="'Snap!Con 2019 Projects'"
+@include=grid
+<script>
+    snapcon_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Con 2019',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    snapcon_onLoadPage = latest_onLoadPage;
+    snapcon_initGrid();
+</script>
+
+
+<script>
+    // pick a random curated collection
+    var collection =
+        [ 'Science Projects',
+            'Art Projects',
+            'Fractals',
+            'Animations',
+            'Games' ][Math.floor(Math.random()*4)];
+</script>
+@param widgetName=curated
+@param header="collection"
+@include=grid
+<script>
+    curated_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                collection,
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    curated_onLoadPage = latest_onLoadPage;
+    curated_initGrid();
+</script>
+
 @param header=''

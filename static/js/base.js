@@ -1,9 +1,10 @@
 var snapURL = location.origin + '/snap/snap.html',
-    baseURL = location.href.replace(/(.*)\/.*\.html.*/, '$1'),
+    baseURL = location.href.replace(/(.*)\/.*/, '$1'),
     modules = [], // compatibility with cloud.js
     nop = function () {},
     localizer = new Localizer(),
-    buttonDefaults = { done: { text: 'Ok', default: true }, cancel: { text: 'Cancel' } };
+    buttonDefaults =
+        { done: { text: 'Ok', default: true }, cancel: { text: 'Cancel' } };
 
 function getUrlParameter (param) {
     var regex = new RegExp('[?&]' + param + '(=([^&#]*)|&|#|$)'),
@@ -19,6 +20,12 @@ function pageUser () {
 
 function pageProject () {
     return getUrlParameter('project');
+};
+
+// Permissions
+
+function hasAnyOfRoles (roleList) {
+    return roleList.indexOf(sessionStorage.role) > -1
 };
 
 // Data insertion
@@ -65,11 +72,12 @@ function userAnchor (username, newTab) {
 function isPublicSpan (isPublic) {
     var span = document.createElement('span'),
         tooltip = isPublic ?
-            'This project can be shared via URL' :
-            'This project is private',
-        faClass = isPublic ? 'fa-lock-open' : 'fa-lock';
+            'This item can be shared via URL' :
+            'This item is private',
+        faClass = isPublic ? 'fa-link' : 'fa-unlink';
     span.classList.add('is-public');
-    span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
+    span.innerHTML = '<small><i class="fas ' + faClass +
+        '" aria-hidden="true"></i></small>';
     span.title = localizer.localize(tooltip);
     return span;
 };
@@ -77,12 +85,13 @@ function isPublicSpan (isPublic) {
 function isPublishedSpan (isPublished) {
     var span = document.createElement('span'),
         tooltip = isPublished ?
-            'This project is publicly listed' :
-            'This project is unlisted',
-        faClass = isPublished ? 'fa-eye' : 'fa-user-secret';
+            'This item is published' :
+            'This item is unpublished',
+        faClass = isPublished ? 'fa-eye' : 'fa-eye-slash';
 
     span.classList.add('is-published');
-    span.innerHTML = '<small><i class="fa ' + faClass + '" aria-hidden="true"></i></small>';
+    span.innerHTML = '<small><i class="fas ' + faClass +
+        '" aria-hidden="true"></i></small>';
     span.title = localizer.localize(tooltip);
     return span;
 };
@@ -105,8 +114,8 @@ function projectSpan (author, project) {
 function collectionURL (author, name) {
     return 'collection?' + 
         SnapCloud.encodeDict({
-            author: author,
-            name: name
+            user: author,
+            collection: name
         });
 };
 
@@ -128,13 +137,17 @@ function beganLoading (selector) {
     if (selector) {
         loader = document.createElement('div');
         loader.className = 'loader';
-        loader.innerHTML = '<i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>';
+        loader.innerHTML =
+            '<i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>';
         document.querySelector(selector).append(loader);
     }
 };
 
 function doneLoading (selector) {
-    var element = document.querySelector(selector ? (selector + '> .loader') : '#loading');
+    var element = document.querySelector(
+            selector ?
+                (selector + '> .loader') :
+            '#loading');
     localizer.localizePage();
     if (element) {
         element.hidden = true;
@@ -146,7 +159,7 @@ function doneLoading (selector) {
 function formatDate (dateString) {
     return (new Date(dateString + ':00')).toLocaleString(
         localizer.locale || 'en-us',
-        { month: 'long', day: '2-digit', year: 'numeric' }
+        { month: 'long', day: 'numeric', year: 'numeric' }
     );
 };
 

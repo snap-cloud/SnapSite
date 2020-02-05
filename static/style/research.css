@@ -15,8 +15,19 @@
 }
 
 .abstract {
-    width: 70%;
-    margin: 1em;
-    margin-bottom: 3em;
     font-size: 0.8em;
+    padding: 1em;
+    width: 80%;
+    line-height: 1.2em;
+}
+
+.article-list {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.article-list li {
+    flex: 50%;
+    padding: 1em;
+    box-sizing: border-box;
 }

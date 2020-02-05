@@ -1,14 +1,24 @@
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
 <h1><span class="username"></span><span localizable>'s public page</span></h1>
-@content
+@param pageSize=15
+@param widgetName="user_projects"
+@param header="'Public Projects'"
+@param withSearch=false
+@include=grid
+
+@param header="'Public Collections'"
+@param widgetName="user_collections"
+@include=grid
 <div hidden="true" class="profile">
-    <h2>Admin tools</h2>
+    <h2 localizable>Admin tools</h2>
 </div>
 <script src="js/dialog.js"></script>
 <script src="js/admin.js"></script>
 <link rel="stylesheet" href="style/admin.css">
 <script>
-    var profileDiv = document.querySelector('.profile');
-    if (['admin', 'moderator'].indexOf(sessionStorage.role) > -1) {
+var profileDiv = document.querySelector('.profile');
+    if (hasAnyOfRoles(['admin', 'moderator'])) {
         profileDiv.hidden = false;
         beganLoading('.profile');
         SnapCloud.withCredentialsRequest(
@@ -22,4 +32,73 @@
             'Could not fetch user data'
         );
     }
+
+    user_projects_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getPublishedProjectList(
+                getUrlParameter('user'),
+                pageNumber,
+                pageSize,
+                null, // no search query
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    user_projects_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5
+                        }
+                    )
+                );
+            });
+        };
+
+    user_projects_initGrid();
+
+    user_collections_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.request(
+                'GET',
+                '/users/' +
+                    encodeURIComponent(getUrlParameter('user')) +
+                    '/collections?' +
+                    SnapCloud.encodeDict({
+                        published: true,
+                        page: pageNumber,
+                        pageSize: pageSize
+                    }),
+                onSuccess,
+                genericError,
+                'Could not fetch collections'
+            );
+        };
+
+    user_collections_onLoadPage =
+        function (response, targetElement) {
+            response.collections.forEach(function (collection) {
+                targetElement.append(
+                    newCollectionDiv(
+                        collection,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+
+    user_collections_initGrid();
 </script>
+@param header=""

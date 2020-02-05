@@ -1,9 +1,3 @@
 base
 user
-@param user="pageUser()"
 @param title="pageUser() + \" - Snap! Build Your Own Blocks\""
-@param pageSize=15
-@param query=getPublishedProjectList
-@param extraParam='null,'
-project_grid
-@param extraParam=''

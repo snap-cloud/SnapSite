@@ -11,25 +11,41 @@
     <div class="viewer pure-g">
         <!-- Project viewer -->
         <div class="embed pure-u-1-2">
+            <!-- Spinner shown while embed hasn't been loaded -->
+            <i class="project-loader fas fa-spinner fa-spin fa-3x"
+                aria-hidden="true"></i>
+
+            <!-- Project control bar -->
             <div class="controlbar">
-                <i class="present-button fas fa-expand clickable" onclick="toggleFullScreen();"></i>
-                <i class="start-button fas fa-flag clickable" onclick="runProject(event);"></i>
-                <i class="stop-button fas fa-stop clickable" onclick="stopProject();"></i>
+                <i class="present-button fas fa-expand clickable"
+                    onclick="toggleFullScreen();"></i>
+                <i class="start-button fas fa-flag clickable"
+                    onclick="runProject(event);"></i>
+                <i class="pause-button fas fa-pause clickable"
+                    onclick="togglePauseProject();"></i>
+                <i class="stop-button fas fa-octagon clickable"
+                    onclick="stopProject();"></i>
             </div>
 
-            <!-- Project iframe placeholder -->
-            <i class="iframe-placeholder"></i>
+            <!-- Project embed placeholder -->
+            <i class="embed-placeholder"></i>
 
             <!-- Project Action Buttons -->
             <div class="buttons">
-                <a localizable class="pure-button open" target="_blank">Edit</a>
-                <a localizable class="pure-button download" target="_blank">Download</a>
-                <a localizable class="pure-button share" target="_blank">Share</a>
-                <a localizable class="pure-button unshare" target="_blank">Unshare</a>
-                <a localizable class="pure-button publish" target="_blank">Publish</a>
-                <a localizable class="pure-button unpublish" target="_blank">Unpublish</a>
-                <a localizable class="pure-button embed-button" target="_blank">Embed</a>
-                <a localizable class="pure-button pure-button-warning delete" target="_blank">Delete</a>
+                <a localizable class="pure-button open"
+                    target="_blank">See Code</a>
+                <a localizable class="pure-button download"
+                    target="_blank">Download</a>
+                <a localizable class="pure-button embed-button"
+                    target="_blank">Embed</a>
+                <a localizable class="pure-button collect"
+                    target="_blank">Add to Collection</a>
+                <a localizable class="pure-button pure-button-warning delete"
+                    target="_blank">Delete</a>
+                <span class="flag-container">
+                    <a localizable class="clickable warning flag"
+                        target="_blank">Report this project</a>
+                </span>
             </div>
         </div>
         <!-- just a separator -->
@@ -38,123 +54,110 @@
             <!-- Notes -->
             <pre class="notes"> </pre>
             <!-- Dates and project meta -->
-            <span class="dates">
-                <span localizable class="created">Created on </span>.
-                <span localizable class="updated">Last updated on </span><span localizable class="shared">, shared on </span><span localizable class="published"></span>.
-                <span localizable class="is-public">This project is </span><span localizable class="is-published"></span>.
-            </span>
+            <div class="dates">
+                <p class="created"><strong
+                    localizable>Created:</strong><span></span></p>
+                <p class="updated"><strong
+                    localizable>Last updated:</strong><span></span></p>
+                <p class="shared"><strong
+                    localizable>Shared:</strong><span></span></p>
+                <p class="published"><strong
+                    localizable>Published:</strong><span></span></p>
+                <a localizable class="pure-button share"
+                    target="_blank">Share</a>
+                <a localizable class="pure-button unshare"
+                    target="_blank">Unshare</a>
+                <a localizable class="pure-button publish"
+                    target="_blank">Publish</a>
+                <a localizable class="pure-button unpublish"
+                    target="_blank">Unpublish</a>
+            </div>
         </div>
     </div>
 
-    <!-- Collection of remixes -->
-    <div class="remixes">
-        @content
-    </div>
+<!-- Carousel of remixes -->
+@param widgetName=project_remixes
+@include=project_remixes
+<!-- Carousel of collections -->
+@param widgetName=project_collections
+@include=project_collections
+
 </div>
 
 <script>
     beganLoading('#wrapper');
+
+    // Prevent scrolling when focus is in the iframe
+    document.onscroll = function (event) {
+        if (document.activeElement.tagName === 'IFRAME') {
+            window.scrollTo(0, 0);
+        }
+    };
+
     SnapCloud.getProjectMetadata(
         pageProject(),
         pageUser(),
         function (project) {
-            setTitle(pageProject() + localizer.localize(' by ') + pageUser() + ' - Snap! Build Your Own Blocks');
+            var datesDiv = document.querySelector('.dates'),
+                buttonsDiv = document.querySelector('.buttons');
+            setTitle(pageProject() + localizer.localize(' by ') +
+                pageUser() + ' - Snap! Build Your Own Blocks');
 
             // Fill up all fields
-            var title = document.querySelector('.title h1');
+            fillProjectTitle(project, document.querySelector('.title'));
+            loadProjectViewer(
+                project,
+                document.querySelector('.embed-placeholder')
+            );
+            fillProjectNotes(project, document.querySelector('.notes'));
+            fillProjectDates(project, datesDiv);
+            fillRemixInfo(project, document.querySelector('.remixed-from'));
 
-            title.innerHTML = project.projectname;
-            if (canRename(project)) {
-                new InPlaceEditor(
-                    title,
-                    function () {
-                        SnapCloud.updateProjectName(
-                            pageProject(),
-                            title.textContent,
-                            function () { location.href = 'project.html?user=' + pageUser() + '&project=' + title.textContent; },
-                            genericError
-                        );
-                    })
-            }
-            document.querySelector('.title').append(authorSpan(project.username));
+            // Set up button visibility according to user permissions
+            // and project visibility state
+            setProjectControlButtonsVisibility(project, buttonsDiv);
+            setProjectShareButtonsVisibility(project, datesDiv);
 
-            var iframe = document.createElement('iframe'),
-                placeholder = document.querySelector('.iframe-placeholder');
-            iframe.height = 406;
-            iframe.src = projectURL(project.username, project.projectname) + '&embedMode&noExitWarning&noRun';
-            placeholder.parentNode.replaceChild(iframe, placeholder);
-
-            document.querySelector('.notes').innerHTML = project.notes || '<small>' + localizer.localize('This project has no notes') + '</small>';
-            document.querySelector('.created').append(formatDate(project.created));
-            document.querySelector('.updated').append(formatDate(project.lastupdated));
-
-            if (project.ispublic) {
-                document.querySelector('.shared').append(formatDate(project.lastshared));
-                document.querySelector('.is-published').innerHTML += (project.ispublished ? ' and listed' : ' but unlisted');
-                if (project.ispublished) {
-                    document.querySelector('.published').innerHTML = localizer.localize(', published on ') + formatDate(project.firstpublished);
-                }
-                document.querySelector('.is-public').innerHTML += ('public');
-            } else {
-                document.querySelector('.shared').hidden = true;
-                document.querySelector('.is-public').append('private');
+            if (owns(project)) {
+                buttonsDiv.querySelector('.open').innerHTML =
+                    localizer.localize('Edit');
             }
 
-            if (project.remixedfrom) {
-                var div = document.querySelector('.remixed-from');
-                div.innerHTML = localizer.localize('(remixed from ');
-                if (project.remixedfrom.projectname) {
-                    div.append(projectSpan(project.remixedfrom.username, project.remixedfrom.projectname));
-                    div.append(authorSpan(project.remixedfrom.username));
-                } else {
-                    div.append('a project that no longer exists');
-                }
-                div.innerHTML += ')';
-            }
+            // Set up button functionality
+            buttonsDiv.querySelector('.open').href =
+                projectURL(project.username, project.projectname) +
+                    '&editMode&noRun';
+            buttonsDiv.querySelector('.download').onclick =
+                function () { downloadProject(project); };
+            buttonsDiv.querySelector('.embed-button').onclick =
+                function () { embedDialog(project); }
+            buttonsDiv.querySelector('.collect').onclick =
+                function () { collectProject(project); }
+            buttonsDiv.querySelector('.flag').onclick =
+                function () { confirmFlagProject(project); }
+            buttonsDiv.querySelector('.delete').onclick =
+                function () { confirmDeleteProject(project); }
 
-            // Set up all buttons
-            document.querySelector('.buttons .share').hidden = project.ispublic || !canShare(project);
-            document.querySelector('.buttons .unshare').hidden = !project.ispublic || !canShare(project);
-            document.querySelector('.buttons .publish').hidden = (!project.ispublic || project.ispublished) ||
-                                                                    !canPublish(project) || sessionStorage.role === 'banned';
-            document.querySelector('.buttons .unpublish').hidden = (!project.ispublic || !project.ispublished) ||
-                                                                    !canUnpublish(project);
-            document.querySelector('.embed-button').hidden = !project.ispublic;
-            document.querySelector('.buttons .delete').hidden = !canDelete(project);
-
-            document.querySelector('.buttons .open').href = projectURL(project.username, project.projectname) + '&editMode&noRun';
-            document.querySelector('.buttons .download').onclick = function () { downloadProject(project); };
-            document.querySelector('.buttons .share').onclick = function () { confirmShareProject(project); };
-            document.querySelector('.buttons .unshare').onclick = function () { confirmUnshareProject(project); };
-            document.querySelector('.buttons .publish').onclick = function () { confirmPublish(project); };
-            document.querySelector('.buttons .unpublish').onclick = function () { confirmUnpublish(project); }
-            document.querySelector('.buttons .embed-button').onclick = function () { embedDialog(project); }
-            document.querySelector('.buttons .delete').onclick = function () { confirmDelete(project); }
+            datesDiv.querySelector('.share').onclick =
+                function () {
+                    confirmShareProject(project, buttonsDiv, datesDiv)
+                };
+            datesDiv.querySelector('.unshare').onclick =
+                function () {
+                    confirmUnshareProject(project, buttonsDiv, datesDiv);
+                };
+            datesDiv.querySelector('.publish').onclick =
+                function () {
+                    confirmPublishProject(project, buttonsDiv, datesDiv);
+                };
+            datesDiv.querySelector('.unpublish').onclick =
+                function () {
+                    confirmUnpublishProject(project, buttonsDiv, datesDiv);
+                };
 
             doneLoading('#wrapper');
             document.querySelector('.project').hidden = false;
-
-            // In-place notes editor
-            var notes = document.querySelector('.notes');
-            if (canEditNotes(project)) {
-                new InPlaceEditor(
-                    notes,
-                    function () {
-                        SnapCloud.updateNotes(
-                            pageProject(),
-                            notes.textContent,
-                            function () {
-                                if (notes.textContent == '') {
-                                    notes.innerHTML = '<small>' + localizer.localize('This project has no notes') + '</small>';
-                                }
-                            }, 
-                            genericError
-                        );
-                    }
-                );
-            } 
         },
         genericError
     );
-
 </script>

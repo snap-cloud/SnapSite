@@ -1,2 +1,79 @@
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
 <h1 localizable>Explore</h1>
-@content
+@param title='"Explore - Snap! Build Your Own Blocks"'
+@param header="'Published Projects'"
+@param pageSize=15
+@param withSearch=false
+@param widgetName=projects
+@include=grid
+<script>
+    projects_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getPublishedProjectList(
+                null,
+                pageNumber,
+                pageSize,
+                null, // query
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    projects_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+
+    projects_initGrid();
+</script>
+
+@param header="'Published Collections'"
+@param widgetName=collections
+@include=grid
+<script>
+    collections_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollections(
+                pageNumber,
+                pageSize,
+                null, // query
+                onSuccess,
+                genericError
+            );
+        };
+
+    collections_onLoadPage =
+        function (response, targetElement) {
+            response.collections.forEach(function (collection) {
+                targetElement.append(
+                    newCollectionDiv(
+                        collection,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+
+    collections_initGrid();
+</script>

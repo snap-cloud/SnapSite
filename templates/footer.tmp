@@ -7,26 +7,29 @@
             <p><a localizable href="credits">Credits</a></p>
             <p><a localizable href="requirements">Technical Requirements</a></p>
             <p><a localizable href="partners">Partners</a></p>
-            <p><a localizable target="_blank" href="https://github.com/jmoenig/Snap--Build-Your-Own-Blocks">Source Code</a></p>
+            <p><a localizable href="source" >Source Code</a></p>
         </div>
         <div class="pure-u-1-5">
             <p><h4 localizable>Learning</h4></p>
             <p><a localizable href="examples">Examples</a></p>
-            <p><a localizable href="manual">Reference Manual</a></p>
+            <p><a localizable href="snapsource/help/SnapManual.pdf"
+                >Reference Manual</a></p>
             <p><a localizable href="materials">Materials</a></p>
-            <p><a localizable href="bjc">BJC</a></p>
+            <p><a localizable href="bjc">The Beauty and Joy of Computing</a></p>
             <p><a localizable href="research">Research</a></p>
         </div>
         <div class="pure-u-1-5">
             <p><h4 localizable>Tools</h4></p>
             <p><a localizable href="offline">Offline Version</a></p>
             <p><a localizable href="extensions">Extensions</a></p>
-            <p><a target="_blank" href="http://snapp.citilab.eu">Snapp<em>!</em></a></p>
-            <p><a target="_blank" href="https://djsrv.github.io/Snapin8r2/">Snapin8r2</a></p>
+            <p><a href="snapp">Snapp<em>!</em></a></p>
+            <p><a href="snapinator">Snapinator</a></p>
+            <p><a href="old_site/old-byob.html">BYOB (old Snap<em>!</em>)</a></p>
         </div>
         <div class="pure-u-1-5">
             <p><h4 localizable>Support</h4></p>
-            <p><a localizable target="_blank" href="https://forum.snap.berkeley.edu/">Forum</a></p>
+            <p><a localizable target="_blank"
+                href="https://forum.snap.berkeley.edu/">Forum</a></p>
             <p><a localizable href="contact">Contact Us</a></p>
             <p><a localizable href="mirrors">Mirrors</a></p>
         </div>

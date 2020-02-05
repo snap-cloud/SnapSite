@@ -1,0 +1,41 @@
+@param pageSize=5
+@param withSearch=false
+@param header="'Collections containing this project'"
+@include=grid
+<script>
+    ${widgetName}_loadPage =
+        function (term, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionsContainingProject(
+                pageUser(), // username is implicit
+                pageProject(),
+                pageNumber,
+                pageSize,
+                onSuccess,
+                genericError,
+                'Could not fetch collection list'
+            );
+        };
+
+    ${widgetName}_onLoadPage =
+        function (response, targetElement) {
+            if (!response.collections[0]) { return; }
+            response.collections.forEach(function (collection) {
+                targetElement.append(
+                    newCollectionDiv(
+                        collection,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'shared',
+                                isPublished: 'published',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+
+    ${widgetName}_initGrid();
+</script>

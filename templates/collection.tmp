@@ -1,13 +1,170 @@
+@param title="collectionName + ' - Snap! Build Your Own Blocks'"
+<script src="js/dialog.js"></script>
+<script src="js/project.js"></script>
 <script src="js/inplace.js"></script>
-<h1 class="collection-name"></h1>
-<p><span class="author"></span></p>
-@param pageSize=15
-@param query=getCollectionProjects
-@param className="collection"
-project_grid
-@include=project_grid
+<link rel="stylesheet" href="style/project.css">
+<div hidden class="collection">
+    <div class="title">
+        <h1></h1>
+    </div>
+    <div class="contents pure-g">
+        <div class="pure-u-7-24 info">
+            <div class="pure-g">
+
+                <div class="pure-u-1-2 thumbnail-container"><img
+                    class="collection-thumbnail"/></div>
+
+                <div class="pure-u-1-2 dates">
+                    <p class="created"><strong
+                        localizable>Created:</strong><span></span></p>
+                    <p class="updated"><strong
+                        localizable>Last updated:</strong><span></span></p>
+                    <p class="shared"><strong
+                        localizable>Shared:</strong><span></span></p>
+                    <p class="published"><strong
+                        localizable>Published:</strong><span></span></p>
+                </div>
+            </div>
+
+            <pre class="description"></pre>
+
+            <div class="editors">
+                <ul class="editor-list"></ul>
+                <a class="clickable add-editor"><i
+                        class="fas fa-plus-circle"></i></a>
+                <input hidden class="new-editor"></input>
+            </div>
+
+            <div class="buttons">
+                <a localizable class="pure-button share"
+                    target="_blank">Share</a>
+                <a localizable class="pure-button unshare"
+                    target="_blank">Unshare</a>
+                <a localizable class="pure-button publish"
+                    target="_blank">Publish</a>
+                <a localizable class="pure-button unpublish"
+                    target="_blank">Unpublish</a>
+                <a localizable class="pure-button pure-button-warning delete"
+                    target="_blank">Delete</a>
+            </div>
+
+        </div>
+        <!-- just a separator -->
+        <i class="pure-u-1-24"></i>
+        <div class="pure-u-2-3 projects">
+@param pageSize=12
+@param widgetName="collection_projects"
+@include=grid
+            <script>
+                collection_projects_loadPage =
+                    function (query, pageSize, pageNumber, onSuccess) {
+                        SnapCloud.getCollectionProjects(
+                            getUrlParameter('user'),
+                            pageNumber,
+                            pageSize,
+                            getUrlParameter('collection'),
+                            onSuccess,
+                            genericError,
+                            true // withThumbnail
+                        );
+                    };
+
+                collection_projects_onLoadPage =
+                    function (response, targetElement) {
+                        response.projects.forEach(function (project) {
+                            targetElement.append(
+                                newProjectDiv(
+                                    project,
+                                    {
+                                        size: 'small',
+                                        gridSize: 4,
+                                        extraFields: {
+                                            isPublic: 'ispublic',
+                                            isPublished: 'ispublished',
+                                            author: 'username'
+                                        },
+                                        withCollectionControls: true
+                                    }
+                                )
+                            );
+                        });
+                    };
+
+                collection_projects_initGrid();
+            </script>
+        </div>
+    </div>
+</div>
 <script>
-    var collectionUsername = getUrlParameter('author'),
-        collectionName = '${collectionName}' || getUrlParameter('name'),
-        title = document.querySelector('.collection-name');
+    beganLoading('#wrapper');
+
+    SnapCloud.getCollectionMetadata(
+        pageUser(),
+        '${collectionName}' || getUrlParameter('collection'),
+        function (collection) {
+            var datesDiv = document.querySelector('.dates'),
+                buttonsDiv = document.querySelector('.buttons');
+
+            if (collection.id == 0) {
+                // "Flagged" collection
+                document.querySelector('.info').remove();
+                document.querySelector('.contents').classList.remove('pure-g');
+                document.querySelector('.projects').classList
+                    .remove('pure-u-2-3');
+                document.querySelector('.collection').classList.add('flagged');
+            }
+
+            // Fill up all fields
+            fillCollectionTitle(
+                    collection,
+                    document.querySelector('.title')
+                );
+
+            if (collection.id !== 0) {
+
+                if (!ownsOrIsAdmin(collection)) {
+                    document.querySelectorAll('.collection-controls').forEach(
+                        function (each) { each.remove(); }
+                    );
+                }
+
+                fillCollectionThumbnail(
+                    collection,
+                    document.querySelector('.collection-thumbnail')
+                );
+
+                fillCollectionDescription(
+                    collection,
+                    document.querySelector('.description')
+                );
+
+                fillCollectionDates(collection, datesDiv);
+
+                // Set up button visibility according to user permissions
+                // and collection visibility state
+                setCollectionButtonsVisibility(collection, buttonsDiv);
+
+                // set up button functionality
+                buttonsDiv.querySelector('.share').onclick =
+                    function () { confirmShareCollection(collection); };
+                buttonsDiv.querySelector('.unshare').onclick =
+                    function () { confirmUnshareCollection(collection); };
+                buttonsDiv.querySelector('.publish').onclick =
+                    function () { confirmPublishCollection(collection); };
+                buttonsDiv.querySelector('.unpublish').onclick =
+                    function () { confirmUnpublishCollection(collection); }
+                buttonsDiv.querySelector('.delete').onclick =
+                    function () { confirmDeleteCollection(collection); }
+
+                setupCollectionEditorControls(
+                    collection,
+                    document.querySelector('.editors')
+                );
+
+            }
+            doneLoading('#wrapper');
+            document.querySelector('.collection').hidden = false;
+        },
+        genericError
+    );
 </script>

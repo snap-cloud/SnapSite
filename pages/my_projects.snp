@@ -1,4 +1,4 @@
 base
 @param pageSize=15
-@param className=myprojects
+@param widgetName=my_projects
 my_projects

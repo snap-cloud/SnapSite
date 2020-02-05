@@ -1,6 +1,6 @@
 # Snap Social Platform
 
-The social website for the Snap! programming language/environment
+The social website for the [Snap! programming language/environment](https://github.com/jmoenig/Snap)
 
 ## Build System
 
@@ -29,7 +29,7 @@ $ Snippets/build.sh -w -s
 
 ## Live Instance
 
-Ssssh, don't tell anyone, but you can visit the pre-alpha site [here](https://cloud.snap.berkeley.edu/site/). Feel free to publish your projects there.
+### [snap.berkeley.edu](https://snap.berkeley.edu)
 
 ## Contributing
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) before sending us any pull requests. Thank you!

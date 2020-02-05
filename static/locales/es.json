@@ -41,12 +41,6 @@
         "Cambiar mi contraseña",
     "Unknown error":
         "Error desconocido",
-    "Created on ":
-        "Creado el día ",
-    "last updated on ":
-        "actualizado el día ",
-    "shared on ":
-        "compartido el día ",
     "Edit":
         "Edita",
     "Download":
@@ -117,26 +111,16 @@
         "público",
     "private":
         "privado",
-    " but unlisted":
-        " pero no está publicado en la web",
     "'s public page":
         ": página pública",
-    "Last updated on ":
-        "Actualizado por última vez en ",
-    ", shared on ":
-        ", compartido en ",
-    "This project is public":
-        "Este proyecto es público",
-    " and listed":
-        " y está publicado",
-    "This project can be shared via URL":
-        "Este proyecto se puede compartir via URL",
-    "This project is private":
-        "Este proyecto es privado",
-    "This project is publicly listed":
-        "Este proyecto está publicado",
-    "This project is unlisted":
-        "Este proyecto no está publicado",
+    "This item can be shared via URL":
+        "Este elemento se puede compartir via URL",
+    "This item is private":
+        "Este elemento es privado",
+    "This item is published":
+        "Este elemento está publicado",
+    "This item is unpublished":
+        "Este elemento no está publicado",
     "Latest projects":
         "Últimos proyectos",
     "Search Results:":
@@ -227,14 +211,14 @@
         "Herramientas",
     "Blog":
         "Blog",
-    "I have read and agree to the <a target=\"_blank\" href=\"tos.html\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy.html\">Privacy Agreement</a>":
-        "He leído y acepto las <a target=\"_blank\" href=\"tos.html\">Condiciones del servicio</a> y el <a target=\"_blank\" href=\"privacy.html\">Acuerdo de privacidad</a>",
+    "I have read and agree to the <a target=\"_blank\" href=\"tos\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy\">Privacy Agreement</a>":
+        "He leído y acepto las <a target=\"_blank\" href=\"tos\">Condiciones del servicio</a> y el <a target=\"_blank\" href=\"privacy\">Acuerdo de privacidad</a>",
     "Materials":
         "Materiales",
     "Partners, sponsors and collaborators":
         "Socios, patrocinadores y colaboradores",
-    "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "Echa un vistazo a los <a href=\"examples.html\">ejemplos</a> o consulta el <a href=\"manual.html\">manual de referencia</a> para aprender más sobre el lenguaje, ¡o dirígete directamente al <a href=\"https://snap.berkeley.edu/run\">editor</a> y empieza a programar!",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Echa un vistazo a los <a href=\"examples\">ejemplos</a> o consulta el <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">manual de referencia</a> para aprender más sobre el lenguaje, ¡o dirígete directamente al <a href=\"https://snap.berkeley.edu/run\">editor</a> y empieza a programar!",
     "Discuss this in the forum":
         "Comenta esta entrada en el foro",
     "Edit button":
@@ -298,5 +282,99 @@
     "User is not verified":
         "El usuario no está verificado",
     "Verify":
-        "Verifica"
+        "Verifica",
+    "Add to Collection":
+        "Añadir a colección",
+    "Admin tools":
+        "Herramientas de administración",
+    "Collections":
+        "Colecciones",
+    "Collections containing this project":
+        "Colecciones que contienen este proyecto",
+    "Art Projects":
+        "Proyectos de arte",
+    "Fractals":
+        "Fractales",
+    "Games":
+        "Juegos",
+    "Science Projects":
+        "Proyectos de ciencia",
+    "Featured Projects":
+        "Proyectos destacados",
+    "Flagged Projects":
+        "Proyectos denunciados",
+    "My Collections":
+        "Mis colecciones",
+    "Offline Version":
+        "Versión sin conexión",
+    "Projects":
+        "Proyectos",
+    "Remixes":
+        "Reinvenciones",
+    "Report":
+        "Denunciar",
+    "Research":
+        "Investigación",
+    "Users":
+        "Usuarios",
+    "The Beauty and Joy of Computing":
+        "The Beauty and Joy of Computing",
+    "New Collection":
+        "Nueva colección",
+    "This collection is public":
+        "Esta colección es pública",
+    "Report this project":
+        "Denuncia este proyecto",
+    "Are you sure you want to flag this project as inappropriate?":
+        "¿Seguro que quieres denunciar este proyecto como inapropiado?",
+    "Flag project":
+        "Denuncia proyecto",
+    "This project has been flagged.":
+        "Este provecto ha sido denunciado",
+    "Project flagged":
+        "Proyecto denunciado",
+    "Add project to collection":
+        "Añadir proyecto a colección",
+    "Please select the collection to which you want to add this project:":
+        "Selecciona la colección a qué quieres añadir este proyecto",
+    "April":
+        "Abril",
+    "August":
+        "Agosto",
+    "Created:":
+        "Creado:",
+    "December":
+        "Diciembre",
+    "Email address of parent or guardian":
+        "Correo electrónico de la madre, padre o tutor legal",
+    "February":
+        "Febrero",
+    "January":
+        "Enero",
+    "July":
+        "Julio",
+    "June":
+        "Junio",
+    "Last updated:":
+        "Actualizado por última vez:",
+    "March":
+        "Marzo",
+    "May":
+        "Mayo",
+    "Month of Birth":
+        "Mes de nacimiento",
+    "November":
+        "Noviembre",
+    "October":
+        "Octubre",
+    " or before":
+        " o antes",
+    "Published:":
+        "Publicado:",
+    "See Code":
+        "Examinar",
+    "September":
+        "Septiembre",
+    "Shared:":
+        "Compartido:"
 }

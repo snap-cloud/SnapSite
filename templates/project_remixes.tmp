@@ -1,0 +1,39 @@
+@param pageSize=5
+@param withSearch=false
+@param header="'Remixes'"
+@include=grid
+<script>
+    ${widgetName}_loadPage =
+        function (term, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getRemixes(
+                pageUser(),
+                pageProject(),
+                pageNumber,
+                pageSize,
+                onSuccess,
+                genericError
+            );
+        };
+
+    ${widgetName}_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+
+    ${widgetName}_initGrid();
+</script>

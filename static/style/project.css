@@ -1,64 +1,188 @@
-.collection.small, .project.small {
+.collection.small,
+.project.small {
     text-align: center;
     margin-bottom: 1.5em;
+    position: relative;
 }
 
-.collection img, .project img {
+.collection img.thumbnail,
+.project img.thumbnail {
     width: 160px;
     height: 120px;
-    background-image: linear-gradient(45deg, #4c5e70 25%, transparent 25%), linear-gradient(-45deg, #4c5e70 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #4c5e70 75%), linear-gradient(-45deg, transparent 75%, #4c5e70 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
     border-radius: 5px;
     margin-bottom: .5em;
 }
 
-.collection img, .project img, .project iframe {
-    border: 2px solid #2c3e50;
+.collection img.thumbnail,
+.project img.thumbnail,
+.project iframe,
+.project .embed-placeholder {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #2d3142;
     box-sizing: border-box;
 }
 
-.project iframe {
+.project .embed-placeholder {
+    display: block;
+    height: 406px;
+}
+
+.project.small .no-image,
+.collection.small .no-image {
+    left: 88px;
+    top: 38px;
+}
+
+.project.small .no-image,
+.collection.small .no-image,
+.collection .info .no-image {
+    position: absolute;
+    font-size: 40px; 
+    opacity: 0.2;
+}
+
+.thumbnail-container {
+    position: relative;
+    border-radius: 5px;
+    height: 120px;
+    border: 1px solid #2d3142;
+    box-sizing: border-box;
+}
+
+.collection .info .no-image {
+    left: 59px;
+    top: 34px;
+}
+
+img.collection-thumbnail {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.collection.small .author,
+.project.small .author {
+    display: block;
+}
+
+.project.small .no-image:hover,
+.collection.small .no-image:hover {
+    filter: brightness(1.2);
+}
+
+.collection-controls {
+    background: rgba(255, 255, 255, .5);
+    border-radius: 3px;
+    padding: 3px;
+    width: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 2px;
+    right: 12px;
+}
+
+.flagged .collection-controls {
+    right: 31px;
+    width: 15px;
+}
+
+.collection-controls:hover {
+    background: rgba(255, 255, 255, .8);
+}
+
+.new-editor {
+    border: 1px solid #AAAAAA;
+    width: 160px;
+    border-radius: 15px;
+    padding-left: 0.75em;
+    box-sizing: border-box;
+}
+
+.editor-list {
+    display: inline;
+}
+
+.editor-list .editor {
+    display: inline-block;
+    margin: 0.2em;
+    padding: 0.2em 0.5em;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.editor-list a strong {
+    font-weight: normal;
+}
+
+.editor-list .editor .remove-editor {
+    display: none;
+    margin-left: 0.2em;
+}
+.editor-list .editor:hover .remove-editor {
+    display: inline;
+}
+
+.project iframe,
+.project .embed-placeholder {
+    z-index: 2;
     border-radius: 0 0 5px 5px;
     width: 100%;
 }
 
-.collection.small img, .project.small img {
+.collection img.thumbnail,
+.project.small img.thumbnail {
     margin-bottom: 0;
 }
 
-.collection img:hover, .project img:hover {
+.collection img.thumbnail:hover,
+.project img.thumbnail:hover {
     filter: brightness(1.2);
     border-color: #4c5e70;
 }
 
-.collection.small, .project.small {
+.collection.small,
+.project.small {
     line-height: 1.5em;
 }
 
-.collection.small span.collection-name, .project.small span.project-name {
+.collection.small span.collection-name,
+.project.small span.project-name {
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.collection.small span.is-public, .project.small span.is-public {
+.collection.small span.is-public,
+.project.small span.is-public {
     margin-right: 0.5em;
 }
 
-.collection .author, .project .author {
+.collection .author,
+.project .author {
     font-size: .8em;
 }
 
+.collection,
 .project.big {
     margin-top: 1em;
 }
 
+.collection .title,
 .project.big .title {
     position: relative;
     margin-bottom: .5em;
 }
 
+.collection .title h1,
 .project.big .title h1 {
     display: inline;
+}
+
+.collection .title {
+    margin-bottom: 1em;
 }
 
 .remixed-from {
@@ -67,22 +191,36 @@
     bottom: .4em;
     font-size: 0.8em;
 }
+
 .remixed-from .author {
     font-size: 1em;
 }
 
-.project.big .embed {
+.embed {
     z-index: 100;
+    position: relative;
+}
+
+.project.big .embed {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     margin-bottom: 0.5em;
 }
 
+.embed .project-loader {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    display: block;
+    width: 100%;
+    top: 200px;
+}
+
 .project.big .controlbar {
     box-sizing: border-box;
     z-index: 200;
-    background: #2c3e50;
+    background: #2d3142;
     padding: 0.4em 0.5em;
     border-radius: 5px 5px 0 0;
     text-align: right;
@@ -93,11 +231,15 @@
 }
 
 .project.big .controlbar .present-button {
-    color: #e2e3db;
+    color: #ffffff;
 }
 
 .project.big .controlbar .start-button {
     color: #66ee66;
+}
+
+.project.big .controlbar .pause-button {
+    color: #ffdc00;
 }
 
 .project.big .controlbar .stop-button {
@@ -108,18 +250,40 @@
     filter: brightness(1.5);
 }
 
+.collection .buttons,
 .project.big .buttons {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -0.1em;
 }
 
+.collection .buttons a,
 .project.big .buttons a {
     margin: 5px 0.1em 0 0.1em; /* Edge margins get cancelled out by ↑ margin: 0 -0.1em; ↑ */
     padding: 0.5em;
     flex-grow: 0.20; /* 20% max growth */
 }
 
+.collection a.flag,
+.project.big span.flag-container {
+    text-align: right;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+
+.project.big a.flag {
+    padding: 0;
+}
+
+.collection a.flag:hover,
+.project.big a.flag:hover {
+    filter: brightness(0.5) !important;
+}
+
+.collection .description,
 .project.big .notes {
     padding: .5em;
     background: #f3eeeb;
@@ -133,12 +297,34 @@
     margin-bottom: .5em;
 }
 
+.collection .description {
+    margin-top: .5em;
+}
+
+.collection .description small,
 .project.big .notes small {
     font-style: italic;
     opacity: 0.5;
 }
-.project.big .dates span {
+
+.project.big .dates p {
     font-size: 0.8em;
+    line-height: 0.8em;
+    margin-top: 0;
+    margin-bottom: 0.8em;
+}
+
+.dates strong {
+    margin-right: 0.5em;
+}
+
+.collection .dates p {
+    font-size: 0.7em;
+    padding-left: .5em;
+    box-sizing: border-box;
+    line-height: 1em;
+    margin-top: 0;
+    margin-bottom: 0.7em;
 }
 
 /* Embed dialog */
@@ -193,16 +379,19 @@
     margin-bottom: 1em;
 }
 
-.mycollections.search, .myprojects.search {
+.my_collections.search,
+.my_projects.search {
     margin-left: 0.5em;
     width: 220px;
 }
 
-.mycollections.search form, .myprojects.search form {
+.my_collections.search form,
+.my_projects.search form {
     position: relative;
 }
 
-.mycollections.search input, .myprojects.search input {
+.my_collections.search input,
+.my_projects.search input {
     width: 100%;
     height: 2em;
     padding-left: 0.75em;
@@ -212,13 +401,15 @@
     border: 1px solid #AAAAAA;
 }
 
-.mycollections.search i, .myprojects.search i {
+.my_collections.search i,
+.my_projects.search i {
     position: absolute;
     right: 0.45em;
     top: 0.45em;
 }
 
-.mycollections.paginator, .myprojects.paginator {
+.my_collections.paginator,
+.my_projects.paginator {
     line-height: 2em;
     margin: 0;
 }

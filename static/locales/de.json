@@ -35,11 +35,11 @@
         "Mein Passwort ändern",
     "Unknown error":
         "Unbekannter Fehler",
-    "Created on ":
-        "Erstellt am ",
-    "last updated on ":
-        "aktualisiert am ",
-    "shared on ":
+    "Created on":
+        "Erstellt am",
+    "last updated on":
+        "aktualisiert am",
+    "shared on":
         "geteilt am",
     "Edit":
         "Bearbeiten",
@@ -99,10 +99,10 @@
         " aber nicht gelistet ",
     "'s public page":
         "s öffentliche Seite",
-    "Last updated on ":
-        "Aktualisiert am ",
-    ", shared on ":
-        ", geteilt am ",
+    "Last updated on":
+        "Aktualisiert am",
+    ", shared on":
+        ", geteilt am",
     "This project can be shared via URL":
         "Dieses Projekt kann mit der Projekt-URL geteilt werden.",
     "This project is publicly listed":
@@ -227,10 +227,10 @@
         "Anmeldung fehlgeschlagen: dieser Benutzername existiert nicht",
     "Could not login: wrong password":
         "Anmeldung fehlgeschlagen: falsches Passwort",
-    "I have read and agree to the <a target=\"_blank\" href=\"tos.html\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy.html\">Privacy Agreement</a>":
-        "Ich habe die <a target=\"_blank\" href=\"tos.html\">Nutzungsbedingungen</a> und die <a target=\"_blank\" href=\"privacy.html\">Datenschutzerklärung</a> gelesen und stimme ihnen zu",
-    "Take a look at some <a href=\"examples.html\">examples</a> or check out the <a href=\"manual.html\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "Schaue dir einige <a href=\"examples.html\">Beispiele</a> an, wirf einen Blick in das <a href=\"manual.html\">Reference Manual</a>, um mehr über Snap<em>!</em> zu lernen, oder lege im <a href=\"https://snap.berkeley.edu/run\">Editor</a> direkt mit dem Programmieren los!",
+    "I have read and agree to the <a target=\"_blank\" href=\"tos\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy\">Privacy Agreement</a>":
+        "Ich habe die <a target=\"_blank\" href=\"tos\">Nutzungsbedingungen</a> und die <a target=\"_blank\" href=\"privacy\">Datenschutzerklärung</a> gelesen und stimme ihnen zu",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Schaue dir einige <a href=\"examples\">Beispiele</a> an, wirf einen Blick in das <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">Reference Manual</a>, um mehr über Snap<em>!</em> zu lernen, oder lege im <a href=\"https://snap.berkeley.edu/run\">Editor</a> direkt mit dem Programmieren los!",
     "Blog":
         "",
     "Materials":
@@ -256,5 +256,91 @@
     "Project title":
         "",
     "Repeat email address":
+        "",
+    "Add to Collection":
+        "",
+    "admin":
+        "",
+    "Administrator":
+        "",
+    "Admin tools":
+        "",
+    "Are you sure you want to delete user":
+        "",
+    "Are you sure you want to delete your user account?":
+        "",
+    "Ban":
+        "",
+    "banned":
+        "",
+    "Become":
+        "",
+    "Change Email":
+        "",
+    "Change My Email":
+        "",
+    "Collections":
+        "",
+    "Collections containing this project":
+        "",
+    "Delete my Account":
+        "",
+    "Delete user":
+        "",
+    "Delete your Account":
+        "",
+    "Featured Projects":
+        "",
+    "Flagged Projects":
+        "",
+    "moderator":
+        "",
+    "My Collections":
+        "",
+    "New Email":
+        "",
+    "Offline Version":
+        "",
+    "Projects":
+        "",
+    "Remixes":
+        "",
+    "Repeat New Email":
+        "",
+    "Report":
+        "",
+    "Research":
+        "",
+    "reviewer":
+        "",
+    "Role":
+        "",
+    "Send a message":
+        "",
+    "standard":
+        "",
+    "User Administration":
+        "",
+    "User is not verified":
+        "",
+    "Users":
+        "",
+    "Verify":
+        "",
+    "Art Projects":
+        "",
+    "Fractals":
+        "",
+    "Games":
+        "",
+    "New Collection":
+        "",
+    ", published on":
+        "",
+    "Science Projects":
+        "",
+    "The Beauty and Joy of Computing":
+        "",
+    "This collection is public":
         ""
 }

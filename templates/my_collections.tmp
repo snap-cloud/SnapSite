@@ -2,76 +2,47 @@
 <script src="js/dialog.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>My Collections</h1>
-<div class="bar">
-    <div class="mycollections search">
-        <form action="my_collections">
-            <input type="text" name="query">
-            <i class="fas fa-search"></i>
-        </form>
-        <script>
-            document.querySelector('.mycollections form input').value = getUrlParameter('query');
-        </script>
-    </div>
-    @include=paginator
-</div>
-<div class="collections list pure-g"></div>
-<script>
-    var collectionsDiv = document.querySelector('.collections'),
-        mycollections_pageSpan = document.querySelector('.mycollections.paginator .page'),
-        mycollections_totalPagesSpan = document.querySelector('.mycollections.paginator .total-pages'),
-        mycollections_page = 1,
-        mycollections_totalPages = 1,
-        mycollections_pageSize = ${pageSize} || 15;
-
-    mycollections_toPage(1);
-
-    function mycollections_toPage (pageNumber) {
-        query = getUrlParameter('query') || '';
-        collectionsDiv.innerHTML = '';
-        beganLoading('.collections.list');
-        SnapCloud.getUserCollections(
-            null, // username is implicit
-            mycollections_page,
-            mycollections_pageSize,
-            query,
-            function (response) {
-                mycollections_totalPages = response.pages;
-                if (mycollections_totalPages == 1) {
-                    document.querySelector('.mycollections.paginator').remove();
-                } else {
-                    mycollections_totalPagesSpan.textContent = mycollections_totalPages;
-                }
-                if (response.collections[0]) {
-                    response.collections.forEach(function (collection) {
-                        collectionsDiv.append(
-                            newCollectionDiv(
-                                collection, 
-                                { 
-                                    size: 'small', 
-                                    gridSize: 5, 
-                                    extraFields: {
-                                        isPublic: 'ispublic',
-                                        isPublished: 'ispublished'
-                                    }
-                                }
-                            )
-                        );
-                    });
-                } else {
-                    document.querySelector('.collections').remove();
-                }
-                doneLoading('.collections.list');
-            }
-        );
-
-        mycollections_page = pageNumber;
-        mycollections_pageSpan.textContent = pageNumber;
-    };
-</script>
+@param withSearch=true
+@include=grid
 <div class="buttons">
-    <a class="pure-button new-collection">New Collection</a>
+    <a localizable class="pure-button new-collection">New Collection</a>
 </div>
 <script>
+    ${widgetName}_loadPage =
+        function (term, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getUserCollections(
+                null, // username is implicit
+                pageNumber,
+                pageSize,
+                term,
+                onSuccess,
+                genericError,
+                'Could not fetch collection list'
+            );
+        };
+
+    ${widgetName}_onLoadPage =
+        function (response, targetElement) {
+            response.collections.forEach(function (collection) {
+                targetElement.append(
+                    newCollectionDiv(
+                        collection,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'shared',
+                                isPublished: 'published',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+
+    ${widgetName}_initGrid();
+
     document.querySelector('.new-collection').onclick = function () {
         prompt(
             localizer.localize('Collection name?'),
@@ -79,10 +50,12 @@
                 SnapCloud.newCollection(
                     collectionName,
                     function (collection) {
-                        location.replace(collectionURL(SnapCloud.username, collectionName));
+                        location.replace(
+                            collectionURL(SnapCloud.username, collectionName)
+                        );
                     },
                     genericError
-                ); 
+                );
             },
             nop
         );

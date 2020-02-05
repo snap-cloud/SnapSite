@@ -34,9 +34,23 @@
     text-align: center;
 }
 
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-start;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.flex > * {
+    margin: 1.1em;
+}
+
 .in-place:hover {
     padding: 0 2px;
-    border: 2px dashed #2c3e50;
+    border: 2px dashed #2d3142;
 }
 
 pre.proto-in-place,
@@ -52,7 +66,7 @@ pre.in-place {
 }
 
 @keyframes flasher {  
-    0% { background: #2c3e50; }
+    0% { background: #2d3142; }
     50% { opacity: 0.0; }
     100% {
         background: auto;
@@ -60,9 +74,23 @@ pre.in-place {
     }
 }
 
+.warning-flash {
+    animation: warning-flasher 1s linear;
+}
+
+@keyframes warning-flasher {  
+    0% { background: tomato; border: red; }
+    50% { opacity: 0.0; }
+    100% {
+        background: auto;
+        border: auto;
+        opacity: 1;
+    }
+}
+
 .bubble {
     position: relative;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 201, 62, 0.2);
     border-radius: 2em;
     padding: 1em 1.5em;
 }
@@ -75,7 +103,7 @@ pre.in-place {
     width: 0;
     height: 0;
     border: 44px solid transparent;
-    border-right-color: rgba(255,255,255,0.3);
+    border-right-color: rgba(255, 201, 62, 0.2);
     border-left: 0;
     border-bottom: 0;
     margin-top: -22px;
@@ -83,8 +111,8 @@ pre.in-place {
 }
 
 .pure-button {
-    color: #2c3e50;
-    background-color: #c2c3bb;
+    color: #2d3142;
+    background-color: #bfc0c0;
 }
 
 .pure-button-warning {
@@ -115,4 +143,23 @@ pre.in-place {
     color: #505080;
 }
 
+/* img filler because we don't have octagon in FA free edition */
+.fa-octagon {
+    position: relative;
+}
 
+.fa-octagon:before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: -14px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: url('../img/octagon.png');
+}
+
+/* Hide Discourse's meta info on images */
+.lightbox > .meta {
+    display: none;
+}
