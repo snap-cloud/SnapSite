@@ -1,31 +1,26 @@
 <nav id="top-bar">
     <div class="pure-menu-horizontal pure-menu">
         <ul class="pure-g pure-menu-list">
-<<<<<<< HEAD
             <a class="pure-u-1-12" href="/" aria-label="Snap! home page">
-=======
-            <a class="pure-u-1-12" href="index">
->>>>>>> 2cfa2ca087a6565e63b7568abb90451cdd49797f
                 <img src="img/topbar-logo.png" class="logo clickable"/>
             </a>
             <span class="pure-u-1-4">
                 <li class="pure-menu-item">
-<<<<<<< HEAD
-                    <a localizable class="pure-menu-link run" target="_blank">Run Snap<em>!</em></a>
-                </li>
-                <li class="pure-menu-item">
-                    <a localizable class="pure-menu-link" href="explore">Explore</a>
-                </li>
-=======
                     <a localizable class="pure-menu-link run"
-                        target="_blank">Run Snap<em>!</em></a></li>
+                        target="_blank">Run Snap<em>!</em></a>
+                </li>
                 <li class="pure-menu-item">
                     <a localizable class="pure-menu-link explore"
-                        href="explore">Explore</a></li>
+                        href="explore">Explore</a>
+                </li>
                 <li class="pure-menu-item">
                     <a localizable class="pure-menu-link forum"
-                        href="https://forum.snap.berkeley.edu/">Forum</a></li>
->>>>>>> 2cfa2ca087a6565e63b7568abb90451cdd49797f
+                        href="https://forum.snap.berkeley.edu/">Forum</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a localizable class="pure-menu-link" target="_blank"
+                    href="https://www.snapcon.org">Snap<em>!</em>Con</a>
+                </li>
             </span>
             <i class="pure-u-1-6"></i>
             <div class="search pure-u-1-6">
@@ -63,7 +58,7 @@
                     <hr>
                     <li class="pure-menu-item">
                         <a localizable class="pure-menu-link clickable"
-                            onclick="SnapCloud.logout(function () {
+                            href="javascript:SnapCloud.logout(function () {
                                 sessionStorage.clear();
                                 location.href = 'index';
                             });">Log Out</a></li>
