@@ -3,21 +3,20 @@
 
 @include=slideshow
 
-<!--
-<div class="bubble-wrap pure-g" style="margin-bottom: 2em">
-    <div class="pure-u-1-5" style="text-align: center">
-        <img src="img/alonzo.svg"/>
-    </div>
-    <div class="bubble pure-u-3-5">
-        <p localizable>This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.</p>
-        <p localizable>Enjoy the preview, and thank you for your understanding!</p>
-    </div>
-</div>
--->
 <h1><span localizable>Welcome to Snap</span><em>!</em></h1>
 
 <div class="indent bigger" localizable>Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.</div>
-<div class="indent bigger less-v-spaced" localizable>Take a look at some <a href="examples">examples</a> or check out the <a href="snapsource/help/SnapManual.pdf">reference manual</a> to learn more about it, or head straight into the <a href="https://snap.berkeley.edu/run">editor</a> and start programming right away!</div>
+
+<div class="indent bigger less-v-spaced" localizable>
+<a href="/snap" class="pure-button pure-button-primary bigger" localizable>
+    Run Snap<em>!</em> Now
+</a>
+<a href="/examples" class="pure-button pure-button-primary bigger" localizable>Example Projects</a>
+<a href="/snap/help/SnapManual.pdf" class="pure-button pure-button-primary bigger" localizable>Reference Manual</a>
+<a href="https://snapcon.org" target="_blank" class="pure-button pure-button-primary bigger" localizable>Snap!Con 2020</a>
+
+</div>
+
 <br class="v-spaced">
 @param title='"Snap! Build Your Own Blocks"'
 
