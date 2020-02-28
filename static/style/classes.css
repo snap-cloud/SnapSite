@@ -65,7 +65,7 @@ pre.in-place {
     animation: flasher 1s linear;
 }
 
-@keyframes flasher {  
+@keyframes flasher {
     0% { background: #2d3142; }
     50% { opacity: 0.0; }
     100% {
@@ -78,7 +78,7 @@ pre.in-place {
     animation: warning-flasher 1s linear;
 }
 
-@keyframes warning-flasher {  
+@keyframes warning-flasher {
     0% { background: tomato; border: red; }
     50% { opacity: 0.0; }
     100% {
