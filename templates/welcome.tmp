@@ -7,14 +7,11 @@
 
 <div class="indent bigger" localizable>Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.</div>
 
-<div class="indent bigger less-v-spaced" localizable>
-<a href="/snap" class="pure-button pure-button-primary bigger" localizable>
-    Run Snap<em>!</em> Now
-</a>
-<a href="/examples" class="pure-button pure-button-primary bigger" localizable>Example Projects</a>
-<a href="/snap/help/SnapManual.pdf" class="pure-button pure-button-primary bigger" localizable>Reference Manual</a>
-<a href="https://snapcon.org" target="_blank" class="pure-button pure-button-primary bigger" localizable>Snap!Con 2020</a>
-
+<div class="indent v-spaced">
+    <a href="/snap" class="pure-button" localizable>Run Snap<em>!</em> Now</a>
+    <a href="/examples" class="pure-button" localizable>Example Projects</a>
+    <a href="/snap/help/SnapManual.pdf" class="pure-button" localizable>Reference Manual</a>
+    <a href="https://snapcon.org" target="_blank" class="pure-button" localizable>Snap!Con 2020</a>
 </div>
 
 <br class="v-spaced">
