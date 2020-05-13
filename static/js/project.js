@@ -57,6 +57,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
 function fillProjectTitle (project, titleElement) {
     var h1 = titleElement.querySelector('h1');
     h1.innerHTML = project.projectname;
+    /*
     if (canRename(project)) {
         new InPlaceEditor(
             h1,
@@ -73,6 +74,7 @@ function fillProjectTitle (project, titleElement) {
                 );
             })
     }
+    */
     titleElement.append(authorSpan(project.username));
 };
 
@@ -88,6 +90,7 @@ function fillProjectNotes (project, notesElement) {
     notesElement.title =
         localizer.localize('Press Shift + Enter to enter a newline');
 
+    /*
     // In-place notes editor
     if (owns(project)) {
         new InPlaceEditor(
@@ -108,6 +111,7 @@ function fillProjectNotes (project, notesElement) {
             }
         );
     }
+    */
 };
 
 function fillProjectDates (project, datesElement) {
