@@ -39,7 +39,11 @@ DiscourseBlog.prototype.fetchPosts =  function () {
         '/c/' + this.category + '.json',
         function (jsonResponse) {
             var postIDs =
-                jsonResponse.topic_list.topics.slice(1).map(
+                jsonResponse.topic_list.topics.slice(1).sort(
+                    function (a, b) {
+                        return new Date(a.created_at) < new Date(b.created_at);
+                    }
+                ).map(
                     function (each) {
                         return each.id;
                     }
