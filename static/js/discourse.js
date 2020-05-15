@@ -9,6 +9,7 @@ DiscourseBlog.prototype.init = function (url, category, element) {
     this.url = url;
     this.category = category;
     this.element = element;
+    this.posts = [];
     this.fetchPosts();
 };
 
@@ -38,21 +39,16 @@ DiscourseBlog.prototype.fetchPosts =  function () {
     this.fetchJSON(
         '/c/' + this.category + '.json',
         function (jsonResponse) {
-            var postIDs =
-                jsonResponse.topic_list.topics.slice(1).sort(
-                    function (a, b) {
-                        return new Date(a.created_at) < new Date(b.created_at);
-                    }
-                ).map(
-                    function (each) {
-                        return each.id;
-                    }
-                );
-
-            postIDs.forEach(
-                function (postID) {
+            jsonResponse.topic_list.topics.slice(1).sort(
+                function (a, b) {
+                    return new Date(b.created_at) - new Date(a.created_at);
+                }
+            ).forEach(
+                function (each) {
+                    var postDiv = document.createElement('div');
+                    myself.element.appendChild(postDiv);
                     myself.fetchJSON(
-                        '/t/' + postID + '.json',
+                        '/t/' + each.id + '.json',
                         function (postJSON) {
                             myself.renderPost(
                                 {
@@ -60,8 +56,9 @@ DiscourseBlog.prototype.fetchPosts =  function () {
                                     date: new Date(postJSON.created_at),
                                     author: postJSON.details.created_by.username,
                                     content: postJSON.post_stream.posts[0].cooked,
-                                    commentsURL: myself.url + '/t/' + postID + '/2'
-                                }
+                                    commentsURL: myself.url + '/t/' + each.id + '/2'
+                                },
+                                postDiv
                             );
                         },
                         'Could not fetch post'
@@ -73,9 +70,8 @@ DiscourseBlog.prototype.fetchPosts =  function () {
     );
 };
 
-DiscourseBlog.prototype.renderPost = function (post) {
-    var postDiv = document.createElement('div'),
-        titleHeader = document.createElement('h1'),
+DiscourseBlog.prototype.renderPost = function (post, postDiv) {
+    var titleHeader = document.createElement('h1'),
         dateSpan = document.createElement('span'),
         contentsDiv = document.createElement('div'),
         separatorSpan = document.createElement('span'),
@@ -96,7 +92,7 @@ DiscourseBlog.prototype.renderPost = function (post) {
     contentsDiv.appendChild(separatorSpan);
     contentsDiv.appendChild(commentsAnchor);
 
-    [titleHeader, authorSpan(post.author), dateSpan, contentsDiv].forEach(function (element) { postDiv.appendChild(element); });
-
-    this.element.appendChild(postDiv);
+    [titleHeader, authorSpan(post.author), dateSpan, contentsDiv].forEach(
+        function (element) { postDiv.appendChild(element); }
+    );
 };
