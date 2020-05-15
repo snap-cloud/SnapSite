@@ -8,7 +8,7 @@
     var blog =
         new DiscourseBlog(
             'https://forum.snap.berkeley.edu',
-            'meta/blog',
+            'announcements/blog',
             document.querySelector('.blog')
         );
 </script>
