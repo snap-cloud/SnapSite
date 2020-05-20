@@ -413,3 +413,25 @@ img.collection-thumbnail {
     line-height: 2em;
     margin: 0;
 }
+
+/* Comments */
+
+.comments .comment {
+    padding-left: 1em;
+    margin-bottom: 2em;
+}
+
+.comments .comment a:first-child {
+    /* Author anchor */
+    font-size: .8em;
+}
+
+.comments .comment .content {
+    
+}
+
+.comments .comment .date {
+    font-size: .8em;
+    font-style: italic;
+    color: #bfc0c0;
+}

@@ -1,0 +1,13 @@
+<script src="js/discourse.js"></script>
+
+<h2>Comments</h2>
+<div class="comments"></div>
+
+<script>
+    var comments =
+        new DiscourseComments(
+            pageUser(),
+            pageProject(),
+            document.querySelector('.comments')
+        );
+</script>
