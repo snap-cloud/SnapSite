@@ -1,42 +1,42 @@
 // Tiny Discourse module.
-// Just the stuff we need for the blog and maybe some other pages.
+// Just the stuff we need for the blog and comments
 
-function DiscourseBlog (url, category, element) {
-    this.init(url, category, element);
+DiscourseAPI = {
+    url: 'forum.snap.berkeley.edu',
+    fetchJSON: function (path, callback, errorString) {
+        var req = new XMLHttpRequest();
+        req.open('GET', DiscourseAPI.url + path +
+            '?random=' + Math.random(1000));
+        req.onreadystatechange = function () {
+            var jsonResponse;
+            if (req.readyState === 4) {
+                if (req.status === 200 || req.status == 0) {
+                    try {
+                        jsonResponse = JSON.parse(req.responseText);
+                        callback.call(null, jsonResponse);
+                    } catch (err) {
+                        genericError(err, errorString);
+                    }
+                }
+            }
+        };
+        req.send(null); 
+    }
+};
+
+function DiscourseBlog (category, element) {
+    this.init(category, element);
 };
 
 DiscourseBlog.prototype.init = function (url, category, element) {
-    this.url = url;
     this.category = category;
     this.element = element;
-    this.posts = [];
     this.fetchPosts();
-};
-
-DiscourseBlog.prototype.fetchJSON = function (path, callback, errorString) {
-    var req = new XMLHttpRequest(),
-        myself = this;
-    req.open('GET', this.url + path + '?random=' + Math.random(1000));
-    req.onreadystatechange = function () {
-        var jsonResponse;
-        if (req.readyState === 4) {
-            if (req.status === 200 || req.status == 0) {
-                try {
-                    jsonResponse = JSON.parse(req.responseText);
-                    callback.call(myself, jsonResponse);
-                } catch (err) {
-                    genericError(err, errorString);
-                }
-            }
-        }
-    };
-    req.send(null);
-
 };
 
 DiscourseBlog.prototype.fetchPosts =  function () {
     var myself = this;
-    this.fetchJSON(
+    DiscourseAPI.fetchJSON(
         '/c/' + this.category + '.json',
         function (jsonResponse) {
             jsonResponse.topic_list.topics.slice(1).sort(
@@ -56,7 +56,8 @@ DiscourseBlog.prototype.fetchPosts =  function () {
                                     date: new Date(postJSON.created_at),
                                     author: postJSON.details.created_by.username,
                                     content: postJSON.post_stream.posts[0].cooked,
-                                    commentsURL: myself.url + '/t/' + each.id + '/2'
+                                    commentsURL: DiscourseAPI.url + '/t/' +
+                                        each.id + '/2'
                                 },
                                 postDiv
                             );
@@ -94,5 +95,26 @@ DiscourseBlog.prototype.renderPost = function (post, postDiv) {
 
     [titleHeader, authorSpan(post.author), dateSpan, contentsDiv].forEach(
         function (element) { postDiv.appendChild(element); }
+    );
+};
+
+// Project comments functionality
+
+function DiscourseComments (user, project, element) {
+    this.init(user, project, element);
+};
+
+DiscourseComments.prototype.init = function (user, project, element) {
+    this.element = element;
+    this.fetchComments();
+};
+
+DiscourseComments.prototype.fetchComments = function () {
+    DiscourseAPI.fetchJSON(
+        '/t/' + encodeURIComponent(user) + '$$$' +
+            encodeURIComponent(project) + '.json',
+        function (jsonResponse) {
+            console.log(jsonResponse);
+        }
     );
 };

@@ -82,6 +82,9 @@
 @param widgetName=project_collections
 @include=project_collections
 
+<!-- Comments -->
+@include=comments
+
 </div>
 
 <script>
