@@ -426,8 +426,12 @@ img.collection-thumbnail {
     font-size: .8em;
 }
 
-.comments .comment .content {
-    
+.comments .comment .contents {
+    padding: .5em;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    border-radius: 5px;
+    background: #ECEDF4;
 }
 
 .comments .comment .date {
