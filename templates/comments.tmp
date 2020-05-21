@@ -4,10 +4,40 @@
 <div class="comments"></div>
 
 <script>
-    var comments =
-        new DiscourseComments(
-            pageUser(),
-            pageProject(),
-            document.querySelector('.comments')
+    var commentsDiv = document.querySelector('.comments');
+
+    SnapCloud.request(
+        'GET',
+        '/projects/' +
+            encodeURIComponent(project.username) + '/' +
+            encodeURIComponent(project.projectname) +
+        '/comments'
+        function (comments) {
+            comments.forEach(function (each) {
+                var commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentsDiv.appendChild(commentDiv);
+                renderComment(each, commentDiv);
+            });
+        },
+        genericError,
+        'Could not read comments'
+    );
+
+    var renderComment = function (comment, commentDiv) {
+        var dateSpan = document.createElement('span'),
+            contentsDiv = document.createElement('div'),
+            separatorSpan = document.createElement('span');
+
+        dateSpan.classList.add('date');
+        contentsDiv.classList.add('contents');
+        separatorSpan.classList.add('separator');
+
+        dateSpan.innerHTML = formatDate(comment.created_at);
+        contentsDiv.innerText = comment.content;
+
+        [/*userAnchor(comment.author), */contentsDiv, dateSpan, separatorSpan].forEach(
+            function (element) { commentDiv.appendChild(element); }
         );
+    };
 </script>

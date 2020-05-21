@@ -1,5 +1,5 @@
 // Tiny Discourse module.
-// Just the stuff we need for the blog and comments
+// Just the stuff we need for the blog
 
 DiscourseAPI = {
     url: 'https://forum.snap.berkeley.edu',
@@ -98,88 +98,3 @@ DiscourseBlog.prototype.renderPost = function (post, postDiv) {
     );
 };
 
-// Project comments functionality
-
-function DiscourseComments (user, project, element) {
-    this.init(user, project, element);
-};
-
-DiscourseComments.prototype.init = function (user, project, element) {
-    this.user = user;
-    this.project = project;
-    this.element = element;
-    this.fetchComments();
-};
-
-DiscourseComments.prototype.fetchComments = function () {
-    var myself = this;
-    DiscourseAPI.fetchJSON(
-        '/c/project-comments/' + encodeURIComponent(this.user) + '.json',
-        function (jsonResponse) {
-            var commentsTopic =
-                jsonResponse.topic_list.topics.find(
-                    function (each) {
-                        return encodeURIComponent(each.title) ==
-                            encodeURIComponent(myself.project);
-                    }
-                );
-            if (commentsTopic) {
-                DiscourseAPI.fetchJSON(
-                    '/t/' + commentsTopic.id + '/posts.json',
-                    function (comments) {
-                        comments.post_stream.posts.forEach(
-                            function (commentJSON) {
-                                var commentDiv = document.createElement('div');
-                                commentDiv.classList.add('comment');
-                                myself.element.appendChild(commentDiv);
-                                myself.renderComment(
-                                    {
-                                        date: new Date(commentJSON.created_at),
-                                        author: commentJSON.username,
-                                        content: commentJSON.cooked
-                                    },
-                                    commentDiv
-                                );
-                            }
-                        );
-                    }
-                );
-            }
-        }
-    );
-};
-
-DiscourseComments.prototype.renderComment = function (comment, commentDiv) {
-    var dateSpan = document.createElement('span'),
-        contentsDiv = document.createElement('div'),
-        separatorSpan = document.createElement('span');
-
-    dateSpan.classList.add('date');
-    contentsDiv.classList.add('contents');
-    separatorSpan.classList.add('separator');
-
-    dateSpan.innerHTML = formatDate(comment.date);
-    contentsDiv.innerHTML = comment.content;
-
-    // Remove forbidden HTML tags
-    ['img','script','iframe', 'style'].forEach(
-        function (tag) {
-            contentsDiv.querySelectorAll(tag).forEach(
-                function (element) { element.remove(); }
-            );
-        }
-    );
-
-    // Flatten all possible HTML in the contents
-    contentsDiv.querySelectorAll('*').forEach(
-        function (element) {
-            var newSpan = document.createElement('span');
-            newSpan.innerHTML = element.innerText;
-            element.parentElement.replaceChild(newSpan, element);
-        }
-    );
-
-    [userAnchor(comment.author), contentsDiv, dateSpan, separatorSpan].forEach(
-        function (element) { commentDiv.appendChild(element); }
-    );
-};
