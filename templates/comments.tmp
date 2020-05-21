@@ -9,11 +9,12 @@
     SnapCloud.request(
         'GET',
         '/projects/' +
-            encodeURIComponent(project.username) + '/' +
-            encodeURIComponent(project.projectname) +
-        '/comments'
-        function (comments) {
-            comments.forEach(function (each) {
+            encodeURIComponent(pageUser()) + '/' +
+            encodeURIComponent(pageProject()) +
+        '/comments',
+        function (response) {
+            console.log(response.comments);
+            response.comments.forEach(function (each) {
                 var commentDiv = document.createElement('div');
                 commentDiv.classList.add('comment');
                 commentsDiv.appendChild(commentDiv);
