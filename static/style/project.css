@@ -439,3 +439,11 @@ img.collection-thumbnail {
     font-style: italic;
     color: #bfc0c0;
 }
+
+.comments #new-comment textarea {
+    width: 100%;
+    height: 3em;
+    padding: 0.5em;
+    margin-bottom: .5em;
+    resize: none;
+}

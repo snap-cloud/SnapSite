@@ -1,10 +1,24 @@
 <script src="js/discourse.js"></script>
 
-<h2>Comments</h2>
-<div class="comments"></div>
+<div class="comments">
+    <h2>Comments</h2>
+    <form id="new-comment" class="pure-form">
+        <fieldset>
+            <div class="pure-control-group">
+                <textarea class="content" name="content" type="text"
+                    placeholder="Your comment"></textarea>
+            </div>
+            <div class="pure-controls">
+                <button localizable type="submit"
+                    class="pure-button">Comment</button>
+            </div>
+        </fieldset>
+    </form>
+    <div class="list"></div>
+</div>
 
 <script>
-    var commentsDiv = document.querySelector('.comments');
+    var commentsDiv = 
 
     SnapCloud.request(
         'GET',
@@ -13,22 +27,33 @@
             encodeURIComponent(pageProject()) +
         '/comments',
         function (response) {
-            console.log(response.comments);
-            response.comments.forEach(function (each) {
-                var commentDiv = document.createElement('div');
-                commentDiv.classList.add('comment');
-                commentsDiv.appendChild(commentDiv);
-                renderComment(each, commentDiv);
-            });
+            if (response.comments.length > 0) {
+                response.comments.forEach(function (each) {
+                    renderComment(each);
+                });
+            } else if (!canComment()) {
+                // If there are no comments and you aren't allowed to add one,
+                // why show the comments section at all?
+                document.querySelector('.comments').remove();
+            }
         },
         genericError,
         'Could not read comments'
     );
 
-    var renderComment = function (comment, commentDiv) {
-        var dateSpan = document.createElement('span'),
+    var renderComment = function (comment, first) {
+        var commentDiv = document.createElement('div');
+            dateSpan = document.createElement('span'),
             contentsDiv = document.createElement('div'),
             separatorSpan = document.createElement('span');
+
+        commentDiv.classList.add('comment');
+        if (first) {
+            document.querySelector('.comments .list').prepend(commentDiv);
+            commentDiv.classList.add('flash');
+        } else {
+            document.querySelector('.comments .list').appendChild(commentDiv);
+        }
 
         dateSpan.classList.add('date');
         contentsDiv.classList.add('contents');
@@ -44,4 +69,46 @@
             separatorSpan
         ].forEach(function (element) { commentDiv.appendChild(element); });
     };
+
+    if (!canComment()) {
+        document.querySelector('form#new-comment').remove();
+    } else {
+        document.querySelector('form#new-comment').addEventListener('submit',
+            function (event) {
+                var content = this.elements['content'].value,
+                    myself = this;
+                event.preventDefault();
+
+                if (content.length < 2) {
+                    genericError(
+                        'Your comment is way too short',
+                        'Comment dismissed'
+                    );
+                } else {
+                    SnapCloud.withCredentialsRequest(
+                        'POST',
+                        '/projects/' +
+                            encodeURIComponent(pageUser()) + '/' +
+                            encodeURIComponent(pageProject()) +
+                            '/comment',
+                        function () {
+                            myself.elements['content'].value = '';
+                            renderComment(
+                                {
+                                    username: sessionStorage.username,
+                                    content: content,
+                                    created_at: new Date()
+                                },
+                                true
+                            );
+                        },
+                        genericError,
+                        'Failed to add comment',
+                        false, // wants raw response
+                        JSON.stringify({ content: content })
+                    );
+                }
+            }
+        );
+    }
 </script>

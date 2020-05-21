@@ -903,6 +903,10 @@ function ownsOrIsAdmin (item) {
     return owns(item) || sessionStorage.role === 'admin';
 };
 
+function canComment () {
+    return sessionStorage.username && (sessionStorage.role !== 'banned');
+};
+
 function canShare (item) {
     return ownsOrIsAdmin(item);
 };
