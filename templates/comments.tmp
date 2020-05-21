@@ -37,8 +37,11 @@
         dateSpan.innerHTML = formatDate(comment.created_at);
         contentsDiv.innerText = comment.content;
 
-        [/*userAnchor(comment.author), */contentsDiv, dateSpan, separatorSpan].forEach(
-            function (element) { commentDiv.appendChild(element); }
-        );
+        [
+            userAnchor(comment.username),
+            contentsDiv,
+            dateSpan,
+            separatorSpan
+        ].forEach(function (element) { commentDiv.appendChild(element); });
     };
 </script>
