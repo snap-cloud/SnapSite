@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="style/classes.css">
         <link rel="stylesheet" href="style/project.css">
         <link rel="stylesheet" href="style/embed.css">
+        <style> .project { height: auto; } </style>
     </head>
     <body>
 @param pageSize=5
