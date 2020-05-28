@@ -58,7 +58,8 @@
                                 {
                                     size: 'small',
                                     gridSize: pageSizeParam || pageSize,
-                                    extraFields: extraFields
+                                    extraFields: extraFields,
+                                    linkTarget: getUrlParameter('linkTarget')
                                 }
                             )
                         );

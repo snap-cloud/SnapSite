@@ -21,7 +21,8 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
     }
 
     div.innerHTML +=
-        '<a href="' + itemType +
+        '<a target="' + (options.linkTarget || '_self')
+        + '" href="' + itemType +
         '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) +
         '&' + itemType + '=' + encodeURIComponent(item[nameField]) +
         '"><img class="thumbnail" alt="' +
