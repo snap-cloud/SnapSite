@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="snap-cloud-domain" location="https://snap.berkeley.edu">
+
+        <script type="text/javascript" src="js/locale.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+        <script type="text/javascript" src="libs/cloud.js"></script>
+        <script type="text/javascript">SnapCloud = new Cloud();</script>
+        <script type="text/javascript" src="js/project.js"></script>
+
+        <link rel="icon" href="favicon.png">
+        <link rel="stylesheet" href="libs/reset.css">
+        <link rel="stylesheet" href="libs/pure-min.css">
+        <link rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="style/classes.css">
+        <link rel="stylesheet" href="style/project.css">
+        <link rel="stylesheet" href="style/embed.css">
+    </head>
+    <body>
+@param pageSize=5
+@param withSearch=false
+@param widgetName=carousel
+@include=grid
+        <script>
+            if (getUrlParameter('pageSize')) {
+                var pageSizeParam = parseInt(getUrlParameter('pageSize'));
+            }
+            if (getUrlParameter('pageNumber')) {
+                var pageNumberParam = parseInt(getUrlParameter('pageNumber'));
+            }
+            var extraFields =
+                (getUrlParameter('showAuthor')) ? { author: 'username' } : {};
+
+            ${widgetName}_loadPage =
+                function (term, pageSize, pageNumber, onSuccess) {
+                    SnapCloud.getCollectionProjects(
+                        pageUser(),
+                        pageNumber,
+                        pageSizeParam || pageSize,
+                        getUrlParameter('collection'),
+                        onSuccess,
+                        genericError,
+                        'Could not fetch collection list'
+                    );
+                };
+
+            ${widgetName}_onLoadPage =
+                function (response, targetElement) {
+                    response.projects.forEach(function (project) {
+                        targetElement.append(
+                            newProjectDiv(
+                                project,
+                                {
+                                    size: 'small',
+                                    gridSize: pageSizeParam || pageSize,
+                                    extraFields: extraFields
+                                }
+                            )
+                        );
+                    });
+                };
+
+            ${widgetName}_toPage(pageNumberParam || 1);
+
+            if (getUrlParameter('hidePaginator')) {
+                document.querySelector('.${widgetName}.paginator').remove();
+            }
+
+        </script>
+    </body>
+</html>
