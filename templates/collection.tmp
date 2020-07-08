@@ -29,10 +29,19 @@
             <pre class="description"></pre>
 
             <div class="editors">
+                <strong localizable>Editors:</strong>
                 <ul class="editor-list"></ul>
                 <a class="clickable add-editor"><i
                         class="fas fa-plus-circle"></i></a>
                 <input hidden class="new-editor"></input>
+            </div>
+
+            <div class="viewers">
+                <strong localizable>Viewers:</strong>
+                <ul class="viewer-list"></ul>
+                <a class="clickable add-viewer"><i
+                        class="fas fa-plus-circle"></i></a>
+                <input hidden class="new-viewer"></input>
             </div>
 
             <div class="buttons">

@@ -306,55 +306,63 @@ function setCollectionButtonsVisibility (collection, buttonsDiv) {
         !canDelete(collection);
 };
 
-function setupCollectionEditorControls (collection, editorsElement) {
-    var addEditorAnchor = editorsElement.querySelector('.add-editor'),
-        editorListUl = editorsElement.querySelector('.editor-list');
+function setupCollectionUserControls (collection, usersElement, role) {
+    var addUserAnchor = usersElement.querySelector('.add-' + role),
+        editorListUl = usersElement.querySelector('.' + role + '-list');
 
     // set up "add editor" anchor
-    addEditorAnchor.hidden = !owns(collection);
-    addEditorAnchor.onclick = function () {
-        var newEditorInput = editorsElement.querySelector('.new-editor');
+    addUserAnchor.hidden = !owns(collection);
+    addUserAnchor.onclick = function () {
+        var newUserInput = usersElement.querySelector('.new-' + role);
         this.hidden = true;
-        newEditorInput.placeholder = localizer.localize('Username');
-        newEditorInput.value = '';
-        newEditorInput.hidden = false;
-        newEditorInput.classList.add('flash');
-        newEditorInput.focus();
-        newEditorInput.onkeypress = function (event) {
+        newUserInput.placeholder = localizer.localize('Username');
+        newUserInput.value = '';
+        newUserInput.hidden = false;
+        newUserInput.classList.add('flash');
+        newUserInput.focus();
+        newUserInput.onkeypress = function (event) {
             var code = (event.keyCode ? event.keyCode : event.which);
             if (code == 13 && !event.shiftKey) {
-                SnapCloud.addEditorToCollection(
+                SnapCloud.addUserToCollection(
                     collection.username,
                     collection.name,
-                    newEditorInput.value,
+                    newUserInput.value,
+                    role,
                     function () {
-                        var li = newEditorLi(newEditorInput.value);
-                        newEditorInput.hidden = true;
-                        newEditorInput.classList.remove('flash');
-                        addEditorAnchor.hidden = false;
+                        var li = newEditorLi(newUserInput.value);
+                        newUserInput.hidden = true;
+                        newUserInput.classList.remove('flash');
+                        addUserAnchor.hidden = false;
 
                         editorListUl.append(li);
                         li.classList.add('flash');
                     },
                     function () {
-                        newEditorInput.value = '';
-                        newEditorInput.classList.remove('flash');
-                        newEditorInput.classList.remove('warning-flash');
+                        newUserInput.value = '';
+                        newUserInput.classList.remove('flash');
+                        newUserInput.classList.remove('warning-flash');
                         setTimeout(
                             function () {
-                                newEditorInput.classList.add('warning-flash');
+                                newUserInput.classList.add('warning-flash');
                             },
                             10
                         );
-                        newEditorInput.focus();
+                        newUserInput.focus();
                     }
                 );
             }
         };
     }
 
-    addEditorAnchor.title =
-        localizer.localize('Add an editor to this collection');
+    var addUserText, action;
+    if (role === 'editor') {
+        addUserText = 'Add an editor to this collection.';
+        action = 'edit';
+    } else {
+
+    }
+
+    addUserAnchor.title = localizer.localize(addUserText);
     editorListUl.title =
         localizer.localize('Users who can edit this collection');
     editorListUl.append(newEditorLi(collection.username));
