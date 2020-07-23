@@ -190,10 +190,16 @@ img.collection-thumbnail {
     right: 0;
     bottom: .4em;
     font-size: 0.8em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .remixed-from .author {
     font-size: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;    
 }
 
 .embed {
