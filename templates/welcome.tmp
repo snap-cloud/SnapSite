@@ -93,7 +93,7 @@
                 'snapcon',
                 pageNumber,
                 pageSize,
-                'Snap!Con',
+                'Snap!Con 2020',
                 onSuccess,
                 genericError,
                 true // withThumbnail
