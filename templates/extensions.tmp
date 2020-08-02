@@ -30,4 +30,5 @@
 <ul class="indent">
     <li>Turn your project into a standalone executable with <a target="_blank" href="http://snapp.citilab.eu">Snapp<em>!</em>.</a></li>
     <li>Import Scratch 2.0 projects with <a target="_blank" href="https://djsrv.github.io/Snapin8r2/">Snapin8r2</a>.</li>
+    <li>Merge two Snap<em>!</em> projects together with <a target="_blank" href="https://smerge.org/">Smerge</a>.</li>
 </ul>
