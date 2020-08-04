@@ -11,7 +11,6 @@
     <a href="/snap" class="pure-button" localizable>Run Snap<em>!</em> Now</a>
     <a href="/examples" class="pure-button" localizable>Example Projects</a>
     <a href="/snap/help/SnapManual.pdf" class="pure-button" localizable>Reference Manual</a>
-    <a href="https://snapcon.org" target="_blank" class="pure-button" localizable>Snap!Con 2020</a>
 </div>
 
 <br class="v-spaced">
@@ -103,6 +102,29 @@
     snapcon_onLoadPage = latest_onLoadPage;
     snapcon_initGrid();
 </script>
+
+@param widgetName=ytlf
+@param header="'YTLF @ Snap!Con 2020'"
+@include=grid
+<script>
+    ytlf_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'bromagosa',
+                pageNumber,
+                pageSize,
+                'YTLF @ Snap!Con 2020',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    ytlf_onLoadPage = latest_onLoadPage;
+    ytlf_initGrid();
+</script>
+
+
 
 <script>
     // pick a random curated collection
