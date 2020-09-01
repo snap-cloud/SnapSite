@@ -998,8 +998,9 @@ function embedDialog (project) {
     codeArea.set = function () {
         codeArea.value =
             '<iframe allowfullscreen allow="geolocation; microphone; camera" ' +
-            'frameBorder=0 src="' + baseURL + '/embed?project=' +
-            project.projectname + '&user=' + project.username +
+            'frameBorder=0 src="' + baseURL +
+            '/embed?project=' + encodeURIComponent(project.projectname) +
+            '&user=' + encodeURIComponent(project.username) +
             (form.elements['title'].checked ? '&showTitle=true' : '') +
             (form.elements['author'].checked ? '&showAuthor=true' : '') +
             (form.elements['edit-button'].checked ? '&editButton=true' : '') +
