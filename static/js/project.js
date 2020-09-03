@@ -395,6 +395,17 @@ function setupCollectionEditorControls (collection, editorsElement) {
             editorListUl.append(newEditorLi(editor.username));
         });
     }
+
+    if (!owns(collection) &&
+        collection.editors.find(
+            function (editor) {
+                return editor.username === sessionStorage.username;
+            }
+        )
+    ) {
+        // User is an editor of this collection, but doesn't own it
+        editorsElement.querySelector('.unenroll').hidden = false;
+    }
 }
 
 function collectionControls (project) {
@@ -472,6 +483,27 @@ function confirmRemoveFromCollection (project) {
         confirmTitle('Share project')
     );
 };
+
+function confirmUnenroll (collection) {
+    confirm(
+        localizer.localize(
+            'Are you sure you want to remove yourself from this collection?'
+        ),
+        function (ok) {
+            if (ok) {
+                SnapCloud.removeEditorFromCollection(
+                    collection.username,
+                    collection.name,
+                    sessionStorage.username,
+                    function () { location.replace('my_collections'); },
+                    genericError
+                );
+            }
+        },
+        confirmTitle('Unenroll')
+    );
+};
+
 
 function confirmShareProject (project, buttonsDiv, datesDiv) {
     confirm(

@@ -33,6 +33,9 @@
                 <a class="clickable add-editor"><i
                         class="fas fa-plus-circle"></i></a>
                 <input hidden class="new-editor"></input>
+                <a localizable class="pure-button pure-button-warning unenroll"
+                    hidden target="_blank">Remove myself</a>
+
             </div>
 
             <div class="buttons">
@@ -160,6 +163,9 @@
                     collection,
                     document.querySelector('.editors')
                 );
+
+                document.querySelector('.editors .unenroll').onclick =
+                    function () { confirmUnenroll(collection); }
 
             }
             doneLoading('#wrapper');

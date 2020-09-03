@@ -124,6 +124,11 @@ img.collection-thumbnail {
     display: inline;
 }
 
+.editors .unenroll {
+    display: block;
+    margin: 0.2em;
+}
+
 .project iframe,
 .project .embed-placeholder {
     z-index: 2;
