@@ -542,23 +542,25 @@ function confirmShareCollection (collection, buttonsDiv, datesDiv) {
     confirm(
         localizer.localize('Are you sure you want to share this collection?'),
         function (ok) {
-            SnapCloud.shareCollection(
-                collection.username,
-                collection.name,
-                function () {
-                    alert(
-                        localizer.localize(
-                            'This collection can now be accessed at:') +
-                            '<br><a href="' + location.href + '">' +
-                            location.href + '</a>',
-                        { title: localizer.localize('Collection shared') },
-                        function () {
-                            location.reload();
-                        }
-                    );
-                },
-                genericError
-            );
+            if (ok) {
+                SnapCloud.shareCollection(
+                    collection.username,
+                    collection.name,
+                    function () {
+                        alert(
+                            localizer.localize(
+                                'This collection can now be accessed at:') +
+                                '<br><a href="' + location.href + '">' +
+                                location.href + '</a>',
+                            { title: localizer.localize('Collection shared') },
+                            function () {
+                                location.reload();
+                            }
+                        );
+                    },
+                    genericError
+                );
+            }
         },
         confirmTitle('Share collection')
     );
