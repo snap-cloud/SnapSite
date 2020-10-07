@@ -130,6 +130,9 @@
     // pick a random curated collection
     var collection =
         [ 'Science Projects',
+            'Simulations',
+            '3D',
+            'Music',
             'Art Projects',
             'Fractals',
             'Animations',
