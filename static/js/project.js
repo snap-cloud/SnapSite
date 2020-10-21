@@ -644,12 +644,7 @@ function confirmPublishProject (project, buttonsDiv, datesDiv) {
                                     'Snap<em>!</em> site.'),
                             { title: localizer.localize('Project published') },
                             function () {
-                                project.ispublished = true;
-                                setProjectShareButtonsVisibility(
-                                    project,
-                                    datesDiv
-                                );
-                                fillProjectDates(project, datesDiv);
+                                location.reload();
                             }
                         );
                     },
