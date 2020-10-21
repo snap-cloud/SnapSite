@@ -28,7 +28,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
         '"><img class="thumbnail" alt="' +
         (item.thumbnail ? escapeHtml(item[nameField]) : '') +
         '" title="' + escapeHtml(item[descriptionField]) +
-        (item.thumbnail ? '" src="' + item.thumbnail  + '"' : '') +
+        (item.thumbnail ? '" src="' + escapeHtml(item.thumbnail)  + '"' : '') +
         '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) +
         '</span></a>';
 
@@ -223,7 +223,7 @@ function fillCollectionTitle (collection, titleElement) {
 
 function fillCollectionThumbnail (collection, thumbnailElement) {
     if (collection.thumbnail) {
-        thumbnailElement.src = collection.thumbnail || '';
+        thumbnailElement.src = escapeHtml(collection.thumbnail) || '';
     } else {
         var i = document.createElement('i');
         i.classList.add('no-image');
