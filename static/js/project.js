@@ -57,7 +57,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
 
 function fillProjectTitle (project, titleElement) {
     var h1 = titleElement.querySelector('h1');
-    h1.innerHTML = project.projectname;
+    h1.innerHTML = escapeHtml(project.projectname);
     /*
     if (canRename(project)) {
         new InPlaceEditor(
@@ -198,7 +198,7 @@ function loadProjectViewer (project, placeholder) {
 
 function fillCollectionTitle (collection, titleElement) {
     var h1 = titleElement.querySelector('h1');
-    h1.innerHTML = collection.name;
+    h1.innerHTML = escapeHtml(collection.name);
     if (canRename(collection) && collection.id !== 0) {
         new InPlaceEditor(
             h1,
@@ -241,7 +241,7 @@ function fillCollectionDescription (collection, descriptionElement) {
 
     descriptionElement.innerHTML =
         collection.description ?
-            collection.description.replace(
+            escapeHtml(collection.description).replace(
                 /(https?:\/\/[^\s,\(\)\[\]]+)/g, // good enough
                 '<a href="$1" target="_blank">$1</a>') :
         noDescriptionHTML;
