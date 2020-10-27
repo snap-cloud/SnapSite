@@ -183,7 +183,8 @@ img.collection-thumbnail {
 
 .collection .title h1,
 .project.big .title h1 {
-    display: inline;
+    display: inline-block;
+    margin: 0;
 }
 
 .collection .title {
