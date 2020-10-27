@@ -32,7 +32,7 @@
     document.querySelector('form#change-email').addEventListener('submit',
         function (event) {
             var password = this.elements['password'].value,
-                email = this.elements['new-email'].value;
+                email = this.elements['new-email'].value,
                 emailRepeat = this.elements['new-email-again'].value;
 
                 event.preventDefault();
@@ -46,11 +46,11 @@
                 } else {
                     SnapCloud.withCredentialsRequest(
                         'POST',
-                        '/users/' + encodeURIComponent(username) + '?' +
-                        SnapCloud.encodeDict({
-                            email: email,
-                            password: password
-                        }),
+                        '/users/' + encodeURIComponent(SnapCloud.username) +
+                            '?' + SnapCloud.encodeDict({
+                                email: email,
+                                password: password
+                            }),
                         function (response) {
                             alert(
                                 localizer.localize(
