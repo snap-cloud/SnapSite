@@ -49,7 +49,7 @@
                         '/users/' + encodeURIComponent(SnapCloud.username) +
                             '?' + SnapCloud.encodeDict({
                                 email: email,
-                                password: password
+                                password: hex_sha512(password)
                             }),
                         function (response) {
                             alert(
