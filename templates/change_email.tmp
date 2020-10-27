@@ -44,42 +44,30 @@
                         'Emails do not match'
                     );
                 } else {
-                    SnapCloud.login(
-                        SnapCloud.username,
-                        password,
-                        false, // We ask users to log in after changing email
-                        function (username) {
-                            SnapCloud.withCredentialsRequest(
-                                'POST',
-                                '/users/' + encodeURIComponent(username) + '?' +
-                                SnapCloud.encodeDict({ email: email }),
-                                function (response) {
-                                    alert(
-                                        localizer.localize(
-                                            'Your email has been updated.<br>' +
-                                                'Please log in again.'),
+                    SnapCloud.withCredentialsRequest(
+                        'POST',
+                        '/users/' + encodeURIComponent(username) + '?' +
+                        SnapCloud.encodeDict({
+                            email: email,
+                            password: password
+                        }),
+                        function (response) {
+                            alert(
+                                localizer.localize(
+                                    'Your email has been updated.<br>' +
+                                    'Please log in again.'),
+                                function () {
+                                    SnapCloud.logout(
                                         function () {
-                                            SnapCloud.logout(
-                                                function () {
-                                                    sessionStorage.clear();
-                                                    location.href = 'login';
-                                                }
-                                            );
+                                            sessionStorage.clear();
+                                            location.href = 'login';
                                         }
                                     );
-                                },
-                                genericError,
-                                'Could not update email'
+                                }
                             );
                         },
-                        function (response) {
-                            genericError(
-                                localizer.localize(
-                                    'User profile could not be updated:') +
-                                    '<br>' + response,
-                                'Could not update email'
-                            );
-                        }
+                        genericError,
+                        'Could not update email'
                     );
                 }
             }
