@@ -397,6 +397,7 @@ function setupCollectionEditorControls (collection, editorsElement) {
     }
 
     if (!owns(collection) &&
+        collection.editors[0] &&
         collection.editors.find(
             function (editor) {
                 return editor.username === sessionStorage.username;
