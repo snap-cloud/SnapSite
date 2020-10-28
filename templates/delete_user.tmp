@@ -50,9 +50,7 @@
                     );
                 },
                 genericError(
-                    localizer.localize(
-                        'User account could not be removed:') +
-                    '<br>' + response,
+                    localizer.localize('User account could not be removed'),
                     'Could not delete user'
                 )
             );
