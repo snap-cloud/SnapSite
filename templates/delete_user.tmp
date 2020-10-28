@@ -34,7 +34,7 @@
             event.preventDefault();
             SnapCloud.withCredentialsRequest(
                 'DELETE',
-                '/users/' + encodeURIComponent(username) + '?' +
+                '/users/' + encodeURIComponent(SnapCloud.username) + '?' +
                     SnapCloud.encodeDict({ password: hex_sha512(password) }),
                 function (response) {
                     alert(
