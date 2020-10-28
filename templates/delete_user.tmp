@@ -32,39 +32,30 @@
         function (event) {
             var password = this.elements['password'].value;
             event.preventDefault();
-            SnapCloud.login(
-                SnapCloud.username,
-                password,
-                false, // No need to persist session for a user you're deleting
-                function (username) {
-                    SnapCloud.withCredentialsRequest(
-                        'DELETE',
-                        '/users/' + encodeURIComponent(username),
-                        function (response) {
-                            alert(
-                                response,
+            SnapCloud.withCredentialsRequest(
+                'DELETE',
+                '/users/' + encodeURIComponent(username) + '?' +
+                    SnapCloud.encodeDict({ password: hex_sha512(password) }),
+                function (response) {
+                    alert(
+                        response,
+                        function () {
+                            SnapCloud.logout(
                                 function () {
-                                    SnapCloud.logout(
-                                        function () {
-                                            sessionStorage.clear();
-                                            location.href = redirectPath();
-                                        }
-                                    );
+                                    sessionStorage.clear();
+                                    location.href = redirectPath();
                                 }
                             );
-                        },
-                        genericError,
-                        'Could not delete user'
+                        }
                     );
                 },
-                function (response) {
-                    genericError(
-                        localizer.localize(
-                            'User account could not be removed:') +
-                            '<br>' + response,
-                        'Could not delete user'
-                    );
-                }
+                genericError(
+                    localizer.localize(
+                        'User account could not be removed:') +
+                    '<br>' + response,
+                    'Could not delete user'
+                )
             );
-        });
+        }
+    );
 </script>
