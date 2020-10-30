@@ -15,11 +15,11 @@ function getUrlParameter (param) {
 };
 
 function pageUser () {
-    return escapeHtml(getUrlParameter('user'));
+    return getUrlParameter('user');
 };
 
 function pageProject () {
-    return escapeHtml(getUrlParameter('project'));
+    return getUrlParameter('project');
 };
 
 // Permissions

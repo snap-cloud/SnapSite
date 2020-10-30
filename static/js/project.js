@@ -36,7 +36,10 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
         Object.keys(extraFields).forEach(function (fieldName) {
             var attribute = extraFields[fieldName];
             div.appendChild(
-                window[fieldName + 'Span'](eval('item.' + attribute)));
+                window[fieldName + 'Span'](
+                    encodeURIComponent(eval('item.' + attribute))
+                )
+            );
         });
     }
 
@@ -223,7 +226,7 @@ function fillCollectionTitle (collection, titleElement) {
 
 function fillCollectionThumbnail (collection, thumbnailElement) {
     if (collection.thumbnail) {
-        thumbnailElement.src = escapeHtml(collection.thumbnail) || '';
+        thumbnailElement.src = encodeURIComponent(collection.thumbnail) || '';
     } else {
         var i = document.createElement('i');
         i.classList.add('no-image');
