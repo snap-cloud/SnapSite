@@ -182,6 +182,7 @@ function loadProjectViewer (project, placeholder) {
         var iframe = document.createElement('iframe');
         iframe.allowfullscreen = true;
         iframe.setAttribute('allow', 'geolocation; microphone; camera');
+        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
         iframe.height = 406;
         iframe.src = projectURL(project.username, project.projectname) +
             '&embedMode&noExitWarning&noRun';
