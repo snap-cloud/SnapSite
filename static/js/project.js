@@ -36,9 +36,7 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
         Object.keys(extraFields).forEach(function (fieldName) {
             var attribute = extraFields[fieldName];
             div.appendChild(
-                window[fieldName + 'Span'](
-                    encodeURIComponent(eval('item.' + attribute))
-                )
+                window[fieldName + 'Span'](eval('item.' + attribute))
             );
         });
     }
