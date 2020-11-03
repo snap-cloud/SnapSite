@@ -82,6 +82,88 @@
     featured_initGrid();
 </script>
 
+<script>
+    // pick three random curated collections
+    var collections =
+        [ 'Science Projects',
+            'Simulations',
+            '3D',
+            'Music',
+            'Art Projects',
+            'Fractals',
+            'Animations',
+            'Games' ];
+
+    for (var i = collections.length - 1; i > 2; i --) {
+        collections.splice(Math.floor(Math.random()*collections.length), 1);
+    }
+
+</script>
+@param widgetName=curated1
+@param header="collections[0]"
+@include=grid
+<script>
+    curated1_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                collections[0],
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    curated1_onLoadPage = latest_onLoadPage;
+    curated1_initGrid();
+</script>
+
+</script>
+@param widgetName=curated2
+@param header="collections[1]"
+@include=grid
+<script>
+    curated2_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                collections[1],
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    curated2_onLoadPage = latest_onLoadPage;
+    curated2_initGrid();
+</script>
+
+</script>
+@param widgetName=curated3
+@param header="collections[2]"
+@include=grid
+<script>
+    curated3_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                collections[2],
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    curated3_onLoadPage = latest_onLoadPage;
+    curated3_initGrid();
+</script>
+
 @param widgetName=snapcon
 @param header="'Snap!Con 2020'"
 @include=grid
@@ -122,41 +204,6 @@
 
     ytlf_onLoadPage = latest_onLoadPage;
     ytlf_initGrid();
-</script>
-
-
-
-<script>
-    // pick a random curated collection
-    var collection =
-        [ 'Science Projects',
-            'Simulations',
-            '3D',
-            'Music',
-            'Art Projects',
-            'Fractals',
-            'Animations',
-            'Games' ][Math.floor(Math.random()*8)];
-</script>
-@param widgetName=curated
-@param header="collection"
-@include=grid
-<script>
-    curated_loadPage =
-        function (query, pageSize, pageNumber, onSuccess) {
-            SnapCloud.getCollectionProjects(
-                'snapcloud',
-                pageNumber,
-                pageSize,
-                collection,
-                onSuccess,
-                genericError,
-                true // withThumbnail
-            );
-        };
-
-    curated_onLoadPage = latest_onLoadPage;
-    curated_initGrid();
 </script>
 
 @param header=''
