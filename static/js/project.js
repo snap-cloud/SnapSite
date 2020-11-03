@@ -396,20 +396,19 @@ function setupCollectionEditorControls (collection, editorsElement) {
         collection.editors.forEach(function (editor) {
             editorListUl.append(newEditorLi(editor.username));
         });
-    }
 
-    if (!owns(collection) &&
-        collection.editors[0] &&
-        collection.editors.find(
-            function (editor) {
-                return editor.username === sessionStorage.username;
-            }
-        )
-    ) {
-        // User is an editor of this collection, but doesn't own it
-        editorsElement.querySelector('.unenroll').hidden = false;
+        if (!owns(collection) &&
+            collection.editors.find(
+                function (editor) {
+                    return editor.username === sessionStorage.username;
+                }
+            )
+        ) {
+            // User is an editor of this collection, but doesn't own it
+            editorsElement.querySelector('.unenroll').hidden = false;
+        }
     }
-}
+};
 
 function collectionControls (project) {
     var controls = document.createElement('div'),
