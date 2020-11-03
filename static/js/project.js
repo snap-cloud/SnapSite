@@ -225,7 +225,7 @@ function fillCollectionTitle (collection, titleElement) {
 
 function fillCollectionThumbnail (collection, thumbnailElement) {
     if (collection.thumbnail) {
-        thumbnailElement.src = encodeURIComponent(collection.thumbnail) || '';
+        thumbnailElement.src = decodeURIComponent(collection.thumbnail) || '';
     } else {
         var i = document.createElement('i');
         i.classList.add('no-image');
