@@ -24,20 +24,22 @@
     ${widgetName}_onLoadPage =
         function (response, targetElement) {
             response.collections.forEach(function (collection) {
-                targetElement.append(
-                    newCollectionDiv(
-                        collection,
-                        {
-                            size: 'small',
-                            gridSize: 5,
-                            extraFields: {
-                                isPublic: 'shared',
-                                isPublished: 'published',
-                                author: 'username'
+                if (!collection.free_for_all) {
+                    targetElement.append(
+                        newCollectionDiv(
+                            collection,
+                            {
+                                size: 'small',
+                                gridSize: 5,
+                                extraFields: {
+                                    isPublic: 'shared',
+                                    isPublished: 'published',
+                                    author: 'username'
+                                }
                             }
-                        }
-                    )
-                );
+                        )
+                    );
+                }
             });
         };
 
