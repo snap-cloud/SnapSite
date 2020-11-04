@@ -163,3 +163,7 @@ pre.in-place {
 .lightbox > .meta {
     display: none;
 }
+
+img.emoji {
+    height: 1em;
+}
