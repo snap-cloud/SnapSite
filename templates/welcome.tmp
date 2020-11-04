@@ -5,7 +5,7 @@
 
 <h1><span localizable>Welcome to Snap</span><em>!</em></h1>
 
-<div class="indent bigger" localizable>Snap<em>!</em> is a broadly inviting programming language for kids and adults that’s also a platform for serious study of computer science.</div>
+<div class="indent bigger" localizable>Snap<em>!</em> is a broadly inviting programming language for kids and adults that's also a platform for serious study of computer science.</div>
 
 <div class="indent v-spaced">
     <a href="/snap" class="pure-button" localizable>Run Snap<em>!</em> Now</a>
