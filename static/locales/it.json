@@ -1,0 +1,386 @@
+{
+    "Welcome to Snap<em>!</em>":
+        "Benvenuto in Snap<em>!</em>",
+    "Run Snap<em>!</em>":
+        "Esegui Snap<em>!</em>",
+    "Explore":
+        "Esplora",
+    "Forum":
+        "Forum",
+    "Join":
+        "Iscriviti",
+    "Log In":
+        "Entra",
+    "Language":
+        "Lingua",
+    "My Projects":
+        "I miei Progetti",
+    "My Public Page":
+        "La mia Pagina Pubblica",
+    "My Profile":
+        "Il mio Profilo",
+    "Change Password":
+        "Cambia la Password",
+    "Log Out":
+        "Esci",
+    "administrator":
+        "amministratore",
+    "Joined in ":
+        "Iscritto il ",
+    "Email: ":
+        "Email: ",
+    "Change Your Password":
+        "Cambia la Tua Password",
+    "Current Password":
+        "Password attuale",
+    "New Password":
+        "Nuova Password",
+    "Repeat New Password":
+        "Ripeti la Nuova Password",
+    "Change My Password":
+        "Cambia la Mia Password",
+    "Unknown error":
+        "Errore sconosciuto",
+    "Created:":
+        "Creato:",
+    "Edit":
+        "Modifica",
+    "See Code":
+        "Guarda dentro",
+    "Download":
+        "Scarica",
+    "Share":
+        "Condividi",
+    "Unshare":
+        "Rendi non condiviso",
+    "Publish":
+        "Pubblica",
+    "Unpublish":
+        "Rendi non pubblico",
+    "Delete":
+        "Elimina",
+    "Share project":
+        "Condividi il progetto",
+    "Are you sure you want to share this project?":
+        "Sei sicuro di voler condividere questo progetto?",
+    "Cancel":
+        "Annulla",
+    "Ok":
+        "Ok",
+    "OK":
+        "OK",
+    "Project shared":
+        "Progetto condiviso",
+    "You can now access this project at:":
+        "Ora puoi condividere questo progetto all'indirizzo:",
+    "Unshare project":
+        "Rendi il progetto non condiviso",
+    "Are you sure you want to stop sharing this project?":
+        "Sei sicuro di voler interrompere la condivisione di questo progetto?",
+    "Project unshared":
+        "Progetto non condiviso",
+    "This project is now private.":
+        "Questo progetto ? ora di nuovo privato.",
+    "Publish project":
+        "Pubblica il progetto",
+    "Are you sure you want to publish this project<br>and make it visible in the Snap<em>!</em> website?":
+        "Sei sicuro di voler pubblicare questo progetto<br>e renderlo visibile nel sito di Snap<em>!</em>?",
+    "Project published":
+        "Progetto pubblicato",
+    "This project is now listed in the Snap<em>!</em> site.":
+        "Questo progetto ? ora accessibile nel sito di Snap<em>!</em>.",
+    "Unpublish project":
+        "Rendi il progetto non pubblico",
+    "Are you sure you want to unpublish this project<br>and hide it from the Snap<em>!</em> website?":
+        "Sei sicuro di voler rendere non pubblico questo progetto<br>in modo che non sia visibile nel sito di Snap<em>!</em>?",
+    "Project unpublished":
+        "Progetto reso non pubblico",
+    "This project is not listed in the Snap<em>!</em> site anymore.":
+        "Questo progetto non ? pi? visibile nel sito di Snap<em>!</em>.",
+    "Delete project":
+        "Elimina progetto",
+    "Are you sure you want to delete this project?":
+        "Sei sicuro di voler eliminare questo progetto?",
+    "WARNING! This action cannot be undone!":
+        "ATTENZIONE! Questa azione non pu? essere annullata!",
+    "This project has been deleted.":
+        "Il progetto ? stato cancellato.",
+    "Project deleted":
+        "Progetto cancellato",
+    "This project has no notes":
+        "Questo progetto non ha note",
+    " by ":
+        " di ",
+    "My Public Page":
+        "La Mia Pagina Pubblica",
+    "Last updated:":
+        "Ultimo aggiornamento:",
+    "Shared:":
+        "Condiviso:",
+    "Published:":
+        "Pubblicato:",
+    "This item can be shared via URL":
+        "Questo elemento pu? essere condiviso attraverso la sua URL",
+    "This item is private":
+        "Questo elemento ? privato",
+    "This item is published":
+        "Questo elemento ? pubblico",
+    "This item is unpublished":
+        "Questo elemento non ? pubblico",
+    "Latest projects":
+        "Ultimi progetti",
+    "Search Results:":
+        "Risultati Ricerca:",
+    "Reset Your Password":
+        "Reimposta la Tua Password",
+    "Reset My Password":
+        "Reimposta la Mia Password",
+    "A link to reset your password has been<br>sent to your email account.":
+        "Un link per reimpostare la password ? stato<br>inviato alla tua email.",
+    "Sign Up":
+        "Iscriviti",
+    "Create a Snap<em>!</em> account":
+        "Crea un account Snap<em>!</em>",
+    "Username":
+        "Username",
+    "Password":
+        "Password",
+    "Repeat Password":
+        "Ripeti la Password",
+    "Month of Birth":
+        "Mese di Nascita",
+    "January":
+        "Gennaio",
+    "February":
+        "Febbraio",
+    "March":
+        "Marzo",
+    "April":
+        "Aprile",
+    "May":
+        "Maggio",
+    "June":
+        "Giugno",
+    "July":
+        "Luglio",
+    "August":
+        "Agosto",
+    "September":
+        "Settembre",
+    "October":
+        "Ottobre",
+    "November":
+        "Novembre",
+    "December":
+        "Dicembre",
+    " or before":
+        " o prima",
+    "Email address":
+        "Indirizzo email",
+    "Email address of parent or guardian":
+        "Indirizzo email del genitore o del tutore legale",
+    "I have read and agree to the <a target=\"_blank\" href=\"tos\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy\">Privacy Agreement</a>":
+        "Ho letto e accetto le <a target=\"_blank\" href=\"tos\">Condizioni di Servizio</a> e l'<a target=\"_blank\" href=\"privacy\">Accordo di Riservatezza</a>",
+    "Sign up":
+        "Iscriviti",
+    "Log into Snap<em>!</em>":
+        "Entra in Snap<em>!</em>",
+    "keep me logged in":
+        "mantieni accesso",
+    "Log in":
+        "Entra",
+    "* I forgot my password":
+        "* Ho dimenticato la password",
+    "DMCA":
+        "Copyright",
+    "Privacy":
+        "Privacy",
+    "Contact Us":
+        "Contattaci",
+    "Administration":
+        "Amministrazione:",
+    "Welcome to Snap":
+        "Benvenuto in Snap",
+    "Snap<em>!</em> is a broadly inviting programming language for kids and adults that's also a platform for serious study of computer science.":
+        "Snap<em>!</em> ? un linguaggio pensato per ragazzi e adulti ed ? anche una piattaforma per lo studio serio dell'informatica.",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Dai un'occchiata agli <a href=\"examples\">esempi</a> o consulta il <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">manuale di riferimento</a> per saperne di pi?, oppure accedi direttamente all'<a href=\"https://snap.berkeley.edu/run\">editor</a> e inizia a programmare!",
+    "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
+        "Questa ? un'anteprima del sito social di Snap<em>!</em>. Ricorda che il sito ? al momento in costruzione e continuer? a cambiare nei prossimi mesi. Molte caratteristiche sono ancora in fase di sviluppo.",
+    "Enjoy the preview, and thank you for your understanding!":
+        "Goditi questa anteprima e grazie per la tua comprensione!",
+    "About":
+        "Info",
+    "About Snap<em>!</em>":
+        "Info su Snap<em>!</em>",
+    "Credits":
+        "Crediti",
+    "Technical Requirements":
+        "Requisiti Tecnici",
+    "Partners":
+        "Collaboratori",
+    "Source Code":
+        "Codice Sorgente",
+    "Learning":
+        "Apprendimento",
+    "Examples":
+        "Esempi",
+    "Reference Manual":
+        "Manuale di Riferimento",
+    "Tools":
+        "Strumenti",
+    "Extensions":
+        "Estensioni",
+    "Support":
+        "Supporto",
+    "Mirrors":
+        "Mirror",
+    "Legal":
+        "Informazioni Legali",
+    "Latest Projects":
+        "Ultimi Progetti",
+    "Blog":
+        "Blog",
+    "Materials":
+        "Materiali",
+    "Partners, sponsors and collaborators":
+        "Partner, sponsor e collaboratori",
+    "Terms of Service":
+        "Condizioni di Servizio",
+    "Discuss this in the forum":
+        "Discutilo nel forum",
+    "Embed":
+        "Includi",
+    "Embed Options":
+        "Opzioni",
+    "Please select the elements you wish to include in the embedded project viewer:":
+        "Seleziona gli elementi che vorresti includere nel visualizzatore del progetto:",
+    "Project title":
+        "Titolo del progetto",
+    "Project author":
+        "Autore del progetto",
+    "Edit button":
+        "Pulsante per la modifica",
+    "Repeat email address":
+        "Ripeti l'indirizzo email",
+    "Please make sure that you have entered your<br>email twice and that both emails match.":
+        "Assicurati di aver inserito l'indirizzo<br>email due volte e che corrispondano.",
+    "Emails do not match":
+        "Le email non corrispondono",
+    "User Administration":
+        "Amministrazione Utenti",
+    "Role":
+        "Ruolo",
+    "standard":
+        "standard",
+    "admin":
+        "amministratore",
+    "moderator":
+        "moderatore",
+    "reviewer":
+        "revisore",
+    "banned":
+        "bloccato",
+    "Verify":
+        "Verifica",
+    "Become":
+        "Diventa",
+    "Ban":
+        "Blocca",
+    "User is not verified":
+        "L'utente non ? verificato",
+    "Administrator":
+        "Amministratore",
+    "Change Email":
+        "Cambia Email",
+    "Delete my Account":
+        "Cancella il mio Account",
+    "Are you sure you want to delete your user account?":
+        "Sei sicuro di voler cancellare il tuo account?",
+    "Delete your Account":
+        "Cancella il tuo Account",
+    "New Email":
+        "Nuova Email",
+    "Repeat New Email":
+        "Ripeti la Nuova Email",
+    "Change My Email":
+        "Cambia la Mia Email",
+    "Delete user":
+        "Cancella utente",
+    "Are you sure you want to delete user":
+        "Sei sicuro di voler cancellare l'utente",
+    "Send a message":
+        "Invia un messaggio",
+    "My Collections":
+        "Le mie Gallerie",
+    "Add to Collection":
+        "Aggiungi alla Galleria",
+    "Report":
+        "Segnala",
+    "Remixes":
+        "Remix",
+    "Research":
+        "Ricerca",
+    "Offline Version":
+        "Versione Offline",
+    "Admin tools":
+        "Strumenti di amministrazione",
+    "Flagged Projects":
+        "Progetti Segnalati",
+    "Featured Projects":
+        "Progetti in Primo Piano",
+    "Fractals":
+        "Frattali",
+    "Animations":
+        "Animazioni",
+    "Games":
+        "Giochi",
+    "Art Projects":
+        "Arte",
+    "Science Projects":
+        "Scienza",
+    "Collections containing this project":
+        "Gallerie che contengono questo progetto",
+    "Projects":
+        "Progetti",
+    "Users":
+        "Utenti",
+    "Collections":
+        "Gallerie",
+    "The Beauty and Joy of Computing":
+        "The Beauty and Joy of Computing",
+    "New Collection":
+        "Nuova Galleria",
+    "This collection is public":
+        "Questa galleria ? pubblica",
+    "Report this project":
+        "Segnala questo progetto",
+    "Are you sure you want to flag this project as inappropriate?":
+        "Sei sicuro di voler segnalare questo progetto come inappropriato?",
+    "Flag project":
+        "Segnala progetto",
+    "This project has been flagged.":
+        "Questo progetto ? stato segnalato.",
+    "Project flagged":
+        "Progetto segnalato",
+    "Add project to collection":
+        "Aggiungi il progetto a una galleria",
+    "Please select the collection to which you want to add this project:":
+        "Seleziona la galleria alla quale vuoi aggiungere il progetto",
+    "Collection name?":
+        "Nome della galleria?",
+    "Public Projects":
+        "Progetti Pubblici",
+    "Public Collections":
+        "Gallerie Pubbliche",
+    "Remove from collection":
+        "Rimuovi dalla galleria",
+    "Set as collection thumbnail":
+        "Usa come anteprima della galleria",
+    "Zombie Administration":
+        "Amministrazione Utenti Rimossi",
+    "Revive":
+        "Riattiva",
+    "Deleted in":
+        "Cancellato il"
+}
