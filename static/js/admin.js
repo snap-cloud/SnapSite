@@ -302,15 +302,18 @@ function basicUserDiv (user) {
         usernameAnchor = userAnchor(user.username),
         emailSpan = document.createElement('span'),
         idSpan = document.createElement('span'),
+        projectCountSpan = document.createElement('span'),
         joinedSpan = document.createElement('span');
 
-    emailSpan.innerHTML = '<em><a target="_blank" href="mailto:' + user.email +
-        '">' + user.email + '</a></em>';
+    emailSpan.innerHTML = '<em><a target="_blank" href="mailto:' +
+        escapeHtml(user.email) + '">' + escapeHtml(user.email) + '</a></em>';
     idSpan.innerHTML = '<strong>ID:</strong> ' + user.id;
+    projectCountSpan.innerHTML = '<strong>Project count:</strong> ' +
+        user.project_count;
     joinedSpan.innerHTML = '<strong localizable>Joined in </strong>' +
         formatDate(user.created);
 
-    [ usernameAnchor, emailSpan, idSpan, joinedSpan ].forEach(
+    [ usernameAnchor, emailSpan, idSpan, projectCountSpan, joinedSpan ].forEach(
         function (e) { detailsDiv.appendChild(e); }
     );
 
