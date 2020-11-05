@@ -86,6 +86,8 @@
                         onclick="localizer.setLanguage('it');">Italiano</a>
                     <a class="pure-menu-link clickable"
                         onclick="localizer.setLanguage('pt');">Português</a>
+                    <a class="pure-menu-link clickable"
+                        onclick="localizer.setLanguage('tr');">Türkçe</a>
                 </ul>
             </li>
         </ul>
