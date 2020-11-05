@@ -1,0 +1,386 @@
+{
+    "Welcome to Snap<em>!</em>":
+        "Snap<em>!</em> e Hoşgeldiniz",
+    "Run Snap<em>!</em>":
+        "Snap<em>!</em> i Deneyin",
+    "Explore":
+        "Keşfet",
+    "Forum":
+        "Forum",
+    "Join":
+        "Katıl",
+    "Log In":
+        "Oturum Aç",
+    "Language":
+        "Dil",
+    "My Projects":
+        "Projelerim",
+    "My Public Page":
+        "Sayfam",
+    "My Profile":
+        "Profilim",
+    "Change Password":
+        "Şifre Değiştir",
+    "Log Out":
+        "Oturumu Kapat",
+    "administrator":
+        "yönetici",
+    "Joined in ":
+        "Katılma Tarihi: ",
+    "Email: ":
+        "ePosta: ",
+    "Change Your Password":
+        "Şifreni Değiştir",
+    "Current Password":
+        "Şimdiki Şifre",
+    "New Password":
+        "Yeni Şifre",
+    "Repeat New Password":
+        "Yeni Şifreyi Tekrarla",
+    "Change My Password":
+        "Şifremi Değiştir",
+    "Unknown error":
+        "Bilinmeyen hata",
+    "Created:":
+        "Yaratıldı:",
+    "Edit":
+        "Düzenle",
+    "See Code":
+        "Koda Bak",
+    "Download":
+        "İndir",
+    "Share":
+        "Paylaş",
+    "Unshare":
+        "Paylaşma",
+    "Publish":
+        "Yayımla",
+    "Unpublish":
+        "Yayımlama",
+    "Delete":
+        "Sil",
+    "Share project":
+        "Projeyi Paylaş",
+    "Are you sure you want to share this project?":
+        "Bu projeyi paylaşmak istediğinden emin misin?",
+    "Cancel":
+        "İptal",
+    "Ok":
+        "OK",
+    "OK":
+        "OK",
+    "Project shared":
+        "Proje paylaşıldı",
+    "You can now access this project at:":
+        "Artık bu projeye şu adresten erişebilirsin:",
+    "Unshare project":
+        "Projeyi paylaşma",
+    "Are you sure you want to stop sharing this project?":
+        "Bu projeyi paylaşmak istemediğinden emin misin?",
+    "Project unshared":
+        "Proje paylaşılmadı",
+    "This project is now private.":
+        "Bu proje artık özeldir.",
+    "Publish project":
+        "Projeyi Yayımla",
+    "Are you sure you want to publish this project<br>and make it visible in the Snap<em>!</em> website?":
+        "Bu projeyi<br>yayınlamak ve Snap<em>!</em> web sitesinde görünür kılmak istediğinden emin misin?",
+    "Project published":
+        "Proje yayımlandı",
+    "This project is now listed in the Snap<em>!</em> site.":
+        "Bu proje artık Snap<em>!</em> sitesinde listelenmiştir.",
+    "Unpublish project":
+        "Projeyi yayımlama",
+    "Are you sure you want to unpublish this project<br>and hide it from the Snap<em>!</em> website?":
+        "Bu projeyi yayından kaldırmak<br>ve Snap<em>!</em> web sitesinden gizlemek istediğinden emin misin?",
+    "Project unpublished":
+        "Proje yayınlanmadı",
+    "This project is not listed in the Snap<em>!</em> site anymore.":
+        "Bu proje artık Snap<em>!</em> sitesinde listelenmiyecektir.",
+    "Delete project":
+        "Projeyi sil",
+    "Are you sure you want to delete this project?":
+        "Bu projeyi silmek istediğinden emin misin?",
+    "WARNING! This action cannot be undone!":
+        "UYARI! Bu eylem geri alınamaz!",
+    "This project has been deleted.":
+        "Bu proje silinmiştir.",
+    "Project deleted":
+        "Proje silindi",
+    "This project has no notes":
+        "Bu projede not yok",
+    " by ":
+        " tarafından ",
+    "'s public page":
+        "genel sayfası",
+    "Last updated:":
+        "Son güncelleme:",
+    "Shared:":
+        "Paylaşıldı:",
+    "Published:":
+        "Yayımlandı:",
+    "This item can be shared via URL":
+        "Bu öğe URL aracılığıyla paylaşılabilir",
+    "This item is private":
+        "Bu öğe özeldir",
+    "This item is published":
+        "Bu öğe yayımlanmıştır",
+    "This item is unpublished":
+        "Bu öğe yayımlanmamıştır",
+    "Latest projects":
+        "En son projeler",
+    "Search Results:":
+        "Arama sonuçları:",
+    "Reset Your Password":
+        "Şifrenizi Sıfırlayın",
+    "Reset My Password":
+        "Şifremi sıfırla",
+    "A link to reset your password has been<br>sent to your email account.":
+        "E-posta hesabınıza şifrenizi sıfırlamak için bir bağlantı gönderildi.",
+    "Sign Up":
+        "Kaydol",
+    "Create a Snap<em>!</em> account":
+        "Snap<em>!</em> hesabı oluştur",
+    "Username":
+        "Kullanıcı adı",
+    "Password":
+        "Şifre",
+    "Repeat Password":
+        "Şifreyi tekrarla",
+    "Month of Birth":
+        "Doğum Ayı",
+    "January":
+        "Ocak",
+    "February":
+        "Şubat",
+    "March":
+        "Mart",
+    "April":
+        "Nisan",
+    "May":
+        "Mayıs",
+    "June":
+        "Haziran",
+    "July":
+        "Temmuz",
+    "August":
+        "Ağustos",
+    "September":
+        "Eylül",
+    "October":
+        "Ekim",
+    "November":
+        "Kasım",
+    "December":
+        "Aralık",
+    " or before":
+        " veya önce",
+    "Email address":
+        "E-posta adresi",
+    "Email address of parent or guardian":
+        "Ebeveyn veya velinin e-posta adresi",
+    "I have read and agree to the <a target=\"_blank\" href=\"tos\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy\">Privacy Agreement</a>":
+        "<a target=\"_blank\" href=\"tos\"> Hizmet Şartları </a> ve <a target=\"_blank\" href=\"privacy\"> Gizlilik Sözleşmesi </a>ni okudum ve kabul ediyorum",
+    "Sign up":
+        "Kaydol",
+    "Log into Snap<em>!</em>":
+        "Snap<em>!</em> e giriş yap",
+    "keep me logged in":
+        "Oturumumu açık tut",
+    "Log in":
+        "Giriş Yap",
+    "* I forgot my password":
+        "* Şifremi unuttum",
+    "DMCA":
+        "Dijital Binyıl Telif Hakkı Yasası (DMCA)",
+    "Privacy":
+        "Gizlilik",
+    "Contact Us":
+        "Ulaşım",
+    "Administration":
+        "Yönetim",
+    "Welcome to Snap":
+        "Snap e Hoşgeldin",
+    "Snap<em>!</em> is a broadly inviting programming language for kids and adults that's also a platform for serious study of computer science.":
+        "Snap<em>!</em>, çocuklar ve yetişkinler için geniş anlamda davetkar bir programlama dilidir ve aynı zamanda bilgisayar bilimlerini ciddi şekilde incelemek için bir platformdur.",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Bazı <a href=\"examples\"> örneklere</a> göz atın veya hakkında daha fazla bilgi edinmek için <a href=\"https://snap.berkeley.edu/SnapManual.pdf\"> başvuru kılavuzuna </a>bakın veya doğrudan <a href=\"https://snap.berkeley.edu/run\"> düzenleyiciye</a> gidin ve hemen programlamaya başlayın!",
+    "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
+        "Bu, yakında çıkacak Snap<em>!</em> sosyal web sitesinin bir önizlemesidir. Lütfen bu sitenin şu anda yapım aşamasında olduğunu ve önümüzdeki aylarda değişmeye devam edeceğini unutmayın. Çoğu özellik hala geliştirme aşamasındadır.",
+    "Enjoy the preview, and thank you for your understanding!":
+        "Önizlemenin keyfini çıkarın ve anlayışınız için teşekkür ederiz!",
+    "About":
+        "Hakkında",
+    "About Snap<em>!</em>":
+        "Snap<em>!</em> Hakkında",
+    "Credits":
+        "Krediler",
+    "Technical Requirements":
+        "Teknik gereksinimler",
+    "Partners":
+        "Ortaklar",
+    "Source Code":
+        "Kaynak kodu",
+    "Learning":
+        "Öğrenme",
+    "Examples":
+        "Örnekler",
+    "Reference Manual":
+        "Başvuru Kılavuzu",
+    "Tools":
+        "Araçlar",
+    "Extensions":
+        "Uzantılar",
+    "Support":
+        "Destek",
+    "Mirrors":
+        "İkiz Siteler",
+    "Legal":
+        "Yasal",
+    "Latest Projects":
+        "En Son Projeler",
+    "Blog":
+        "Blog",
+    "Materials":
+        "Malzemeler",
+    "Partners, sponsors and collaborators":
+        "Ortaklar, sponsorlar ve işbirlikçiler",
+    "Terms of Service":
+        "Kullanım Şartları",
+    "Discuss this in the forum":
+        "Bunu forumda tartış",
+    "Embed":
+        "Göm / Yerleştir",
+    "Embed Options":
+        "Yerleştirme Seçenekleri",
+    "Please select the elements you wish to include in the embedded project viewer:":
+        "Lütfen katıştırılmış proje görüntüleyiciye eklemek istediğiniz öğeleri seçin:",
+    "Project title":
+        "Proje Başlığı",
+    "Project author":
+        "Proje yazarı",
+    "Edit button":
+        "Düzenle düğmesi",
+    "Repeat email address":
+        "E-posta adresini tekrarla",
+    "Please make sure that you have entered your<br>email twice and that both emails match.":
+        "Lütfen e-postanızı<br>iki kez girdiğinizden ve her iki e-postanın da eşleştiğinden emin olun.",
+    "Emails do not match":
+        "E-postalar uyuşmuyor",
+    "User Administration":
+        "Kullanıcı yönetimi",
+    "Role":
+        "Rol",
+    "standard":
+        "standart",
+    "admin":
+        "yönetici",
+    "moderator":
+        "moderatör",
+    "reviewer":
+        "reviewer",
+    "banned":
+        "yasaklandı",
+    "Verify":
+        "Doğrulayın",
+    "Become":
+        "Ol",
+    "Ban":
+        "Yasakla",
+    "User is not verified":
+        "Kullanıcı doğrulanmamış",
+    "Administrator":
+        "Yönetici",
+    "Change Email":
+        "E-posta Değiştir",
+    "Delete my Account":
+        "Hesabımı Sil",
+    "Are you sure you want to delete your user account?":
+        "Kullanıcı hesabını silmek istediğinden emin misin?",
+    "Delete your Account":
+        "Hesabını sil",
+    "New Email":
+        "Yeni e-posta",
+    "Repeat New Email":
+        "Yeni e-postanı tekrarla",
+    "Change My Email":
+        "E-postamı Değiştir",
+    "Delete user":
+        "Kullanıcıyı Sil",
+    "Are you sure you want to delete user":
+        "Kullanıcıyı silmek istediğinden emin misin",
+    "Send a message":
+        "Mesaj Yolla",
+    "My Collections":
+        "Koleksiyonlarım",
+    "Add to Collection":
+        "Koleksiyonuma Ekle",
+    "Report":
+        "Şikayet Et",
+    "Remixes":
+        "Remix'ler",
+    "Research":
+        "Araştır",
+    "Offline Version":
+        "Çevrimdışı Sürüm",
+    "Admin tools":
+        "Yönetici araçları",
+    "Flagged Projects":
+        "İhbarlı projeler",
+    "Featured Projects":
+        "Öne çıkan projeler",
+    "Fractals":
+        "Fraktallar",
+    "Animations":
+        "Animasyonlar",
+    "Games":
+        "Oyunlar",
+    "Art Projects":
+        "Sanat projeleri",
+    "Science Projects":
+        "Bilim projeleri",
+    "Collections containing this project":
+        "Bu projeyi içeren koleksiyonlar",
+    "Projects":
+        "Projeler",
+    "Users":
+        "Kullanıcılar",
+    "Collections":
+        "Koleksiyonlar",
+    "The Beauty and Joy of Computing":
+        "The Beauty and Joy of Computing",
+    "New Collection":
+        "Yeni Koleksiyon",
+    "This collection is public":
+        "Bu koleksiyon herkese açıktır",
+    "Report this project":
+        "Bu projeyi ihbarla",
+    "Are you sure you want to flag this project as inappropriate?":
+        "Bu projeyi uygunsuz olarak işaretlemek istediğinden emin misin?",
+    "Flag project":
+        "Projeyi ihbarla",
+    "This project has been flagged.":
+        "Bu proje ihbarlanmıştır.",
+    "Project flagged":
+        "Proje ihbarlandı.",
+    "Add project to collection":
+        "Projeyi koleksiyona ekle",
+    "Please select the collection to which you want to add this project:":
+        "Lütfen bu projeyi eklemek istediğiniz koleksiyonu seçin:",
+    "Collection name?":
+        "Koleksiyon adı?",
+    "Public Projects":
+        "Herkese açık projeler",
+    "Public Collections":
+        "Herkese açık koleksiyonlar",
+    "Remove from collection":
+        "Koleksiyondan sil",
+    "Set as collection thumbnail":
+        "Koleksiyon küçük resmi olarak ayarla",
+    "Zombie Administration":
+        "Zombi Yönetimi",
+    "Revive":
+        "Canlandır",
+    "Deleted in":
+        "Silindi"
+}
