@@ -61,11 +61,11 @@
     latest_initGrid();
 </script>
 
-@param widgetName=potm
-@param header="'Project of the Month: FRIENDS'"
+@param widgetName=totm
+@param header="'Topic of the Month: FRIENDS'"
 @include=grid
 <script>
-    potm_loadPage =
+    totm_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.getCollectionProjects(
                 'snapcloud',
@@ -78,8 +78,8 @@
             );
         };
 
-    potm_onLoadPage = latest_onLoadPage;
-    potm_initGrid();
+    totm_onLoadPage = latest_onLoadPage;
+    totm_initGrid();
 </script>
 
 @param widgetName=featured
