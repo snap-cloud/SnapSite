@@ -170,6 +170,12 @@ img.collection-thumbnail {
     font-size: .8em;
 }
 
+.project .author {
+    position: absolute;
+    line-height: 4em;
+    margin-left: 1em;
+}
+
 .collection,
 .project.big {
     margin-top: 1em;
@@ -185,6 +191,10 @@ img.collection-thumbnail {
 .project.big .title h1 {
     display: inline-block;
     margin: 0;
+}
+
+.project.big .title h1 {
+    max-width: 540px;
 }
 
 .collection .title {
