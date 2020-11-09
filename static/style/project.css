@@ -195,6 +195,7 @@ img.collection-thumbnail {
 
 .project.big .title h1 {
     max-width: 540px;
+    word-wrap: break-word;
 }
 
 .collection .title {
