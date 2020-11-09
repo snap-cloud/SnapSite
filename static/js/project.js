@@ -901,28 +901,43 @@ function confirmDeleteCollection (collection) {
 };
 
 function confirmFlagProject (project) {
+    function done () {
+        alert(
+            localizer.localize(
+                'The project has been flagged.<br/>' +
+                'Your username was included in the flag report.'),
+            { title: localizer.localize('Project flagged') }
+        );
+    };
+
     confirm(
         localizer.localize(
-            'Are you sure you want to flag this project as inappropriate?'),
+            'Are you sure you want to flag this project as inappropriate?<br/>' +
+            'Your username will be included in the flag report.<br/>' +
+            'Deliberately flagging legitimate projects will be considered a ' +
+            'breach of our Terms of Service.'
+        ),
         function (ok) {
             if (ok) {
-                SnapCloud.addProjectToCollection(
-                    'snapcloud',
-                    'Flagged',
-                    project.username,
-                    project.projectname,
-                    function () {
-                        alert(
-                            localizer.localize(
-                                'This project has been flagged.'),
-                            { title: localizer.localize('Project flagged') }
+                reasonDialog(
+                    project,
+                    function (reason) {
+                        SnapCloud.withCredentialsRequest(
+                            'POST',
+                            '/projects/' +
+                            encodeURIComponent(project.username) + '/' +
+                            encodeURIComponent(project.projectname) +
+                            '/flag?reason=' + encodeURIComponent(reason),
+                            done,
+                            genericError,
+                            'Could not flag project'
                         );
-                    },
-                    genericError
+                    }
                 );
+
             }
         },
-        confirmTitle('Flag project')
+        confirmTitle('Flag this project')
     );
 };
 
