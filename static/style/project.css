@@ -170,7 +170,7 @@ img.collection-thumbnail {
     font-size: .8em;
 }
 
-.project.big .title .author {
+.project.big .title.author {
     position: absolute;
     line-height: 4em;
     margin-left: 1em;
