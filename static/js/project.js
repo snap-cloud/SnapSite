@@ -779,8 +779,7 @@ function confirmUnpublishCollection (collection, buttonsDiv, datesDiv) {
                                 genericError,
                                 'Could not unpublish collection'
                             );
-                        },
-                        true // titleOnly: only send reason title to backend
+                        }
                     );
                 } else {
                     SnapCloud.unpublishCollection(
@@ -934,7 +933,8 @@ function confirmFlagProject (project) {
                             genericError,
                             'Could not flag project'
                         );
-                    }
+                    },
+                    true // titleOnly: only send reason title to backend
                 );
 
             }
