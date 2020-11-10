@@ -12,7 +12,7 @@
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.withCredentialsRequest(
                 'GET',
-                '/flags' + SnapCloud.encodeDict({
+                '/flags?' + SnapCloud.encodeDict({
                     pagesize: pageSize,
                     page: pageNumber
                 }),

@@ -1,11 +1,6 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>Examples</h1>
-<script>
-    /*
-            'Animations',
-            'Games'
-</script>
 @param pageSize=5
 @param withSearch=false
 
