@@ -21,6 +21,7 @@
         };
     flagged_onLoadPage =
         function (response, targetElement) {
+            response.pages = 1;
             response.projects.forEach(function (project) {
                 targetElement.append(
                     newProjectDiv(
