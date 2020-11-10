@@ -1,10 +1,10 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>Flagged Projects</h1>
+@param header=''
 @param title='"Flagged Projects - Snap! Build Your Own Blocks"'
 @param pageSize=50
 @param withSearch=false
-
 @param widgetName=flagged
 @include=grid
 <script>
