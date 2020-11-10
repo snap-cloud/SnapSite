@@ -1,0 +1,47 @@
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+<h1 localizable>Flagged Projects</h1>
+@param title='"Flagged Projects - Snap! Build Your Own Blocks"'
+@param pageSize=15
+@param withSearch=false
+
+@param widgetName=flagged
+@include=grid
+<script>
+    flagged_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.withCredentialsRequest(
+                'GET',
+                '/flags' + SnapCloud.encodeDict({
+                    pagesize: pageSize,
+                    page: pageNumber
+                }),
+                onSuccess,
+                genericError,
+                'Could not fetch flagged projects'
+            );
+
+        };
+    flagged_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                flagCount: 'flag_count',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+    flagged_initGrid();
+</script>
+
+@param header=''
+
