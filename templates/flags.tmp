@@ -27,10 +27,10 @@
                         project,
                         {
                             size: 'small',
-                            gridSize: 50,
+                            gridSize: 5,
                             extraFields: {
-                                flagCount: 'flag_count',
-                                author: 'username'
+                                author: 'username',
+                                flagCount: 'flag_count'
                             }
                         }
                     )
