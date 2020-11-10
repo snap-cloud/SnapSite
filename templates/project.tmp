@@ -141,9 +141,9 @@
             flagAnchor.onclick =
                 function () {
                     if (project.flagged) {
-                        confirmFlagProject(project);
-                    } else {
                         confirmUnflagProject(project);
+                    } else {
+                        confirmFlagProject(project);
                     }
                 };
 
