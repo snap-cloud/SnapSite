@@ -941,6 +941,38 @@ function confirmFlagProject (project) {
     );
 };
 
+function confirmUnflagProject (project) {
+    function done () {
+        alert(
+            localizer.localize(
+                'The project has been unflagged.'),
+            { title: localizer.localize('Project unflagged') }
+        );
+    };
+
+    confirm(
+        localizer.localize(
+            'Are you sure you want to unflag this project?'
+        ),
+        function (ok) {
+            if (ok) {
+                SnapCloud.withCredentialsRequest(
+                    'DELETE',
+                    '/projects/' +
+                    encodeURIComponent(project.username) + '/' +
+                    encodeURIComponent(project.projectname) +
+                    '/flag',
+                    done,
+                    genericError,
+                    'Could not unflag project'
+                );
+            }
+        },
+        confirmTitle('Unflag this project')
+    );
+};
+
+
 function owns (item) {
     return sessionStorage.username == item.username
 };
@@ -979,7 +1011,7 @@ function canDelete (item) {
         [ 'admin', 'moderator' ].indexOf(sessionStorage.role) > -1;
 };
 
-function reasonDialog (item, onSuccess) {
+function reasonDialog (item, onSuccess, titleOnly) {
     var itemType = item.owner ? 'collection' : 'project',
         itemName = item.owner ? item.name : item.projectname,
         form = document.createElement('form'),
@@ -1011,8 +1043,11 @@ function reasonDialog (item, onSuccess) {
         function () {
             onSuccess.call(
                 this,
-                reasons[
-                    form.querySelector('input[name="reason"]:checked').value]
+                titleOnly ?
+                    form.querySelector('input[name="reason"]:checked').value :
+                    reasons[
+                        form.querySelector('input[name="reason"]:checked').value
+                    ]
             );
         }
     );

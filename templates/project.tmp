@@ -99,7 +99,8 @@
         pageUser(),
         function (project) {
             var datesDiv = document.querySelector('.dates'),
-                buttonsDiv = document.querySelector('.buttons');
+                buttonsDiv = document.querySelector('.buttons'),
+                flagAnchor = buttonsDiv.querySelector('.flag');
             setTitle(pageProject() + localizer.localize(' by ') +
                 pageUser() + ' - Snap! Build Your Own Blocks');
 
@@ -133,8 +134,19 @@
                 function () { embedDialog(project); }
             buttonsDiv.querySelector('.collect').onclick =
                 function () { collectProject(project); }
-            buttonsDiv.querySelector('.flag').onclick =
-                function () { confirmFlagProject(project); }
+
+            if (project.flagged) {
+                flagAnchor.innerText = 'Unflag this project';
+            }
+            flagAnchor.onclick =
+                function () {
+                    if (project.flagged) {
+                        confirmFlagProject(project);
+                    } else {
+                        confirmUnflagProject(project);
+                    }
+                };
+
             buttonsDiv.querySelector('.delete').onclick =
                 function () { confirmDeleteProject(project); }
 
