@@ -43,6 +43,7 @@
                 <a localizable class="pure-button pure-button-warning delete"
                     target="_blank">Delete</a>
                 <span class="flag-container">
+                    <i class="warning fas fa-exclamation-triangle"></i>
                     <a localizable class="clickable warning flag"
                         target="_blank">Report this project</a>
                 </span>
@@ -137,6 +138,10 @@
 
             if (project.flagged) {
                 flagAnchor.innerText = 'Unflag this project';
+                document.querySelector('.flag-container').title =
+                    localizer.localize(
+                        'You flagged this project as inappropriate'
+                    );
             }
             flagAnchor.onclick =
                 function () {
