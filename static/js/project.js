@@ -779,7 +779,8 @@ function confirmUnpublishCollection (collection, buttonsDiv, datesDiv) {
                                 genericError,
                                 'Could not unpublish collection'
                             );
-                        }
+                        },
+                        true // titleOnly: only send reason title to backend
                     );
                 } else {
                     SnapCloud.unpublishCollection(
@@ -906,7 +907,8 @@ function confirmFlagProject (project) {
             localizer.localize(
                 'The project has been flagged.<br/>' +
                 'Your username was included in the flag report.'),
-            { title: localizer.localize('Project flagged') }
+            { title: localizer.localize('Project flagged') },
+            function () { location.reload() }
         );
     };
 
@@ -946,7 +948,8 @@ function confirmUnflagProject (project) {
         alert(
             localizer.localize(
                 'The project has been unflagged.'),
-            { title: localizer.localize('Project unflagged') }
+            { title: localizer.localize('Project unflagged') },
+            function () { location.reload() }
         );
     };
 
