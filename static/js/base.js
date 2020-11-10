@@ -69,6 +69,14 @@ function userAnchor (username, newTab) {
     return anchor;
 };
 
+function flagCountSpan (count) {
+    var span = document.createElement('span');
+    span.innerHTML =
+        'Flagged <strong>' + count + '</strong> time' +
+        ((count > 1) ? 's' : '');
+    return span;
+};
+
 function isPublicSpan (isPublic) {
     var span = document.createElement('span'),
         tooltip = isPublic ?

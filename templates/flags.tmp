@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="style/project.css">
 <h1 localizable>Flagged Projects</h1>
 @param title='"Flagged Projects - Snap! Build Your Own Blocks"'
-@param pageSize=15
+@param pageSize=50
 @param withSearch=false
 
 @param widgetName=flagged
@@ -12,10 +12,7 @@
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.withCredentialsRequest(
                 'GET',
-                '/flagged_projects?' + SnapCloud.encodeDict({
-                    pagesize: pageSize,
-                    page: pageNumber
-                }),
+                '/flagged_projects',
                 onSuccess,
                 genericError,
                 'Could not fetch flagged projects'
@@ -30,7 +27,7 @@
                         project,
                         {
                             size: 'small',
-                            gridSize: 5,
+                            gridSize: 50,
                             extraFields: {
                                 flagCount: 'flag_count',
                                 author: 'username'
