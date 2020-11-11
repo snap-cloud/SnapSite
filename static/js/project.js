@@ -372,7 +372,7 @@ function setupCollectionEditorControls (collection, editorsElement) {
         if (owns(collection) && username !== collection.username) {
             icon.classList.add('fas');
             icon.classList.add('fa-times-circle');
-            removeAnchor.classList.add('remove-editor');
+            removeAnchor.classList.add('remove');
             removeAnchor.classList.add('clickable');
             removeAnchor.append(icon);
             removeAnchor.onclick = function () {

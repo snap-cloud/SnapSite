@@ -80,7 +80,9 @@ function flagCountSpan (count) {
 function flagSpan (flag) {
     var span = document.createElement('span'),
         dateSpan = document.createElement('span'),
-        reasonSpan = document.createElement('span');
+        reasonSpan = document.createElement('span'),
+        removeAnchor = document.createElement('a'),
+        icon = document.createElement('i');
     span.classList.add('flag');
     reasonSpan.classList.add('reason');
     reasonSpan.classList.add('warning');
@@ -95,6 +97,28 @@ function flagSpan (flag) {
     span.innerHTML += localizer.localize(' on ');
     dateSpan.innerHTML = formatDate(flag.created_at);
     span.appendChild(dateSpan);
+    icon.classList.add('fas');
+    icon.classList.add('fa-times-circle');
+    removeAnchor.classList.add('remove');
+    removeAnchor.classList.add('clickable');
+    removeAnchor.append(icon);
+    removeAnchor.onclick = function () {
+        SnapCloud.withCredentialsRequest(
+            'DELETE',
+            '/projects/' +
+            encodeURIComponent(project.username) + '/' +
+            encodeURIComponent(project.projectname) +
+            '/flag?flagger_id=' + encodeURIComponent(SnapCloud.username),
+            function () {
+                span.classList.add('warning-flash');
+                setTimeout( function () { span.remove(); }, 1000);
+            },
+            genericError,
+            'Could not unflag project'
+        );
+    };
+    span.append(removeAnchor);
+
     return span;
 };
 
