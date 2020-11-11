@@ -83,11 +83,11 @@ function flagSpan (flag) {
         reasonSpan = document.createElement('span');
     span.classList.add('flag');
     reasonSpan.classList.add('reason');
-    reasonSpan.innerText = [
+    reasonSpan.innerText = {
         coc: 'Code of Conduct violation',
         hack: 'Security vulnerability exploit',
         dmca: 'DMCA policy violation'
-    ][flag.reason];
+    }[flag.reason];
     span.appendChild(reasonSpan);
     span.innerHTML += localizer.localize('Flagged');
     span.appendChild(authorSpan(flag.username, true));
