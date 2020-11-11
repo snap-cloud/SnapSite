@@ -425,6 +425,25 @@ img.collection-thumbnail {
     margin-right: 0.5em;
 }
 
+.reasons .notes-title {
+  font-size: .8em;
+  display: block;
+  margin-top: 1em;
+}
+
+.reasons .notes {
+  display: block;
+  width: 100%;
+  font-size: .8em;
+  resize: none;
+  line-height: 1.2em;
+  border-radius: 5px;
+  border: 1px solid #2d3142;
+  padding: 0 .5em;
+  height: 2.9em;
+  background: #f3eeeb;
+}
+
 /* My Projects / My Collections */
 
 .bar {

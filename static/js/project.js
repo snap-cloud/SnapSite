@@ -1045,7 +1045,7 @@ function reasonDialog (item, onSuccess, titleOnly, withNotesField) {
     if (withNotesField) {
         form.innerHTML +=
             '<span class="notes-title">' +
-            'Optionally, tell us more about why you\'re flagging this project' +
+            'Tell us more about why you\'re flagging this project:' +
             '</span>' +
             '<textarea class="notes" placeholder="Additional notes"></textarea>'
     }
