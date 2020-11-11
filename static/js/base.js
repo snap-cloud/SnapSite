@@ -85,8 +85,7 @@ function flagSpan (flag) {
         flaggedText = document.createElement('span'),
         onText = document.createElement('span'),
         removeAnchor = document.createElement('a'),
-        icon = document.createElement('i'),
-        notesPre = document.createElement('pre');
+        icon = document.createElement('i');
     span.classList.add('flag');
     headerSpan.classList.add('header');
     reasonSpan.classList.add('reason');
@@ -127,8 +126,7 @@ function flagSpan (flag) {
     span.appendChild(onText);
     dateSpan.innerHTML = formatDate(flag.created_at);
     span.appendChild(dateSpan);
-    notesPre.innerText = escapeHtml(flag.notes);
-    span.appendChild(notesPre);
+    span.title = escapeHtml(flag.notes);
     return span;
 };
 
