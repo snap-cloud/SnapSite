@@ -160,7 +160,7 @@ function fillRemixInfo (project, infoElement) {
 function setProjectControlButtonsVisibility (project, buttonsElement) {
     buttonsElement.querySelector('.embed-button').hidden = !project.ispublic;
     // why whould you want to flag your own project?
-    buttonsElement.querySelector('.flag').hidden = owns(project);
+    buttonsElement.querySelector('.flag-container').hidden = owns(project);
     buttonsElement.querySelector('.delete').hidden = !canDelete(project);
 };
 
