@@ -108,66 +108,54 @@
             var datesDiv = document.querySelector('.dates'),
                 buttonsDiv = document.querySelector('.buttons');
 
-            if (collection.id == 0) {
-                // "Flagged" collection
-                document.querySelector('.info').remove();
-                document.querySelector('.contents').classList.remove('pure-g');
-                document.querySelector('.projects').classList
-                    .remove('pure-u-2-3');
-                document.querySelector('.collection').classList.add('flagged');
-            }
-
             // Fill up all fields
             fillCollectionTitle(
                     collection,
                     document.querySelector('.title')
                 );
 
-            if (collection.id !== 0) {
-
-                if (!ownsOrIsAdmin(collection)) {
-                    document.querySelectorAll('.collection-controls').forEach(
-                        function (each) { each.remove(); }
-                    );
-                }
-
-                fillCollectionThumbnail(
-                    collection,
-                    document.querySelector('.collection-thumbnail')
+            if (!ownsOrIsAdmin(collection)) {
+                document.querySelectorAll('.collection-controls').forEach(
+                    function (each) { each.remove(); }
                 );
-
-                fillCollectionDescription(
-                    collection,
-                    document.querySelector('.description')
-                );
-
-                fillCollectionDates(collection, datesDiv);
-
-                // Set up button visibility according to user permissions
-                // and collection visibility state
-                setCollectionButtonsVisibility(collection, buttonsDiv);
-
-                // set up button functionality
-                buttonsDiv.querySelector('.share').onclick =
-                    function () { confirmShareCollection(collection); };
-                buttonsDiv.querySelector('.unshare').onclick =
-                    function () { confirmUnshareCollection(collection); };
-                buttonsDiv.querySelector('.publish').onclick =
-                    function () { confirmPublishCollection(collection); };
-                buttonsDiv.querySelector('.unpublish').onclick =
-                    function () { confirmUnpublishCollection(collection); }
-                buttonsDiv.querySelector('.delete').onclick =
-                    function () { confirmDeleteCollection(collection); }
-
-                setupCollectionEditorControls(
-                    collection,
-                    document.querySelector('.editors')
-                );
-
-                document.querySelector('.editors .unenroll').onclick =
-                    function () { confirmUnenroll(collection); }
-
             }
+
+            fillCollectionThumbnail(
+                collection,
+                document.querySelector('.collection-thumbnail')
+            );
+
+            fillCollectionDescription(
+                collection,
+                document.querySelector('.description')
+            );
+
+            fillCollectionDates(collection, datesDiv);
+
+            // Set up button visibility according to user permissions
+            // and collection visibility state
+            setCollectionButtonsVisibility(collection, buttonsDiv);
+
+            // set up button functionality
+            buttonsDiv.querySelector('.share').onclick =
+                function () { confirmShareCollection(collection); };
+            buttonsDiv.querySelector('.unshare').onclick =
+                function () { confirmUnshareCollection(collection); };
+            buttonsDiv.querySelector('.publish').onclick =
+                function () { confirmPublishCollection(collection); };
+            buttonsDiv.querySelector('.unpublish').onclick =
+                function () { confirmUnpublishCollection(collection); }
+            buttonsDiv.querySelector('.delete').onclick =
+                function () { confirmDeleteCollection(collection); }
+
+            setupCollectionEditorControls(
+                collection,
+                document.querySelector('.editors')
+            );
+
+            document.querySelector('.editors .unenroll').onclick =
+                function () { confirmUnenroll(collection); }
+
             doneLoading('#wrapper');
             document.querySelector('.collection').hidden = false;
         },

@@ -201,7 +201,7 @@ function loadProjectViewer (project, placeholder) {
 function fillCollectionTitle (collection, titleElement) {
     var h1 = titleElement.querySelector('h1');
     h1.innerHTML = escapeHtml(collection.name);
-    if (canRename(collection) && collection.id !== 0) {
+    if (canRename(collection)) {
         new InPlaceEditor(
             h1,
             function () {
