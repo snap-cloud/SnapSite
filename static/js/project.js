@@ -922,19 +922,21 @@ function confirmFlagProject (project) {
             if (ok) {
                 reasonDialog(
                     project,
-                    function (reason) {
+                    function (reason, notes) {
                         SnapCloud.withCredentialsRequest(
                             'POST',
                             '/projects/' +
                             encodeURIComponent(project.username) + '/' +
                             encodeURIComponent(project.projectname) +
-                            '/flag?reason=' + encodeURIComponent(reason),
+                            '/flag?reason=' + encodeURIComponent(reason) +
+                            '&notes=' + encodeURIComponent(notes),
                             done,
                             genericError,
                             'Could not flag project'
                         );
                     },
-                    true // titleOnly: only send reason title to backend
+                    true, // titleOnly: only send reason title to backend
+                    true // withNotesField: add a free-text field
                 );
 
             }
@@ -1014,7 +1016,7 @@ function canDelete (item) {
         [ 'admin', 'moderator' ].indexOf(sessionStorage.role) > -1;
 };
 
-function reasonDialog (item, onSuccess, titleOnly) {
+function reasonDialog (item, onSuccess, titleOnly, withNotesField) {
     var itemType = item.owner ? 'collection' : 'project',
         itemName = item.owner ? item.name : item.projectname,
         form = document.createElement('form'),
@@ -1040,6 +1042,13 @@ function reasonDialog (item, onSuccess, titleOnly) {
             '<span class="option"><input type="radio" name="reason" value="' +
             key + '"><label for="' + key +'">' + value + '</label></span>';
     });
+    if (withNotesField) {
+        form.innerHTML +=
+            '<span class="notes-title">' +
+            'Optionally, tell us more about why you\'re flagging this project' +
+            '</span>' +
+            '<textarea class="notes" placeholder="Additional notes"></textarea>'
+    }
     dialog(
         'Please choose a reason',
         form,
@@ -1050,7 +1059,8 @@ function reasonDialog (item, onSuccess, titleOnly) {
                     form.querySelector('input[name="reason"]:checked').value :
                     reasons[
                         form.querySelector('input[name="reason"]:checked').value
-                    ]
+                    ],
+                form.querySelector('textarea.notes').value;
             );
         }
     );

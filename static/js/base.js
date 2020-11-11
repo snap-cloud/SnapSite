@@ -85,11 +85,13 @@ function flagSpan (flag) {
         flaggedText = document.createElement('span'),
         onText = document.createElement('span'),
         removeAnchor = document.createElement('a'),
-        icon = document.createElement('i');
+        icon = document.createElement('i'),
+        notesPre = document.createElement('pre');
     span.classList.add('flag');
     headerSpan.classList.add('header');
     reasonSpan.classList.add('reason');
     reasonSpan.classList.add('warning');
+    notesPre.classList.add('notes');
     reasonSpan.innerText = {
         coc: 'Code of Conduct violation',
         hack: 'Security vulnerability exploit',
@@ -125,6 +127,8 @@ function flagSpan (flag) {
     span.appendChild(onText);
     dateSpan.innerHTML = formatDate(flag.created_at);
     span.appendChild(dateSpan);
+    notesPre.innerText = escapeHtml(flag.notes);
+    span.appendChild(notesPre);
     return span;
 };
 
