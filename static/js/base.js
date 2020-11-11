@@ -107,7 +107,7 @@ function flagSpan (flag) {
             '/projects/' +
             encodeURIComponent(pageUser()) + '/' +
             encodeURIComponent(pageProject()) +
-            '/flag?flagger_id=' + encodeURIComponent(SnapCloud.username),
+            '/flag?flagger=' + encodeURIComponent(SnapCloud.username),
             function () {
                 span.classList.add('warning-flash');
                 setTimeout( function () { span.remove(); }, 1000);
