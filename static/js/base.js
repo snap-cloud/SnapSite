@@ -80,10 +80,12 @@ function flagCountSpan (count) {
 function flagSpan (flag) {
     var span = document.createElement('span'),
         dateSpan = document.createElement('span'),
+        headerSpan = document.createElement('span'),
         reasonSpan = document.createElement('span'),
         removeAnchor = document.createElement('a'),
         icon = document.createElement('i');
     span.classList.add('flag');
+    headerSpan.classList.add('header');
     reasonSpan.classList.add('reason');
     reasonSpan.classList.add('warning');
     reasonSpan.innerText = {
@@ -91,17 +93,12 @@ function flagSpan (flag) {
         hack: 'Security vulnerability exploit',
         dmca: 'DMCA policy violation'
     }[flag.reason];
-    span.appendChild(reasonSpan);
-    span.innerHTML += localizer.localize('Flagged');
-    span.appendChild(authorSpan(flag.username, true));
-    span.innerHTML += localizer.localize(' on ');
-    dateSpan.innerHTML = formatDate(flag.created_at);
-    span.appendChild(dateSpan);
+    headerSpan.appendChild(reasonSpan);
     icon.classList.add('fas');
     icon.classList.add('fa-times-circle');
     removeAnchor.classList.add('remove');
     removeAnchor.classList.add('clickable');
-    removeAnchor.append(icon);
+    removeAnchor.appendChild(icon);
     removeAnchor.onclick = function () {
         SnapCloud.withCredentialsRequest(
             'DELETE',
@@ -117,8 +114,13 @@ function flagSpan (flag) {
             'Could not unflag project'
         );
     };
-    span.append(removeAnchor);
-
+    headerSpan.appendChild(removeAnchor);
+    span.appendChild(headerSpan);
+    span.innerHTML += localizer.localize('Flagged');
+    span.appendChild(authorSpan(flag.username, true));
+    span.innerHTML += localizer.localize(' on ');
+    dateSpan.innerHTML = formatDate(flag.created_at);
+    span.appendChild(dateSpan);
     return span;
 };
 

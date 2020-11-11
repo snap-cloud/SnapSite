@@ -107,6 +107,16 @@ img.collection-thumbnail {
   font-size: 1em;
 }
 
+.flag-list .flag .header {
+  display: block;
+  flex-wrap: nowrap;
+}
+
+.flag-list .flag .remove {
+  display: inline-block;
+  margin-left: 1em;
+}
+
 .collection-controls:hover {
     background: rgba(255, 255, 255, .8);
 }
