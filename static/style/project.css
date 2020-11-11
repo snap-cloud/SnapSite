@@ -93,28 +93,31 @@ img.collection-thumbnail {
   display: flex;
   flex-direction: column;
 }
+
 .flag-list .flag {
   font-size: .8em;
   margin-bottom: 1em;
-}
-.flag-list .reason {
-  display: block;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: .2em;
-}
-.flag-list .flag .author {
-  font-size: 1em;
 }
 
 .flag-list .flag .header {
   display: block;
   flex-wrap: nowrap;
+  margin-bottom: .2em;
+}
+
+.flag-list .reason {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .flag-list .flag .remove {
   display: inline-block;
   margin-left: 1em;
+}
+
+.flag-list .flag .author {
+  font-size: 1em;
 }
 
 .collection-controls:hover {
