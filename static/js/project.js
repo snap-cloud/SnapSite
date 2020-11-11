@@ -425,18 +425,14 @@ function collectionControls (project) {
     };
     controls.appendChild(removeAnchor);
 
-    if (!(getUrlParameter('collection') == 'Flagged' &&
-            getUrlParameter('user') == 'snapcloud')) {
-        // Flagged collection doesn't have a thumbnail
-        thumbnailAnchor.title =
-            localizer.localize('Set as collection thumbnail');
-        thumbnailAnchor.classList.add('clickable');
-        thumbnailAnchor.innerHTML = '<i class="fas fa-image"></i>';
-        thumbnailAnchor.onclick = function () {
-            chooseAsThumbnailForCollection(project);
-        };
-        controls.appendChild(thumbnailAnchor);
-    }
+    thumbnailAnchor.title =
+        localizer.localize('Set as collection thumbnail');
+    thumbnailAnchor.classList.add('clickable');
+    thumbnailAnchor.innerHTML = '<i class="fas fa-image"></i>';
+    thumbnailAnchor.onclick = function () {
+        chooseAsThumbnailForCollection(project);
+    };
+    controls.appendChild(thumbnailAnchor);
 
     return controls;
 };
