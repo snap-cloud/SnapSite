@@ -82,6 +82,8 @@ function flagSpan (flag) {
         dateSpan = document.createElement('span'),
         headerSpan = document.createElement('span'),
         reasonSpan = document.createElement('span'),
+        flaggedText = document.createElement('span'),
+        onText = document.createElement('span'),
         removeAnchor = document.createElement('a'),
         icon = document.createElement('i');
     span.classList.add('flag');
@@ -103,8 +105,8 @@ function flagSpan (flag) {
         SnapCloud.withCredentialsRequest(
             'DELETE',
             '/projects/' +
-            encodeURIComponent(project.username) + '/' +
-            encodeURIComponent(project.projectname) +
+            encodeURIComponent(pageUser()) + '/' +
+            encodeURIComponent(pageProject()) +
             '/flag?flagger_id=' + encodeURIComponent(SnapCloud.username),
             function () {
                 span.classList.add('warning-flash');
@@ -116,9 +118,11 @@ function flagSpan (flag) {
     };
     headerSpan.appendChild(removeAnchor);
     span.appendChild(headerSpan);
-    span.innerHTML += localizer.localize('Flagged');
+    flaggedText.innerText = localizer.localize('Flagged');
+    span.appendChild(flaggedText);
     span.appendChild(authorSpan(flag.username, true));
-    span.innerHTML += localizer.localize(' on ');
+    onText.innerText = localizer.localize(' on ');
+    span.appendChild(onText);
     dateSpan.innerHTML = formatDate(flag.created_at);
     span.appendChild(dateSpan);
     return span;
