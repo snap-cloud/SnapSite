@@ -73,6 +73,7 @@
                 <a localizable class="pure-button unpublish"
                     target="_blank">Unpublish</a>
             </div>
+@include=flag_details
         </div>
     </div>
 

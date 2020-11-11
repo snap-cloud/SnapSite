@@ -1,0 +1,27 @@
+<div class='flag-list'>
+</div>
+<script>
+    if (['admin', 'moderator', 'reviewer'].indexOf(sessionStorage.role) > -1) {
+        var flagList = document.querySelector('.flag-list');
+        SnapCloud.withCredentialsRequest(
+            'GET',
+            '/projects/' + encodeURIComponent(SnapCloud.username) +
+            '/' + encodeURIComponent(pageProject()) +
+            '/flag',
+            function (flags) {
+                if (flags && flags[0]) {
+                    flags.forEach(function (flag) {
+                        flagList.appendChild(flagSpan(flag));
+                    });
+                } else {
+                    flagList.innerHTML =
+                        '<span localizable class="warning">' +
+                        'This project has not been flagged by anybody' +
+                        '</span>';
+                }
+            },
+            genericError,
+            'Could not update email'
+        );
+    }
+</script>

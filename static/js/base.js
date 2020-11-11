@@ -77,6 +77,26 @@ function flagCountSpan (count) {
     return span;
 };
 
+function flagSpan (flag) {
+    var span = document.createElement('span'),
+        dateSpan = document.createElement('span'),
+        reasonSpan = document.createElement('span');
+    span.classList.add('flag');
+    reasonSpan.classList.add('reason');
+    reasonSpan.innerText = [
+        coc: 'Code of Conduct violation',
+        hack: 'Security vulnerability exploit',
+        dmca: 'DMCA policy violation'
+    ][flag.reason];
+    span.appendChild(reasonSpan);
+    span.innerHTML += localizer.localize('Flagged');
+    span.appendChild(authorSpan(flag.username, true));
+    span.innerHTML += localizer.localize(' on ');
+    dateSpan.innerHTML = formatDate(flag.created_at);
+    span.appendChild(dateSpan);
+    return span;
+};
+
 function isPublicSpan (isPublic) {
     var span = document.createElement('span'),
         tooltip = isPublic ?
