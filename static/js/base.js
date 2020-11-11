@@ -83,6 +83,7 @@ function flagSpan (flag) {
         reasonSpan = document.createElement('span');
     span.classList.add('flag');
     reasonSpan.classList.add('reason');
+    reasonSpan.classList.add('warning');
     reasonSpan.innerText = {
         coc: 'Code of Conduct violation',
         hack: 'Security vulnerability exploit',

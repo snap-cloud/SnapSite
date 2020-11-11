@@ -21,7 +21,7 @@
                 }
             },
             genericError,
-            'Could not update email'
+            'Could not fetch flags'
         );
     }
 </script>
