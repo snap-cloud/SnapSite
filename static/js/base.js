@@ -125,7 +125,7 @@ function flagSpan (flag) {
     span.appendChild(onText);
     dateSpan.innerHTML = formatDate(flag.created_at);
     span.appendChild(dateSpan);
-    span.title = escapeHtml(flag.notes);
+    span.title = flag.notes;
     return span;
 };
 
