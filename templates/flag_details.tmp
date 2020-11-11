@@ -5,7 +5,7 @@
         var flagList = document.querySelector('.flag-list');
         SnapCloud.withCredentialsRequest(
             'GET',
-            '/projects/' + encodeURIComponent(SnapCloud.username) +
+            '/projects/' + encodeURIComponent(pageUser()) +
             '/' + encodeURIComponent(pageProject()) +
             '/flag',
             function (flags) {
