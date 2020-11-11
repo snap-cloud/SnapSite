@@ -90,7 +90,6 @@ function flagSpan (flag) {
     headerSpan.classList.add('header');
     reasonSpan.classList.add('reason');
     reasonSpan.classList.add('warning');
-    notesPre.classList.add('notes');
     reasonSpan.innerText = {
         coc: 'Code of Conduct violation',
         hack: 'Security vulnerability exploit',
