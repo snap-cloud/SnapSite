@@ -1056,7 +1056,9 @@ function reasonDialog (item, onSuccess, titleOnly, withNotesField) {
                     reasons[
                         form.querySelector('input[name="reason"]:checked').value
                     ],
-                form.querySelector('textarea.notes').value
+                withNotesField ?
+                    form.querySelector('textarea.notes').value :
+                    null
             );
         }
     );
