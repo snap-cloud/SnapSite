@@ -118,7 +118,7 @@
                 document.querySelectorAll('.collection-controls').forEach(
                     function (each) {
                         if (each.classList.contains('own')) {
-                            each.querySelector('.set-thumbnail').remove();
+                            each.querySelector('.thumbnail').remove();
                         } else {
                             each.remove();
                         }
