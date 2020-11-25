@@ -116,7 +116,13 @@
 
             if (!ownsOrIsAdmin(collection)) {
                 document.querySelectorAll('.collection-controls').forEach(
-                    function (each) { each.remove(); }
+                    function (each) {
+                        if (each.classList.contains('own')) {
+                            each.querySelector('.set-thumbnail').remove();
+                        } else {
+                            each.remove();
+                        }
+                    }
                 );
             }
 

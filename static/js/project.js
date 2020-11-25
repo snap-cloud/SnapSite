@@ -417,8 +417,12 @@ function collectionControls (project) {
 
     controls.classList.add('collection-controls');
 
+    if (project.username === SnapCloud.username) {
+        controls.classList.add('own');
+    }
+
     removeAnchor.title = localizer.localize('Remove from collection');
-    removeAnchor.classList.add('clickable');
+    removeAnchor.classList.add('clickable', 'remove');
     removeAnchor.innerHTML = '<i class="fas fa-times-circle"></i>';
     removeAnchor.onclick = function () {
         confirmRemoveFromCollection(project);
@@ -427,7 +431,7 @@ function collectionControls (project) {
 
     thumbnailAnchor.title =
         localizer.localize('Set as collection thumbnail');
-    thumbnailAnchor.classList.add('clickable');
+    thumbnailAnchor.classList.add('clickable', 'thumbnail');
     thumbnailAnchor.innerHTML = '<i class="fas fa-image"></i>';
     thumbnailAnchor.onclick = function () {
         chooseAsThumbnailForCollection(project);

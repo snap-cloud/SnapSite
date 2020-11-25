@@ -73,14 +73,22 @@ img.collection-thumbnail {
 .collection-controls {
     background: rgba(255, 255, 255, .5);
     border-radius: 3px;
-    padding: 3px;
-    width: 50px;
-    margin: 0 auto;
+    padding: 1px 4px;
+    margin: 0 -5px;
     display: flex;
     justify-content: space-evenly;
     position: absolute;
     top: 2px;
-    right: 12px;
+    right: 19px;
+    flex-direction: row-reverse;
+}
+
+.collection-controls .thumbnail {
+    margin-right: 3px;
+}
+
+.collection-controls .remove {
+    margin-right: -1px;
 }
 
 .flagged .collection-controls {
