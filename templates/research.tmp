@@ -8,8 +8,9 @@
     </li>
 
     <li>
-        <a href="https://link.springer.com/referenceworkentry/10.1007/978-3-319-60013-0_28-2" target="_blank" class="article-title">The Snap<em>!</em> Programming System</a> <a href="http://romagosa.work/files/snap-springer.pdf">(open access version here)</a>
+        <a href="https://link.springer.com/referenceworkentry/10.1007/978-3-319-60013-0_28-2" target="_blank" class="article-title">The Snap<em>!</em> Programming System</a>
         <span class="authors">Bernat Romagosa. (2019).</span> <span class="publication"><a href="https://link.springer.com/referencework/10.1007/978-3-319-60013-0" target="_blank">Springer Encyclopedia of Education and Information Technologies</a></span>
+        <br><small><a href="http://romagosa.work/files/snap-springer.pdf">(open access version here)</a></small>
         <blockquote class="abstract">Snap<em>!</em> was developed by Jens Mönig and Brian Harvey under the umbrella of the University of California at Berkeley, with the objective of bringing the power of the Scheme programming language and its computer science concepts into a Scratch-like environment. In fact, for a bunch of years, Snap<em>!</em> was developed as a modified version of Scratch. The ability to construct your own blocks out of other blocks was one of the foundational principles of this modification of Scratch, which is why, initially, they named it BYOB (standing for Build Your Own Blocks). In Snap<em>!</em>, blocks built by the user bear the same weight as any other preexisting ones. In other words, Snap<em>!</em> lets us build custom expressions that look and behave like primitive ones. Nowadays, Snap<em>!</em> is a separate project with a codebase that is completely independent from Scratch and with an outstanding number of new features and particularities that make it suitable for a serious study of computer science as well as for research projects. However, Snap<em>!</em> still keeps intact everything that Scratch is about, and, in a programming language jargon style, we could very well call it a dialect of the latter.</blockquote>
     </li>
 
