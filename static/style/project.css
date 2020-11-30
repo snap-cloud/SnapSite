@@ -262,7 +262,7 @@ img.collection-thumbnail {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    position: relative;
+    position: relative !important;
 }
 
 .embed {
