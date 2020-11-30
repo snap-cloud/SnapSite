@@ -210,7 +210,7 @@ img.collection-thumbnail {
     font-size: .8em;
 }
 
-.project .author {
+.project.big .author {
     position: absolute;
     right: 0;
 }
