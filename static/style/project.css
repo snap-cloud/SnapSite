@@ -221,6 +221,10 @@ img.collection-thumbnail {
     margin-left: 1em;
 }
 
+.project.big.embed .title .author {
+    position: relative !important;
+}
+
 .collection,
 .project.big {
     margin-top: 1em;
