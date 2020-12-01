@@ -1114,8 +1114,6 @@ function embedDialog (project) {
 
 function collectProject (project) {
     // Add this project to a user's collection
-    // TODO get all collections where user has write permission
-
     var form = document.createElement('form'),
         collections;
 
@@ -1135,11 +1133,15 @@ function collectProject (project) {
             if (collections[0]) {
                 var select = document.createElement('select');
                 collections.forEach(function (collection) {
-                    var option = document.createElement('option')
-                    option.value = collection.name;
-                    option.name = 'collection';
-                    option.innerHTML = escapeHtml(collection.name);
-                    select.appendChild(option);
+                    if (!collection.free_for_all ||
+                        (collection.free_for_all && ownsOrIsAdmin(project))
+                    ) {
+                        var option = document.createElement('option')
+                        option.value = collection.name;
+                        option.name = 'collection';
+                        option.innerHTML = escapeHtml(collection.name);
+                        select.appendChild(option);
+                    }
                 });
                 form.appendChild(select);
             } else {
