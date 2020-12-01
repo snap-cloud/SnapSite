@@ -62,7 +62,7 @@
 </script>
 
 @param widgetName=totm
-@param header="'Topic of the Month: FRIENDS'"
+@param header="'Topic of the Month: Cut and paste blocks'"
 @include=grid
 <script>
     totm_loadPage =
@@ -71,7 +71,7 @@
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Friends',
+                'Cut and paste',
                 onSuccess,
                 genericError,
                 true // withThumbnail
