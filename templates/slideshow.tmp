@@ -2,13 +2,11 @@
 <link rel="stylesheet" href="style/banner.css">
 
 <div class="slideshow">
-    <!--
     <a href="collection?user=snapcloud&collection=Cut%20and%20paste" target="_blank">
         <div class="slide fade">
             <img src="img/totm.png" style="width:100%">
         </div>
     </a>
-    -->
 
     <div class="slide fade">
         <img src="img/snap-byob.png" style="width:100%">
