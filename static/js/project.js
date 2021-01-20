@@ -127,16 +127,20 @@ function fillProjectDates (project, datesElement) {
             document.querySelector('.shared').hidden = true;
             document.querySelector('.published').hidden = false;
             document.querySelector('.published span').innerHTML =
-                formatDate(project.firstpublished);
+                formatDate(project.firstpublished || new Date());
         } else {
             document.querySelector('.shared').hidden = false;
+            document.querySelector('.shared span').hidden = false;
+            document.querySelector('.shared strong').innerText =
+                localizer.localize('Shared:');
             document.querySelector('.shared span').innerHTML =
-                formatDate(project.lastshared);
+                formatDate(project.lastshared || new Date());
             document.querySelector('.published').hidden = true;
         }
     } else {
-        document.querySelector('.shared').innerHTML =
+        document.querySelector('.shared strong').innerHTML =
             localizer.localize('This project is private') + '.';
+        document.querySelector('.shared span').hidden = true;
         document.querySelector('.published').hidden = true;
     }
 };
