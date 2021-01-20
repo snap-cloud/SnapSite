@@ -164,7 +164,9 @@ img.collection-thumbnail {
     display: inline;
 }
 
-.editors .unenroll {
+.editors .unenroll,
+.editors .ffa,
+.editors .un-ffa {
     display: block;
     margin: 0.2em;
 }
