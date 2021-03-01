@@ -61,9 +61,10 @@
     latest_initGrid();
 </script>
 
-@param widgetName=totm
-@param header="'Topic of the Month: Love'"
-@include=grid
+<!--
+#@param widgetName=totm
+#@param header="'Topic of the Month: Nature'"
+#@include=grid
 <script>
     totm_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
@@ -71,7 +72,7 @@
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Love',
+                'Nature',
                 onSuccess,
                 genericError,
                 true // withThumbnail
@@ -81,6 +82,7 @@
     totm_onLoadPage = latest_onLoadPage;
     totm_initGrid();
 </script>
+-->
 
 @param widgetName=featured
 @param header="'Featured Projects'"
