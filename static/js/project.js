@@ -20,17 +20,39 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
             '"></i>'
     }
 
+    
+    var project_href_url =
+        itemType + '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) +
+        '&' + itemType + '=' + encodeURIComponent(item[nameField]);
+        
+    var target = 'target="_self"';
+
+    if (options.linkTarget) {
+        if (options.linkTarget == "_blank") {
+            target = 'target="_blank" rel="noopener noreferrer"';
+        } else {
+            target = 'target="' + options.linkTarget + '"';
+        }
+    }
+
+    var html_a_start_tag =
+        '<a ' +
+            target +
+            ' ' +
+            'href="' + project_href_url + '"' +
+        '>';
+
     div.innerHTML +=
-        '<a target="' + (options.linkTarget || '_self')
-        + '" href="' + itemType +
-        '?user=' + encodeURIComponent(eval('item.' + ownerUsernamePath)) +
-        '&' + itemType + '=' + encodeURIComponent(item[nameField]) +
-        '"><img class="thumbnail" alt="' +
-        (item.thumbnail ? escapeHtml(item[nameField]) : '') +
-        '" title="' + escapeHtml(item[descriptionField]) +
-        (item.thumbnail ? '" src="' + escapeHtml(item.thumbnail)  + '"' : '') +
-        '"><span class="' + itemType + '-name">' + escapeHtml(item[nameField]) +
-        '</span></a>';
+        html_a_start_tag +
+            '<img class="thumbnail" alt="' +
+                (item.thumbnail ? escapeHtml(item[nameField]) : '') +
+                '" title="' + escapeHtml(item[descriptionField]) +
+                (item.thumbnail ? '" src="' + escapeHtml(item.thumbnail)  + '"' : '') +
+            '">' +
+            '<span class="' + itemType + '-name">' +
+                escapeHtml(item[nameField]) +
+            '</span>' +
+        '</a>';
 
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {
