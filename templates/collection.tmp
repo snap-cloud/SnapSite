@@ -90,8 +90,7 @@
                                             isPublished: 'ispublished',
                                             author: 'username'
                                         },
-                                        withCollectionControls: true,
-                                        linkTarget: '_blank'
+                                        withCollectionControls: true
                                     }
                                 )
                             );
