@@ -188,10 +188,11 @@ function becomeButton (user) {
                 user.username,
                 0, // password is irrelevant
                 false, // persist
-                function (username, role, response) {
+                function (username, role, response, previous_username_admin) {
                     alert(
                         response.message,
                         function () {
+                            sessionStorage.previous_username_admin = previous_username_admin;
                             sessionStorage.username = username;
                             sessionStorage.role = role;
                             location.href = 'profile';

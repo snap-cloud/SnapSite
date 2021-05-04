@@ -35,6 +35,7 @@
             <i class="fas fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
         </div>
         @include=navigation_bar
+        @include=alias_alert_banner
         <div id="wrapper">
             @content
         </div>
@@ -46,16 +47,17 @@
     if (!sessionStorage.username) {
         SnapCloud.initSession(
             function (username, role) {
+                sessionStorage.previous_username_admin = null;
                 sessionStorage.username = username;
                 sessionStorage.role = role;
-                initForUsername(username);
+                initForUsername(username, sessionStorage.previous_username_admin);
             }
         );
     } else {
-        initForUsername(sessionStorage.username);
+        initForUsername(sessionStorage.username, sessionStorage.previous_username_admin);
     }
 
-    function initForUsername (username) {
+    function initForUsername (username, previous_username_admin) {
         if (username) {
             SnapCloud.username = username;
             document.querySelector('li.join').hidden = true;
@@ -67,6 +69,12 @@
                 document.querySelector('.admin').hidden = false;
             }
             fillVisitorFields();
+
+            if (previous_username_admin) {
+                document.querySelector('div.aliasAlert.warning').hidden = false;
+                fillAliasAlert();
+            }
+
         } else {
             document.querySelector('li.join').hidden = false;
             document.querySelector('li.sign-in').hidden = false;
