@@ -131,7 +131,8 @@
                 projectURL(
                     project.username,
                     project.projectname,
-                    getUrlParameter('devVersion')) + '&editMode&noRun';
+                    getUrlParameter('devVersion') !== null) +
+                '&editMode&noRun';
             buttonsDiv.querySelector('.download').onclick =
                 function () { downloadProject(project); };
             buttonsDiv.querySelector('.embed-button').onclick =

@@ -192,7 +192,7 @@ function loadProjectViewer (project, placeholder) {
             projectURL(
                 project.username,
                 project.projectname,
-                getUrlParameter('devVersion')
+                getUrlParameter('devVersion') !== null
             ) + '&embedMode&noExitWarning&noRun';
         placeholder.parentNode.replaceChild(iframe, placeholder);
     }
