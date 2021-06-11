@@ -128,8 +128,10 @@
 
             // Set up button functionality
             buttonsDiv.querySelector('.open').href =
-                projectURL(project.username, project.projectname) +
-                    '&editMode&noRun';
+                projectURL(
+                    project.username,
+                    project.projectname,
+                    getUrlParameter('devVersion')) + '&editMode&noRun';
             buttonsDiv.querySelector('.download').onclick =
                 function () { downloadProject(project); };
             buttonsDiv.querySelector('.embed-button').onclick =
