@@ -71,7 +71,7 @@ function banButton (user) {
                 },
                 confirmTitle('Ban user')
             );
-        }, 
+        },
         'pure-button-warning'
     );
 };
@@ -204,6 +204,47 @@ function becomeButton (user) {
     );
 };
 
+function changeEmailButton (user) {
+    return userButton(
+        user,
+        'Change Email',
+        function () {
+            var form = document.createElement('form');
+            form.classList.add('email-change');
+            form.classList.add('pure-form');
+            form.classList.add('pure-form-aligned');
+            form.innerHTML =
+                '<fieldset>' +
+                '<div class="pure-control-group">' +
+                '<label localizable for="email">New Email Address?</label>' +
+                '<input name="email" type="text"></input></div>' +
+                '</fieldset>';
+
+            dialog(
+                'Change User Email',
+                form,
+                function () {
+                    var email = form.querySelector('input[name="email"]').value;
+                    SnapCloud.withCredentialsRequest(
+                        'POST',
+                        '/users/' + encodeURIComponent(user.username) + '?' +
+                            SnapCloud.encodeDict({ email: email }),
+                        function (response) {
+                            alert(localizer.localize(
+                                'User ' + user.username + '\'s email is now ' +
+                                 + email + '.')
+                            );
+                        },
+                        genericError,
+                        'Could not set user email'
+                    );
+                },
+                nop // cancel action
+            );
+        }
+    );
+};
+
 function messageButton (user) {
     return userButton(
         user,
@@ -213,7 +254,7 @@ function messageButton (user) {
             form.classList.add('email-compose');
             form.classList.add('pure-form');
             form.classList.add('pure-form-aligned');
-            form.innerHTML = 
+            form.innerHTML =
                 '<fieldset>' +
                 '<div class="pure-control-group">' +
                 '<label localizable for="subject">Subject</label>' +
@@ -241,7 +282,7 @@ function messageButton (user) {
                             subject: form.querySelector('input[name="subject"]').value,
                             contents: form.querySelector('textarea[name="body"]').value
                         })
-                    ); 
+                    );
                 },
                 nop // cancel action
             );
@@ -284,7 +325,7 @@ function canSetRole (currentRole, newRole) {
 function setRole (user, role) {
     SnapCloud.withCredentialsRequest(
         'POST',
-        '/users/' + encodeURIComponent(user.username) + '?' + 
+        '/users/' + encodeURIComponent(user.username) + '?' +
             SnapCloud.encodeDict({ role: role }),
         function (response) {
             alert(localizer.localize(
@@ -345,7 +386,7 @@ function userDiv (user) {
             if (user.role == role) {
                 roleOption.selected = true;
             }
-            roleSelect.appendChild(roleOption); 
+            roleSelect.appendChild(roleOption);
         }
     );
     roleSelect.onchange = function () { setRole(user, roleSelect.value) };
@@ -373,6 +414,7 @@ function userDiv (user) {
 
     if (sessionStorage.role == 'admin') {
         buttonsDiv.appendChild(becomeButton(user));
+        buttonsDiv.appendChild(changeEmailButton(user));
         buttonsDiv.appendChild(messageButton(user));
     }
 
