@@ -232,7 +232,7 @@ function changeEmailButton (user) {
                         function (response) {
                             alert(localizer.localize(
                                 'User ' + user.username + '\'s email is now ' +
-                                 + email + '.')
+                                 email + '.')
                             );
                         },
                         genericError,
