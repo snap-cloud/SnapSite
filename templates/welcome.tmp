@@ -19,48 +19,6 @@
 @param pageSize=5
 @param withSearch=false
 
-@param header="'Latest Projects'"
-@param widgetName=latest
-@param maxPages=20
-@include=grid
-@param maxPages=0
-<script>
-    latest_loadPage =
-        function (query, pageSize, pageNumber, onSuccess) {
-            SnapCloud.getPublishedProjectList(
-                null, // no username
-                pageNumber,
-                pageSize,
-                query,
-                onSuccess,
-                genericError,
-                true // withThumbnail
-            );
-        };
-
-    latest_onLoadPage =
-        function (response, targetElement) {
-            response.projects.forEach(function (project) {
-                targetElement.append(
-                    newProjectDiv(
-                        project,
-                        {
-                            size: 'small',
-                            gridSize: 5,
-                            extraFields: {
-                                isPublic: 'ispublic',
-                                isPublished: 'ispublished',
-                                author: 'username'
-                            }
-                        }
-                    )
-                );
-            });
-        };
-
-    latest_initGrid();
-</script>
-
 @param widgetName=totm
 @param header="'Topic of the Month: FRIENDS'"
 @include=grid
@@ -184,6 +142,49 @@
     curated3_onLoadPage = latest_onLoadPage;
     curated3_initGrid();
 </script>
+
+@param header="'Latest Projects'"
+@param widgetName=latest
+@param maxPages=20
+@include=grid
+@param maxPages=0
+<script>
+    latest_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getPublishedProjectList(
+                null, // no username
+                pageNumber,
+                pageSize,
+                query,
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    latest_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+
+    latest_initGrid();
+</script>
+
 
 @param widgetName=snapcon
 @param header="'Snap!Con 2020'"
