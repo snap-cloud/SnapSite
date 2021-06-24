@@ -33,6 +33,10 @@
                 <a class="clickable add-editor"><i
                         class="fas fa-plus-circle"></i></a>
                 <input hidden class="new-editor"></input>
+                <a localizable class="pure-button ffa"
+                    hidden target="_blank">Mark as free-for-all</a>
+                <a localizable class="pure-button un-ffa"
+                    hidden target="_blank">Unmark as free-for-all</a>
                 <a localizable class="pure-button pure-button-warning unenroll"
                     hidden target="_blank">Remove myself</a>
 
@@ -116,7 +120,13 @@
 
             if (!ownsOrIsAdmin(collection)) {
                 document.querySelectorAll('.collection-controls').forEach(
-                    function (each) { each.remove(); }
+                    function (each) {
+                        if (each.classList.contains('own')) {
+                            each.querySelector('.thumbnail').remove();
+                        } else {
+                            each.remove();
+                        }
+                    }
                 );
             }
 
@@ -155,6 +165,12 @@
 
             document.querySelector('.editors .unenroll').onclick =
                 function () { confirmUnenroll(collection); }
+
+            document.querySelector('.editors .ffa').onclick =
+                function () { confirmMarkFFA(collection); }
+
+            document.querySelector('.editors .un-ffa').onclick =
+                function () { confirmUnmarkFFA(collection); }
 
             doneLoading('#wrapper');
             document.querySelector('.collection').hidden = false;

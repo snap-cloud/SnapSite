@@ -127,16 +127,20 @@ function fillProjectDates (project, datesElement) {
             document.querySelector('.shared').hidden = true;
             document.querySelector('.published').hidden = false;
             document.querySelector('.published span').innerHTML =
-                formatDate(project.firstpublished);
+                formatDate(project.firstpublished || new Date());
         } else {
             document.querySelector('.shared').hidden = false;
+            document.querySelector('.shared span').hidden = false;
+            document.querySelector('.shared strong').innerText =
+                localizer.localize('Shared:');
             document.querySelector('.shared span').innerHTML =
-                formatDate(project.lastshared);
+                formatDate(project.lastshared || new Date());
             document.querySelector('.published').hidden = true;
         }
     } else {
-        document.querySelector('.shared').innerHTML =
+        document.querySelector('.shared strong').innerHTML =
             localizer.localize('This project is private') + '.';
+        document.querySelector('.shared span').hidden = true;
         document.querySelector('.published').hidden = true;
     }
 };
@@ -184,8 +188,12 @@ function loadProjectViewer (project, placeholder) {
         iframe.setAttribute('allow', 'geolocation; microphone; camera');
         iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
         iframe.height = 406;
-        iframe.src = projectURL(project.username, project.projectname) +
-            '&embedMode&noExitWarning&noRun';
+        iframe.src = 
+            projectURL(
+                project.username,
+                project.projectname,
+                getUrlParameter('devVersion') !== null
+            ) + '&embedMode&noExitWarning&noRun';
         placeholder.parentNode.replaceChild(iframe, placeholder);
     }
     if (document.visibilityState == 'visible') {
@@ -408,6 +416,16 @@ function setupCollectionEditorControls (collection, editorsElement) {
             editorsElement.querySelector('.unenroll').hidden = false;
         }
     }
+
+    if (isAdmin()) {
+        if (collection.free_for_all) {
+            editorsElement.querySelector('.ffa').hidden = true;
+            editorsElement.querySelector('.un-ffa').hidden = false;
+        } else if (collection.published) {
+            editorsElement.querySelector('.ffa').hidden = false;
+            editorsElement.querySelector('.un-ffa').hidden = true;
+        }
+    }
 };
 
 function collectionControls (project) {
@@ -417,8 +435,12 @@ function collectionControls (project) {
 
     controls.classList.add('collection-controls');
 
+    if (project.username === SnapCloud.username) {
+        controls.classList.add('own');
+    }
+
     removeAnchor.title = localizer.localize('Remove from collection');
-    removeAnchor.classList.add('clickable');
+    removeAnchor.classList.add('clickable', 'remove');
     removeAnchor.innerHTML = '<i class="fas fa-times-circle"></i>';
     removeAnchor.onclick = function () {
         confirmRemoveFromCollection(project);
@@ -427,7 +449,7 @@ function collectionControls (project) {
 
     thumbnailAnchor.title =
         localizer.localize('Set as collection thumbnail');
-    thumbnailAnchor.classList.add('clickable');
+    thumbnailAnchor.classList.add('clickable', 'thumbnail');
     thumbnailAnchor.innerHTML = '<i class="fas fa-image"></i>';
     thumbnailAnchor.onclick = function () {
         chooseAsThumbnailForCollection(project);
@@ -791,6 +813,84 @@ function confirmUnpublishCollection (collection, buttonsDiv, datesDiv) {
     );
 };
 
+function confirmMarkFFA (collection) {
+    function done () {
+        alert(
+            localizer.localize(
+                'This collection is now marked as free-for-all.<br>' +
+                'Any user can now add their published projects to it.'
+            ),
+            { title: localizer.localize('Collection is free-for-all') },
+            function () {
+                location.reload();
+            }
+        );
+    };
+
+    confirm(
+        localizer.localize(
+            'Are you sure you want to mark this collection<br>' +
+            'as free-for-all and let all users add their<br>' +
+            'published projects to it?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.withCredentialsRequest(
+                    'POST',
+                    '/users/' +
+                    encodeURIComponent(
+                        collection.username) +
+                    '/collections/' +
+                    encodeURIComponent(collection.name) +
+                    '/metadata?free_for_all=true',
+                    done,
+                    genericError,
+                    'Could not mark collection as free-for-all'
+                );
+            }
+        },
+        confirmTitle('Mark as free-for-all')
+    );
+};
+
+function confirmUnmarkFFA (collection) {
+    function done () {
+        alert(
+            localizer.localize(
+                'This collection is no longer marked as free-for-all.<br>' +
+                'Only its owner and editors can add projects to it now.'
+            ),
+            { title: localizer.localize('Collection is not free-for-all') },
+            function () {
+                location.reload();
+            }
+        );
+    };
+
+    confirm(
+        localizer.localize(
+            'Are you sure you want to unmark this collection<br>' +
+            'as free-for-all and prevent non-editors from adding<br>' +
+            'their projects to it?'),
+        function (ok) {
+            if (ok) {
+                SnapCloud.withCredentialsRequest(
+                    'POST',
+                    '/users/' +
+                    encodeURIComponent(
+                        collection.username) +
+                    '/collections/' +
+                    encodeURIComponent(collection.name) +
+                    '/metadata?free_for_all=false',
+                    done,
+                    genericError,
+                    'Could not unmark collection as free-for-all'
+                );
+            }
+        },
+        confirmTitle('Unmark as free-for-all')
+    );
+};
+
 function confirmDeleteProject (project) {
     function done () {
         alert(
@@ -978,6 +1078,10 @@ function owns (item) {
     return sessionStorage.username == item.username
 };
 
+function isAdmin () {
+    return sessionStorage.role === 'admin';
+};
+
 function ownsOrIsAdmin (item) {
     // Not to worry. Actual secure permission check is performed in the backend.
     return owns(item) || sessionStorage.role === 'admin';
@@ -1056,7 +1160,9 @@ function reasonDialog (item, onSuccess, titleOnly, withNotesField) {
                     reasons[
                         form.querySelector('input[name="reason"]:checked').value
                     ],
-                form.querySelector('textarea.notes').value
+                withNotesField ?
+                    form.querySelector('textarea.notes').value :
+                    null
             );
         }
     );
@@ -1108,8 +1214,6 @@ function embedDialog (project) {
 
 function collectProject (project) {
     // Add this project to a user's collection
-    // TODO get all collections where user has write permission
-
     var form = document.createElement('form'),
         collections;
 
@@ -1129,11 +1233,15 @@ function collectProject (project) {
             if (collections[0]) {
                 var select = document.createElement('select');
                 collections.forEach(function (collection) {
-                    var option = document.createElement('option')
-                    option.value = collection.name;
-                    option.name = 'collection';
-                    option.innerHTML = escapeHtml(collection.name);
-                    select.appendChild(option);
+                    if (!collection.free_for_all ||
+                        (collection.free_for_all && ownsOrIsAdmin(project))
+                    ) {
+                        var option = document.createElement('option')
+                        option.value = collection.name;
+                        option.name = 'collection';
+                        option.innerHTML = escapeHtml(collection.name);
+                        select.appendChild(option);
+                    }
                 });
                 form.appendChild(select);
             } else {

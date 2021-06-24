@@ -73,14 +73,22 @@ img.collection-thumbnail {
 .collection-controls {
     background: rgba(255, 255, 255, .5);
     border-radius: 3px;
-    padding: 3px;
-    width: 50px;
-    margin: 0 auto;
+    padding: 1px 4px;
+    margin: 0 -5px;
     display: flex;
     justify-content: space-evenly;
     position: absolute;
     top: 2px;
-    right: 12px;
+    right: 19px;
+    flex-direction: row-reverse;
+}
+
+.collection-controls .thumbnail {
+    margin-right: 3px;
+}
+
+.collection-controls .remove {
+    margin-right: -1px;
 }
 
 .flagged .collection-controls {
@@ -156,7 +164,9 @@ img.collection-thumbnail {
     display: inline;
 }
 
-.editors .unenroll {
+.editors .unenroll,
+.editors .ffa,
+.editors .un-ffa {
     display: block;
     margin: 0.2em;
 }
@@ -202,10 +212,19 @@ img.collection-thumbnail {
     font-size: .8em;
 }
 
+.project.big .title .author {
+    position: absolute;
+    right: 0;
+}
+
 .project.big .title.author {
     position: absolute;
     line-height: 4em;
     margin-left: 1em;
+}
+
+.project.big.embed .title .author {
+    position: relative !important;
 }
 
 .collection,
@@ -248,7 +267,8 @@ img.collection-thumbnail {
     font-size: 1em;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;
+    position: relative !important;
 }
 
 .embed {

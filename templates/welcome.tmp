@@ -19,26 +19,6 @@
 @param pageSize=5
 @param withSearch=false
 
-@param widgetName=totm
-@param header="'Topic of the Month: FRIENDS'"
-@include=grid
-<script>
-    totm_loadPage =
-        function (query, pageSize, pageNumber, onSuccess) {
-            SnapCloud.getCollectionProjects(
-                'snapcloud',
-                pageNumber,
-                pageSize,
-                'Friends',
-                onSuccess,
-                genericError,
-                true // withThumbnail
-            );
-        };
-
-    totm_onLoadPage = latest_onLoadPage;
-    totm_initGrid();
-</script>
 
 @param widgetName=featured
 @param header="'Featured Projects'"
@@ -59,6 +39,27 @@
 
     featured_onLoadPage = latest_onLoadPage;
     featured_initGrid();
+</script>
+
+@param widgetName=snapshot
+@param header="'Snap!Shot 2020'"
+@include=grid
+<script>
+    snapshot_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Shot 2020',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    snapshot_onLoadPage = latest_onLoadPage;
+    snapshot_initGrid();
 </script>
 
 <script>
@@ -183,49 +184,6 @@
         };
 
     latest_initGrid();
-</script>
-
-
-@param widgetName=snapcon
-@param header="'Snap!Con 2020'"
-@include=grid
-<script>
-    snapcon_loadPage =
-        function (query, pageSize, pageNumber, onSuccess) {
-            SnapCloud.getCollectionProjects(
-                'snapcon',
-                pageNumber,
-                pageSize,
-                'Snap!Con 2020',
-                onSuccess,
-                genericError,
-                true // withThumbnail
-            );
-        };
-
-    snapcon_onLoadPage = latest_onLoadPage;
-    snapcon_initGrid();
-</script>
-
-@param widgetName=ytlf
-@param header="'YTLF @ Snap!Con 2020'"
-@include=grid
-<script>
-    ytlf_loadPage =
-        function (query, pageSize, pageNumber, onSuccess) {
-            SnapCloud.getCollectionProjects(
-                'bromagosa',
-                pageNumber,
-                pageSize,
-                'YTLF @ Snap!Con 2020',
-                onSuccess,
-                genericError,
-                true // withThumbnail
-            );
-        };
-
-    ytlf_onLoadPage = latest_onLoadPage;
-    ytlf_initGrid();
 </script>
 
 @param header=''
