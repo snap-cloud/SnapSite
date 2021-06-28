@@ -18,12 +18,31 @@
 
 @param pageSize=5
 @param withSearch=false
-
+@param maxPages=0
 
 @param widgetName=featured
 @param header="'Featured Projects'"
 @include=grid
 <script>
+    onLoadPage = function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+
     featured_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.getCollectionProjects(
@@ -37,7 +56,7 @@
             );
         };
 
-    featured_onLoadPage = latest_onLoadPage;
+    featured_onLoadPage = onLoadPage;
     featured_initGrid();
 </script>
 
@@ -58,7 +77,7 @@
             );
         };
 
-    snapshot_onLoadPage = latest_onLoadPage;
+    snapshot_onLoadPage = onLoadPage;
     snapshot_initGrid();
 </script>
 
@@ -96,7 +115,7 @@
             );
         };
 
-    curated1_onLoadPage = latest_onLoadPage;
+    curated1_onLoadPage = onLoadPage;
     curated1_initGrid();
 </script>
 
@@ -118,7 +137,7 @@
             );
         };
 
-    curated2_onLoadPage = latest_onLoadPage;
+    curated2_onLoadPage = onLoadPage;
     curated2_initGrid();
 </script>
 
@@ -140,7 +159,7 @@
             );
         };
 
-    curated3_onLoadPage = latest_onLoadPage;
+    curated3_onLoadPage = onLoadPage;
     curated3_initGrid();
 </script>
 
@@ -148,7 +167,6 @@
 @param widgetName=latest
 @param maxPages=20
 @include=grid
-@param maxPages=0
 <script>
     latest_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
@@ -163,25 +181,7 @@
             );
         };
 
-    latest_onLoadPage =
-        function (response, targetElement) {
-            response.projects.forEach(function (project) {
-                targetElement.append(
-                    newProjectDiv(
-                        project,
-                        {
-                            size: 'small',
-                            gridSize: 5,
-                            extraFields: {
-                                isPublic: 'ispublic',
-                                isPublished: 'ispublished',
-                                author: 'username'
-                            }
-                        }
-                    )
-                );
-            });
-        };
+    latest_onLoadPage = onLoadPage;
 
     latest_initGrid();
 </script>
