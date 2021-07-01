@@ -60,25 +60,25 @@
     featured_initGrid();
 </script>
 
-@param widgetName=snapshot
-@param header="'Snap!Shot 2020'"
+@param widgetName=totm
+@param header="'Topic of the Month, July: Celebration!'"
 @include=grid
 <script>
-    snapshot_loadPage =
+    totm_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.getCollectionProjects(
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Snap!Shot 2020',
+                'Celebration',
                 onSuccess,
                 genericError,
                 true // withThumbnail
             );
         };
 
-    snapshot_onLoadPage = onLoadPage;
-    snapshot_initGrid();
+    totm_onLoadPage = onLoadPage;
+    totm_initGrid();
 </script>
 
 <script>
@@ -186,4 +186,5 @@
     latest_initGrid();
 </script>
 
+@param maxPages=0
 @param header=''
