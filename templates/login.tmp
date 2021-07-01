@@ -53,7 +53,7 @@
                 username,
                 password,
                 persist,
-                function (username, role, response, previous_username_admin) {
+                function (username, role, previous_username_admin, response) {
                     // TODO: this should handle verification.
                     sessionStorage.previous_username_admin = previous_username_admin;
                     sessionStorage.username = username;

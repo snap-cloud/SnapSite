@@ -186,9 +186,9 @@ function becomeButton (user) {
         function () {
             SnapCloud.login(
                 user.username,
-                0, // password is irrelevant
+                '', // password is irrelevant, but can't be null
                 false, // persist
-                function (username, role, response, previous_username_admin) {
+                function (username, role, previous_username_admin, response) {
                     alert(
                         response.message,
                         function () {
