@@ -48,7 +48,7 @@
     "Share":
         "Partager",
     "Unshare":
-        "Départager",
+        "Annuler le partage",
     "Publish":
         "Publier",
     "Unpublish":
@@ -70,11 +70,11 @@
     "You can now access this project at:":
         "Vous pouvez maintenant accéder ici à ce projet :",
     "Unshare project":
-        "Départager le projet",
+        "Annuler le partage de ce projet",
     "Are you sure you want to stop sharing this project?":
-        "Êtes-vous sûr de vouloir départager ce projet ?",
+        "Êtes-vous sûr de vouloir annuler le partage de ce projet ?",
     "Project unshared":
-        "Projet départagé",
+        "Projet non-partagé",
     "This project is now private.":
         "Ce projet est maintenant privé",
     "Publish project":
@@ -124,7 +124,7 @@
     "Latest projects":
         "Derniers projets",
     "Search Results:":
-        "Resultats de Recherche:",
+        "Résultats de Recherche:",
     "Reset Your Password":
         "Réinitialiser votre mot de passe",
     "Reset My Password":
@@ -154,7 +154,7 @@
     "Log into Snap<em>!</em>":
         "Se connecter à Snap<em>!</em>",
     "keep me logged in":
-        " Garder mon compte connecté",
+        "Rester connecté",
     "Log in":
         "Connexion",
     "* I forgot my password":
@@ -170,7 +170,7 @@
     "Sign Up":
         "S'inscrire",
     "Snap<em>!</em> is a broadly inviting programming language for kids and adults that's also a platform for serious study of inviting computer science.":
-        "Snap<em>!</em> est un langage de programmation accueillant les enfants et les adultes, mais aussi est une plateforme où l'on peut étudier sérieusement l'informatique.",
+        "Snap<em>!</em> est un langage de programmation destiné aux enfants et aux adultes, mais aussi est une plateforme où l'on peut étudier sérieusement l'informatique.",
     "Welcome to Snap":
         "Bienvenue sur Snap",
     "About":
@@ -217,8 +217,8 @@
         "Matériel",
     "Partners, sponsors and collaborators":
         "Partenaires, sponsors et collaborateurs",
-    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "Regardez quelques <a href=\"examples\">exemples</a> ou consultez le <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">manuel de reference</a> pour en savoir plus, vous pouvez aussi commencer directement à programmer dans l'<a href=\"https://snap.berkeley.edu/run\">éditeur</a> !",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">réference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Regardez quelques <a href=\"examples\">exemples</a> ou consultez le <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">manuel de réference</a> pour en savoir plus, vous pouvez aussi commencer directement à programmer dans l'<a href=\"https://snap.berkeley.edu/run\">éditeur</a> !",
     "Discuss this in the forum":
         "En discuter sur le forum",
     "Edit button":
@@ -314,7 +314,7 @@
     "Report":
         "Signaler",
     "Research":
-        "Rechercher",
+        "Recherche",
     "Users":
         "Utilisateurs",
     "The Beauty and Joy of Computing":
@@ -336,7 +336,7 @@
     "Add project to collection":
         "Ajouter ce projet à une collection",
     "Please select the collection to which you want to add this project:":
-        "Sélectionnez la collection ou vous voulez ajouter ce projet :",
+        "Sélectionnez la collection où vous voulez ajouter ce projet :",
     "April":
         "Avril",
     "August":
