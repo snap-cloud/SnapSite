@@ -188,8 +188,12 @@ function loadProjectViewer (project, placeholder) {
         iframe.setAttribute('allow', 'geolocation; microphone; camera');
         iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
         iframe.height = 406;
-        iframe.src = projectURL(project.username, project.projectname) +
-            '&embedMode&noExitWarning&noRun';
+        iframe.src = 
+            projectURL(
+                project.username,
+                project.projectname,
+                getUrlParameter('devVersion') !== null
+            ) + '&embedMode&noExitWarning&noRun';
         placeholder.parentNode.replaceChild(iframe, placeholder);
     }
     if (document.visibilityState == 'visible') {

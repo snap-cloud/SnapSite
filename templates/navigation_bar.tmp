@@ -83,6 +83,8 @@
                     <a class="pure-menu-link clickable"
                         onclick="localizer.setLanguage('en');">English</a>
                     <a class="pure-menu-link clickable"
+                        onclick="localizer.setLanguage('fr');">Français</a>
+                    <a class="pure-menu-link clickable"
                         onclick="localizer.setLanguage('it');">Italiano</a>
                     <a class="pure-menu-link clickable"
                         onclick="localizer.setLanguage('pt');">Português</a>

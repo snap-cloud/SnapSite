@@ -18,28 +18,13 @@
 
 @param pageSize=5
 @param withSearch=false
-
-@param header="'Latest Projects'"
-@param widgetName=latest
-@param maxPages=20
-@include=grid
 @param maxPages=0
-<script>
-    latest_loadPage =
-        function (query, pageSize, pageNumber, onSuccess) {
-            SnapCloud.getPublishedProjectList(
-                null, // no username
-                pageNumber,
-                pageSize,
-                query,
-                onSuccess,
-                genericError,
-                true // withThumbnail
-            );
-        };
 
-    latest_onLoadPage =
-        function (response, targetElement) {
+@param widgetName=featured
+@param header="'Featured Projects'"
+@include=grid
+<script>
+    onLoadPage = function (response, targetElement) {
             response.projects.forEach(function (project) {
                 targetElement.append(
                     newProjectDiv(
@@ -58,34 +43,6 @@
             });
         };
 
-    latest_initGrid();
-</script>
-
-@param widgetName=totm
-@param header="'Topic of the Month: Nature'"
-@include=grid
-<script>
-    totm_loadPage =
-        function (query, pageSize, pageNumber, onSuccess) {
-            SnapCloud.getCollectionProjects(
-                'snapcloud',
-                pageNumber,
-                pageSize,
-                'Nature',
-                onSuccess,
-                genericError,
-                true // withThumbnail
-            );
-        };
-
-    totm_onLoadPage = latest_onLoadPage;
-    totm_initGrid();
-</script>
-
-@param widgetName=featured
-@param header="'Featured Projects'"
-@include=grid
-<script>
     featured_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.getCollectionProjects(
@@ -99,29 +56,29 @@
             );
         };
 
-    featured_onLoadPage = latest_onLoadPage;
+    featured_onLoadPage = onLoadPage;
     featured_initGrid();
 </script>
 
-@param widgetName=snapshot
-@param header="'Snap!Shot 2020'"
+@param widgetName=totm
+@param header="'Topic of the Month, July: Celebration!'"
 @include=grid
 <script>
-    snapshot_loadPage =
+    totm_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.getCollectionProjects(
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Snap!Shot 2020',
+                'Celebration',
                 onSuccess,
                 genericError,
                 true // withThumbnail
             );
         };
 
-    snapshot_onLoadPage = latest_onLoadPage;
-    snapshot_initGrid();
+    totm_onLoadPage = onLoadPage;
+    totm_initGrid();
 </script>
 
 <script>
@@ -158,7 +115,7 @@
             );
         };
 
-    curated1_onLoadPage = latest_onLoadPage;
+    curated1_onLoadPage = onLoadPage;
     curated1_initGrid();
 </script>
 
@@ -180,7 +137,7 @@
             );
         };
 
-    curated2_onLoadPage = latest_onLoadPage;
+    curated2_onLoadPage = onLoadPage;
     curated2_initGrid();
 </script>
 
@@ -202,8 +159,32 @@
             );
         };
 
-    curated3_onLoadPage = latest_onLoadPage;
+    curated3_onLoadPage = onLoadPage;
     curated3_initGrid();
 </script>
 
+@param header="'Latest Projects'"
+@param widgetName=latest
+@param maxPages=20
+@include=grid
+<script>
+    latest_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getPublishedProjectList(
+                null, // no username
+                pageNumber,
+                pageSize,
+                query,
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    latest_onLoadPage = onLoadPage;
+
+    latest_initGrid();
+</script>
+
+@param maxPages=0
 @param header=''
