@@ -60,6 +60,27 @@
     featured_initGrid();
 </script>
 
+@param widgetName=snapcon
+@param header="'Snap!Con 2021'"
+@include=grid
+<script>
+    snapcon_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Con 2021',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+
+    snapcon_onLoadPage = onLoadPage;
+    snapcon_initGrid();
+</script>
+
 @param widgetName=totm
 @param header="'Topic of the Month, July: Celebration!'"
 @include=grid
