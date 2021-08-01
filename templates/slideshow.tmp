@@ -7,11 +7,6 @@
             <img src="img/totm.png" style="width:100%">
         </div>
     </a>
-    <a href="https://snapcon.org" target="_blank">
-        <div class="slide fade">
-            <img src="img/snapcon.png" style="width:100%">
-        </div>
-    </a>
 
     <div class="slide fade">
         <img src="img/snap-byob.png" style="width:100%">
