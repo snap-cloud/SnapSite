@@ -188,7 +188,7 @@ function loadProjectViewer (project, placeholder) {
         iframe.setAttribute('allow', 'geolocation; microphone; camera');
         iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
         iframe.height = 406;
-        iframe.src = 
+        iframe.src =
             projectURL(
                 project.username,
                 project.projectname,
@@ -1170,6 +1170,7 @@ function reasonDialog (item, onSuccess, titleOnly, withNotesField) {
 
 function embedDialog (project) {
     var codeArea = document.createElement('textarea'),
+        urlArea = document.createElement('textarea'),
         form = document.createElement('form');
 
     form.classList.add('embed-options');
@@ -1188,19 +1189,24 @@ function embedDialog (project) {
             key + '" value="' + key + '" checked><label for="' + key +'">' +
             value + '</label></span>';
     });
+    // Add URL only label+text ares
+    // form.appendChild(document.createElement('label').se)
     form.appendChild(codeArea);
+
+    var embedURL = baseURL +
+    '/embed?project=' + encodeURIComponent(project.projectname) +
+    '&user=' + encodeURIComponent(project.username) +
+    (form.elements['title'].checked ? '&showTitle=true' : '') +
+    (form.elements['author'].checked ? '&showAuthor=true' : '') +
+    (form.elements['edit-button'].checked ? '&editButton=true' : '') +
+    (form.elements['pause-button'].checked ? '&pauseButton=true' : '') +
+    (getUrlParameter('devVersion') !== null ? '&devVersion=true' : '')
 
     codeArea.classList.add('embed-code');
     codeArea.set = function () {
         codeArea.value =
             '<iframe allowfullscreen allow="geolocation; microphone; camera" ' +
-            'frameBorder=0 src="' + baseURL +
-            '/embed?project=' + encodeURIComponent(project.projectname) +
-            '&user=' + encodeURIComponent(project.username) +
-            (form.elements['title'].checked ? '&showTitle=true' : '') +
-            (form.elements['author'].checked ? '&showAuthor=true' : '') +
-            (form.elements['edit-button'].checked ? '&editButton=true' : '') +
-            (form.elements['pause-button'].checked ? '&pauseButton=true' : '') +
+            'frameBorder=0 src="' + embedURL +
             '" width="480" height="390"></iframe>';
     };
     codeArea.set();
