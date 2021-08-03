@@ -1171,6 +1171,8 @@ function reasonDialog (item, onSuccess, titleOnly, withNotesField) {
 function embedDialog (project) {
     var codeArea = document.createElement('textarea'),
         urlArea = document.createElement('textarea'),
+        codeLabel = document.createElement('textlabel'),
+        urlLabel = document.createElement('textlabel'),
         form = document.createElement('form');
 
     form.classList.add('embed-options');
@@ -1190,29 +1192,43 @@ function embedDialog (project) {
             value + '</label></span>';
     });
     // Add URL only label+text ares
-    // form.appendChild(document.createElement('label').se)
+    form.appendChild(urlLabel);
+    //
+    form.appendChild(urlArea);
+    form.appendChild(codeLabel);
+    //
     form.appendChild(codeArea);
 
-    var embedURL = baseURL +
-    '/embed?project=' + encodeURIComponent(project.projectname) +
-    '&user=' + encodeURIComponent(project.username) +
-    (form.elements['title'].checked ? '&showTitle=true' : '') +
-    (form.elements['author'].checked ? '&showAuthor=true' : '') +
-    (form.elements['edit-button'].checked ? '&editButton=true' : '') +
-    (form.elements['pause-button'].checked ? '&pauseButton=true' : '') +
-    (getUrlParameter('devVersion') !== null ? '&devVersion=true' : '')
+    function embedURL() {
+        return baseURL +
+            '/embed?project=' + encodeURIComponent(project.projectname) +
+            '&user=' + encodeURIComponent(project.username) +
+            (form.elements['title'].checked ? '&showTitle=true' : '') +
+            (form.elements['author'].checked ? '&showAuthor=true' : '') +
+            (form.elements['edit-button'].checked ? '&editButton=true' : '') +
+            (form.elements['pause-button'].checked ? '&pauseButton=true' : '') +
+            (getUrlParameter('devVersion') !== null ? '&devVersion=true' : '')
+    }
+
+    urlArea.classList.add('embed-code');
+    // add id/name
+    urlArea.value = embedURL();
 
     codeArea.classList.add('embed-code');
+    // add id/name
     codeArea.set = function () {
         codeArea.value =
             '<iframe allowfullscreen allow="geolocation; microphone; camera" ' +
-            'frameBorder=0 src="' + embedURL +
+            'frameBorder=0 src="' + embedURL() +
             '" width="480" height="390"></iframe>';
     };
     codeArea.set();
 
     form.querySelectorAll('input').forEach(function (input) {
-        input.onchange = function () { codeArea.set(); }
+        input.onchange = function () {
+            codeArea.set();
+            urlArea.value = embedURL();
+        }
     });
 
     dialog('Embed Options', form);
