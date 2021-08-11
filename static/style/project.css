@@ -37,7 +37,7 @@
 .collection.small .no-image,
 .collection .info .no-image {
     position: absolute;
-    font-size: 40px; 
+    font-size: 40px;
     opacity: 0.2;
 }
 
@@ -410,24 +410,44 @@ img.collection-thumbnail {
     text-align: center;
 }
 
-.embed-options input {
-    margin-right: 0.5em;
+.embed-options fieldset {
+    margin: 0 3em;
 }
 
-.embed-options .option {
+.embed-options .pure-control-group,
+.embed-options .pure-control-group label {
     text-align: left;
-    margin-left: 3em;
-    display: block;
+    width: auto
+}
+
+.copy-text-element {
+    margin: 0.5em auto
+}
+
+.copy-button {
+    margin: 0 4px;
+    padding: 4px;
+}
+
+.embed-options .pure-control-group.copy-text-element label {
+    width: 12ch; /* "Embed Code" + some space */
 }
 
 .embed-code {
-    margin: 1em auto 0 auto;
-    display: block;
-    height: 85px;
+    font-family: monospace;
+    margin: auto 4px;
     width: 420px;
-    font-size: 0.8em;
-    line-height: 1.2em;
+    font-size: 0.75em;
+    line-height: 1;
     resize: none;
+}
+
+.embed-url {
+    height: 3rem;
+}
+
+.embed-iframe {
+    height: 6rem;
 }
 
 /* Reasons dialog */
