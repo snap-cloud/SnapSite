@@ -1184,7 +1184,7 @@ function embedDialog (project) {
         [ 'edit-button', localizer.localize('Edit button') ],
         [ 'pause-button', localizer.localize('Pause button') ]
     ]).forEach(function (value, key) {
-        form.innerHTML += '<span class="option"><input type="checkbox" name="' +
+        form.innerHTML += '<span class="option"><input type="checkbox" id="' +
             key + '" value="' + key + '" checked><label for="' + key +'">' +
             value + '</label></span>';
     });
