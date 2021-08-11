@@ -1169,13 +1169,10 @@ function reasonDialog (item, onSuccess, titleOnly, withNotesField) {
 };
 
 function embedDialog (project) {
-    var codeArea = document.createElement('textarea'),
-        urlArea = document.createElement('textarea'),
-        codeLabel = document.createElement('textlabel'),
-        urlLabel = document.createElement('textlabel'),
-        form = document.createElement('form');
+    var form = document.createElement('form'),
+        copyURL, copyIFrame;
 
-    form.classList.add('embed-options');
+    form.setAttribute('class', 'embed-options pure-form pure-form-aligned');
     form.innerHTML =
             '<span class="info">' + localizer.localize(
                 'Please select the elements you wish to include in the '+
@@ -1191,13 +1188,6 @@ function embedDialog (project) {
             key + '" value="' + key + '" checked><label for="' + key +'">' +
             value + '</label></span>';
     });
-    // Add URL only label+text ares
-    form.appendChild(urlLabel);
-    //
-    form.appendChild(urlArea);
-    form.appendChild(codeLabel);
-    //
-    form.appendChild(codeArea);
 
     function embedURL() {
         return baseURL +
@@ -1210,29 +1200,62 @@ function embedDialog (project) {
             (getUrlParameter('devVersion') !== null ? '&devVersion=true' : '')
     }
 
-    urlArea.classList.add('embed-code');
-    // add id/name
-    urlArea.value = embedURL();
+    copyURL = labeledCopyTextInput('Embed URL', 'embed-url', embedURL);
+    copyIFrame = labeledCopyTextInput('Embed Code', 'embed-iframe', () => {
+        return `<iframe
+  allowfullscreen allow="geolocation; microphone; camera"
+  src="${embedURL()}"
+  width="480" height="390" frameBorder=0>
+</iframe>`;
+    });
 
-    codeArea.classList.add('embed-code');
-    // add id/name
-    codeArea.set = function () {
-        codeArea.value =
-            '<iframe allowfullscreen allow="geolocation; microphone; camera" ' +
-            'frameBorder=0 src="' + embedURL() +
-            '" width="480" height="390"></iframe>';
-    };
-    codeArea.set();
+    form.appendChild(copyURL);
+    form.appendChild(copyIFrame);
 
     form.querySelectorAll('input').forEach(function (input) {
         input.onchange = function () {
-            codeArea.set();
-            urlArea.value = embedURL();
+            copyURL.update();
+            copyIFrame.update();
         }
     });
 
     dialog('Embed Options', form);
 };
+
+// Returns a label, input pair
+// the main container has a method called update()
+// textUpdate should be a function that can be called to update the value of the input.
+function labeledCopyTextInput (labelText, inputName, textUpdate) {
+    let container = document.createElement('div'),
+        copyButton = document.createElement('button'),
+        label = document.createElement('label'),
+        input = document.createElement('textarea');
+
+    container.setAttribute('class', 'copy-text-element')
+    container.update = () => {
+        input.value = textUpdate();
+    };
+    label.innerText = localizer.localize(labelText);
+    label.setAttribute('for', inputName);
+    container.appendChild(label)
+    copyButton.setAttribute('class', 'pure-button copy-button far fa-clipboard');
+    copyButton.setAttribute('type', 'button');
+    copyButton.setAttribute(
+        'aria-label',
+        localizer.localize(`Click to copy ${labelText}`)
+    );
+    copyButton.onclick = (_event) => {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(input.value)
+        }
+    };
+    container.appendChild(copyButton);
+    input.setAttribute('id', inputName);
+    input.setAttribute('class', `embed-code ${inputName}`);
+    container.appendChild(input);
+    container.update();
+    return container;
+}
 
 function collectProject (project) {
     // Add this project to a user's collection

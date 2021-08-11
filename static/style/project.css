@@ -37,7 +37,7 @@
 .collection.small .no-image,
 .collection .info .no-image {
     position: absolute;
-    font-size: 40px; 
+    font-size: 40px;
     opacity: 0.2;
 }
 
@@ -420,14 +420,31 @@ img.collection-thumbnail {
     display: block;
 }
 
+.copy-text-element {
+    margin: 0.5em auto
+}
 .embed-code {
-    margin: 1em auto 0 auto;
-    display: block;
-    height: 85px;
+    font-family: monospace;
+    /* display: block; */
+    margin: auto 4px;
     width: 420px;
-    font-size: 0.8em;
+    font-size: 0.75em;
     line-height: 1.2em;
     resize: none;
+}
+
+.embed-url {
+    height: 4em;
+}
+
+.embed-iframe {
+    height: 7em;
+}
+
+.copy-button {
+    font-size: 70%;
+    margin: 4px;
+    padding: 4px;
 }
 
 /* Reasons dialog */
