@@ -1170,6 +1170,7 @@ function reasonDialog (item, onSuccess, titleOnly, withNotesField) {
 
 function embedDialog (project) {
     var form = document.createElement('form'),
+        fields = document.createElement('fieldset'),
         copyURL, copyIFrame;
 
     form.setAttribute('class', 'embed-options pure-form pure-form-aligned');
@@ -1178,25 +1179,28 @@ function embedDialog (project) {
                 'Please select the elements you wish to include in the '+
                 'embedded project viewer:') + '</span>';
 
+    form.appendChild(fields);
     new Map([
         [ 'title', localizer.localize('Project title') ],
         [ 'author', localizer.localize('Project author') ],
         [ 'edit-button', localizer.localize('Edit button') ],
         [ 'pause-button', localizer.localize('Pause button') ]
     ]).forEach(function (value, key) {
-        form.innerHTML += '<span class="option"><input type="checkbox" id="' +
-            key + '" value="' + key + '" checked><label for="' + key +'">' +
-            value + '</label></span>';
+        fields.innerHTML += `<div class="pure-control-group">
+            <label for="${key}" class="pure-checkbox">
+            <input type="checkbox" id="${key}" value="${key}" checked>
+            ${value}
+            </label></div>`;
     });
 
     function embedURL() {
         return baseURL +
             '/embed?project=' + encodeURIComponent(project.projectname) +
             '&user=' + encodeURIComponent(project.username) +
-            (form.elements['title'].checked ? '&showTitle=true' : '') +
-            (form.elements['author'].checked ? '&showAuthor=true' : '') +
-            (form.elements['edit-button'].checked ? '&editButton=true' : '') +
-            (form.elements['pause-button'].checked ? '&pauseButton=true' : '') +
+            (fields.elements['title'].checked ? '&showTitle=true' : '') +
+            (fields.elements['author'].checked ? '&showAuthor=true' : '') +
+            (fields.elements['edit-button'].checked ? '&editButton=true' : '') +
+            (fields.elements['pause-button'].checked ? '&pauseButton=true' : '') +
             (getUrlParameter('devVersion') !== null ? '&devVersion=true' : '')
     }
 
@@ -1209,10 +1213,9 @@ function embedDialog (project) {
 </iframe>`;
     });
 
-    form.appendChild(copyURL);
-    form.appendChild(copyIFrame);
-
-    form.querySelectorAll('input').forEach(function (input) {
+    fields.appendChild(copyURL);
+    fields.appendChild(copyIFrame);
+    fields.querySelectorAll('input').forEach(function (input) {
         input.onchange = function () {
             copyURL.update();
             copyIFrame.update();
@@ -1231,7 +1234,7 @@ function labeledCopyTextInput (labelText, inputName, textUpdate) {
         label = document.createElement('label'),
         input = document.createElement('textarea');
 
-    container.setAttribute('class', 'copy-text-element')
+    container.setAttribute('class', 'copy-text-element pure-control-group')
     container.update = () => {
         input.value = textUpdate();
     };
