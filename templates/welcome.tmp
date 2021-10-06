@@ -82,7 +82,7 @@
 </script>
 
 @param widgetName=totm
-@param header="'Topic of the Month, August: Snap! Olympics'"
+@param header="'Topic of the Month, October: Fish'"
 @include=grid
 <script>
     totm_loadPage =
@@ -91,7 +91,7 @@
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Snap! Olympics',
+                'Fish',
                 onSuccess,
                 genericError,
                 true // withThumbnail
