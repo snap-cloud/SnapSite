@@ -32,13 +32,13 @@
                 </form>
             </div>
             <i class="pure-u-1-24"></i>
-            <li hidden="true" class="join pure-menu-item pure-u-1-12">
+            <li hidden class="join pure-menu-item pure-u-1-12">
                 <a localizable class="pure-menu-link"
                     href="sign_up">Join</a></li>
-            <li hidden="true" class="sign-in pure-menu-item pure-u-1-12">
+            <li hidden class="sign-in pure-menu-item pure-u-1-12">
                 <a localizable class="pure-menu-link"
                                href="login">Log In</a></li>
-            <li hidden="true" class="pure-menu-item pure-u-1-6
+            <li hidden class="pure-menu-item pure-u-1-6
                 pure-menu-has-children pure-menu-allow-hover user-menu">
                 <a id="menuLink1" class="pure-menu-link visitor clickable"></a>
                 <ul class="pure-menu-children">
@@ -54,7 +54,7 @@
                     <li class="pure-menu-item">
                         <a localizable class="pure-menu-link my-profile"
                             href="profile">My Profile</a></li>
-                    <li hidden="true" class="pure-menu-item admin">
+                    <li hidden class="pure-menu-item admin">
                         <a localizable class="pure-menu-link"
                             href="admin">Administration</a></li>
                     <hr>
