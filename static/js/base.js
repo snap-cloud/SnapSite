@@ -201,7 +201,7 @@ function beganLoading (selector) {
         loader.className = 'loader';
         loader.innerHTML =
             '<i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>';
-        document.querySelector(selector).append(loader);
+        document.querySelector(selector).appendChild(loader);
     }
 };
 
