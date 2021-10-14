@@ -8,18 +8,18 @@
         <meta name="snap-cloud-domain" location="https://snap.berkeley.edu">
         <link rel="icon" href="favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- External libs, both stylesheets and JS -->
+
+        <!-- Stylesheets -->
         <link rel="stylesheet" href="libs/reset.css">
         <link rel="stylesheet" href="libs/pure-min.css">
+        <link rel="stylesheet" href="style/layout.css">
+        <link rel="stylesheet" href="style/elements.css">
+        <link rel="stylesheet" href="style/classes.css">
         <link rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
             integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
             crossorigin="anonymous">
         <link rel="stylesheet" href="libs/custom-alert.css">
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="style/elements.css">
-        <link rel="stylesheet" href="style/classes.css">
-        <link rel="stylesheet" href="style/layout.css">
         <!-- JS -->
         <script src="js/locale.js"></script>
         <script src="js/base.js"></script>
@@ -28,8 +28,6 @@
         <script src="libs/sha512.js"></script>
     </head>
     <body>
-        <script src="libs/custom-alert.min.js"></script>
-        <script>new customAlert();</script>
         <div id="loading">
             <i class="fas fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
         </div>
@@ -38,6 +36,9 @@
             @content
         </div>
         @include=footer
+
+        <script src="libs/custom-alert.min.js"></script>
+        <script>new customAlert();</script>
 
         <script>
         SnapCloud.genericError = genericError;
