@@ -117,8 +117,8 @@
     for (var i = collections.length - 1; i > 2; i --) {
         collections.splice(Math.floor(Math.random()*collections.length), 1);
     }
-
 </script>
+
 @param widgetName=curated1
 @param header="collections[0]"
 @include=grid
@@ -140,7 +140,6 @@
     curated1_initGrid();
 </script>
 
-</script>
 @param widgetName=curated2
 @param header="collections[1]"
 @include=grid
@@ -162,7 +161,6 @@
     curated2_initGrid();
 </script>
 
-</script>
 @param widgetName=curated3
 @param header="collections[2]"
 @include=grid
