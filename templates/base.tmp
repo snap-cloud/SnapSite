@@ -3,10 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Snap! Build Your Own Blocks</title>
-        <meta name="description" content="The Snap! social platform">
-        <meta name="author" content="Bernat Romagosa">
+        <meta name="description" content="The Snap! Community. Snap! is a blocks-based programming lanugage built by UC Berkeley and used by hundrends of thousands of programmers around the workd.">
+        <meta name="author" content="Bernat Romagosa, Michael Ball, Jens Mönig, Brian Harvey, Jadge Hügle">
+
         <meta name="snap-cloud-domain" location="https://snap.berkeley.edu">
         <link rel="icon" href="favicon.ico">
+        <link rel="canonical" href="https://snap.berkeley.edu" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Stylesheets -->
