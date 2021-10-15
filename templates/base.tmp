@@ -69,6 +69,9 @@
                     document.querySelector('.admin').hidden = false;
                 }
                 fillVisitorFields();
+                if (typeof Sentry !== 'undefined') {
+                    Sentry.setUser({ username: sessionStorage.username });
+                }
             } else {
                 document.querySelector('li.join').hidden = false;
                 document.querySelector('li.sign-in').hidden = false;
@@ -96,5 +99,21 @@
         });
         </script>
         <script src="libs/FileSaver.min.js"></script>
+        <!-- Exception Tracking -->
+        <script>
+            function setupSentry() {
+                    Sentry.init({
+                    dsn:"https://54ac5f8c0cb443aabfab8ced53cf879f@bugs.cs10.org/8",
+                    integrations: [new Sentry.Integrations.BrowserTracing()]
+                });
+
+                if (sessionStorage && sessionStorage.username) {
+                    Sentry.setUser({ username: sessionStorage.username });
+                } else {
+                    Sentry.configureScope(scope => scope.setUser(null));
+                }
+            }
+        </script>
+        <script src='https://browser.sentry-cdn.com/6.12.0/bundle.tracing.min.js' crossorigin="anonymous" onload="setupSentry"></script>
     </body>
 </html>
