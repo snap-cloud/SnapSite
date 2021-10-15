@@ -3,16 +3,34 @@
 
 @include=slideshow
 
-<h1><span localizable>Welcome to Snap</span><em>!</em></h1>
+<h1><span localizable>Welcome to Snap</span><em>!</em><span hidden class="username"></h1>
 
-<div class="indent bigger" localizable>Snap<em>!</em> is a broadly inviting programming language for kids and adults that's also a platform for serious study of computer science.</div>
+<div class="indent bigger" localizable>
+Snap<em>!</em> is a broadly inviting programming language for kids and adults that's also a platform for serious study of computer science.
+</div>
 
 <div class="indent v-spaced">
     <a href="/snap" class="pure-button" localizable>Run Snap<em>!</em> Now</a>
+    <a href="/my_projects" hidden class="pure-button" localizable>My Projects</a>
+    <a href="" hidden class="pure-button my-public-projects" localizable>My Public Page</a>
     <a href="/examples" class="pure-button" localizable>Example Projects</a>
     <a href="/snap/help/SnapManual.pdf" class="pure-button" localizable>Reference Manual</a>
 </div>
 
+<script>
+let username = sessionStorage && sessionStorage.username;
+
+if (username) {
+    let heading = document.querySelector('h1 .username');
+    let publicPage = document.querySelector('.indent a.my-public-projects');
+    heading.hidden = false;
+    heading.innerHTML = `, ${escapeHtml(username)}`;
+    document.querySelector('a[href="/my_projects"]').hidden = false;
+    publicPage.hidden = false;
+    publicPage.href = `/user?user=${encodeURIComponent(username)}`;
+}
+
+</script>
 <br class="v-spaced">
 @param title='"Snap! Build Your Own Blocks"'
 
@@ -117,8 +135,8 @@
     for (var i = collections.length - 1; i > 2; i --) {
         collections.splice(Math.floor(Math.random()*collections.length), 1);
     }
-
 </script>
+
 @param widgetName=curated1
 @param header="collections[0]"
 @include=grid
@@ -140,7 +158,6 @@
     curated1_initGrid();
 </script>
 
-</script>
 @param widgetName=curated2
 @param header="collections[1]"
 @include=grid
@@ -162,7 +179,6 @@
     curated2_initGrid();
 </script>
 
-</script>
 @param widgetName=curated3
 @param header="collections[2]"
 @include=grid

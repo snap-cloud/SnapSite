@@ -10,7 +10,7 @@
 @param header="'Public Collections'"
 @param widgetName="user_collections"
 @include=grid
-<div hidden="true" class="profile">
+<div hidden class="profile">
     <h2 localizable>Admin tools</h2>
 </div>
 <script src="js/dialog.js"></script>
