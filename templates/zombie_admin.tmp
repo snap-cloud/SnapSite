@@ -11,13 +11,13 @@
 @param pageSize=150
 @param withSearch=true
 @param keepIfEmpty=true
-@param widgetName=user_admin
+@param widgetName=zombie_admin
 @include=grid
 @param keepIfEmpty=false
 <script>
     var role = '',
         verified = '';
-    user_admin_loadPage =
+    zombie_admin_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.withCredentialsRequest(
                 'GET',
@@ -37,12 +37,12 @@
             );
         };
 
-    user_admin_onLoadPage =
+    zombie_admin_onLoadPage =
         function (response, targetElement) {
             response.users.forEach(function (user) {
                 targetElement.appendChild(zombieDiv(user));
             });
         };
 
-    user_admin_initGrid();
+    zombie_admin_initGrid();
 </script>
