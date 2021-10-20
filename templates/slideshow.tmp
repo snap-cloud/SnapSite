@@ -2,6 +2,12 @@
 <link rel="stylesheet" href="style/banner.css">
 
 <div class="slideshow">
+    <a href="https://snapcon.org/conferences/snapshot21" target="_blank">
+        <div class="slide fade">
+            <img src="img/snapcon.png" style="width:100%">
+        </div>
+    </a>
+
     <a href="collection.html?user=snapcloud&collection=Fish">
         <div class="slide fade">
             <img src="img/totm.png" style="width:100%">
