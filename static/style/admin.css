@@ -1,4 +1,4 @@
-.user_admin .user {
+.user_admin .user, .zombie_admin .user {
     padding: 0.5em;
     box-sizing: border-box;
 }
@@ -65,16 +65,16 @@
     margin-top: 0.5em;
 }
 
-.user_admin.search {
+.user_admin.search, .zombie_admin.search {
     margin-left: 0.5em;
     width: 220px;
 }
 
-.user_admin.search form {
+.user_admin.search form, .zombie_admin.search form {
     position: relative;
 }
 
-.user_admin.search input {
+.user_admin.search input, .zombie_admin.search input {
     width: 100%;
     height: 2em;
     padding-left: 0.75em;
@@ -84,7 +84,7 @@
     border: 1px solid #AAAAAA;
 }
 
-.user_admin.search i {
+.user_admin.search i, .zombie_admin.search i {
     position: absolute;
     right: 0.45em;
     top: 0.45em;
