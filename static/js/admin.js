@@ -24,8 +24,7 @@ function verifyButton (user) {
                     alert(
                         response,
                         function () {
-                            location.href = 'user?user=' +
-                                encodeURIComponent(user.username);
+                            location.reload();
                         }
                     );
                 },
