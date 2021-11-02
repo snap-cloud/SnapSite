@@ -100,7 +100,7 @@ if (username) {
 </script>
 
 @param widgetName=totm
-@param header="'Topic of the Month, October: Fish'"
+@param header="'Topic of the Month, November: Food'"
 @include=grid
 <script>
     totm_loadPage =
@@ -109,7 +109,7 @@ if (username) {
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Fish',
+                'Food',
                 onSuccess,
                 genericError,
                 true // withThumbnail
