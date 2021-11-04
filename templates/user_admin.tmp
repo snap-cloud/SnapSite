@@ -8,6 +8,7 @@
 <script src="js/admin.js"></script>
 <link rel="stylesheet" href="style/admin.css">
 <h1 localizable>User Administration</h1>
+<div class="user_admin admin-container" style="margin-bottom: 20px;" hidden=true></div>
 @param pageSize=150
 @param withSearch=true
 @param keepIfEmpty=true
@@ -63,5 +64,28 @@
                 }
             ),
             paginator);
+        bar.insertBefore(
+            generalButton(
+                "Bulk Edit",
+                function () {
+                    document.getElementsByName("user_checkbox").forEach(
+                        function(user_checkbox) {
+                            user_checkbox.hidden = !user_checkbox.hidden;
+                        }
+                    );
+                    var admin_container = document.querySelector('.admin-container');
+                    admin_container.hidden = !admin_container.hidden;
+                }
+            ),
+            paginator);
+
+        var admin_select_ctrls = document.querySelector('.admin-container');
+        admin_select_ctrls.appendChild(
+            generalButton(
+                "Verify Selected",
+                () => { verifyMultipleUsers(document.getElementsByName("user_checkbox")); }
+            )
+        );
+
     });
 </script>

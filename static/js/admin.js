@@ -1,3 +1,18 @@
+function generalButton (label, action, extraClass) {
+    var buttonDiv = document.createElement('div'),
+        button = document.createElement('a');
+    button.setAttribute('localizable', true);
+    button.classList.add('pure-button');
+    button.classList.add(label.toLowerCase().replace(/\s/g,''));
+    if (extraClass) {
+        button.classList.add(extraClass);
+    }
+    button.innerHTML = localizer.localize(label);
+    button.onclick = action;
+    buttonDiv.appendChild(button);
+    return buttonDiv;
+}
+
 function userButton (user, label, action, extraClass) {
     var button = document.createElement('a');
     button.setAttribute('localizable', true);
@@ -32,6 +47,96 @@ function verifyButton (user) {
                 'Could not verify user'
             );
         }
+    );
+};
+
+function verifyUserAutomated (username, onSuccess, onError) {
+    SnapCloud.withCredentialsRequest(
+        'GET',
+        '/users/' + encodeURIComponent(username) +
+            '/verify_user/0', // token is irrelevant for admins
+        onSuccess,
+        onError,
+        '',
+        true
+    );
+};
+
+function htmlListUsers(userList, label) {
+    if (userList.length == 0) {
+        return "";
+    }
+    var reponse_text = "<p>The following users were " + label + ":</p>\n";
+    reponse_text += "<ul style=\"padding: 0;\">\n";
+    for (username of userList) {
+        // Failure usernames come with a reason of failure also: username - reason
+        reponse_text += "<li>" + username + "</li>\n";
+    }
+    reponse_text += "</ul>\n";
+    return reponse_text;
+}
+
+function verifyMultipleUsers(checkboxCollection) {
+    var already_verified_users = [];
+    var successful_users = [];
+    var failed_users = [];
+    const promises = [];
+    checkboxCollection.forEach(
+        function(user_checkbox) {
+            const promise = new Promise((resolve) => {
+                if (user_checkbox.checked) {
+                    var username = user_checkbox.value;
+                    verifyUserAutomated(username,
+                        function(response) {
+                            // Success
+                            try {
+                                response = JSON.parse(response);
+                            } catch {}
+                            if (response.status_code == "Already Verified") {
+                                already_verified_users.push(username);
+                            } else if (response.status_code == "New Verified") {
+                                successful_users.push(username);
+                            } else {
+                                console.log("Invalid response status code", response);
+                            }
+                            resolve();
+                        },
+                        function(response) {
+                            // Failure
+                            failed_users.push(username + " - " + response);
+                            resolve();
+                        }
+                    );
+                } else {
+                    // Nothing happens to users that are not checked
+                    resolve();
+                }
+            });
+            promises.push(promise);
+        }
+    );
+    Promise.all(promises).then(() => {
+        var reponse_text = ""
+
+        reponse_text += htmlListUsers(successful_users, "successfully verified");
+        reponse_text += htmlListUsers(already_verified_users, "already verified");
+        reponse_text += htmlListUsers(failed_users, "not successfully verified (failed verification)");
+
+        alert(
+            reponse_text,
+            () => { location.reload(); }
+        );
+    });
+};
+
+function verifyUser (username, onSuccess) {
+    SnapCloud.withCredentialsRequest(
+        'GET',
+        '/users/' + encodeURIComponent(username) +
+            '/verify_user/0', // token is irrelevant for admins
+        onSuccess,
+        genericError,
+        'Could not verify user'
     );
 };
 
@@ -338,6 +443,9 @@ function setRole (user, role) {
 
 function basicUserDiv (user) {
     var userWrapperDiv = document.createElement('div'),
+        userInfoCheckboxSpan = document.createElement('span'),
+        userInfoDiv = document.createElement('div'),
+        checkboxDiv = document.createElement('div'),
         detailsDiv = document.createElement('div'),
         usernameAnchor = userAnchor(user.username),
         emailSpan = document.createElement('span'),
@@ -352,16 +460,29 @@ function basicUserDiv (user) {
         user.project_count;
     joinedSpan.innerHTML = '<strong localizable>Joined in </strong>' +
         formatDate(user.created);
+    
+    checkboxDiv.innerHTML = '<input type="checkbox" value="' + user.username + '" name="user_checkbox" hidden=true>';
 
     [ usernameAnchor, emailSpan, idSpan, projectCountSpan, joinedSpan ].forEach(
-        function (e) { detailsDiv.appendChild(e); }
+        function (e) { userInfoDiv.appendChild(e); }
     );
 
     userWrapperDiv.classList.add('user');
     userWrapperDiv.classList.add('pure-u-1-2');
+    userInfoCheckboxSpan.classList.add('userInfoCheckbox');
+    userInfoDiv.classList.add('userInfo');
+    checkboxDiv.classList.add('checkbox');
     detailsDiv.classList.add('details');
-
-    userWrapperDiv.appendChild(detailsDiv);
+    
+    [ userInfoDiv, checkboxDiv ].forEach(
+        function (e) { userInfoCheckboxSpan.appendChild(e); }
+    );
+    
+    userInfoDiv.style.float = "left";
+    checkboxDiv.style.float = "right";
+    
+    detailsDiv.appendChild(userInfoCheckboxSpan);
+    userWrapperDiv.appendChild(detailsDiv)
 
     return userWrapperDiv;
 };
@@ -369,11 +490,13 @@ function basicUserDiv (user) {
 function userDiv (user) {
     var userWrapperDiv = basicUserDiv(user);
         detailsDiv = userWrapperDiv.querySelector('.details'),
+        userInfoDiv = userWrapperDiv.querySelector('.userInfo'),
+        detailsAndCheckbox = document.createElement('div'),
         roleSpan = document.createElement('span'),
         roleSelect = document.createElement('select'),
         buttonsDiv = document.createElement('div');
 
-    roleSpan.innerHTML = '<strong localizable>Role</strong>:';
+    roleSpan.innerHTML = '<strong localizable>Role</strong>:' + ' ';
     ['standard', 'reviewer', 'moderator', 'admin', 'banned'].forEach(
         function (role) {
             var roleOption = document.createElement('option');
@@ -393,9 +516,11 @@ function userDiv (user) {
 
     buttonsDiv.classList.add('buttons');
 
-    [ roleSpan, buttonsDiv ].forEach(
-        function (e) { detailsDiv.appendChild(e); }
+    [ roleSpan ].forEach(
+        function (e) { userInfoDiv.appendChild(e); }
     );
+
+    detailsDiv.appendChild(buttonsDiv);
 
     if (user.role == 'admin') {
         detailsDiv.classList.add('admin');
