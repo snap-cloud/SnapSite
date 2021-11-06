@@ -92,9 +92,9 @@ function verifyMultipleUsers(checkboxCollection) {
                             try {
                                 response = JSON.parse(response);
                             } catch {}
-                            if (response.status_code == "Already Verified") {
+                            if (response.state_message == "Already Verified") {
                                 already_verified_users.push(username);
-                            } else if (response.status_code == "New Verified") {
+                            } else if (response.state_message == "New Verified") {
                                 successful_users.push(username);
                             } else {
                                 console.log("Invalid response status code", response);
