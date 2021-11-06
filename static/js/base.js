@@ -219,14 +219,12 @@ function doneLoading (selector) {
 // Other goodies
 
 function formatDate (dateString) {
-    dateString = dateString + ':00';
-        
     // Replaces the first instance of a space,
     //  and replace with "T" to fit ISO 8601,
     //  which all modern browsers support
     // Example: YYYY-MM-DD HH:MM:SS-TZ:tz --> YYYY-MM-DDTHH:MM:SS-TZ:tz
     //  Note: TZ:tz is Hour and Minutes of Time Zone
-    dateString = dateString.replace(' ', 'T');
+    dateString = `${dateString}:00`.replace(' ', 'T');
     
     return (new Date(dateString)).toLocaleString(
         localizer.locale || 'en-us',
