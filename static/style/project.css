@@ -203,7 +203,9 @@ img.collection-thumbnail {
 }
 
 .collection.small span.is-public,
-.project.small span.is-public {
+.project.small span.is-public,
+.collection.small span.is-published,
+.project.small span.is-published {
     margin-right: 0.5em;
 }
 
