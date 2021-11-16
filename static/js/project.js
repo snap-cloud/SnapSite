@@ -35,8 +35,12 @@ function itemDiv (item, itemType, ownerUsernamePath, nameField,
     if (extraFields) {
         Object.keys(extraFields).forEach(function (fieldName) {
             var attribute = extraFields[fieldName];
+            var item_access = 'item';
+            if (attribute) {
+                item_access += '.' + attribute;
+            }
             div.appendChild(
-                window[fieldName + 'Span'](eval('item.' + attribute))
+                window[fieldName + 'Span'](eval(item_access))
             );
         });
     }
