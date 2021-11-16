@@ -157,6 +157,23 @@ function isPublishedSpan (isPublished) {
     return span;
 };
 
+function projectCodeButtonSpan (project) {
+    var span = document.createElement('span');
+    var tooltip = 'See Code';
+
+    span.classList.add('project-code-button');
+    span.innerHTML = '<small><a target="_blank" rel="noopener noreferrer" href="' +
+        projectURL(
+            project.username,
+            project.projectname,
+            getUrlParameter('devVersion') !== null) +
+        '&editMode&noRun' +
+        '"><i class="fas fa-code' +
+        '" aria-hidden="true"></i></small></a>';
+    span.title = localizer.localize(tooltip);
+    return span;
+};
+
 function projectURL (author, project, devVersion) {
     return (devVersion ? snapDevURL : snapURL) +
         '#present:Username=' + encodeURIComponent(author) +
