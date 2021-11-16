@@ -461,7 +461,19 @@ function basicUserDiv (user) {
     joinedSpan.innerHTML = '<strong localizable>Joined in </strong>' +
         formatDate(user.created);
     
-    checkboxDiv.innerHTML = '<input type="checkbox" value="' + user.username + '" name="user_checkbox" hidden=true>';
+    checkboxDiv.innerHTML = '<input type="checkbox" value="' + user.username +
+                             '" name="user_checkbox" hidden=true>';
+    checkboxDiv.oncontextmenu = function (e) {
+        e.preventDefault();
+        if (document.getElementById("contextMenu").style.display == "block") {
+            hideMenu();
+        } else {
+            var menu = document.getElementById("contextMenu")
+            menu.style.display = 'block';
+            menu.style.left = e.pageX + "px";
+            menu.style.top = e.pageY + "px";
+        }
+    };
 
     [ usernameAnchor, emailSpan, idSpan, projectCountSpan, joinedSpan ].forEach(
         function (e) { userInfoDiv.appendChild(e); }
