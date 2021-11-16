@@ -34,6 +34,7 @@
                                 extraFields: {
                                     isPublic: 'shared',
                                     isPublished: 'published',
+                                    projectCodeButton: '',
                                     author: 'username'
                                 }
                             }
