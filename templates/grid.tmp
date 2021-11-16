@@ -29,20 +29,8 @@
                 <input type="text" name="query">
                 <i class="fas fa-search"></i>
             </form>
-            <div id="contextMenu" class="checkbox-context-menu" style="display:none">
-                <ul>
-                    <li style="pointer-events: none;">Select</li>
-                    <li><a href="javascript:set_checkboxes(true)">All</a></li>
-                    <li><a href="javascript:set_checkboxes(false)">None</a></li>
-                </ul>
-            </div>
-            <script>
-                function hideMenu() {
-                    document.getElementById(
-                        "contextMenu").style.display = "none"
-                }
-                document.onclick = hideMenu;
 
+            <script>
                 var ${widgetName}_page = 1,
                     ${widgetName}_totalPages = 1,
                     ${widgetName}_maxPages = [${maxPages}][0] || 0, // 0 = no limit
@@ -131,15 +119,6 @@
                         callback.call(this);
                     }
                 };
-
-                function set_checkboxes(value) {
-                    document.getElementsByName("user_checkbox").forEach(
-                        function(e) {
-                            e.checked = value;
-                        }
-                    );
-                }
-
             </script>
         </div>
     @include=paginator

@@ -1,0 +1,23 @@
+<div id="contextMenu" class="checkbox-context-menu" style="display:none">
+    <ul>
+        <li style="pointer-events: none;">Select</li>
+        <li><a href="javascript:set_checkboxes(true)">All</a></li>
+        <li><a href="javascript:set_checkboxes(false)">None</a></li>
+    </ul>
+</div>
+
+<script>
+    function hideMenu() {
+        document.getElementById(
+            "contextMenu").style.display = "none"
+    }
+    document.onclick = hideMenu;
+
+    function set_checkboxes(value) {
+        document.getElementsByName("user_checkbox").forEach(
+            function(e) {
+                e.checked = value;
+            }
+        );
+    }
+</script>

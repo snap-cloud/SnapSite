@@ -89,3 +89,4 @@
 
     });
 </script>
+@include=checkbox_contextmenu
