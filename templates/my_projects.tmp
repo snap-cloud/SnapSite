@@ -29,7 +29,8 @@
                             gridSize: 5,
                             extraFields: {
                                 isPublic: 'ispublic',
-                                isPublished: 'ispublished'
+                                isPublished: 'ispublished',
+                                projectCodeButton: ''
                             }
                         }
                     )
