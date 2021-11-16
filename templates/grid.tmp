@@ -29,6 +29,7 @@
                 <input type="text" name="query">
                 <i class="fas fa-search"></i>
             </form>
+
             <script>
                 var ${widgetName}_page = 1,
                     ${widgetName}_totalPages = 1,
@@ -118,7 +119,6 @@
                         callback.call(this);
                     }
                 };
-
             </script>
         </div>
     @include=paginator
