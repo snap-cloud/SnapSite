@@ -39,6 +39,16 @@ function fillVisitorFields () {
     }
 };
 
+function fillAliasAlert () {
+    if (sessionStorage.username && sessionStorage.previous_username_admin) {
+        document.querySelectorAll('.aliasAlert.warning.message').forEach(function (each) {
+            each.innerHTML = escapeHtml(
+                    'Admin account ' + sessionStorage.previous_username_admin + ' is logged in as ' + sessionStorage.username
+                );
+        });
+    }
+};
+
 function fillUsernameFields () {
     var username = pageUser();
     if (username) {
