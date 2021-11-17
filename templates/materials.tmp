@@ -19,7 +19,7 @@
 </ul>
 <h2>Manuals and documentation</h2>
 <ul>
-    <li><a href="https://snap.berkeley.edu/SnapManual.pdf"
+    <li><a href="https://snap.berkeley.edu/snap/help/SnapManual.pdf"
             >Reference Manual</a></li>
     <li><a href="https://www.sap.com/about/young-thinkers.html#beginners"
             >Learning Modules for Beginners</a> by SAP Young Thinkers</li>
@@ -39,4 +39,47 @@
         <a href="http://ddi-mod.uni-goettingen.de/ComputerScienceWithSnap.pdf"
             >Computer Science with Snap<em>!</em></a>, by Eckart Modrow
     </li>
-</ul>
+    <li>
+        <a href="http://programmieren.joachim-wedekind.de/logo-classics/"
+            >The Beauty of Turtle Graphics</a>, by Joachim Wedekind (in German and English)
+    </li>
+    <li>
+        <a href="http://opticals.joachim-wedekind.de/das-buch/"
+           >Optische Täuschungen animieren für Dummies Junior. Eine Einführung mit Snap<em>!</em></a>, by Joachim Wedekind (in German)
+    </li>
+    <li>
+        <a href="https://www.risingstars-uk.com/series/switched-on-computing-learn-to-code/products/learn-to-code-practice-book-3"
+            >Learn to Code Practice Book 3</a>, by Claire Lotriet
+    </li>
+    <li>
+        <a href="https://www.shuchigrover.com/atozk12cs/"
+            >Computer Science in K-12: An A-To-Z Handbook on Teaching Programming</a>, by Shuchi Grover
+    </li>
+    <li>
+        <a href="https://www.lulu.com/en/en/shop/georgia-gouros/an-introduction-to-algorithmic-thinking-algorithmics-hess-student-guide/paperback/product-1nz9vwp8.html?page=1&pageSize=4"
+            >An Introduction to Algorithmic Thinking - Algorithmics (HESS) Student Guide</a>, by Georgia Gouros
+    </li>
+    <li>
+        <a href="https://cmkpress.com/learning-to-code-an-invitation-to-computer-science-through-the-art-and-patterns-of-nature-lynx-and-snap-editions/"
+           >Learning to Code – An Invitation to Computer Science Through the Art and Patterns of Nature (Snap<em>!</em> Edition)</a>, by David D. Thornburg
+    </li>
+    <li>
+        <a href="https://letsgetcodingbook.co.uk/online-bookshops.html"
+            >Let's Get Coding</a>, by Philip Searle
+    </li>
+    <li>
+        <a href="http://www.abhayjoshi.net/spark/snap/bsnap.pdf"
+            >Learn CS Concepts With Snap!</a>, by Abhay B. Joshi
+    </li>
+    <li>
+        <a href="http://www.abhayjoshi.net/spark/snap/book0s/PracticeWithSnap.pdf"
+           >Practice CS Concepts with Snap<em>!</em>: A companion to "Learn CS Concepts with Snap"</a>, by Abhay B. Joshi
+    </li>
+    <li>
+        <a href="http://www.abhayjoshi.net/spark/snap/psnap.pdf"
+           >Pen art in Snap<em>!</em> programming</a>, by Abhay B. Joshi
+    </li>
+    <li>
+        <a href="http://www.abhayjoshi.net/spark/snap/asnap.pdf"
+           >Adventures in Snap<em>!</em> Programming</a>, by Abhay B. Joshi
+    </li>

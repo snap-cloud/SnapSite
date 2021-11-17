@@ -1,0 +1,380 @@
+{
+    "Welcome to Snap<em>!</em>":
+        "Bienvenue sur Snap<em>!</em>",
+    "Run Snap<em>!</em>":
+        "Lancer Snap<em>!</em>",
+    "Explore":
+        "Explorer",
+    "Forum":
+        "Forum",
+    "Join":
+        "Rejoindre",
+    "Log In":
+        "Se connecter",
+    "Language":
+        "Langue",
+    "My Projects":
+        "Mes projets",
+    "My Public Page":
+        "Ma page publique",
+    "My Profile":
+        "Mon profil",
+    "Change Password":
+        "Changer le mot de passe",
+    "Log Out":
+        "Déconnexion",
+    "administrator":
+        "administrateur",
+    "Joined in ":
+        "Participer à ",
+    "Email: ":
+        "Adresse e-mail :",
+    "Change Your Password":
+        "Changer votre mot de passe",
+    "Current Password":
+        "Mot de passe actuel",
+    "New Password":
+        "Nouveau mot de passe",
+    "Repeat New Password":
+        "Réécrire le nouveau mot de passe",
+    "Change My Password":
+        "Changer mon mot de passe",
+    "Unknown error":
+        "Erreur inconnue",
+    "Edit":
+        "Modifier",
+    "Download":
+        "Télécharger",
+    "Share":
+        "Partager",
+    "Unshare":
+        "Annuler le partage",
+    "Publish":
+        "Publier",
+    "Unpublish":
+        "Dépublier",
+    "Delete":
+        "Supprimer",
+    "Share project":
+        "Partager le projet",
+    "Are you sure you want to share this project?":
+        "Êtes-vous sûr de vouloir partager ce projet ?",
+    "Cancel":
+        "Annuler",
+    "Ok":
+        "Ok",
+    "OK":
+        "OK",
+    "Project shared":
+        "Projet partagé",
+    "You can now access this project at:":
+        "Vous pouvez maintenant accéder ici à ce projet :",
+    "Unshare project":
+        "Annuler le partage de ce projet",
+    "Are you sure you want to stop sharing this project?":
+        "Êtes-vous sûr de vouloir annuler le partage de ce projet ?",
+    "Project unshared":
+        "Projet non-partagé",
+    "This project is now private.":
+        "Ce projet est maintenant privé",
+    "Publish project":
+        "Publier le projet",
+    "Are you sure you want to publish this project<br>and make it visible in the Snap<em>!</em> website?":
+        "Êtes-vous sûr de vouloir publier ce projet et le rendre visible sur le site web de Snap<em>!</em> ?",
+    "Project published":
+        "Projet publié",
+    "This project is now listed in the Snap<em>!</em> site.":
+        "Ce projet figure maintenant sur le site de Snap<em>!</em>.",
+    "Unpublish project":
+        "Dépublier le projet",
+    "Are you sure you want to unpublish this project<br>and hide it from the Snap<em>!</em> website?":
+        "Êtes-vous sûr de vouloir dépublier ce projet<br>et le cacher sur le site web de Snap<em>!</em>?",
+    "Project unpublished":
+        "Projet dépublié",
+    "This project is not listed in the Snap<em>!</em> site anymore.":
+        "Ce projet ne figure plus sur le site de Snap<em>!</em>.",
+    "Delete project":
+        "Supprimer le projet",
+    "Are you sure you want to delete this project?":
+        "Êtes-vous sûr de vouloir supprimer ce projet",
+    "WARNING! This action cannot be undone!":
+        "ATTENTION ! Cette action est irréversible !",
+    "This project has been deleted.":
+        "Ce projet a été supprimé",
+    "Project deleted":
+        "Projet supprimé",
+    "This project has no notes":
+        "Ce projet n'a pas de notes",
+    " by ":
+        " par ",
+    "public":
+        "public",
+    "private":
+        "privé",
+    "'s public page":
+        " : page publique",
+    "This item can be shared via URL":
+        "Cet élément peut être partagé via URL",
+    "This item is private":
+        "Cet élément est privé",
+    "This item is published":
+        "Cet élément est public",
+    "This item is unpublished":
+        "Cet élément est dépublié",
+    "Latest projects":
+        "Derniers projets",
+    "Search Results:":
+        "Résultats de Recherche:",
+    "Reset Your Password":
+        "Réinitialiser votre mot de passe",
+    "Reset My Password":
+        "Réinitialiser mon mot de passe",
+    "A link to reset your password has been<br>sent to your email account.":
+        "Un lien pour réinitialiser votre mot de passe a été<br>envoyé à l'adresse e-mail utilisée pour ce compte.",
+    "Create a Snap<em>!</em> account":
+        "Créer un compte Snap<em>!</em>",
+    "Username":
+        "Nom d'utilisateur",
+    "Password":
+        "Mot de passe",
+    "Repeat Password":
+        "Réécrivez le mot de passe",
+    "Email address":
+        "Adresse e-mail",
+    "I have read and agree to the ":
+        "J'ai lu et je suis d'accord avec les ",
+    "Terms of Service":
+        "Conditions d'utilisation",
+    " and the ":
+        " et avec l' ",
+    "Privacy Agreement":
+        "Accord sur la confidentialité",
+    "Sign up":
+        "S'inscrire",
+    "Log into Snap<em>!</em>":
+        "Se connecter à Snap<em>!</em>",
+    "keep me logged in":
+        "Rester connecté",
+    "Log in":
+        "Connexion",
+    "* I forgot my password":
+        "* J'ai oublié mon mot de passe",
+    "Administration":
+        "Administration",
+    "Contact Us":
+        "Contactez-nous",
+    "DMCA":
+        "DMCA",
+    "Privacy":
+        "Politique de confidentialité",
+    "Sign Up":
+        "S'inscrire",
+    "Snap<em>!</em> is a broadly inviting programming language for kids and adults that's also a platform for serious study of inviting computer science.":
+        "Snap<em>!</em> est un langage de programmation destiné aux enfants et aux adultes, mais aussi est une plateforme où l'on peut étudier sérieusement l'informatique.",
+    "Welcome to Snap":
+        "Bienvenue sur Snap",
+    "About":
+        "À propos",
+    "About Snap<em>!</em>":
+        "À propos de Snap<em>!</em>",
+    "Credits":
+        "Remerciements",
+    "Enjoy the preview, and thank you for your understanding!":
+        "Profitez de l'aperçu, et merci pour votre compréhension !",
+    "Examples":
+        "Exemples",
+    "Extensions":
+        "Extensions",
+    "Latest Projects":
+        "Derniers projets",
+    "Learning":
+        "Apprendre",
+    "Legal":
+        "Juridique",
+    "Mirrors":
+        "Répliques",
+    "Partners":
+        "Partenaires",
+    ", published on ":
+        ", publié sur ",
+    "Reference Manual":
+        "Manuel de Reference",
+    "Source Code":
+        "Code Source",
+    "Support":
+        "Aide",
+    "Technical Requirements":
+        "Applications requises",
+    "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
+        "C'est un aperçu du prochain site web social Snap<em>!</em>. Veuillez garder à l'esprit que ce site est actuellement en développement et qu'il continuera à évoluer au cours des prochains mois. La plupart des fonctionnalités sont encore inachevées.",
+    "Tools":
+        "Outils",
+    "Blog":
+        "Blog",
+    "I have read and agree to the <a target=\"_blank\" href=\"tos\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy\">Privacy Agreement</a>":
+        "J'ai lu et j'accepte les <a target=\"_blank\" href=\"tos\">Conditions d'utilisation</a> et l'<a target=\"_blank\" href=\"privacy\">Accord sur la confidentialité</a>",
+    "Materials":
+        "Matériel",
+    "Partners, sponsors and collaborators":
+        "Partenaires, sponsors et collaborateurs",
+    "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
+        "Regardez quelques <a href=\"examples\">exemples</a> ou consultez le <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">manuel de réference</a> pour en savoir plus, vous pouvez aussi commencer directement à programmer dans l'<a href=\"https://snap.berkeley.edu/run\">éditeur</a> !",
+    "Discuss this in the forum":
+        "En discuter sur le forum",
+    "Edit button":
+        "Bouton d'édition",
+    "Emails do not match":
+        "Les emails ne correspondent pas",
+    "Embed":
+        "Intégrer",
+    "Embed Options":
+        "Options d'intégration",
+    "Please make sure that you have entered your<br>email twice and that both emails match.":
+        "Veuillez vérifier que vous avez saisi votre<br>e-mail deux fois et que les deux emails correspondent.",
+    "Please select the elements you wish to include in the embedded project viewer:":
+        "Veuillez sélectionner les éléments que vous souhaitez inclure dans la vue du projet intégré :",
+    "Project author":
+        "Auteur du projet",
+    "Project title":
+        "Nom du projet",
+    "Repeat email address":
+        "Réécrire l'email",
+    "Send a message":
+        "Envoyer un message",
+    "admin":
+        "admin",
+    "Administrator":
+        "Administrateur",
+    "Are you sure you want to delete user":
+        "Êtes-vous sûr de vouloir supprimer l'utilisateur",
+    "Are you sure you want to delete your user account?":
+        "Êtes-vous sûr de vouloir supprimer votre compte ?",
+    "Ban":
+        "Banni",
+    "banned":
+        "banni",
+    "Become":
+        "Devenir",
+    "Change Email":
+        "Changer l'email",
+    "Change My Email":
+        "Changer mon email",
+    "Delete my Account":
+        "Supprimmer mon compte",
+    "Delete user":
+        "Supprimer l'utilisateur",
+    "Delete your Account":
+        "Supprimer votre compte",
+    "moderator":
+        "modérateur",
+    "New Email":
+        "Nouvel e-mail",
+    "Repeat New Email":
+        "Réécrire le nouvel e-mail",
+    "reviewer":
+        "critique",
+    "Role":
+        "Rôle",
+    "standard":
+        "standard",
+    "User Administration":
+        "Administration utilisateur",
+    "User is not verified":
+        "Utilisateur non-vérifié",
+    "Verify":
+        "Verifier",
+    "Add to Collection":
+        "Ajouter à la Collection",
+    "Admin tools":
+        "Outils administratifs",
+    "Collections":
+        "Collections",
+    "Collections containing this project":
+        "Collections contenant ce projet",
+    "Art Projects":
+        "Projets d'Art",
+    "Fractals":
+        "Formes",
+    "Games":
+        "Jeux",
+    "Science Projects":
+        "Projets Scientifiques",
+    "Featured Projects":
+        "Projets Présentés",
+    "Flagged Projects":
+        "Projets Signalés",
+    "My Collections":
+        "Mes Collections",
+    "Offline Version":
+        "Version hors-ligne",
+    "Projects":
+        "Projets",
+    "Remixes":
+        "Remixes",
+    "Report":
+        "Signaler",
+    "Research":
+        "Recherche",
+    "Users":
+        "Utilisateurs",
+    "The Beauty and Joy of Computing":
+        "La beauté et la joie de l'informatique",
+    "New Collection":
+        "Nouvelle Collection",
+    "This collection is public":
+        "Cette collection est publique",
+    "Report this project":
+        "Signaler ce projet",
+    "Are you sure you want to flag this project as inappropriate?":
+        "Êtes-vous sûr de vouloir signaler ce projet comme inapproprié ?",
+    "Flag project":
+        "Signaler ce projet",
+    "This project has been flagged.":
+        "Ce projet a été signalé",
+    "Project flagged":
+        "Projet signalé",
+    "Add project to collection":
+        "Ajouter ce projet à une collection",
+    "Please select the collection to which you want to add this project:":
+        "Sélectionnez la collection où vous voulez ajouter ce projet :",
+    "April":
+        "Avril",
+    "August":
+        "Août",
+    "Created:":
+        "Créé :",
+    "December":
+        "Décembre",
+    "Email address of parent or guardian":
+        "Adresse e-mail du parent ou du responsable légal",
+    "February":
+        "Février",
+    "January":
+        "Janvier",
+    "July":
+        "Juillet",
+    "June":
+        "Juin",
+    "Last updated:":
+        "Dernière modification :",
+    "March":
+        "Mars",
+    "May":
+        "Mai",
+    "Month of Birth":
+        "Mois de naissance",
+    "November":
+        "Novembre",
+    "October":
+        "Octobre",
+    " or before":
+        " ou avant",
+    "Published:":
+        "Publié :",
+    "See Code":
+        "Voir le code",
+    "September":
+        "Septembre",
+    "Shared:":
+        "Partagé :"
+}

@@ -1,4 +1,5 @@
 var snapURL = location.origin + '/snap/snap.html',
+    snapDevURL = location.origin + '/snapsource/dev/snap.html',
     baseURL = location.href.replace(/(.*)\/.*/, '$1'),
     modules = [], // compatibility with cloud.js
     nop = function () {},
@@ -166,8 +167,9 @@ function isPublishedSpan (isPublished) {
     return span;
 };
 
-function projectURL (author, project) {
-    return snapURL + '#present:Username=' + encodeURIComponent(author) +
+function projectURL (author, project, devVersion) {
+    return (devVersion ? snapDevURL : snapURL) +
+        '#present:Username=' + encodeURIComponent(author) +
         '&ProjectName=' + encodeURIComponent(project);
 };
 
@@ -209,7 +211,7 @@ function beganLoading (selector) {
         loader.className = 'loader';
         loader.innerHTML =
             '<i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>';
-        document.querySelector(selector).append(loader);
+        document.querySelector(selector).appendChild(loader);
     }
 };
 

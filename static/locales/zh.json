@@ -1,28 +1,28 @@
 {
     "Welcome to Snap<em>!</em>":
-        "欢迎使用Snap!",
+        "欢迎使用Snap<em>!</em>",
     "Run Snap<em>!</em>":
-        "运行Snap!",
+        "运行Snap<em>!</em>",
     "Explore":
-        "探索",
+        "其他人的作品",
     "Forum":
         "论坛",
     "Join":
-        "加入",
+        "注册",
     "Log In":
         "登录",
     "Language":
         "语言",
     "My Projects":
-        "我的项目",
+        "我的作品",
     "My Public Page":
         "我的展示页",
     "My Profile":
-        "我的资料",
+        "我的个人主页",
     "Joined in ":
-        "已加入",
+        "已注册",
     "Email: ":
-        "电邮: ",
+        "电子邮箱地址: ",
     "Change Your Password":
         "更改您的密码",
     "Current Password":
@@ -68,17 +68,17 @@
     "Publish project":
         "发布项目",
     "Are you sure you want to publish this project<br>and make it visible in the Snap<em>!</em> website?":
-        "确认要公开这个项目并显示在Snap!网站上么？",
+        "确认要公开这个项目并显示在Snap<em>!</em>网站上么？",
     "Project published":
         "项目已发布",
     "Unpublish project":
         "取消发布项目",
     "Are you sure you want to unpublish this project<br>and hide it from the Snap<em>!</em> website?":
-        "确认不再公开这个项目并且在Snap!网站上也不再可见么？",
+        "确认不再公开这个项目并且在Snap<em>!</em>网站上也不再可见么？",
     "Project unpublished":
         "项目已取消发布",
     "This project is not listed in the Snap<em>!</em> site anymore.":
-        "这个项目已经不在Snap!社区的列表中了。",
+        "这个项目已经不在Snap<em>!</em>社区的列表中了。",
     "Delete project":
         "删除项目",
     "Are you sure you want to delete this project?":
@@ -90,7 +90,7 @@
     "This project has no notes":
         "这个项目没有说明",
     " by ":
-        " 作者 ",
+        " 作者是 ",
     "public":
         "公开的",
     "private":
@@ -118,7 +118,7 @@
     "Reset My Password":
         "重设我的密码",
     "Create a Snap<em>!</em> account":
-        "创建Snap!账号",
+        "创建Snap<em>!</em>账号",
     "Username":
         "用户名称",
     "Password":
@@ -132,13 +132,13 @@
     "Sign up":
         "注册",
     "Log into Snap<em>!</em>":
-        "登录到Snap!",
+        "登录到Snap<em>!</em>",
     "keep me logged in":
         "保持登录状态",
     "Log in":
         "登录",
     "* I forgot my password":
-        "忘记了密码",
+        "忘记密码",
     "DMCA":
         "DMCA",
     "Privacy":
@@ -159,8 +159,8 @@
         "注意！这个操作无法被撤销！",
     "Terms of Service":
         "服务条款",
-    "Welcome to Snap":
-        "欢迎使用Snap!",
+    "Welcome to Snap"://no exlmation mark???
+        "欢迎使用Snap<em>!</em>",
     " and listed":
         "并且被列出",
     "Cancel":
@@ -182,33 +182,33 @@
     "A link to reset your password has been<br>sent to your email account.":
         "一个用来重设密码的链接已经被发送至您的邮箱。",
     "Snap<em>!</em> is a broadly inviting programming language for kids and adults that's also a platform for serious study of computer science.":
-        "Snap!是一种对儿童和成人具有广泛吸引力的编程语言，同时也是重要的计算机科学学习平台",
+        "Snap<em>!</em>是一种对儿童和成人具有广泛吸引力的编程语言，同时也是重要的计算机科学学习平台",
     "Unshare":
         "取消分享",
     "About":
         "关于",
     "About Snap<em>!</em>":
-        "关于Snap!",
+        "关于Snap<em>!</em>",
     "Credits":
-        "积分",
+        "制作人员名单",
     "Enjoy the preview, and thank you for your understanding!":
         "请享受预览，感谢您的支持！",
     "Examples":
         "示例",
     "Extensions":
-        "扩展",
+        "模块/包",
     "Latest Projects":
         "最新项目",
     "Learning":
         "学习",
     "Legal":
-        "法规",
+        "合法的",
     "Mirrors":
         "镜像",
     "Partners":
         "合作伙伴",
     ", published on ":
-        "发布于 ",
+        "，发布于 ",
     "Reference Manual":
         "参考手册",
     "Source Code":
@@ -218,7 +218,7 @@
     "Technical Requirements":
         "技术需求",
     "This is a preview of the upcoming Snap<em>!</em> social website. Please bear in mind that this site is currently under construction and will keep changing over the next months. Most features are still under development.":
-        "这是即将发布的Snap!社区的预览版，请了解本网站正在建设中并将在未来几个月持续更新。更多的功能正在开发中。",
+        "这是即将发布的Snap<em>!</em>社区的预览版，请了解本网站正在建设中并将在未来几个月持续更新。更多的功能正在开发中。",
     "Tools":
         "工具",
     "Login failed":
@@ -230,7 +230,7 @@
     "I have read and agree to the <a target=\"_blank\" href=\"tos\">Terms of Service</a> and the <a target=\"_blank\" href=\"privacy\">Privacy Agreement</a>":
         "我已经阅读并同意 <a target=\"_blank\" href=\"tos\">服务条款</a> 和 <a target=\"_blank\" href=\"privacy\">隐私协议</a>",
     "Take a look at some <a href=\"examples\">examples</a> or check out the <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">reference manual</a> to learn more about it, or head straight into the <a href=\"https://snap.berkeley.edu/run\">editor</a> and start programming right away!":
-        "请观看一些  <a href=\"examples\">例子</a> 或参考 <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">帮助文档</a> 以了解更多, 或者直接运行 <a href=\"https://snap.berkeley.edu/run\">Snap!</a> 立即开始编程!",
+        "请观看一些  <a href=\"examples\">例子</a> 或参考 <a href=\"https://snap.berkeley.edu/SnapManual.pdf\">帮助文档</a> 以了解更多, 或者直接运行 <a href=\"https://snap.berkeley.edu/run\">Snap<em>!</em></a> 立即开始编程!",
     "Blog":
         "博客",
     "Materials":
@@ -260,19 +260,19 @@
     "Add to Collection":
         "添加至作品集",
     "admin":
-        "管理",
+        "管理员",
     "Administrator":
         "管理员",
     "Admin tools":
         "管理工具",
-    "Are you sure you want to delete user":
+    "Are you sure you want to delete user"://english grammar
         "确认要删除这个用户么？",
     "Are you sure you want to delete your user account?":
         "确认要删除您的用户账号么？",
     "Ban":
-        "禁止",
+        "封禁",
     "banned":
-        "被禁止",
+        "被封禁",
     "Become":
         "成为",
     "Change Email":
@@ -298,9 +298,9 @@
     "Delete your Account":
         "删除您的账号",
     "Featured Projects":
-        "经典项目",
+        "精选项目",
     "Flagged Projects":
-        "星标项目",
+        "被举报的项目",
     "moderator":
         "版主",
     "My Collections":
@@ -338,9 +338,9 @@
     "Art Projects":
         "艺术作品",
     "Fractals":
-        "分形",
+        "分形艺术作品",
     "Games":
-        "游戏",
+        "游戏作品",
     "New Collection":
         "新的作品集",
     ", published on":
@@ -348,7 +348,7 @@
     "Science Projects":
         "科学作品",
     "The Beauty and Joy of Computing":
-        "计算机科学的乐趣和美丽",
+        "BJC课程",
     "This collection is public":
         "这个作品集是公开的"
 }

@@ -2,9 +2,15 @@
 <link rel="stylesheet" href="style/banner.css">
 
 <div class="slideshow">
-    <a href="https://snapcon.org" target="_blank">
+    <a href="https://snapcon.org/" target="_blank">
         <div class="slide fade">
             <img src="img/snapcon.png" style="width:100%">
+        </div>
+    </a>
+
+    <a href="collection.html?user=snapcloud&collection=Food">
+        <div class="slide fade">
+            <img src="img/totm.png" style="width:100%">
         </div>
     </a>
 
