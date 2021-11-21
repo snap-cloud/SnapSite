@@ -162,14 +162,16 @@ function projectCodeButtonSpan (project) {
     var tooltip = 'See Code';
 
     span.classList.add('project-code-button');
-    span.innerHTML = '<small><a target="_blank" rel="noopener noreferrer" href="' +
+    span.innerHTML = '<a style="color: inherit;" ' +
+        'target="_blank" rel="noopener noreferrer" ' +
+        'href="' +
         projectURL(
             project.username,
             project.projectname,
             getUrlParameter('devVersion') !== null) +
-        '&editMode&noRun' +
-        '"><i class="fas fa-code' +
-        '" aria-hidden="true"></i></small></a>';
+        '&editMode&noRun">' +
+        '<i class="fas fa-lambda' +
+        '" aria-hidden="true"></i></a>';
     span.title = localizer.localize(tooltip);
     return span;
 };

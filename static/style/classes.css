@@ -159,6 +159,11 @@ pre.in-place {
     background: url('../img/octagon.png');
 }
 
+/* img filler because we don't have octagon in FA free edition */
+.fa-lambda:before {
+    content: '\03BB'; /* Unicode for Lambda */
+}
+
 /* Hide Discourse's meta info on images */
 .lightbox > .meta {
     display: none;
