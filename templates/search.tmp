@@ -1,5 +1,6 @@
 <script src="js/project.js"></script>
 <link rel="stylesheet" href="style/project.css">
+<link rel="stylesheet" href="style/usergrid.css">
 <h1><span localizable>Search Results:</span> <span class="query"></span></h1>
 <script>
     document.querySelector('.query').append(getUrlParameter('query'));
