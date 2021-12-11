@@ -79,7 +79,7 @@ if (username) {
 </script>
 
 @param widgetName=snapcon
-@param header="'Snap!Con 2021'"
+@param header="'Snap!Shot 2021'"
 @include=grid
 <script>
     snapcon_loadPage =
@@ -88,7 +88,7 @@ if (username) {
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Snap!Con 2021',
+                'Snap!Shot 2021',
                 onSuccess,
                 genericError,
                 true // withThumbnail
