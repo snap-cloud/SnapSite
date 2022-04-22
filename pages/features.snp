@@ -1,0 +1,4 @@
+base
+@param pageTitle="Feature Intros"
+@param categoryName='announcements/feature-intros'
+blog

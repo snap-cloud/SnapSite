@@ -1,2 +1,4 @@
 base
+@param pageTitle="Blog"
+@param categoryName='announcements/blog'
 blog

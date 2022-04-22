@@ -12,6 +12,7 @@
         <div class="pure-u-1-5">
             <p><h4 localizable>Learning</h4></p>
             <p><a localizable href="examples">Examples</a></p>
+            <p><a localizable href="features">Feature Intros</a></p>
             <p><a localizable href="snap/help/SnapManual.pdf"
                 >Reference Manual</a></p>
             <p><a localizable href="materials">Materials</a></p>

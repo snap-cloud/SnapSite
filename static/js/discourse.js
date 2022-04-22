@@ -37,18 +37,18 @@ DiscourseBlog.prototype.fetchJSON = function (path, callback, errorString) {
 DiscourseBlog.prototype.fetchPosts =  function () {
     var myself = this;
     this.fetchJSON(
-        '/c/' + this.category + '.json',
+        `/c/${this.category}.json`,
         function (jsonResponse) {
             jsonResponse.topic_list.topics.slice(1).sort(
                 function (a, b) {
                     return new Date(b.created_at) - new Date(a.created_at);
                 }
-            ).forEach(
-                function (each) {
+            ).forEach((each, idx) => {
+                setTimeout(() => {
                     var postDiv = document.createElement('div');
                     myself.element.appendChild(postDiv);
                     myself.fetchJSON(
-                        '/t/' + each.id + '.json',
+                        `/t/${each.id}.json`,
                         function (postJSON) {
                             myself.renderPost(
                                 {
@@ -56,15 +56,16 @@ DiscourseBlog.prototype.fetchPosts =  function () {
                                     date: new Date(postJSON.created_at),
                                     author: postJSON.details.created_by.username,
                                     content: postJSON.post_stream.posts[0].cooked,
-                                    commentsURL: myself.url + '/t/' + each.id + '/2'
+                                    url: `${myself.url}/t/${each.id}`,
+                                    commentsURL: `${myself.url}/t/${each.id}/2`
                                 },
                                 postDiv
                             );
                         },
                         'Could not fetch post'
                     );
-                }
-            );
+                }, idx * 500); // delay 500ms due to rate limits.
+            });
         },
         'Could not fetch post list'
     );
@@ -72,6 +73,7 @@ DiscourseBlog.prototype.fetchPosts =  function () {
 
 DiscourseBlog.prototype.renderPost = function (post, postDiv) {
     var titleHeader = document.createElement('h1'),
+        titleLink = document.createElement('a'),
         dateSpan = document.createElement('span'),
         contentsDiv = document.createElement('div'),
         separatorSpan = document.createElement('span'),
@@ -84,7 +86,9 @@ DiscourseBlog.prototype.renderPost = function (post, postDiv) {
     separatorSpan.classList.add('separator');
     commentsAnchor.classList.add('comments');
 
-    titleHeader.innerText = post.title;
+    titleLink.href = post.url;
+    titleLink.innerText = post.title;
+    titleHeader.appendChild(titleLink);
     dateSpan.innerHTML = formatDate(post.date);
     contentsDiv.innerHTML = post.content;
     commentsAnchor.innerText = localizer.localize('Discuss this in the forum');
