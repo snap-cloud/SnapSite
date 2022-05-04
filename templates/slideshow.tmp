@@ -10,11 +10,13 @@
     </a>
     -->
 
+    <!--
     <a href="collection.html?user=snapcloud&collection=Hats">
         <div class="slide fade">
             <img src="img/totm.png" style="width:100%">
         </div>
     </a>
+    -->
 
     <div class="slide fade">
         <img src="img/snap-byob.png" style="width:100%">
