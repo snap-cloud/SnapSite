@@ -1,0 +1,197 @@
+<script src="js/project.js"></script>
+<link rel="stylesheet" href="style/project.css">
+<h1 localizable>Snap<em>!</em> Events</h1>
+@param pageSize=5
+@param withSearch=false
+
+@param widgetName=snapcon22
+@param header="'Snap!Con 2022'"
+@include=grid
+<script>
+    snapcon22_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Con 2022',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    snapcon22_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+    snapcon22_initGrid();
+</script>
+
+@param widgetName=snapshot21
+@param header="'Snap!Shot 2021'"
+@include=grid
+<script>
+    snapshot21_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Shot 2021',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    snapshot21_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+    snapshot21_initGrid();
+</script>
+
+@param widgetName=snapcon21
+@param header="'Snap!Con 2021'"
+@include=grid
+<script>
+    snapcon21_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Con 2021',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    snapcon21_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+    snapcon21_initGrid();
+</script>
+
+@param widgetName=snapshot20
+@param header="'Snap!Shot 2020'"
+@include=grid
+<script>
+    snapshot20_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Shot 2020',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    snapshot20_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+    snapshot20_initGrid();
+</script>
+
+@param widgetName=snapcon20
+@param header="'Snap!Con 2020'"
+@include=grid
+<script>
+    snapcon20_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Con 2020',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    snapcon20_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+    snapcon20_initGrid();
+</script>
+
+@param header=''
