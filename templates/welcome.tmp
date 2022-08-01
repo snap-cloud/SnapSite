@@ -18,19 +18,25 @@ Snap<em>!</em> is a broadly inviting programming language for kids and adults th
 </div>
 
 <script>
-let username = sessionStorage && sessionStorage.username;
+function setupUserLinks() {
+    let username = SnapAPI.currentUser();
 
-if (username) {
-    let heading = document.querySelector('h1 .username');
-    let publicPage = document.querySelector('.indent a.my-public-projects');
-    heading.hidden = false;
-    heading.innerHTML = `, ${escapeHtml(username)}`;
-    document.querySelector('a[href="/my_projects"]').hidden = false;
-    publicPage.hidden = false;
-    publicPage.href = `/user?user=${encodeURIComponent(username)}`;
+    if (username) {
+        let heading = document.querySelector('h1 .username');
+        let publicPage = document.querySelector('.indent a.my-public-projects');
+        heading.hidden = false;
+        heading.innerHTML = `, ${escapeHtml(username)}`;
+        document.querySelector('a[href="/my_projects"]').hidden = false;
+        publicPage.hidden = false;
+        publicPage.href = `/user?user=${encodeURIComponent(username)}`;
+    }
 }
 
+window.addEventListener('load', (event) => {
+  setupUserLinks();
+});
 </script>
+
 <br class="v-spaced">
 @param title='"Snap! Build Your Own Blocks"'
 
@@ -79,7 +85,7 @@ if (username) {
 </script>
 
 @param widgetName=snapcon
-@param header="'Snap!Shot 2021'"
+@param header="'Snap!Con 2022'"
 @include=grid
 <script>
     snapcon_loadPage =
@@ -88,7 +94,7 @@ if (username) {
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Snap!Shot 2021',
+                'Snap!Con 2022,
                 onSuccess,
                 genericError,
                 true // withThumbnail
