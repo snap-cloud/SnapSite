@@ -59,6 +59,7 @@ window.addEventListener('load', (event) => {
                             extraFields: {
                                 isPublic: 'ispublic',
                                 isPublished: 'ispublished',
+                                projectCodeButton: '',
                                 author: 'username'
                             }
                         }
