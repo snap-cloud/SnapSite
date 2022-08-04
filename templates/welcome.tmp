@@ -94,7 +94,7 @@ window.addEventListener('load', (event) => {
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Snap!Con 2022,
+                'Snap!Con 2022',
                 onSuccess,
                 genericError,
                 true // withThumbnail
