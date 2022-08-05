@@ -103,7 +103,7 @@
         <script>
             function setupSentry() {
                     Sentry.init({
-                    dsn:"https://54ac5f8c0cb443aabfab8ced53cf879f@bugs.cs10.org/8",
+                    dsn:"https://3fad777945ae45818919b964c044f475@o1305063.ingest.sentry.io/6551192",
                     integrations: [new Sentry.Integrations.BrowserTracing()]
                 });
 
