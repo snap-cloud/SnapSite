@@ -106,7 +106,7 @@ window.addEventListener('load', (event) => {
 </script>
 
 @param widgetName=totm
-@param header="'Topic of the Month, July: Rainbows'"
+@param header="'Topic of the Month, August: Points'"
 @include=grid
 <script>
     totm_loadPage =
@@ -115,7 +115,7 @@ window.addEventListener('load', (event) => {
                 'snapcloud',
                 pageNumber,
                 pageSize,
-                'Rainbows',
+                'Points',
                 onSuccess,
                 genericError,
                 true // withThumbnail

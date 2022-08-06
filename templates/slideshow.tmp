@@ -2,15 +2,15 @@
 <link rel="stylesheet" href="style/banner.css">
 
 <div class="slideshow">
-    <a href="https://snapcon.org/" target="_blank">
+    <a href="collection.html?user=snapcloud&collection=Points">
         <div class="slide fade">
-            <img src="img/snapcon.png" style="width:100%">
+            <img src="img/totm.png" style="width:100%">
         </div>
     </a>
 
-    <a href="collection.html?user=snapcloud&collection=Rainbows">
+    <a href="https://snapcon.org/" target="_blank">
         <div class="slide fade">
-            <img src="img/totm.png" style="width:100%">
+            <img src="img/snapcon.png" style="width:100%">
         </div>
     </a>
 
@@ -58,5 +58,7 @@
         });
         slides[slideIndex-1].style.display = 'block';
     };
+
+    setInterval(() => { plusSlides(1); }, 1000);
 
 </script>
