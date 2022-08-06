@@ -59,6 +59,6 @@
         slides[slideIndex-1].style.display = 'block';
     };
 
-    setInterval(() => { plusSlides(1); }, 1000);
+    setInterval(() => { plusSlides(1); }, 8000);
 
 </script>
