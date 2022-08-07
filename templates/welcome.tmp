@@ -19,7 +19,7 @@ Snap<em>!</em> is a broadly inviting programming language for kids and adults th
 
 <script>
 function setupUserLinks() {
-    let username = SnapAPI.currentUser();
+    let username = sessionStorage && sessionStorage.username;
 
     if (username) {
         let heading = document.querySelector('h1 .username');
