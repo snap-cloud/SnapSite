@@ -194,4 +194,43 @@
     snapcon20_initGrid();
 </script>
 
+@param widgetName=snapcon19
+@param header="'Snap!Con 219'"
+@include=grid
+<script>
+    snapco19_loadPage =
+        function (query, pageSize, pageNumber, onSuccess) {
+            SnapCloud.getCollectionProjects(
+                'snapcloud',
+                pageNumber,
+                pageSize,
+                'Snap!Con 2019',
+                onSuccess,
+                genericError,
+                true // withThumbnail
+            );
+        };
+    snapco19_onLoadPage =
+        function (response, targetElement) {
+            response.projects.forEach(function (project) {
+                targetElement.append(
+                    newProjectDiv(
+                        project,
+                        {
+                            size: 'small',
+                            gridSize: 5,
+                            extraFields: {
+                                isPublic: 'ispublic',
+                                isPublished: 'ispublished',
+                                author: 'username'
+                            }
+                        }
+                    )
+                );
+            });
+        };
+    snapco19_initGrid();
+</script>
+
+
 @param header=''
