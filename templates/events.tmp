@@ -198,7 +198,7 @@
 @param header="'Snap!Con 219'"
 @include=grid
 <script>
-    snapco19_loadPage =
+    snapcon19_loadPage =
         function (query, pageSize, pageNumber, onSuccess) {
             SnapCloud.getCollectionProjects(
                 'snapcloud',
@@ -210,7 +210,7 @@
                 true // withThumbnail
             );
         };
-    snapco19_onLoadPage =
+    snapcon19_onLoadPage =
         function (response, targetElement) {
             response.projects.forEach(function (project) {
                 targetElement.append(
@@ -229,7 +229,7 @@
                 );
             });
         };
-    snapco19_initGrid();
+    snapcon19_initGrid();
 </script>
 
 
