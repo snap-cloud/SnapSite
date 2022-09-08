@@ -1,3 +1,7 @@
+# !! DEPRECATED !!
+
+This repository contains the old Snap! community website. The new website is part of the cloud repository and is built with etlua templates. We're keeping this here just for archaelogical interest.
+
 # Snap Community Website
 
 The community website for the [Snap! programming language/environment](https://github.com/jmoenig/Snap)
